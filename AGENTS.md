@@ -5,9 +5,13 @@ ESE Kongress 2026, 30 November to 4 December 2026 in Sindelfingen. The [README](
 explains the repository for human readers. This file holds the rules an agent gets wrong
 without them.
 
-## This repository is public
+## This repository goes public
 
-Everyone can read every file, every commit message and every speaker note.
+The repository is private until the speakers call the decks finished. Then it goes public,
+and GitHub Pages serves the decks. From that day, everyone can read every file, every commit
+message and every speaker note.
+
+Write every file and every commit message as if the repository were public today:
 
 - Do not write internal hostnames, internal repository URLs, credentials or customer names.
   This applies to text, images, code listings, speaker notes and commit messages.
@@ -15,6 +19,17 @@ Everyone can read every file, every commit message and every speaker note.
 - Check each slide that comes from an internal deck against these rules before you add it.
 - Add a speaker's photo and profile link only when that speaker supplies them. Until then,
   use `docs/images/speaker_placeholder.svg` and the first name without a link.
+
+**Caution:** the history goes public with the files. A text that you change or delete stays
+readable in the older commits.
+
+Before you make the repository public:
+
+1. Check every file against the rules above.
+2. Check every commit message against the rules above.
+3. Set the visibility of the repository to public.
+4. Switch on GitHub Pages for the `develop` branch and the root folder.
+5. Open `https://avengineers.github.io/ESE-2026/` and each deck.
 
 ## Structure
 
@@ -116,8 +131,10 @@ Read the page again before you submit. The organiser can change it.
 - Run `npm install` once. Then run `npm run dev`. The landing page opens at
   `http://localhost:3000/`.
 - Run `npm run lint:md` before each commit.
-- GitHub Pages serves the `develop` branch from the root folder, at
-  `https://avengineers.github.io/ESE-2026/`.
+- While the repository is private, `npm run dev` is the only way to see the decks.
+- When the repository is public, GitHub Pages serves the `develop` branch from the root
+  folder, at `https://avengineers.github.io/ESE-2026/`. The QR codes and the "Some Links"
+  slides point there.
 - Keep the empty file `.nojekyll`. Without it, GitHub Pages does not publish folders that
   start with `_`, such as `docs/_template/`.
 
