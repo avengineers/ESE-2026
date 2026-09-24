@@ -1,0 +1,74 @@
+# Brainstorming: Faden durch den Vortrag
+
+<!-- The result of our brainstorming on 2026-09-24. The notes for the slides of this talk.
+     The article is in article/index.md. -->
+
+- Am Anfang Live-Demo starten in SPLed mit GitHub issue (analog zur Demo 1 beim "International Software Workshop" in Rietheim)
+- Wie hat alles angefangen:
+  - ChatGPT hat mal ein Skript erstellt, oder eine VS Code Extension
+  - Code-Vervollständigung in VS Code
+  - Code-Vorschläge beim Programmieren: mal ne Funktion, mal ne Schleife.
+  - Brauchbar: man musste die Syntax nicht mehr kennen.
+  - Große Hilfe bei Python, CMake, C++, GoogleTest
+  - Struktur und Architektur kamen immer noch von uns.
+  - Vorschläge klangen immer toll.
+  - Hilfe bei Erstellung von Dokumentation
+  - Trotzdem fehlerhaft und nicht funktional
+  - viel halluziniert.
+- Dann kamen die Agenten:
+  - Eigentlich wie vorher benutzt
+  - Aber jetzt mit Prompts wie: schreib mir mal bitte eine Funktion, die das und das macht.
+  - Ende 2025 kamen neue Modelle (z.B.: Claude Opus 4.5)
+  - Passt gut zu unserem ESE Vortrag, die Folien schrieben sich von alleine. ;-)
+- Team Schulung
+  - Trainer gaben uns neue Sicht
+  - "Frag doch den Agenten!"
+    - MCP
+    - Skills
+    - SDD
+    - Plötzlich gab man einem Agenten eine User Story oder ein ganzes Feature zur Bearbeitung.
+- Großteil unserer User und auch wir haben GitHub Copilot
+- Aber jeder Entwickler im Team benutzt Claude Code (irgendwie besser!?!)
+- Meine Claude programmiert besser als deiner!
+- Jeder pflegt seinen eigenen DevStack
+  - Persönliche CLAUDE.md
+  - Favorisierte Skillsets
+  - Eigene Skillsets
+- Offene Fragen/Diskussionspunkte:
+  - Möglichst kurzer Prompt für maximalen Output?
+  - Oder besser alles nachfragen?
+  - Wie viel Kontrolle braucht ein Agent?
+- Use Cases:
+  - A.SPICE konforme Softwareentwicklung (Demo am Anfang gestartet.)
+    - Requirements sind Vorgabe
+    - Erstellt werden
+      - Architektur
+      - Detailed Design
+      - Testspezifikation
+      - Source Code
+      - Requirements Coverage
+      - Traceability
+      - Code Coverage
+  - Erzeugung von Backlog Tickets
+    - Vorteile
+      - Einheitliches Format
+      - Großes Kontextfenster: der Agent berücksichtigt Fakten und Randbedingungen, an die der Mensch oft nicht gedacht hat.
+      - Schnelle Erzeugung von Diskussionsgrundlagen
+    - Nachteile
+      - Zu viele Details für einen Menschen
+  - Fehleranalyse
+    - Skill für Jenkins
+    - Warum ist mein CI Build rot?
+  - Pull Request Review
+    - Wirklich? 2000 Zeilen?
+  - Urlaubsübergabe
+    - Wie weit bin ich gekommen.
+    - Wo kannst du weitermachen.
+  - Skills als Produkt eines Platform Teams
+    - Wie schreibt man gute Unit Tests.
+    - Wie starte ich einen Build.
+    - Wie erzeugt man einen Test Report.
+  - Entwicklungsergebnisse managementtauglich darstellen
+    - Präsentationen mit reveal.js
+    - Konferenzfolien ;-)
+    - Claude kann Excel, Word und Co.

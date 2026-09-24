@@ -26,6 +26,7 @@ ESE-2026/
 │   ├── <deck>/
 │   │   ├── index.html         reveal.js entry point of the deck
 │   │   ├── index.md           the slides
+│   │   ├── brainstorming.md   optional: notes on the storyline of the talk
 │   │   └── article/index.md   the proceedings article
 │   └── images/                logos, speaker photos, QR codes
 ├── css/
