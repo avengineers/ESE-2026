@@ -29,9 +29,9 @@ Akshit
 </div>
 <div class="speaker">
 
-![Judith](../images/speaker_placeholder.svg)
+![Judith](../images/judith.png)
 
-Judith
+[Judith](https://www.linkedin.com/in/judith-reichwein-873665258/)
 
 </div>
 </div>
