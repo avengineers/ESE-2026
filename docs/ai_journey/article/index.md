@@ -6,7 +6,8 @@ Judith Reichwein, Karsten Guenther, Marquardt GmbH
 
 <!-- The proceedings article for this talk, in German.
      The organiser's rules are in AGENTS.md, section "The articles".
-     Draft of 2026-09-24. Figure 1 becomes an image in the Word file. Figure 2 is still missing. -->
+     Draft of 2026-09-24. Figure 1 becomes an image in the Word file. Figure 2 is a screenshot at device scale factor 3, in the light theme, window 1536 px wide.
+     2688 px give 300 dpi up to 22.8 cm width. -->
 
 2022 setzte unser Team zum ersten Mal KI-gestützte Code Completion ein. Das Ergebnis glich eher der Arbeit eines Schülerpraktikanten als der eines erfahrenen Entwicklers. Heute bearbeiten Agenten bei uns ganze User Stories, vom Design bis zum getesteten Code. In diesem Beitrag beschreiben wir den Weg dorthin. Wir zeigen, wie wir Agenten mit Skills steuern und an unsere Embedded-Umgebung anpassen, und wir stellen drei Einsatzfelder aus unserem Alltag vor. Am Ende steht unsere wichtigste Erfahrung: Der Agent liefert für jedes Problem eine Antwort, und wir müssen lernen, diese Antwort zu bewerten.
 
@@ -69,11 +70,11 @@ Heute hilft uns der Agent an vielen Stellen. Er findet heraus, warum ein CI-Buil
 
 Das erste Beispiel ist Softwareentwicklung nach Automotive SPICE [4]. Wir zeigen es am öffentlichen Demo-Projekt SPLed [5], einer kleinen, aber vollständigen Software-Produktlinie, deren Varianten jeweils eigene Binärdateien erzeugen. Die Funktion heißt Auto Off. Sie schaltet das Licht nach einer einstellbaren Zeit ohne Bedienung aus. Der Agent bekommt eine User Story. Sie nennt die Anforderungen und die gewünschte Wirkung je Variante, enthält aber kein Design, keinen Algorithmus und keine Dateinamen.
 
-Aus der User Story erzeugt der Agent die Kette, die der Prozess verlangt: das Detailed Design, die Testspezifikation, einen Konfigurationsschalter für die Varianten, den Code und die Unit-Tests mit GoogleTest. Danach baut er die Software und führt die Tests aus. Am Ende liegt ein Komponentenbericht vor, mit Requirements Coverage, Code Coverage und Traceability von der Anforderung bis zum Test.
+Aus der User Story erzeugt der Agent die Kette, die der Prozess verlangt: das Detailed Design, die Testspezifikation, einen Konfigurationsschalter für die Varianten, den Code und die Unit-Tests mit GoogleTest. Danach baut er die Software und führt die Tests aus. Am Ende liegt ein Komponentenbericht vor, mit Requirements Coverage, Code Coverage und Traceability von der Anforderung bis zum Test (Abbildung 2).
 
-<!-- Figure 2: an excerpt of the component report of SPLed (traceability or coverage).
-     Caption: "Abbildung 2: Ausschnitt aus dem Komponentenbericht von Auto Off. Quelle: SPLed [5]."
-     300 dpi, light background. -->
+![Ein Element des Detailed Design von Auto Off mit seinen Verweisen](../../images/spled_traceability.png)
+
+Abbildung 2: Ausschnitt aus dem Detailed Design von Auto Off, mit den Verweisen auf Anforderung, Implementierung und Testfälle. Quelle: SPLed [5], MIT-Lizenz.
 
 Die Gesamtarchitektur bleibt in Menschenhand. Kleinere Entscheidungen trifft der Agent selbst, gestützt auf Skills, zum Beispiel die Frage, wo die Implementierung einer Anforderung am besten hineinpasst. Eine Regel geben wir ihm dabei mit: Was die Anforderungen offenlassen, meldet er als Frage, statt es stillschweigend zu entscheiden.
 
