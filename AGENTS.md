@@ -42,13 +42,17 @@ ESE-2026/
 │   │   ├── index.html         reveal.js entry point of the deck
 │   │   ├── index.md           the slides
 │   │   ├── brainstorming.md   optional: notes on the storyline of the talk
-│   │   └── article/index.md   the proceedings article
-│   └── images/                logos, speaker photos, QR codes
+│   │   └── article/
+│   │       ├── index.md       the proceedings article
+│   │       └── index.docx     its Word file for the organiser, made by make_docx.py
+│   └── images/                logos, speaker photos, QR codes, figures of the articles
 ├── css/
 │   ├── marquardt.css          the theme
 │   └── custom.css             shared styles, including the common slides
 ├── reveal.js/                 submodule: upstream reveal.js, pinned to 6.0.2
-└── scripts/make_qr.py         makes the QR codes
+└── scripts/
+    ├── make_qr.py             makes the QR codes
+    └── make_docx.py           makes the Word file of an article and counts its characters
 ```
 
 | Deck | Talk | Language | Speakers |
@@ -100,7 +104,9 @@ copied theme gives the same result.
 Each talk has its proceedings article in `docs/<deck>/article/index.md`, in the language of
 the talk. The organiser's rules are on the page
 [Tagungsband-Beitrag](https://ese-kongress.de/frontend/index.php?page_id=53121), read on
-2026-09-24:
+2026-09-25. The page links a
+[sample manuscript](https://ese-kongress.de/custom/media/ESE_2024/tagungsband/Beispielmanuskript_ESE_Tagungsband_2024.pdf),
+which is still the one of 2024. The rules:
 
 - The deadline is 11 October 2026.
 - The article is a Word file. Upload it to the organiser's speaker database. Do not send it by
@@ -111,14 +117,64 @@ the talk. The organiser's rules are on the page
 - The content is a technical contribution from practice. No advertising, no marketing, no
   product presentation.
 - The elements, in this order: title, optional subtitle, authors and company, a lead of one
-  paragraph, the main part, a summary, optional references, a short biography of each author.
-- Images and tables go in the text. Each has a number, a caption and a source. Use 300 dpi
-  and no dark backgrounds. Put code examples in as images, in a fixed-width font.
+  paragraph, the main part, a summary, an optional list of abbreviations, optional
+  references, a short biography of each author, an optional photo of each author.
+- A biography gives the name, the company, the role and the expertise of the author.
+- Images and tables go in the text. Each has a number, a caption and a source. Use 300 dpi,
+  a high contrast and no dark backgrounds.
+- Put code examples and formulas in as images, in Courier New 12 pt.
 - The layout: A4 portrait, margins 2 cm at the top and 3 cm at the other sides, one column,
-  justified, line spacing 1.15, Times New Roman 12 pt, the title 16 pt bold. No headers, no
-  footers, no page numbers, no logos.
+  justified, line spacing 1.15. No headers, no footers, no page numbers, no logos.
+- The font is Times New Roman. The title is 16 pt bold. The subtitle, the lead and the
+  headings are 12 pt bold. The body text and the captions are 12 pt.
+- Use italics for emphasis, and use them sparingly. Do not use bold, underline or colour in
+  the body text.
+- Do not use automatic numbering or indents.
+
+The sample manuscript shows what the rules do not say. It centres the title, the subtitle
+and the authors line. It puts the caption below the figure. It has no space between
+paragraphs, and `make_docx.py` adds 6 pt after each paragraph, because no rule forbids it
+and the text is easier to read.
 
 Read the page again before you submit. The organiser can change it.
+
+### The Word file
+
+`scripts/make_docx.py` makes the Word file from the Markdown file and counts the characters.
+Word counts the same number. Text in an image does not count.
+
+**Caution:** the next run of the script overwrites the Word file. Do not edit the Word file.
+Edit the Markdown file.
+
+1. Write the article in `docs/<deck>/article/index.md`.
+2. Run `uv run scripts/make_docx.py <deck>`.
+3. Read the character count in the output.
+4. Open `docs/<deck>/article/index.docx` in Word. Check each page.
+
+The script expects this shape of the Markdown file:
+
+- `# Title` comes first. Then come the optional subtitle, the authors line and the lead, one
+  paragraph each.
+- `##` and `###` start the headings.
+- A caption is a paragraph that starts with `Abbildung N:` or `Figure N:`. Put it below its
+  figure.
+- A code block becomes an image in Courier New 12 pt. Wrap each line at 57 characters or
+  fewer. The script stops on a longer line.
+- `![alt](path)` puts in an image. Give it a width of 1,772 px or more, for 300 dpi at the
+  text width of 15 cm. The script warns on a smaller image.
+- Use `*italic*` for emphasis. The script stops on other inline Markdown, such as bold, code
+  spans or links.
+- Write typographic quotes: „…“ in German, “…” in English.
+- HTML comments do not go into the Word file.
+
+To take a screenshot of a web page for a figure, use Edge. The command below gives three
+times the pixel density and the light theme:
+
+```text
+msedge --headless --hide-scrollbars --blink-settings=preferredColorScheme=1 --window-size=1536,1000 --force-device-scale-factor=3 --screenshot=out.png <URL>
+```
+
+Then crop the image and save it with 300 dpi.
 
 ## Language
 

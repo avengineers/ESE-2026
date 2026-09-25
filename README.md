@@ -36,6 +36,7 @@ Use [Visual Studio Code](https://code.visualstudio.com/) to edit the slides.
 | Shared images | `docs/images/` |
 | Skeleton deck | `docs/_template/` |
 | QR codes | `scripts/make_qr.py` |
+| Word files of the articles | `scripts/make_docx.py` |
 
 The rules for changing the decks, and for adding one, are in [AGENTS.md](AGENTS.md).
 
