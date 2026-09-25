@@ -89,7 +89,7 @@ Das dritte Beispiel steht am Ende der Entwicklung. Oft müssen wir Ergebnisse f�
 
 Schon 2022 klangen die Vorschläge immer gut. Das ist geblieben. Geändert hat sich, wie oft sie stimmen, und das macht die Bewertung schwerer: Wenn fast alles stimmt, fällt der eine Fehler kaum noch auf. Der Agent liefert für jedes Problem eine Antwort. Die Herausforderung liegt darin, diese Antwort zu bewerten.
 
-Wir warnen deshalb ausdrücklich vor Vibe Coding. Im Embedded-Umfeld kann niemand Code freigeben oder warten, den er nicht versteht.
+Für einmalige Schritte oder Ergebnisse setzen wir Vibe Coding selbst ein und finden das in Ordnung, zum Beispiel für ein Skript, das wir einmal ausführen und danach löschen. Für produktiven Code, der wiederverwendet werden soll, warnen wir aber ausdrücklich davor. Im Embedded-Umfeld kann niemand Code freigeben oder warten, den er nicht versteht.
 
 Beim Bewerten hilft der Agent aber selbst mit. Einen Pull Request mit 2.000 geänderten Zeilen konnte ein Mensch früher nur mit hohem Aufwand prüfen. Die Menge der Änderungen war groß, und jeder Kontextwechsel kostete Zeit. Heute prüft der Agent die ganze Änderung, und der Mensch bewertet seine Befunde. Das ist für uns eine große Erleichterung. Die letzte Entscheidung liegt weiterhin beim Menschen.
 
