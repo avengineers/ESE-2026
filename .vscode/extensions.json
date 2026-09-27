@@ -1,5 +1,7 @@
 {
    "recommendations": [
+      "anthropic.claude-code",
+      "ms-vscode-remote.remote-containers",
       "sandcastle.vscode-open",
       "mushan.vscode-paste-image",
       "felipecaputo.git-project-manager",

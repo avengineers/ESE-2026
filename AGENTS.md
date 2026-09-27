@@ -35,6 +35,7 @@ Before you make the repository public:
 
 ```text
 ESE-2026/
+├── .devcontainer/             dev container for Linux and WSL, also behind a corporate proxy
 ├── index.html, index.md       landing page: links to the decks
 ├── docs/
 │   ├── _template/             skeleton deck with the common slides
@@ -51,6 +52,7 @@ ESE-2026/
 │   └── custom.css             shared styles, including the common slides
 ├── reveal.js/                 submodule: upstream reveal.js, pinned to 6.0.2
 └── scripts/
+    ├── postCreate.sh          sets up the dev container after it is created
     ├── make_qr.py             makes the QR codes
     └── make_docx.py           makes the Word file of an article and counts its characters
 ```

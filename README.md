@@ -26,6 +26,11 @@ Add `?print-pdf` to a deck URL to get the printable version.
 
 Use [Visual Studio Code](https://code.visualstudio.com/) to edit the slides.
 
+On Linux or WSL, open the repository in its dev container instead — with VS Code Dev
+Containers or [DevPod](https://devpod.sh/). It installs Node.js, uv and Claude Code, and it
+trusts the CA certificates of the host, so it also works behind a corporate proxy. Then
+start the web server with `npm run dev`.
+
 ## Infrastructure
 
 | Piece | Where |
