@@ -2,23 +2,23 @@
   "name": "ESE 2026 Presentations",
   "build": {
     "dockerfile": "Dockerfile",
-    "options": ["--network=host"]
+    "options": [
+      "--network=host"
+    ]
   },
-  "runArgs": ["--network=host"],
+  "runArgs": [
+    "--network=host"
+  ],
   "initializeCommand": "mkdir -p .devcontainer/certs && cp /usr/local/share/ca-certificates/*.crt .devcontainer/certs/ 2>/dev/null; true",
-
   "features": {
     "ghcr.io/devcontainers/features/git:1": {},
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
-
   "customizations": {
     "vscode": {
       "extensions": [
-        "anthropic.claude-code",
         "sandcastle.vscode-open",
         "mushan.vscode-paste-image",
-        "felipecaputo.git-project-manager",
         "mhutchie.git-graph",
         "waderyan.gitblame",
         "streetsidesoftware.code-spell-checker",
@@ -33,6 +33,5 @@
       }
     }
   },
-
   "postCreateCommand": "bash scripts/postCreate.sh"
 }
