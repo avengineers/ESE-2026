@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <title>„Frag doch den Agenten!" – LinkedIn image</title>
+
+  <link rel="stylesheet" href="../../reveal.js/dist/reset.css" />
+  <link rel="stylesheet" href="../../reveal.js/dist/reveal.css" />
+  <link rel="stylesheet" href="../../css/marquardt.css" />
+  <link rel="stylesheet" href="../../css/custom.css" />
+  <style>
+    /* The speakers' photos take the place of the company logos, cut like on "Who are we?". */
+    .reveal .ese-logos img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    .reveal .ese-logos img.ese-logo {
+      width: auto;
+      height: 140px;
+      object-fit: contain;
+      border-radius: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section data-markdown="linkedin.md" data-separator="^\r?\n---\r?\n$">
+      </section>
+    </div>
+  </div>
+
+  <script src="../../reveal.js/dist/reveal.js"></script>
+  <script src="../../reveal.js/dist/plugin/markdown.js"></script>
+  <script>
+    // One slide, no controls, no progress bar, no slide number: the page is a picture.
+    Reveal.initialize({
+      hash: false,
+      controls: false,
+      progress: false,
+      slideNumber: false,
+      plugins: [RevealMarkdown],
+    });
+  </script>
+</body>
+
+</html>

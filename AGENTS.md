@@ -43,10 +43,12 @@ ESE-2026/
 │   │   ├── index.html         reveal.js entry point of the deck
 │   │   ├── index.md           the slides
 │   │   ├── brainstorming.md   optional: notes on the storyline of the talk
+│   │   ├── linkedin.html/.md  optional: the title slide as a picture for LinkedIn
 │   │   └── article/
 │   │       ├── index.md       the proceedings article
 │   │       └── index.docx     its Word file for the organiser, made by make_docx.py
-│   └── images/                logos, speaker photos, QR codes, figures of the articles
+│   └── images/                logos, speaker photos, QR codes, figures of the articles,
+│                              LinkedIn pictures
 ├── css/
 │   ├── marquardt.css          the theme
 │   └── custom.css             shared styles, including the common slides
@@ -177,6 +179,28 @@ msedge --headless --hide-scrollbars --blink-settings=preferredColorScheme=1 --wi
 ```
 
 Then crop the image and save it with 300 dpi.
+
+## The LinkedIn picture
+
+`docs/images/linkedin_<deck>.png` is the title slide of a deck as a picture for posting the
+talk on LinkedIn, 1920 × 1080. The page `docs/<deck>/linkedin.html` shows that title slide
+with the photos of the speakers in place of the company logos, and the ESE Kongress logo
+between them.
+
+- `docs/images/ese_logo_white.svg` is the logo from page 1 of the organiser's
+  [fact sheet 2026](https://ese-kongress.de/custom/media/ese_26/downloads/ESE_2026_Fact_Sheet_web_DE.pdf).
+  Its lettering is white instead of blue, as in the banner of the organiser's website, so
+  that it reads on the dark background.
+- Change the title slide in `index.md` first. Then make the same change in `linkedin.md`.
+
+To make the picture, run `npm run dev`. Then run the command below. On Linux, use
+`chromium` with the same flags.
+
+```text
+msedge --headless --hide-scrollbars --window-size=1920,1080 --virtual-time-budget=10000 --screenshot=docs/images/linkedin_<deck>.png http://localhost:3000/docs/<deck>/linkedin.html
+```
+
+`--virtual-time-budget` gives reveal.js the time to load the slide before the screenshot.
 
 ## Language
 
