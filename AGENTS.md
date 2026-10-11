@@ -112,7 +112,7 @@ the talk. The organiser's rules are on the page
 [sample manuscript](https://ese-kongress.de/custom/media/ESE_2024/tagungsband/Beispielmanuskript_ESE_Tagungsband_2024.pdf),
 which is still the one of 2024. The rules:
 
-- The deadline is 11 October 2026.
+- The deadline is 19 October 2026, extended from 11 October.
 - The article is a Word file. Upload it to the organiser's speaker database. Do not send it by
   e-mail.
 - The length is 7,000 to 12,000 characters in total, spaces included. The main part is about
