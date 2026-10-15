@@ -164,6 +164,17 @@ The script expects this shape of the Markdown file:
   figure.
 - A code block becomes an image in Courier New 12 pt. Wrap each line at 57 characters or
   fewer. The script stops on a longer line.
+- A code block tagged ```` ```text ```` is black. A code block tagged ```` ```code ```` gets
+  syntax highlighting on a white background: feature conditions in dark red and bold,
+  directives in dark blue, options in dark green, file labels, tree lines and comments in
+  dark grey. Each colour has a contrast of 7:1 or more. The bold keeps the feature
+  condition visible in a black and white print. `CODE_RULES` in `make_docx.py` holds the
+  rules. The `eng_as_code` article uses `code`; `ai_journey` keeps `text`.
+- To show the fences of a Markdown code block in a figure, open and close the figure with
+  four backticks.
+- Every figure gets the same frame: 0.25 cm white padding and a grey line. The script
+  draws it around a code image and around a copy of each `![alt](path)` image, so crop a
+  screenshot to its content and leave no margin around it.
 - `![alt](path)` puts in an image. Give it a width of 1,772 px or more, for 300 dpi at the
   text width of 15 cm. The script warns on a smaller image.
 - Use `*italic*` for emphasis. The script stops on other inline Markdown, such as bold, code

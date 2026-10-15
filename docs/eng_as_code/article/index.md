@@ -7,7 +7,7 @@ Akshit Kobagapu, Judith Reichwein, Rhine-Main Team of Marquardt GmbH
 <!-- The proceedings article for this talk, in English.
      The organizer's rules are in AGENTS.md, section "The articles".
      American English throughout, matching the en-US stamp of the Word file.
-     Draft of 2026-10-01. scripts/make_docx.py makes the Word file; Figures 1, 2 and 4
+     Draft of 2026-10-01. scripts/make_docx.py makes the Word file; Figures 1, 2, 4 and 5
      become images there. Figures 3 and 6 are screenshots of a generated component
      report. -->
 
@@ -33,7 +33,7 @@ This is not the same as keeping documentation in the repository, which many team
 
 In SPLed [1], a small product line that builds a configurable light, the engineering artifacts live in the same repository as the source code. SPLed is our open-source demonstrator of the way we work in product development.
 
-```text
+```code
 SPLed/
 ├── doc/                        product-level artifacts
 │   ├── customer_requirements/  what the customer wants
@@ -56,7 +56,7 @@ Every component is a folder with three parts: src, test and doc. The doc part is
 
 The three parts are held together by one rule: every artifact names what justifies it, and nothing names what follows from it. A specification refines the architecture. An implementation names the specification it implements and the requirement it fulfills. A test names the specification it verifies. Keeping that direction consistent is what lets a test be added without touching anything above it.
 
-```text
+```code
 doc/index.md
     {spec} Color Management
     :id: SWDD_LC-102
@@ -82,7 +82,8 @@ Those identifiers are data rather than sentences, so the build can follow them. 
      variant, built from the public SPLed repository and screenshotted from the local
      build output with Edge headless at device scale factor 3 in the light theme,
      cropped to the table header and three requirements, without the page heading;
-     the rows between were removed. 2640 px wide at 300 dpi. -->
+     the rows between were removed. 2640 px wide at 300 dpi. make_docx.py adds the
+     frame. -->
 
 ![A table of requirements, what refines them and what fulfills them](../../images/spled_traceability_matrix.png)
 
@@ -100,7 +101,7 @@ We take a third. The design document carries the same feature conditions as the 
 
 Blinking shows it end to end.
 
-```text
+```code
 KConfig
     config BLINKING
         bool "Blinking Feature"
@@ -116,11 +117,30 @@ variants/Sleep/config.txt
 Figure 4: The blinking feature in the feature model, selected by Disco and left out by Sleep. Source: SPLed [1], MIT license.
 
 <!-- Figure 5: the first two specifications of "Design Considerations" in
-     components/light_controller/doc/index.md of SPLed, drawn by code_image() of
-     make_docx.py. It is an image and not a code block, because the fences of the
-     specifications at column 0 would end a Markdown code block. -->
+     components/light_controller/doc/index.md of SPLed, without the blank lines around
+     the condition. The block has four backticks, so that it can hold the fences of
+     three. -->
 
-![The design document source, with one specification inside a feature condition](../../images/spled_variant_source.png)
+````code
+```{spec} State Management
+:id: SWDD_LC-100
+:refines: SWARCH_001, REQ_42
+
+The light can be in one of two states: ON or OFF. The
+state transitions are triggered by changes in the
+system's power state.
+```
+{% if config.BLINKING %}
+```{spec} Blinking Behavior
+:id: SWDD_LC-101
+:refines: SWARCH_001, REQ_44
+
+When the light is ON, it may exhibit a blinking behavior.
+The blinking rate is configurable and is determined based
+on an external input (main knob value).
+```
+{% endif %}
+````
 
 Figure 5: Two specifications from the design document of the Light Controller. The second one depends on the blinking feature. Source: SPLed [1], MIT license.
 
@@ -129,18 +149,18 @@ Figure 5: Two specifications from the design document of the Light Controller. T
      of the report page, in which the other cards are hidden and the content of the
      two cards is replaced by "...". Edge headless, window 1536 px wide, device scale
      factor 3, light theme. Each card is cut to 1160 px plus its right edge of 40 px.
-     40 px margin at the sides, between the columns and at the bottom. 2520 px wide at
-     300 dpi. -->
+     40 px between the columns, no margin outside: make_docx.py adds the frame and its
+     padding. 2440 px wide at 300 dpi. -->
 
 ![The same component report for two variants side by side, one with the blinking specification and one without](../../images/spled_variant_comparison.png)
 
-Figure 6: What the build makes of Figure 5. The two specifications written once become two in Disco, which selects the blinking feature, and one in Sleep, which does not. The variant names were added as labels, the cards are narrowed, and the descriptions are replaced by dots. Source: SPLed [1], MIT license.
+Figure 6: The report built from Figure 5. Disco has the blinking feature and both specifications, Sleep only the first. Source: SPLed [1], MIT license.
 
 One source, one feature model, a correct traceability matrix per variant, and no document maintained twice.
 
 ## The top of the chain
 
-In most cases there is a point where the whole chain cannot live in one repository. System requirements are the clearest example: once hardware is in scope they cover more than software. Requirements like these are usually maintained in a requirements management system.
+In most cases there is a point where the whole chain cannot live in one repository. System requirements are the clearest example: once hardware is in scope they cover more than software. They usually live in a requirements management system.
 
 We suggest writing new requirements as documents in the repository. We do not suggest rewriting every existing requirement that way. Instead, we built a process around the export the tool already offers: it produces CSV or ReqIF [4], we convert that into JSON, and the result is imported and traced in our reports like everything else. The same process works for any artifact that is maintained outside the repository.
 
@@ -170,7 +190,7 @@ None of it depends on our particular tools. It depends on treating an engineerin
 
 [4] ReqIF, the requirements interchange format: https://www.omg.org/spec/ReqIF/
 
-[5] sple-skills, our agent skills for embedded engineering: https://github.com/avengineers/sple-skills
+[5] sple-skills, our agent skills: https://github.com/avengineers/sple-skills
 
 ## The authors
 
