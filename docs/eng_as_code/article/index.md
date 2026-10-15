@@ -11,7 +11,7 @@ Akshit Kobagapu, Judith Reichwein, Rhine-Main Team of Marquardt GmbH
      become images there. Figures 3 and 6 are screenshots of a generated component
      report. -->
 
-An embedded team keeps its source code in a repository. The engineering artifacts around it tend to live somewhere else. Requirements sit in one tool, the architecture in a second, the detailed design in a third, the test results in a fourth. Each tool is good at its job, and the chain between them is held together by people. In this article we describe how we moved those artifacts into the repository, as text, next to the code they describe. We show how the build resolves the links between them, how one feature model serves many product variants, and why this turns out to be the ground an AI agent needs.
+An embedded team keeps its source code in a repository. The engineering artifacts around it tend to live somewhere else. Requirements sit in one tool, the architecture in a second, the detailed design in a third, the test results in a fourth. Each tool is good at its job, and the chain between them is held together by people. In this article we describe how we moved those artifacts into the repository, as text, next to the code they describe. We show how the build resolves the links between them, how one feature model serves many product variants, and what this gives an AI agent.
 
 ## Between the tools
 
@@ -148,9 +148,11 @@ The import is a copy as well, with the weakness we described above: it is accura
 
 ## Why this suits an AI agent
 
-This benefit was not the reason we started, but it has become the most visible one. An AI agent working on a change needs to know what the change must satisfy. When the artifacts live in four systems behind four logins, the agent sees the code and guesses the rest. When they live in one repository, it reads all of them.
+This benefit was not the reason we started, but it turned out that an AI agent supports our Engineering as Code approach well. The agent sees our structure in the repository, a folder per component and the rule that every artifact names what justifies it, and it makes its changes according to that structure.
 
 We go one step further and give the agent skills [5]. A skill is a set of written instructions that the agent loads when a task needs it. Ours describe how an artifact is written here, which identifier scheme it uses and which links it must carry. The agent then produces a specification, a test and an implementation in the shape the traceability needs, rather than prose a human has to rework. Its specifications, tests and links go through the same build as a human’s, with the same report and the same warnings.
+
+The same knowledge makes the agent a useful reviewer. Given a pull request, it checks each change against the structure and comments where something does not fit, for example a specification without a test. Because the code, the specification and the test change together, one pull request holds the whole change, and the agent and the human reviewer look at the same thing.
 
 ## Summary
 
