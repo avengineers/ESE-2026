@@ -113,15 +113,28 @@ variants/Sleep/config.txt
     # CONFIG_BLINKING is not set
 ```
 
-Figure 4: The blinking feature in the feature model, selected by Disco and left out by Sleep. The same symbol guards the blinking code in the sources and its specification in the design document, shown in Figure 5. Source: SPLed [1], MIT license.
+Figure 4: The blinking feature in the feature model, selected by Disco and left out by Sleep. Source: SPLed [1], MIT license.
+
+<!-- Figure 5: the first two specifications of "Design Considerations" in
+     components/light_controller/doc/index.md of SPLed, drawn by code_image() of
+     make_docx.py. It is an image and not a code block, because the fences of the
+     specifications at column 0 would end a Markdown code block. -->
 
 ![The design document source, with one specification inside a feature condition](../../images/spled_variant_source.png)
 
-Figure 5: The design document of the Light Controller. Three specifications are written once, and the middle one stands inside a condition on the blinking feature. Long lines are wrapped for print. Source: SPLed [1], MIT license.
+Figure 5: Two specifications from the design document of the Light Controller. The second one depends on the blinking feature. Source: SPLed [1], MIT license.
 
-![The same component report for two variants, one with the blinking specification and one without](../../images/spled_variant_comparison.png)
+<!-- Figure 6: the component report of the Light Controller for Disco and for Sleep,
+     placed side by side, with SWDD_LC-100 and SWDD_LC-101 only. Screenshot of a copy
+     of the report page, in which the other cards are hidden and the content of the
+     two cards is replaced by "...". Edge headless, window 1536 px wide, device scale
+     factor 3, light theme. Each card is cut to 1160 px plus its right edge of 40 px.
+     40 px margin at the sides, between the columns and at the bottom. 2520 px wide at
+     300 dpi. -->
 
-Figure 6: What the build makes of Figure 5. The three specifications written once become three in Disco, which selects the blinking feature, and two in Sleep, which does not. The variant names were added as labels, and the descriptions are left out. Source: SPLed [1], MIT license.
+![The same component report for two variants side by side, one with the blinking specification and one without](../../images/spled_variant_comparison.png)
+
+Figure 6: What the build makes of Figure 5. The two specifications written once become two in Disco, which selects the blinking feature, and one in Sleep, which does not. The variant names were added as labels, the cards are narrowed, and the descriptions are replaced by dots. Source: SPLed [1], MIT license.
 
 One source, one feature model, a correct traceability matrix per variant, and no document maintained twice.
 
