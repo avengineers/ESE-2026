@@ -16,7 +16,9 @@ The Markdown file has this shape:
     Lead: one paragraph
     ## Heading / ### Heading, paragraphs, ```code```, ![alt](image), "Abbildung N: ..."
 
-A code block becomes an image in Courier New 12 pt at 300 dpi. HTML comments are
+A code block becomes an image in Courier New 12 pt at 300 dpi, in black for ```text
+and highlighted by CODE_RULES for ```code. Every figure, code or image, gets the same
+frame. HTML comments are
 dropped. Any other inline Markdown stops the script, so that no markup reaches Word.
 
 Run from the repository root: uv run scripts/make_docx.py ai_journey
@@ -46,10 +48,30 @@ PARAGRAPH_AFTER_PT = 6
 DPI = 300
 
 CODE_FONT = "cour.ttf"  # Courier New
+CODE_FONT_BOLD = "courbd.ttf"  # Courier New Bold
 CODE_PT = 12
 CODE_PAD_CM = 0.25
 CODE_BORDER_PX = 3
+FRAME_GREY = (128, 128, 128)
 
+# Highlighting of a ```code block: (style, pattern), the first style that claims a
+# character wins. Each colour has a contrast of 7:1 or more on white. The feature
+# condition is bold as well, so that it stands out in a black and white print.
+CODE_STYLES = {
+    "feature": ((163, 21, 21), True),  # dark red
+    "directive": ((11, 61, 145), False),  # dark blue
+    "option": ((27, 94, 32), False),  # dark green
+    "dim": ((70, 70, 70), False),  # dark grey
+}
+CODE_RULES = [
+    ("feature", re.compile(r"\{%.*?%\}|\bconfig [A-Z][A-Z0-9_]*|\bCONFIG_[A-Z0-9_]+(=\w+)?")),
+    ("directive", re.compile(r"(```)?\{\w+\}|```|\.\. \w+::")),
+    ("option", re.compile(r"^\s*:\w+:|^\s+(bool|default)\b")),
+    ("dim", re.compile(r"[├└│─]+")),  # tree lines
+    ("dim", re.compile(r"(?<=[^\s├└│─])\s{2,}\S.*$")),  # description beside a tree entry
+    ("dim", re.compile(r"^\S*[^\s/]$")),  # file label of an excerpt; a folder is not one
+    ("dim", re.compile(r"#\s.*$")),  # comment
+]
 CAPTION = re.compile(r"^(Abbildung|Tabelle|Figure|Table) \d+: ")
 SUMMARY = re.compile(r"Zusammenfassung|Fazit|Summary|Conclusion", re.IGNORECASE)
 IMAGE = re.compile(r"^!\[([^\]]*)\]\(([^)]+)\)$")
@@ -62,7 +84,7 @@ FORBIDDEN = re.compile(r"\*\*|__|`|\]\(|<[a-z/]")
 def parse(md: str) -> list[tuple[str, str]]:
     """Split the article into blocks: (kind, content)."""
     md = re.sub(r"<!--.*?-->", "", md, flags=re.S)
-    blocks, para, code, in_code = [], [], [], False
+    blocks, para, code, fence, code_kind = [], [], [], "", "code"
 
     def flush():
         if para:
@@ -70,14 +92,17 @@ def parse(md: str) -> list[tuple[str, str]]:
             para.clear()
 
     for line in md.splitlines():
-        if line.startswith("```"):
-            if in_code:
-                blocks.append(("code", "\n".join(code)))
-                code.clear()
-            else:
-                flush()
-            in_code = not in_code
-        elif in_code:
+        # As in CommonMark, a block opened by n backticks closes only on a line of n or
+        # more, so a block of four can show the fences of three.
+        if fence and line.strip().startswith(fence) and not line.strip().strip("`"):
+            blocks.append((code_kind, "\n".join(code)))
+            code.clear()
+            fence = ""
+        elif not fence and (m := re.match(r"^(`{3,})(.*)$", line)):
+            flush()
+            fence = m.group(1)
+            code_kind = "colour_code" if m.group(2).strip() == "code" else "code"
+        elif fence:
             code.append(line)
         elif not line.strip():
             flush()
@@ -119,14 +144,31 @@ def inline_runs(text: str) -> list[tuple[str, bool]]:
 # --- Figures ----------------------------------------------------------------------
 
 
-def code_image(code: str, path: Path) -> None:
+def highlight(line: str) -> list[tuple[str, str | None]]:
+    """Split a code line into (text, style) runs by CODE_RULES. None is plain black."""
+    styles: list[str | None] = [None] * len(line)
+    for style, rule in CODE_RULES:
+        for m in rule.finditer(line):
+            for i in range(m.start(), m.end()):
+                styles[i] = styles[i] or style
+    runs: list[tuple[str, str | None]] = []
+    for char, style in zip(line, styles):
+        if runs and runs[-1][1] == style:
+            runs[-1] = (runs[-1][0] + char, style)
+        else:
+            runs.append((char, style))
+    return runs
+
+
+def code_image(code: str, path: Path, colour: bool = False) -> None:
     """Draw a code block in Courier New 12 pt at 300 dpi, as wide as the text column."""
     px = lambda cm: round(cm / 2.54 * DPI)
     size = round(CODE_PT / 72 * DPI)
     try:
         font = ImageFont.truetype(CODE_FONT, size)
+        bold = ImageFont.truetype(CODE_FONT_BOLD, size)
     except OSError:
-        sys.exit(f"Font {CODE_FONT} (Courier New) not found.")
+        sys.exit(f"Font {CODE_FONT} or {CODE_FONT_BOLD} (Courier New) not found.")
     width, pad = px(TEXT_WIDTH_CM), px(CODE_PAD_CM)
     lines = code.splitlines()
     widest = max(font.getlength(line) for line in lines)
@@ -136,10 +178,29 @@ def code_image(code: str, path: Path) -> None:
     line_h = round(size * LINE_SPACING)
     img = Image.new("RGB", (width, 2 * pad + line_h * len(lines)), "white")
     draw = ImageDraw.Draw(img)
-    draw.rectangle([0, 0, img.width - 1, img.height - 1], outline=(128, 128, 128), width=CODE_BORDER_PX)
+    draw.rectangle([0, 0, img.width - 1, img.height - 1], outline=FRAME_GREY, width=CODE_BORDER_PX)
     for n, line in enumerate(lines):
-        draw.text((pad, pad + n * line_h), line, font=font, fill="black")
+        x = pad
+        for text, style in highlight(line) if colour else [(line, None)]:
+            fill, is_bold = CODE_STYLES[style] if style else ((0, 0, 0), False)
+            draw.text((x, pad + n * line_h), text, font=bold if is_bold else font, fill=fill)
+            x += font.getlength(text)  # monospaced: bold has the same advance
     img.save(path, dpi=(DPI, DPI))
+
+
+def framed_image(src: Path, path: Path) -> None:
+    """Put an image in the frame of the code figures: the same padding and grey line,
+    measured on the page, so that all figures look alike. The source stays unchanged."""
+    with Image.open(src) as img:
+        img = img.convert("RGB")
+    ratio = CODE_PAD_CM / TEXT_WIDTH_CM  # the padding as a share of the printed width
+    pad = round(img.width * ratio / (1 - 2 * ratio))
+    out = Image.new("RGB", (img.width + 2 * pad, img.height + 2 * pad), "white")
+    out.paste(img, (pad, pad))
+    line = round(CODE_BORDER_PX * out.width / (TEXT_WIDTH_CM / 2.54 * DPI))
+    ImageDraw.Draw(out).rectangle([0, 0, out.width - 1, out.height - 1], outline=FRAME_GREY, width=line)
+    dpi = out.width / (TEXT_WIDTH_CM / 2.54)
+    out.save(path, dpi=(dpi, dpi))
 
 
 # --- Word -------------------------------------------------------------------------
@@ -244,13 +305,13 @@ def build(deck: str) -> None:
                 part = "Vorspann"
             elif kind == "h2":
                 part = "Zusammenfassung" if SUMMARY.search(text) else ("Hauptteil" if part in ("Vorspann", "Hauptteil") else text)
-            if kind in ("code", "image"):
+            if kind in ("code", "colour_code", "image"):
                 figures += 1
-                if kind == "code":
-                    path = Path(tmp) / f"figure_{figures}.png"
-                    code_image(text, path)
+                path = Path(tmp) / f"figure_{figures}.png"
+                if kind != "image":
+                    code_image(text, path, colour=kind == "colour_code")
                 else:
-                    path = (folder / IMAGE.match(text).group(2)).resolve()
+                    framed_image((folder / IMAGE.match(text).group(2)).resolve(), path)
                 with Image.open(path) as img:
                     dpi = img.width / (TEXT_WIDTH_CM / 2.54)
                 if dpi < DPI:
