@@ -101,7 +101,7 @@ Einige Fragen sind für uns noch offen. Ist ein möglichst kurzer Prompt besser,
 
 ## Zusammenfassung
 
-Aus dem Schülerpraktikanten von 2022 ist ein Kollege geworden. Er schreibt Code, Tests, Dokumentation, User Stories und Präsentationen. Mit Skills passen wir ihn an unsere Umgebung an und machen aus vielen persönlichen Setups einen gemeinsamen Stand. Seine Arbeit prüfen wir weiterhin, mit seiner Hilfe, aber nach unserem Urteil. Unser Fazit: Der Mensch als kreativer Treiber wird nicht ersetzt, sondern durch KI unterstützt. Wer KI als Werkzeug begreift, gestaltet seine Arbeit effizienter und kreativer, statt sie als Bedrohung zu fürchten. Auch dieser Beitrag ist so entstanden: Zwei Menschen und ein Agent haben ihn gemeinsam geschrieben.
+Aus dem Schülerpraktikanten von 2022 ist ein Kollege geworden. Er schreibt Code, Tests, Dokumentation, User Stories und Präsentationen. Mit Skills passen wir ihn an unsere Umgebung an und machen aus vielen persönlichen Setups einen gemeinsamen Stand. Seine Ergebnisse bewerten wir weiterhin: ob sie stimmen, ob sie in unsere Architektur und zu unserer Arbeitsweise passen und ob ein Mensch sie gut lesen kann. Dabei hilft er uns, aber das Urteil fällen wir. Auch dieser Beitrag ist so entstanden: Zwei Menschen und ein Agent haben ihn gemeinsam geschrieben.
 
 ## Quellen
 
