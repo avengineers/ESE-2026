@@ -147,6 +147,11 @@ Read the page again before you submit. The organiser can change it.
 `scripts/make_docx.py` makes the Word file from the Markdown file and counts the characters.
 Word counts the same number. Text in an image does not count.
 
+The script draws the code figures in Courier New and needs `cour.ttf` and `courbd.ttf`.
+Windows has them. The dev container installs them from the Debian package
+`ttf-mscorefonts-installer`, which gives the same figures. On Linux or WSL outside the
+dev container, the script stops with "Font cour.ttf or courbd.ttf (Courier New) not found."
+
 **Caution:** the next run of the script overwrites the Word file. Do not edit the Word file.
 Edit the Markdown file.
 
