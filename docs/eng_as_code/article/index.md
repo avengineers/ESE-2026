@@ -37,7 +37,7 @@ In SPLed [1], a small product line that builds a configurable light, the enginee
 SPLed/
 ├── doc/                        product-level artifacts
 │   ├── customer_requirements/  what the customer wants
-│   ├── sw_requirements/        imported from the RM tool
+│   ├── sw_requirements/        from a requirements tool
 │   ├── software_architecture/  the component structure
 │   └── results/                the traceability matrix
 ├── components/
