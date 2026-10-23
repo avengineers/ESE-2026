@@ -22,8 +22,6 @@ Welcome the audience. Say the title of the talk.
 <div class="speakers">
 <div class="speaker">
 
-![Alexandru](../images/alexandru.png)
-
 Alexandru
 
 </div>
@@ -44,6 +42,7 @@ Each speaker says who they are in one or two sentences.
 <div class="ie-addr"><span>A<u>d</u>dress</span><span class="ie-url">http://www.maxiniuc.com/</span><span class="ie-go">➜ Go</span></div>
 <div class="ie-page">
 <marquee scrollamount="6">*** Welcome to my homepage!!! *** Thank you for visiting *** Please sign my guestbook ***</marquee>
+<div class="ie-photo"><img src="../images/alexandru.png" alt="Alexandru"></div>
 <div class="ie-name">Alexandru Maxiniuc</div>
 <p>I am interested in engineering software product lines, software architecture and build systems.</p>
 <div class="ie-new"><span class="ie-blink">NEW!</span> Updated for the ESE Kongress 2026</div>
@@ -52,12 +51,14 @@ Each speaker says who they are in one or two sentences.
 <div class="ie-counter">You are visitor number <span>000042</span></div>
 <p class="ie-best">Best viewed with Internet Explorer 5.0 at 800x600</p>
 </div>
-<div class="ie-status"><span>Done</span><span>🌐 Internet</span></div>
+<div class="ie-status"><span><span class="ie-done">Done</span><span class="ie-loading">(1 item remaining) Downloading picture http://www.maxiniuc.com/me.jpg...</span></span><span>🌐 Internet</span></div>
 </div>
 
 Note:
 
 The old homepage, "updated for the conference". The sentence on the page is from the About page of maxiniuc.com.
+
+I started with embedded software engineering when websites looked like this and Windows 98 was the hyped OS.
 
 ---
 
@@ -98,6 +99,30 @@ The common thread, not an agenda: one product line, from the e-mail to series pr
 Note:
 
 Section 1, context, about 2 minutes. One code base, two customers. Each customer sees only their own product: in the code, in the binary and in the documents.
+
+---
+
+<p class="label">// the thread</p>
+
+<div class="thread">
+<ol class="rail">
+<li class="done">Two customers, one product line</li>
+<li class="now">From wishes to features</li>
+<li>A prototype on Zephyr</li>
+<li>The series project starts</li>
+<li>What it really takes</li>
+<li>A better way</li>
+<li>Three tools, side by side</li>
+<li>Back to the start</li>
+</ol>
+<div class="thread-text">
+<p>Two customers write what they want.</p>
+</div>
+</div>
+
+Note:
+
+Chapter 2: From wishes to features. Say the sentence and go on.
 
 ---
 
@@ -170,39 +195,52 @@ First ticks: a feature model, with its rules, as the single source of what diffe
 
 ---
 
-<p class="label">// the prototype</p>
+<!-- .slide: data-auto-animate data-auto-animate-id="concerns" -->
+
+<p class="label">// separation of concerns</p>
 
 <div class="stage">
-<div class="layer abs app-layer" style="left:40px; top:20px;">Application: SPLed components</div>
-<div class="zbox abs" style="left:40px; top:96px;">Zephyr RTOS<div class="zrow"><span class="zk">Subsystems</span><span class="chip">Shell</span><span class="chip">Logging</span></div><div class="zrow"><span class="zk">Device drivers</span><span class="chip">GPIO</span><span class="chip">LED strip (WS2812)</span></div><div class="zrow"><span class="zk">Kernel</span><span class="chip">Threads</span><span class="chip">Timers</span></div></div>
-<div class="layer abs board" style="left:40px; top:290px;">ESP32-H2 dev board</div>
-<div class="verdict abs" style="left:40px; top:370px;">The innovation team builds the first prototypes on Zephyr.</div>
+<div class="fragment" data-fragment-index="0">
+<span class="wish c-common abs" style="left:0; top:38px;">light</span>
+<span class="wish c-common abs" style="left:0; top:108px;">switch it on and off</span>
+<span class="wish c-sleep abs" style="left:0; top:178px;">dim it by hand</span>
+<span class="wish c-disco abs" style="left:0; top:248px;">blink</span>
+<span class="wish c-disco abs" style="left:80px; top:248px;">green</span>
+<span class="wish c-sleep abs" style="left:170px; top:248px;">purple</span>
 </div>
+<div class="fragment" data-fragment-index="1">
+<span class="arrow abs" style="left:400px; top:30px;">→</span>
+<div class="tile abs" style="left:480px; top:30px;">light_controller</div>
+<span class="arrow abs" style="left:400px; top:100px;">→</span>
+<div class="tile abs" style="left:480px; top:100px;">power_button</div>
+<div class="tile abs" style="left:680px; top:100px;">power_signal_proc</div>
+<span class="arrow abs" style="left:400px; top:170px;">→</span>
+<div class="tile abs" style="left:480px; top:170px;">brightness_controller</div>
+<span class="arrow abs" style="left:400px; top:240px;">→</span>
+<div class="tile option abs" style="left:480px; top:240px; width:380px;">options inside light_controller</div>
+</div>
+<p class="label abs fragment" style="left:480px; top:-30px;" data-fragment-index="1">// components</p>
+</div>
+
+<div class="notify fragment" data-id="bios"><div class="notify-head"><span>⚠ Development environment</span><span>✕</span></div><div class="notify-body"><b>New requirement detected</b>Your development environment does not meet it yet.</div><div class="notify-buttons"><span class="disabled">Remind me later</span><span class="primary">Open</span></div></div>
 
 Note:
 
-Section 3, the prototype. The colleagues from the innovation department start. They pick Zephyr: boards, drivers, shell and logging come with it, and the dev board runs within days.
+Before anyone writes code: which part does what. With separation of concerns, you think in parts of the code that each do one thing. Later, these parts become your components. The light, the button and its signal, the dimming: each concern gets a component. Blinking and the color are options of light_controller, not components. Features and components are not one to one. These are the components in src/ of the first application, and the tiles come back in chapter 5.
 
 ---
 
-<!-- .slide: data-background-color="#0000a8" -->
+<!-- .slide: data-background-color="#0000a8" data-auto-animate data-auto-animate-id="concerns" -->
 
 <div class="mc">
-<div class="mc-top">.config - Zephyr Kernel Configuration</div>
-<div class="mc-box">
-<div class="mc-title">Zephyr Kernel Configuration</div>
-<div class="mc-help">Arrow keys navigate the menu. <b>&lt;Enter&gt;</b> selects submenus ---&gt;.</div>
+<div class="mc-top">.config - development environment for a product line</div>
+<div class="mc-box" data-id="bios">
+<div class="mc-title">Requirements</div>
+<div class="mc-help">Collected along the story. <b>&lt;Y&gt;</b> includes, <b>&lt;N&gt;</b> excludes, <b>&lt;?&gt;</b> asks the speaker.</div>
 <ul class="mc-list">
-<li class="fragment cursor">&nbsp;&nbsp;&nbsp; Features ---&gt;</li>
-<li>&nbsp;&nbsp;&nbsp; Modules ---&gt;</li>
-<li>&nbsp;&nbsp;&nbsp; Board Options ---&gt;</li>
-<li>&nbsp;&nbsp;&nbsp; Hardware Configuration ---&gt;</li>
-<li>&nbsp;&nbsp;&nbsp; General Kernel Options ---&gt;</li>
-<li>&nbsp;&nbsp;&nbsp; Device Drivers ---&gt;</li>
-<li>&nbsp;&nbsp;&nbsp; C Library ---&gt;</li>
-<li>&nbsp;&nbsp;&nbsp; Subsystems and OS Services ---&gt;</li>
-<li>&nbsp;&nbsp;&nbsp; Build and Link Features ---&gt;</li>
-<li>&nbsp;&nbsp;&nbsp; Boot Options ---&gt;</li>
+<li>[*] Feature model</li>
+<li>[*] Variant model</li>
+<li class="fragment cursor">[*] Component model</li>
 </ul>
 <div class="mc-buttons"><span class="sel">&lt;Select&gt;</span><span>&lt; Exit &gt;</span><span>&lt; Help &gt;</span><span>&lt; Save &gt;</span><span>&lt; Load &gt;</span></div>
 </div>
@@ -210,7 +248,226 @@ Section 3, the prototype. The colleagues from the innovation department start. T
 
 Note:
 
-Zephyr comes with Kconfig, a language for feature models, and kconfiglib, the Python tool that draws this menu (west build -t menuconfig). The application can add its own Kconfig. The innovation team is happy: two lines in app/Kconfig, and the SPLed features sit in the same menu as the Zephyr options. The menu is abridged; the entries are the real top-level menus of Zephyr.
+Third tick: a component model. Each concern lives in its own component, and a feature is either a component or an option inside one.
+
+---
+
+<p class="label">// the thread</p>
+
+<div class="thread">
+<ol class="rail">
+<li class="done">Two customers, one product line</li>
+<li class="done">From wishes to features</li>
+<li class="now">A prototype on Zephyr</li>
+<li>The series project starts</li>
+<li>What it really takes</li>
+<li>A better way</li>
+<li>Three tools, side by side</li>
+<li>Back to the start</li>
+</ol>
+<div class="thread-text">
+<p>We know the features, the variants and the components. Now they have to run on a board.</p>
+</div>
+</div>
+
+Note:
+
+Chapter 3: A prototype on Zephyr. Say the sentence and go on.
+
+---
+
+<p class="label">// the decision</p>
+
+<div class="stage">
+<div class="msg abs" style="left:78px; top:40px; width:680px;">
+<div class="msg-head">From: Innovation team<br>Subject: prototypes for Disco and Sleep</div>
+<p>We build the prototypes on the <span class="w fragment mark c-common">ESP32-H2 dev board</span> with <span class="w fragment mark c-common">Zephyr</span>. Drivers, shell and logging come with it, so the board runs <span class="w fragment mark c-common">within days</span>.</p>
+</div>
+</div>
+
+Note:
+
+Section 3, the prototype. The innovation department decides: a dev board and Zephyr. Boards, drivers, shell and logging come with Zephyr, and the dev board runs within days. Stress "within days": Zephyr supports this board, so it runs almost at once.
+
+---
+
+<p class="label">// what Zephyr brings</p>
+
+<div class="stage">
+<div class="zbox abs" style="left:0; top:20px; width:380px;">Software components<div><span class="chip">Kernel</span><span class="chip">Device drivers</span><span class="chip">Shell</span><span class="chip">Logging</span><span class="chip">HAL modules</span></div></div>
+<div class="zbox abs fragment" style="left:446px; top:20px; width:380px;">Tooling and build environment<div><span class="chip">west</span><span class="chip">CMake</span><span class="chip">Kconfig</span><span class="chip">devicetree</span><span class="chip">Zephyr SDK</span><span class="chip">Twister</span></div></div>
+<div class="verdict abs fragment" style="left:0; top:180px;">The team takes both: the code and the way of working.</div>
+</div>
+
+Note:
+
+A Zephyr project has two parts. The software components: kernel, drivers, subsystems such as shell and logging, and the vendor HAL as a module. And the tooling: west fetches the repositories and runs the build, CMake builds, Kconfig and devicetree configure, the SDK compiles, Twister runs the tests. Remember the right box: in chapter 5 it leaves with Zephyr.
+
+---
+
+<!-- .slide: data-auto-animate data-auto-animate-id="zapp" -->
+
+<p class="label">// the first application</p>
+
+<div class="stage">
+<div class="code abs" style="left:0; top:20px; width:700px; font-size:22px;" data-id="tree">app/
+├── CMakeLists.txt   <span class="f"># finds Zephyr, lists the sources</span>
+├── Kconfig          <span class="f"># the SPLed features</span>
+├── prj.conf         <span class="f"># the selection for this build</span>
+└── src/             <span class="f"># the SPLed components</span></div>
+</div>
+
+Note:
+
+The innovation team creates the first Zephyr application. A folder with four entries, and west, CMake and Kconfig know what to do with each of them. Now we ask, model by model: where are the features, the variants and the components?
+
+---
+
+<!-- .slide: data-auto-animate data-auto-animate-id="zapp" -->
+
+<p class="label">// where is the feature model?</p>
+
+<div class="stage">
+<div class="code abs" style="left:0; top:20px; width:250px; font-size:16px;" data-id="tree">app/
+├── CMakeLists.txt
+├── <span class="hl">Kconfig</span>
+├── prj.conf
+└── src/</div>
+<div class="code abs" style="left:320px; top:20px; width:400px; font-size:16px;"><span class="f blk">app/Kconfig</span><span class="fragment hl-current blk">menu "Features"
+    config BLINKING
+        bool "Blinking"
+    config MANUAL_DIMMING
+        bool "Manual dimming"
+    choice
+        prompt "Color"
+        config COLOR_GREEN
+            bool "green"
+        config COLOR_PURPLE
+            bool "purple"
+    endchoice
+endmenu</span><span class="fragment hl-current blk">source "Kconfig.zephyr"</span></div>
+</div>
+
+Note:
+
+The feature model is app/Kconfig. First click: the menu, with our features from the customer e-mails and the choice of a color. Second click: the last line pulls in all the options of Zephyr, and Zephyr has a lot of them.
+
+---
+
+<!-- .slide: data-auto-animate data-auto-animate-id="zvar" -->
+
+<p class="label">// where is the variant model?</p>
+
+<div class="stage">
+<div class="code abs" style="left:0; top:20px; width:250px; font-size:16px;" data-id="tree">app/
+├── CMakeLists.txt
+├── Kconfig
+├── prj.conf
+├── <span class="hl">prj<span class="w fragment mark c-disco" data-fragment-index="6">_disco</span>.conf</span>
+├── <span class="hl">prj_sleep.conf</span>
+└── src/</div>
+<div class="code abs bar-disco fragment" data-fragment-index="0" style="left:320px; top:20px; width:240px; font-size:16px;"><span class="f">app/prj<span class="w fragment mark c-disco" data-fragment-index="6">_disco</span>.conf</span>
+CONFIG_GPIO=y
+CONFIG_SHELL=y
+CONFIG_BLINKING=y
+CONFIG_COLOR_GREEN=y</div>
+<div class="code abs bar-sleep fragment" data-fragment-index="1" style="left:600px; top:20px; width:240px; font-size:16px;"><span class="f">app/prj_sleep.conf</span>
+CONFIG_GPIO=y
+CONFIG_SHELL=y
+CONFIG_MANUAL_DIMMING=y
+CONFIG_COLOR_PURPLE=y</div>
+<div class="term abs fragment" data-fragment-index="2" style="left:0; top:270px; width:836px;">
+<div class="head">terminal</div>
+<div>$ west build <span class="fragment" data-fragment-index="3">-b esp32h2_devkitm</span> <span class="fragment" data-fragment-index="4">app</span> <span class="fragment" data-fragment-index="5">-- -D<span class="w fragment mark c-disco" data-fragment-index="6">FILE_SUFFIX=disco</span></span></div>
+</div>
+</div>
+
+Note:
+
+Two variants, two files, written by hand. menuconfig shows the options, but saves to the build folder. To keep a selection, save a minimal configuration with D and copy it here. The file with the suffix replaces prj.conf, it does not add to it: GPIO and SHELL are in both files. The command: FILE_SUFFIX=disco takes prj_disco.conf; without such a file, Zephyr falls back to prj.conf.
+
+---
+
+<p class="label">// from the selection to the code</p>
+
+<div class="stage">
+<div class="code abs" style="left:0; top:20px; width:400px; font-size:14px;"><span class="f">build/zephyr/include/generated/zephyr/autoconf.h</span>
+#define CONFIG_GPIO 1
+#define CONFIG_SHELL 1
+#define CONFIG_BLINKING 1
+#define CONFIG_COLOR_GREEN 1
+<span class="f">...</span></div>
+<span class="arrow abs fragment" style="left:200px; top:180px;" data-fragment-index="0">↓</span>
+<div class="code abs fragment" style="left:0; top:240px; width:400px; font-size:14px;" data-fragment-index="0"><span class="f">app/src/light_controller.c</span>
+#ifdef CONFIG_BLINKING
+    ...
+#endif</div>
+<div class="code abs fragment" style="left:448px; top:20px; width:400px; font-size:14px;" data-fragment-index="1"><span class="f">build/zephyr/.config</span>
+CONFIG_GPIO=y
+CONFIG_SHELL=y
+CONFIG_BLINKING=y
+CONFIG_COLOR_GREEN=y
+<span class="f">...</span></div>
+<span class="arrow abs fragment" style="left:648px; top:180px;" data-fragment-index="2">↓</span>
+<div class="code abs fragment" style="left:448px; top:240px; width:400px; font-size:14px;" data-fragment-index="2"><span class="f">app/CMakeLists.txt</span>
+target_sources_ifdef(CONFIG_BLINKING ...)</div>
+</div>
+
+Note:
+
+The build turns the selection of the variant into two files. autoconf.h has one #define per option, and Zephyr passes it to every C file with -imacros: the components read CONFIG_BLINKING without an include. zephyr/.config has the same options for CMake: each one becomes a CMake variable, so the build system can add or leave out sources. Both files also hold every Zephyr option, not only ours.
+
+---
+
+<!-- .slide: data-auto-animate data-auto-animate-id="zvar" -->
+
+<p class="label">// where is the component model?</p>
+
+<div class="stage">
+<div class="code abs" style="left:0; top:20px; width:250px; font-size:16px;" data-id="tree">app/
+├── <span class="hl">CMakeLists.txt</span>
+├── Kconfig
+├── prj.conf
+├── prj_disco.conf
+├── prj_sleep.conf
+└── src/</div>
+<div class="code abs" style="left:320px; top:20px; width:520px; font-size:16px;"><span class="f">app/CMakeLists.txt</span>
+<span class="f">cmake_minimum_required(VERSION 3.20.0)</span>
+<span class="f">find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})</span>
+<span class="f">project(spled)</span>
+target_sources(app PRIVATE
+    src/light_controller.c
+    src/power_button.c
+    src/power_signal_processing.c)
+target_sources_ifdef(CONFIG_MANUAL_DIMMING
+    app PRIVATE src/brightness_controller.c)</div>
+</div>
+
+Note:
+
+The component model is CMakeLists.txt. A component is a list of source files, and a Kconfig option decides whether they are built: brightness_controller only for Sleep. That is all Zephyr knows about a component.
+
+---
+
+<!-- .slide: data-background-color="#0000a8" -->
+
+<div class="mc">
+<div class="mc-top">.config - Zephyr as a development environment for a product line</div>
+<div class="mc-box">
+<div class="mc-title">Requirements</div>
+<div class="mc-help">What Zephyr gives the prototype.</div>
+<ul class="mc-list">
+<li class="fragment" data-fragment-index="0">[<span class="fragment" data-fragment-index="1">*</span>] Feature model&nbsp;&nbsp;<span class="why fragment" data-fragment-index="1">Kconfig: options, rules and a menu</span></li>
+<li class="fragment" data-fragment-index="0">[<span class="fragment" data-fragment-index="2">*</span>] Variant model&nbsp;&nbsp;<span class="why fragment" data-fragment-index="2">one .conf file per variant, picked by FILE_SUFFIX</span></li>
+<li class="fragment" data-fragment-index="0">[ ] Component model<span class="why fragment" data-fragment-index="3">just a list of sources in CMake</span></li>
+</ul>
+<div class="mc-buttons"><span class="sel">&lt;Select&gt;</span><span>&lt; Exit &gt;</span><span>&lt; Help &gt;</span><span>&lt; Save &gt;</span><span>&lt; Load &gt;</span></div>
+</div>
+</div>
+
+Note:
+
+All three come in unticked. Then tick the feature model and the variant model. The component model stays unticked. Zephyr gives us a feature model: Kconfig. A variant model only partly: the name is a file suffix, the selection is a file. Nothing lists the variants or describes them. A component model only partly: a component is a list of sources, without its tests and docs.
 
 ---
 
@@ -221,13 +478,13 @@ Zephyr comes with Kconfig, a language for feature models, and kconfiglib, the Py
 <div class="chip-test abs fragment" style="left:600px; top:28px;" data-fragment-index="1">+ ztest unit tests</div>
 <div class="zbox abs" style="left:40px; top:96px;">Zephyr RTOS<div class="zrow"><span class="zk">Subsystems</span><span class="chip">Shell</span><span class="chip">Logging</span></div><div class="zrow"><span class="zk">Device drivers</span><span class="chip">GPIO</span><span class="chip">LED strip (WS2812)</span></div><div class="zrow"><span class="zk">Kernel</span><span class="chip">Threads</span><span class="chip">Timers</span></div></div>
 <div class="layer abs board fragment fade-out" style="left:40px; top:290px;" data-fragment-index="0">ESP32-H2 dev board</div>
-<div class="layer abs host fragment" style="left:40px; top:290px;" data-fragment-index="0">native_sim on the laptop</div>
+<div class="layer abs host fragment" style="left:40px; top:290px;" data-fragment-index="0">native_sim on the host PC</div>
 <div class="verdict abs fragment" style="left:40px; top:370px;" data-fragment-index="1">Bugs are reproduced in unit tests on the host, not on the board.</div>
 </div>
 
 Note:
 
-The first bugs come in. Debugging on the board is slow, so the team reproduces each problem in a unit test that runs on the laptop: Zephyr's native_sim board and ztest.
+The first bugs come in. Debugging on the board is slow, so the team reproduces each problem in a unit test that runs on the host PC: Zephyr's native_sim board and ztest.
 
 ---
 
@@ -249,6 +506,30 @@ The first bugs come in. Debugging on the board is slow, so the team reproduces e
 Note:
 
 Each customer saw only their own demo. Then series development starts on another platform. Two empty cells.
+
+---
+
+<p class="label">// the thread</p>
+
+<div class="thread">
+<ol class="rail">
+<li class="done">Two customers, one product line</li>
+<li class="done">From wishes to features</li>
+<li class="done">A prototype on Zephyr</li>
+<li class="now">The series project starts</li>
+<li>What it really takes</li>
+<li>A better way</li>
+<li>Three tools, side by side</li>
+<li>Back to the start</li>
+</ol>
+<div class="thread-text">
+<p>The series product runs on another platform. How hard can the move be?</p>
+</div>
+</div>
+
+Note:
+
+Chapter 4: The series project starts. Say the sentence and go on.
 
 ---
 
@@ -296,6 +577,30 @@ This is how "just port it" looks from the manager's desk. The application is one
 Note:
 
 Pick it up, put it down. Next slide: open the block and look inside.
+
+---
+
+<p class="label">// the thread</p>
+
+<div class="thread">
+<ol class="rail">
+<li class="done">Two customers, one product line</li>
+<li class="done">From wishes to features</li>
+<li class="done">A prototype on Zephyr</li>
+<li class="done">The series project starts</li>
+<li class="now">What it really takes</li>
+<li>A better way</li>
+<li>Three tools, side by side</li>
+<li>Back to the start</li>
+</ol>
+<div class="thread-text">
+<p>We open the application and look inside.</p>
+</div>
+</div>
+
+Note:
+
+Chapter 5: What it really takes. Say the sentence and go on.
 
 ---
 
@@ -405,6 +710,7 @@ Not the code this time: the commands. Each one belongs to the platform. The way 
 <ul class="mc-list">
 <li>[*] Feature model</li>
 <li>[*] Variant model</li>
+<li>[*] Component model</li>
 <li class="fragment cursor">[*] One product, several platforms</li>
 <li class="fragment cursor">[*] A new platform leaves the products unchanged</li>
 <li class="fragment cursor">[*] Product and platform choices in separate files</li>
@@ -416,6 +722,30 @@ Not the code this time: the commands. Each one belongs to the platform. The way 
 Note:
 
 What the manager asked for, written as requirements.
+
+---
+
+<p class="label">// the thread</p>
+
+<div class="thread">
+<ol class="rail">
+<li class="done">Two customers, one product line</li>
+<li class="done">From wishes to features</li>
+<li class="done">A prototype on Zephyr</li>
+<li class="done">The series project starts</li>
+<li class="done">What it really takes</li>
+<li class="now">A better way</li>
+<li>Three tools, side by side</li>
+<li>Back to the start</li>
+</ol>
+<div class="thread-text">
+<p>Can we build it so that the port is really just a port?</p>
+</div>
+</div>
+
+Note:
+
+Chapter 6: A better way. Say the sentence and go on.
 
 ---
 
@@ -500,6 +830,7 @@ The platform changes, the customer's sentence does not. Each click goes one leve
 <ul class="mc-list">
 <li>[*] Feature model</li>
 <li>[*] Variant model</li>
+<li>[*] Component model</li>
 <li>[*] One product, several platforms</li>
 <li>[*] A new platform leaves the products unchanged</li>
 <li>[*] Product and platform choices in separate files</li>
@@ -646,6 +977,30 @@ Models as data, and the readers that need them: reports and documentation.
 
 ---
 
+<p class="label">// the thread</p>
+
+<div class="thread">
+<ol class="rail">
+<li class="done">Two customers, one product line</li>
+<li class="done">From wishes to features</li>
+<li class="done">A prototype on Zephyr</li>
+<li class="done">The series project starts</li>
+<li class="done">What it really takes</li>
+<li class="done">A better way</li>
+<li class="now">Three tools, side by side</li>
+<li>Back to the start</li>
+</ol>
+<div class="thread-text">
+<p>The same product line in Zephyr, spl-core and yanga.</p>
+</div>
+</div>
+
+Note:
+
+Chapter 7: Three tools, side by side. Say the sentence and go on.
+
+---
+
 <p class="label">// where does Disco live?</p>
 
 <div class="where">
@@ -693,6 +1048,30 @@ More side-by-side slides: where the platform lives, where the components live, w
 Note:
 
 Open: which questions get a slide. Candidates follow the requirements R1 to R10.
+
+---
+
+<p class="label">// the thread</p>
+
+<div class="thread">
+<ol class="rail">
+<li class="done">Two customers, one product line</li>
+<li class="done">From wishes to features</li>
+<li class="done">A prototype on Zephyr</li>
+<li class="done">The series project starts</li>
+<li class="done">What it really takes</li>
+<li class="done">A better way</li>
+<li class="done">Three tools, side by side</li>
+<li class="now">Back to the start</li>
+</ol>
+<div class="thread-text">
+<p>Back to the manager and the sentence from the start.</p>
+</div>
+</div>
+
+Note:
+
+Chapter 8: Back to the start. Say the sentence and go on.
 
 ---
 
