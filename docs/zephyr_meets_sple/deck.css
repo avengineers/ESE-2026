@@ -362,6 +362,9 @@
 .reveal .mc-list li { margin: 0; display: block; }
 .mc-list li.cursor { background: var(--bios); color: #fff; }
 
+/* Why a requirement is ticked or not, next to it. */
+.mc-list .why { margin-left: 1.5em; font-style: italic; color: #333; }
+
 .mc-buttons { margin-top: 12px; text-align: center; }
 .mc-buttons span { margin: 0 1em; }
 .mc-buttons .sel { background: var(--bios); color: #fff; }
@@ -570,6 +573,47 @@
     font-size: 13px;
 }
 
+/* The photo loads row by row, as over a 56k modem. It starts each time the
+   slide becomes the present one. */
+
+.ie { --modem: 40s; }
+
+.ie-photo {
+    float: left;
+    width: 150px;
+    height: 150px;
+    margin: 4px 16px 4px 0;
+    border: 2px solid #000;
+}
+
+.reveal .ie-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+}
+
+.reveal .present .ie-photo img { animation: ie-modem var(--modem); }
+
+/* Each segment: steps() draws whole rows, uneven gaps are the line stalling. */
+@keyframes ie-modem {
+    0%, 8% { clip-path: inset(0 0 100% 0); animation-timing-function: steps(6, end); }
+    25% { clip-path: inset(0 0 70% 0); animation-timing-function: steps(1, end); }
+    40% { clip-path: inset(0 0 66% 0); animation-timing-function: steps(7, end); }
+    60% { clip-path: inset(0 0 30% 0); animation-timing-function: steps(1, end); }
+    78% { clip-path: inset(0 0 26% 0); animation-timing-function: steps(5, end); }
+    100% { clip-path: inset(0 0 0 0); }
+}
+
+.ie-loading { visibility: hidden; }
+.reveal .present .ie-loading { animation: ie-show var(--modem); }
+.reveal .present .ie-done { animation: ie-hide var(--modem); }
+
+@keyframes ie-show { from, to { visibility: visible; } }
+@keyframes ie-hide { from, to { display: none; } }
+
 /* --- The thread of the talk ------------------------------------------- */
 
 .thread {
@@ -610,6 +654,7 @@
 
 .reveal ol.rail li.now { color: #fff; font-weight: bold; }
 .reveal ol.rail li.now::before { background: #FEEFA4; border-color: #FEEFA4; }
+.reveal ol.rail li.done::before { background: var(--common); border-color: transparent; }
 
 .thread-text {
     flex: 1;
@@ -655,3 +700,31 @@
 .zrow { display: flex; align-items: center; margin-top: 10px; }
 .zrow .zk { width: 170px; font-size: 16px; color: rgba(255, 255, 255, 0.7); }
 .zrow .chip { margin: 0 8px 0 0; }
+
+/* --- The first Zephyr application -------------------------------------- */
+
+.code .hl { color: #FEEFA4; }
+.code.bar-disco { border-top: 6px solid var(--disco); }
+.code.bar-sleep { border-top: 6px solid var(--sleep); }
+.reveal .code .fragment.mark.visible { color: #fff; }
+.code .blk { display: block; }
+
+/* Highlighted only while it is the current step. */
+.reveal .slides section .fragment.hl-current { opacity: 1; visibility: inherit; }
+.reveal .slides section .fragment.hl-current.current-fragment {
+    background: rgba(254, 239, 164, 0.25);
+    outline: 2px solid #FEEFA4;
+}
+
+/* --- Separation of concerns: wishes to components ----------------------- */
+
+.wish {
+    padding: 2px 10px;
+    border-radius: 3px;
+    background: var(--c);
+    font-family: Georgia, serif;
+    font-size: 22px;
+}
+
+.arrow { font-size: 30px; line-height: 44px; color: var(--common); }
+.tile.option { background: transparent; border: 2px dashed var(--common); color: #fff; box-sizing: border-box; }
