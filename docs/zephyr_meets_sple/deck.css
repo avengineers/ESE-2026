@@ -728,3 +728,7 @@
 
 .arrow { font-size: 30px; line-height: 44px; color: var(--common); }
 .tile.option { background: transparent; border: 2px dashed var(--common); color: #fff; box-sizing: border-box; }
+
+/* --- The series chapter ------------------------------------------------ */
+
+.layer.mocks { background: #6d5a8a; height: 168px; line-height: 168px; }
