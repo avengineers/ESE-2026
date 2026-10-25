@@ -1,3 +1,4 @@
+
 ## There Is More to a Product Line Than Zephyr Boards
 
 Asking the SPLE Question First
@@ -301,7 +302,7 @@ Section 3, the prototype. The innovation department decides: a dev board and Zep
 
 Note:
 
-A Zephyr project has two parts. The software components: kernel, drivers, subsystems such as shell and logging, and the vendor HAL as a module. And the tooling: west fetches the repositories and runs the build, CMake builds, Kconfig and devicetree configure, the SDK compiles, Twister runs the tests. Remember the right box: in chapter 5 it leaves with Zephyr.
+A Zephyr project has two parts. The software components: kernel, drivers, subsystems such as shell and logging, and the vendor HAL as a module. And the tooling: west fetches the repositories and runs the build, CMake builds, Kconfig and devicetree configure, the SDK compiles, Twister runs the tests.
 
 ---
 
@@ -598,7 +599,7 @@ The feature model is KConfig again, the same language as in the prototype. First
 <div class="code abs" style="left:0; top:20px; width:270px; font-size:16px;" data-id="stree">SPLed/
 ├── KConfig
 ├── variants/
-│   ├── Disco/
+│   ├── <span class="w fragment mark c-disco" data-fragment-index="6">Disco</span>/
 │   │   ├── <span class="hl">config.txt</span>
 │   │   └── <span class="hl">parts.cmake</span>
 │   └── Sleep/
@@ -613,13 +614,13 @@ spl_add_component(components/power_signal_processing)
 <span class="f">...</span></div>
 <div class="term abs fragment" data-fragment-index="2" style="left:0; top:300px; width:836px;">
 <div class="head">terminal</div>
-<div>$ ./build.sh --build --variant Disco</div>
+<div>$ ./build.sh <span class="fragment" data-fragment-index="3">--build</span> <span class="fragment" data-fragment-index="4">--variant</span> <span class="fragment" data-fragment-index="5"><span class="w fragment mark c-disco" data-fragment-index="6">Disco</span></span></div>
 </div>
 </div>
 
 Note:
 
-A variant is a folder with its name. config.txt holds the feature selection, parts.cmake lists the components of this variant. No board options in the selection, unlike prj_disco.conf. A third file, config.cmake, picks the toolchain. The real config.txt also holds a few build settings such as the name of the output file.
+A variant is a folder with its name. config.txt holds the feature selection, parts.cmake lists the components of this variant. No board options in the selection, unlike prj_disco.conf. A third file, config.cmake, picks the toolchain. The command: build.sh hands the name to CMake as -DVARIANT=Disco, and CMakeLists.txt includes variants/${VARIANT}/config.cmake. Like FILE_SUFFIX in Zephyr, a CMake define picks the variant. The real config.txt also holds a few build settings such as the name of the output file.
 
 ---
 
@@ -635,16 +636,12 @@ A variant is a folder with its name. config.txt holds the feature selection, par
     ├── src/
     ├── test/
     └── doc/</div>
-<div class="code abs" style="left:320px; top:20px; width:520px; font-size:16px;"><span class="f">components/light_controller/CMakeLists.txt</span>
-spl_add_source(src/light_controller.c)
-spl_add_test_source(test/test_light_controller.cc)
-spl_add_required_interface(components/rte)
-spl_create_component(LONG_NAME "Light Controller")</div>
+<div class="code abs fragment" style="left:320px; top:20px; width:520px; font-size:16px;"><span class="f blk">components/light_controller/CMakeLists.txt</span><span class="blk"><span class="fragment hl-current">spl_add_source</span>(src/light_controller.c)</span><span class="blk"><span class="fragment hl-current">spl_add_test_source</span>(test/test_light_controller.cc)</span><span class="blk"><span class="fragment hl-current">spl_add_required_interface</span>(components/rte)</span><span class="blk"><span class="fragment hl-current">spl_create_component</span>(LONG_NAME "Light Controller")</span></div>
 </div>
 
 Note:
 
-A component is a folder with its sources, its unit tests, its documentation and its own options, and a CMakeLists.txt that declares them with spl-core functions. Compare chapter 3: there a component was a line in a list of sources.
+A component is a folder with its sources, its unit tests, its documentation and its own options, and a CMakeLists.txt that declares them with spl-core functions. One click per line: the production source, the test source, the interface it needs from another component, and the call that creates the component with a readable name. Compare chapter 3: there a component was a line in a list of sources.
 
 ---
 
@@ -666,45 +663,30 @@ A component is a folder with its sources, its unit tests, its documentation and 
 
 Note:
 
-All three come in unticked, then all three get ticked. spl-core has a variant model and a component model. Remember where they live: in CMake files that only the build reads. That comes back in chapter 6.
+All three come in unticked, then all three get ticked. spl-core has a variant model and a component model. They live in CMake files that only the build reads.
 
 ---
 
-<p class="label">// debugging without the board</p>
+<p class="label">// unit tests</p>
 
 <div class="stage">
-<div class="layer abs app-layer" style="left:40px; top:20px;">Application: SPLed components</div>
-<div class="zbox abs fragment fade-out" style="left:40px; top:96px;" data-fragment-index="0">AUTOSAR Classic<div class="zrow"><span class="zk">Services</span><span class="chip">OS</span><span class="chip">COM</span></div><div class="zrow"><span class="zk">Runtime</span><span class="chip">RTE</span></div><div class="zrow"><span class="zk">Drivers</span><span class="chip">I/O hardware abstraction</span><span class="chip">MCAL</span></div></div>
-<div class="layer abs board series fragment fade-out" style="left:40px; top:290px;" data-fragment-index="0">In-house board</div>
-<div class="layer abs mocks fragment" style="left:40px; top:96px;" data-fragment-index="0">Mocks, generated from the headers</div>
-<div class="layer abs host fragment" style="left:40px; top:290px;" data-fragment-index="0">GoogleTest on the host PC</div>
-<div class="verdict abs fragment" style="left:40px; top:370px;" data-fragment-index="1">Each component is tested alone, against generated mocks.</div>
+<div class="tile abs" style="left:0; top:30px;">light_controller.c</div>
+<span class="arrow abs fragment" style="left:196px; top:30px;" data-fragment-index="0">+</span>
+<div class="tile abs fragment" style="left:230px; top:30px; width:240px;" data-fragment-index="0">test_light_controller.cc</div>
+<span class="arrow abs fragment" style="left:486px; top:30px;" data-fragment-index="1">+</span>
+<div class="tile mock abs fragment" style="left:520px; top:30px;" data-fragment-index="1">mocks for rte</div>
+<div class="tile-note abs fragment" style="left:520px; top:82px;" data-fragment-index="1">generated by hammocking</div>
+<div class="verdict abs fragment" style="left:0; top:120px;" data-fragment-index="2">= one test executable for light_controller</div>
+<div class="term abs fragment" style="left:0; top:190px; width:836px; font-size:13px; white-space:nowrap;" data-fragment-index="3">
+<div class="head">terminal</div>
+<div>$ ./build.sh --build --variant Disco <span class="fragment" data-fragment-index="4">--build-kit test</span> <span class="fragment" data-fragment-index="5">--target components_light_controller_unittests</span></div>
+<div class="fragment" data-fragment-index="6">$ ./build.sh --build --variant Disco --build-kit test --target unittests</div>
+</div>
 </div>
 
 Note:
 
-spl-core's test build kit compiles each component with its unit tests for the host PC: no AUTOSAR, no board. The mocks for everything a component calls are generated (hammocking). Compare chapter 3: native_sim runs the whole Zephyr on the host, here each component runs alone. Command: ./build.sh --build --build-kit test --variant Disco.
-
----
-
-<!-- .slide: data-auto-animate data-auto-animate-id="fm2" -->
-
-<p class="label">// variants × platforms</p>
-
-<div class="stage">
-<div class="card abs disco" style="left:0; top:120px;" data-id="card-disco"><b>Disco</b>Blinking, green</div>
-<div class="card abs sleep" style="left:0; top:230px;" data-id="card-sleep"><b>Sleep</b>Manual dimming, purple</div>
-<div class="col-head abs" style="left:280px; top:30px;">Dev board<small>Zephyr</small></div>
-<div class="cell abs done" style="left:280px; top:110px;">prototype ✓</div>
-<div class="cell abs done" style="left:280px; top:220px;">prototype ✓</div>
-<div class="col-head abs fragment" style="left:590px; top:30px;" data-fragment-index="1">In-house board<small>AUTOSAR + spl-core</small></div>
-<div class="cell abs open fragment" style="left:590px; top:110px;" data-fragment-index="2">?</div>
-<div class="cell abs open fragment" style="left:590px; top:220px;" data-fragment-index="2">?</div>
-</div>
-
-Note:
-
-Each customer saw only their own demo. The series project is set up, with its own three models, but without the application. Two empty cells.
+What goes into one unit test: the production source of the component, its test source, and mocks for everything the component calls from other components, here the RTE. The mocks are not written by hand: hammocking generates them. The result is one test executable per component, built and run on the host PC. Select the test build kit and build the unittests target of one component, or unittests for all components of the variant.
 
 ---
 
@@ -735,24 +717,24 @@ Chapter 5: Just port it? Say the sentence and go on.
 <!-- .slide: data-auto-animate data-auto-animate-id="just" -->
 
 <div class="stage">
-<div class="just abs" style="left:110px; top:150px;" data-id="just">“Just port it.”<sup data-id="star">*</sup></div>
+<div class="just abs" style="left:110px; top:150px;" data-id="just">“Just port it.”</div>
 </div>
 
 Note:
 
-Section 4, about 2 minutes. Say it like the manager. Pause. Ask the room what they would do.
+Section 4, about 2 minutes. Say it like the manager, who really believes it is a piece of cake. And it should be: that is the goal of this talk. Pause. Ask the room what they would do.
 
 ---
 
 <!-- .slide: data-auto-animate data-auto-animate-id="just" -->
 
 <div class="stage">
-<div class="just abs" style="left:0; top:-20px; font-size:44px;" data-id="just">“Just port it.”<sup data-id="star">*</sup></div>
+<div class="just abs" style="left:0; top:-20px; font-size:44px;" data-id="just">“Just port it.”</div>
 <div class="app abs" style="left:0; top:70px;" data-id="app"><b>Application</b><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-<div class="layer abs zephyr" style="left:0; top:200px; width:400px;" data-id="m-zephyr">Zephyr</div>
-<div class="layer abs board" style="left:0; top:266px; width:400px;" data-id="m-dev">Dev board</div>
-<div class="layer abs autosar" style="left:460px; top:200px; width:400px;" data-id="m-autosar">AUTOSAR + RTE</div>
-<div class="layer abs board series" style="left:460px; top:266px; width:400px;" data-id="m-series">Series board, in-house</div>
+<div class="layer abs zephyr" style="left:0; top:220px; width:400px;" data-id="m-zephyr">Zephyr</div>
+<div class="layer abs board" style="left:0; top:286px; width:400px;" data-id="m-dev">Dev board</div>
+<div class="layer abs autosar" style="left:460px; top:220px; width:400px;" data-id="m-autosar">AUTOSAR + RTE</div>
+<div class="layer abs board series" style="left:460px; top:286px; width:400px;" data-id="m-series">Series board, in-house</div>
 </div>
 
 Note:
@@ -764,13 +746,13 @@ This is how "just port it" looks from the manager's desk. The application is one
 <!-- .slide: data-auto-animate data-auto-animate-id="just" -->
 
 <div class="stage">
-<div class="just abs" style="left:0; top:-20px; font-size:44px;" data-id="just">“Just port it.”<sup data-id="star">*</sup></div>
+<div class="just abs" style="left:0; top:-20px; font-size:44px;" data-id="just">“Just port it.”</div>
 <div class="app abs" style="left:460px; top:70px;" data-id="app"><b>Application</b><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-<div class="layer abs zephyr ghost" style="left:0; top:200px; width:400px;" data-id="m-zephyr">Zephyr</div>
-<div class="layer abs board ghost" style="left:0; top:266px; width:400px;" data-id="m-dev">Dev board</div>
-<div class="layer abs autosar" style="left:460px; top:200px; width:400px;" data-id="m-autosar">AUTOSAR + RTE</div>
-<div class="layer abs board series" style="left:460px; top:266px; width:400px;" data-id="m-series">Series board, in-house</div>
-<div class="verdict abs" style="left:460px; top:340px;">Just move it over.</div>
+<div class="layer abs zephyr ghost" style="left:0; top:220px; width:400px;" data-id="m-zephyr">Zephyr</div>
+<div class="layer abs board ghost" style="left:0; top:286px; width:400px;" data-id="m-dev">Dev board</div>
+<div class="layer abs autosar" style="left:460px; top:220px; width:400px;" data-id="m-autosar">AUTOSAR + RTE</div>
+<div class="layer abs board series" style="left:460px; top:286px; width:400px;" data-id="m-series">Series board, in-house</div>
+<div class="verdict abs" style="left:460px; top:360px;">Just move it over.</div>
 </div>
 
 Note:
@@ -825,57 +807,15 @@ Section 5, why it is not just, about 6 minutes. The components of SPLed. The red
 <div class="layer abs zephyr ghost" style="left:40px; top:416px;" data-id="zephyr">Zephyr</div>
 </div>
 
+<div class="notify fragment" data-id="bios"><div class="notify-head"><span>⚠ Development environment</span><span>✕</span></div><div class="notify-body"><b>New requirement detected</b>Your development environment does not meet it yet.</div><div class="notify-buttons"><span class="disabled">Remind me later</span><span class="primary">Open</span></div></div>
+
 Note:
 
 The platform leaves, and the red tiles leave with it. The holes are the work.
 
 ---
 
-<!-- .slide: data-auto-animate data-auto-animate-id="bill" -->
-
-<div class="stage">
-<div class="just abs" style="left:0; top:0; font-size:44px;" data-id="just">“Just port it.”<sup data-id="star">*</sup></div>
-<ol class="bill abs" style="left:40px; top:100px;">
-<li class="fragment"><em>*</em> Replace every Zephyr call in the application</li>
-<li class="fragment"><em>*</em> Wrap the application for the RTE and describe it in ARXML</li>
-<li class="fragment"><em>*</em> Move the variants from <code>prj_*.conf</code> to <code>variants/</code></li>
-<li class="fragment"><em>*</em> Turn each list of sources into an spl-core component</li>
-<li class="fragment"><em>*</em> Rewrite the ztest tests in GoogleTest</li>
-<li class="fragment"><em>*</em> Rebuild CI and relearn every tool</li>
-</ol>
-</div>
-
-Note:
-
-The asterisk is the small print of "just". One line per click. At the prj.conf line, say why: product options and board options sit in the same file, so someone has to sort them by hand.
-
----
-
-<!-- .slide: data-auto-animate data-auto-animate-id="bios3" -->
-
-<p class="label">// a day on the prototype team</p>
-
-<div class="term">
-<div class="head">~/.zsh_history</div>
-<div><span class="n">101</span><span class="fragment cross" data-fragment-index="1">west build -b esp32h2_devkitm app -- -DFILE_SUFFIX=disco</span></div>
-<div class="instead fragment" data-fragment-index="1">→ ./build.sh --build --variant Disco, after the vendor configurator and the RTE generator</div>
-<div><span class="n">102</span><span class="fragment cross" data-fragment-index="2">west build -t menuconfig</span></div>
-<div class="instead fragment" data-fragment-index="2">→ the same Kconfig, but variants/Disco/config.txt instead of prj_disco.conf</div>
-<div><span class="n">103</span><span class="fragment cross" data-fragment-index="3">west twister -p native_sim -T app</span></div>
-<div class="instead fragment" data-fragment-index="3">→ ./build.sh --build --build-kit test: GoogleTest, not ztest</div>
-<div><span class="n">104</span><span class="fragment cross" data-fragment-index="4">west flash</span></div>
-<div class="instead fragment" data-fragment-index="4">→ the vendor's flash script and debugger</div>
-</div>
-
-<div class="notify fragment" data-id="bios"><div class="notify-head"><span>⚠ Development environment</span><span>✕</span></div><div class="notify-body"><b>New requirement detected</b>Your development environment does not meet it yet.</div><div class="notify-buttons"><span class="disabled">Remind me later</span><span class="primary">Open</span></div></div>
-
-Note:
-
-Not the code this time: the commands. Each one belongs to the platform. The way of working moves out with Zephyr.
-
----
-
-<!-- .slide: data-background-color="#0000a8" data-auto-animate data-auto-animate-id="bios3" -->
+<!-- .slide: data-background-color="#0000a8" data-auto-animate data-auto-animate-id="tangled" -->
 
 <div class="mc">
 <div class="mc-top">.config - development environment for a product line</div>
@@ -888,7 +828,6 @@ Not the code this time: the commands. Each one belongs to the platform. The way 
 <li>[*] Component model</li>
 <li class="fragment cursor">[*] One product, several platforms</li>
 <li class="fragment cursor">[*] A new platform leaves the products unchanged</li>
-<li class="fragment cursor">[*] Product and platform choices in separate files</li>
 </ul>
 <div class="mc-buttons"><span class="sel">&lt;Select&gt;</span><span>&lt; Exit &gt;</span><span>&lt; Help &gt;</span><span>&lt; Save &gt;</span><span>&lt; Load &gt;</span></div>
 </div>
@@ -896,7 +835,7 @@ Not the code this time: the commands. Each one belongs to the platform. The way 
 
 Note:
 
-What the manager asked for, written as requirements.
+Two requirements from the manager's request. The manager wants one product on two platforms. The red tiles show the opposite of the second one: the new platform changed the product.
 
 ---
 
@@ -921,6 +860,60 @@ What the manager asked for, written as requirements.
 Note:
 
 Chapter 6: What if. Say the sentence and go on.
+
+---
+
+<p class="label">// the idea</p>
+
+<div class="stage">
+<div class="term abs fragment" style="left:0; top:110px; width:836px;" data-fragment-index="0">
+<div class="head">terminal</div>
+<div>$ … --variant Disco --platform zephyr</div>
+<div class="fragment" data-fragment-index="1">$ … --variant Disco --platform autosar</div>
+<div class="fragment" data-fragment-index="2">$ … --variant Disco --platform gtest</div>
+</div>
+<div class="verdict abs fragment" style="left:0; top:310px; font-size:20px; white-space:nowrap;" data-fragment-index="3">The steps differ, so <span class="fragment emph" data-fragment-index="4">the platform knows how to build a variant.</span></div>
+</div>
+
+Note:
+
+The tease: one development environment, and the variant is built for any platform with the same command: Zephyr for the prototype, AUTOSAR for the series product, gtest for the unit tests on the host. Only the platform name changes. But each platform builds in its own way: Zephyr with west, Kconfig and devicetree; AUTOSAR with the vendor configurator and the RTE generator before the build; gtest with GoogleTest and generated mocks. If the steps are that different, the variant cannot know them. The platform knows how to build a variant. Say the sentence, then click and say the second half again: this is where the approach differs from spl-core and Zephyr. Nobody writes CMake for the variants and components; the platform's generators write it, as a Zephyr build or as another build.
+
+---
+
+<p class="label">// what each platform does before the build</p>
+
+<div class="stage">
+<div class="pipe abs fragment" style="left:0px; top:0;" data-fragment-index="0">
+<div class="col-head" style="width:270px;">zephyr<small>prototype</small></div>
+<div class="pstep">Install riscv64-zephyr-elf</div>
+<div class="pstep">Fetch Zephyr and its modules: west</div>
+<div class="pstep shared">Generate the feature header</div>
+<div class="pstep">Generate CMake for the variant</div>
+<div class="pstep build">west build</div>
+</div>
+<div class="pipe abs fragment" style="left:305px; top:0;" data-fragment-index="1">
+<div class="col-head" style="width:270px;">autosar<small>series product</small></div>
+<div class="pstep">Install the compiler</div>
+<div class="pstep">Fetch BSW and MCAL</div>
+<div class="pstep">Configure the BSW: ARXML</div>
+<div class="pstep">Generate RTE and BSW code</div>
+<div class="pstep shared">Generate the feature header</div>
+<div class="pstep build">Build</div>
+</div>
+<div class="pipe abs fragment" style="left:610px; top:0;" data-fragment-index="2">
+<div class="col-head" style="width:270px;">gtest<small>unit tests</small></div>
+<div class="pstep">Install gcc</div>
+<div class="pstep">Fetch GoogleTest</div>
+<div class="pstep shared">Generate the feature header</div>
+<div class="pstep">Generate the tests and mocks</div>
+<div class="pstep build">Build and run the tests</div>
+</div>
+</div>
+
+Note:
+
+Each platform brings its own pipeline: the steps that must run before its build. One column per click. Zephyr and gtest are the real pipelines of the yanga port of SPLed; the autosar column is the what-if. Only one step is the same on all three: the header with the product features, generated from the product feature model. Everything else belongs to the platform.
 
 ---
 
@@ -963,16 +956,12 @@ variants:
   description: The LED blinks and one can change ...
   components: [rte, spled, light_application]
   feature_selection:
-    file: variants/Disco/config.txt
-  <span class="fragment hl-current">platforms:
-    zephyr_esp32h2: ...
-    autosar: ...
-    gtest: ...</span></div>
+    file: variants/Disco/config.txt</div>
 </div>
 
 Note:
 
-The variant is data: its name, a description, its components and its feature selection. The click: what this variant needs on each platform, for example a selection of Zephyr options. In the real file the platforms are zephyr_esp32h2, tc375, arduino and gtest; autosar is the what-if.
+The variant is data: its name, a description, its components and its feature selection. The same model as in spl-core, written as YAML instead of CMake.
 
 ---
 
@@ -988,6 +977,164 @@ The variant is data: its name, a description, its components and its feature sel
 Note:
 
 A platform is a model of its own: how to build, which tools, and which components only this platform has, such as the adapters to the drivers. zephyr_esp32h2 and gtest are real platforms of SPLed; autosar is the what-if. The application components are the same on all three.
+
+---
+
+<p class="label">// a platform definition</p>
+
+<div class="stage">
+<div class="code abs" style="left:60px; top:0; width:720px; font-size:15px;"><span class="f blk">platforms/zephyr/yanga.yaml (abridged)</span><span class="blk">platforms:
+- name: zephyr_esp32h2
+  description: Zephyr on the ESP32-H2 devkit</span><span class="fragment hl-current blk">  feature_model:
+    file: KConfig</span><span class="fragment hl-current blk">  components: [platform_types, zephyr_adapters, zephyr_led_ws2812]</span><span class="fragment hl-current blk">  configs:
+    - id: west
+      file: platforms/zephyr/west.yaml
+    - id: poks
+      file: platforms/zephyr/poks.json</span><span class="fragment hl-current blk">  pipeline:
+    - include: pipeline/zephyr.yaml
+    - step: FetchEspressifBlobs
+    - step: ZephyrBuild
+      config:
+        board: esp32h2_devkitm/esp32h2</span><span class="fragment hl-current blk">  build_targets: [all, flash, report]</span></div>
+</div>
+
+Note:
+
+The real definition of the zephyr_esp32h2 platform in the yanga port of SPLed, shortened. One click per part. feature_model: the platform's own features, Zephyr's Kconfig tree, kept apart from the product features. components: the components only this platform has, such as the Zephyr adapters for the LED and the buttons. configs: which Zephyr and which modules, in a west manifest, and which toolchain, from poks. pipeline: the steps before the build and the build itself, with the board. build_targets: what can be built on this platform, for example flash. The variant appears nowhere in it.
+
+---
+
+<p class="label">// where does Disco live?</p>
+
+<div class="where">
+<div>
+<h4>Zephyr</h4>
+<div class="code"><span class="f">app/prj_disco.conf</span>
+CONFIG_GPIO=y
+CONFIG_SHELL=y
+CONFIG_BLINKING=y
+CONFIG_COLOR_GREEN=y</div>
+<div class="code"><span class="f">app/CMakeLists.txt</span>
+target_sources_ifdef(
+  CONFIG_SHELL ...)</div>
+</div>
+<div class="fragment">
+<h4>spl-core</h4>
+<div class="code"><span class="f">variants/Disco/config.txt</span>
+CONFIG_BLINKING=y
+CONFIG_COLOR_GREEN=y</div>
+<div class="code"><span class="f">variants/Disco/parts.cmake</span>
+spl_add_component(
+  components/light_controller)</div>
+</div>
+<div class="fragment">
+<h4>yanga</h4>
+<div class="code"><span class="f">variants/Disco/config.txt</span>
+CONFIG_BLINKING=y
+CONFIG_COLOR_GREEN=y</div>
+<div class="code"><span class="f">variants/Disco/yanga.yaml</span>
+- name: Disco
+  components: [rte, spled, ...]</div>
+</div>
+</div>
+
+Note:
+
+Section 7, the three frameworks, about 6 minutes. The same variant in three tools, as the files show it. No scores: the audience sees where product and board options meet, and where the component list lives.
+
+---
+
+<p class="label">// the thread</p>
+
+<div class="thread">
+<ol class="rail">
+<li class="done">Two customers, one product line</li>
+<li class="done">From wishes to features</li>
+<li class="done">A prototype on Zephyr</li>
+<li class="done">The series product on AUTOSAR</li>
+<li class="done">Just port it?</li>
+<li class="done">What if: one product line, three platforms</li>
+<li class="done">Three tools, side by side</li>
+<li class="now">Back to the start</li>
+</ol>
+<div class="thread-text">
+<p>Back to the manager and the sentence from the start.</p>
+</div>
+</div>
+
+Note:
+
+Chapter 8: Back to the start. Say the sentence and go on.
+
+---
+
+<!-- .slide: data-auto-animate data-auto-animate-id="close" -->
+
+<div class="stage">
+<div class="just abs" style="left:110px; top:150px;" data-id="just">“Just port it.”</div>
+<div class="verdict abs fragment" style="left:110px; top:290px; font-size:40px;">“There is nothing to port.”</div>
+<div class="verdict abs fragment" style="left:110px; top:360px; width:700px;">Both platforms and their builds live in the same repository. Pick the variant and the platform.</div>
+</div>
+
+Note:
+
+Section 8, about 2 minutes. The opening line comes back. This time it really is a piece of cake: there is nothing to port. The prototype platform and the series platform, and how each one builds, live in the same repository as the product line. Building for the series board means picking the variant and the platform.
+
+---
+
+<!-- .slide: data-background-color="#0000a8" -->
+
+<div class="mc">
+<div class="mc-top">.config - development environment for a product line</div>
+<div class="mc-box">
+<div class="mc-title">Take a photo</div>
+<div class="mc-help">Collected along the story. <b>&lt;Y&gt;</b> includes, <b>&lt;N&gt;</b> excludes, <b>&lt;?&gt;</b> asks the speaker.</div>
+<ul class="mc-list">
+<li>[*] R1 One product, several platforms</li>
+<li>[*] R2 A new platform leaves the products unchanged</li>
+<li>[*] R3 Documentation and reports</li>
+<li>[*] R4 Feature model</li>
+<li>[*] R5 Variant model</li>
+<li>[*] R6 Platform model</li>
+<li>[*] R7 Component model</li>
+<li>[*] R8 Two feature models</li>
+<li>[*] R9 Product and platform choices in separate files</li>
+<li>[*] R10 Models as data</li>
+</ul>
+<div class="mc-buttons"><span class="sel">&lt;Select&gt;</span><span>&lt; Exit &gt;</span><span>&lt; Help &gt;</span><span>&lt; Save &gt;</span><span>&lt; Load &gt;</span></div>
+</div>
+</div>
+
+Note:
+
+The photo slide. Leave it up while people take pictures, then go to questions.
+
+---
+
+### Questions?
+
+<div class="qr">
+
+![QR code of the slides](../images/qr_zephyr_meets_sple.png)
+
+</div>
+
+https://avengineers.github.io/ESE-2026/docs/zephyr_meets_sple/ <!-- .element: class="deck-url" -->
+
+---
+
+### Some Links
+
+- [We@GitHub](https://github.com/avengineers)
+- [Printable Slides](https://avengineers.github.io/ESE-2026/docs/zephyr_meets_sple/?print-pdf)
+
+---
+
+### Backup
+
+Note:
+
+Backup slides, for questions only.
 
 ---
 
@@ -1075,7 +1222,6 @@ The platform changes, the customer's sentence does not. Each click goes one leve
 <li>[*] Component model</li>
 <li>[*] One product, several platforms</li>
 <li>[*] A new platform leaves the products unchanged</li>
-<li>[*] Product and platform choices in separate files</li>
 <li class="fragment cursor">[*] Platform model</li>
 <li class="fragment cursor">[*] Two feature models</li>
 </ul>
@@ -1138,7 +1284,6 @@ A component is not a source file. It carries its code, its tests, its docs and i
 <li>[*] Component model</li>
 <li>[*] One product, several platforms</li>
 <li>[*] A new platform leaves the products unchanged</li>
-<li>[*] Product and platform choices in separate files</li>
 <li>[*] Platform model</li>
 <li>[*] Two feature models</li>
 <li class="fragment cursor">[*] Documentation and reports</li>
@@ -1204,7 +1349,6 @@ Data has many readers. Code has one: the tool that runs it. Same idea as a GitHu
 <li>[*] Component model</li>
 <li>[*] One product, several platforms</li>
 <li>[*] A new platform leaves the products unchanged</li>
-<li>[*] Product and platform choices in separate files</li>
 <li>[*] Platform model</li>
 <li>[*] Two feature models</li>
 <li>[*] Documentation and reports</li>
@@ -1242,7 +1386,7 @@ Models as data: tools read them without running the build.
 
 Note:
 
-The grid from chapter 3, filled. Every cell is one command with a variant and a platform. The command is real for zephyr_esp32h2 and gtest; autosar is the what-if.
+Every cell is one command with a variant and a platform. The command is real for zephyr_esp32h2 and gtest; autosar is the what-if.
 
 ---
 
@@ -1267,140 +1411,3 @@ The grid from chapter 3, filled. Every cell is one command with a variant and a 
 Note:
 
 Chapter 7: Three tools, side by side. Say the sentence and go on.
-
----
-
-<p class="label">// where does Disco live?</p>
-
-<div class="where">
-<div>
-<h4>Zephyr</h4>
-<div class="code"><span class="f">app/prj_disco.conf</span>
-CONFIG_GPIO=y
-CONFIG_SHELL=y
-CONFIG_BLINKING=y
-CONFIG_COLOR_GREEN=y</div>
-<div class="code"><span class="f">app/CMakeLists.txt</span>
-target_sources_ifdef(
-  CONFIG_SHELL ...)</div>
-</div>
-<div class="fragment">
-<h4>spl-core</h4>
-<div class="code"><span class="f">variants/Disco/config.txt</span>
-CONFIG_BLINKING=y
-CONFIG_COLOR_GREEN=y</div>
-<div class="code"><span class="f">variants/Disco/parts.cmake</span>
-spl_add_component(
-  components/light_controller)</div>
-</div>
-<div class="fragment">
-<h4>yanga</h4>
-<div class="code"><span class="f">variants/Disco/config.txt</span>
-CONFIG_BLINKING=y
-CONFIG_COLOR_GREEN=y</div>
-<div class="code"><span class="f">variants/Disco/yanga.yaml</span>
-- name: Disco
-  components: [rte, spled, ...]</div>
-</div>
-</div>
-
-Note:
-
-Section 7, the three frameworks, about 6 minutes. The same variant in three tools, as the files show it. No scores: the audience sees where product and board options meet, and where the component list lives.
-
----
-
-<p class="label">// TODO</p>
-
-More side-by-side slides: where the platform lives, where the components live, where the selections live. One question per slide, the real files of each tool as the answer.
-
-Note:
-
-Open: which questions get a slide. Candidates follow the requirements R1 to R10.
-
----
-
-<p class="label">// the thread</p>
-
-<div class="thread">
-<ol class="rail">
-<li class="done">Two customers, one product line</li>
-<li class="done">From wishes to features</li>
-<li class="done">A prototype on Zephyr</li>
-<li class="done">The series product on AUTOSAR</li>
-<li class="done">Just port it?</li>
-<li class="done">What if: one product line, three platforms</li>
-<li class="done">Three tools, side by side</li>
-<li class="now">Back to the start</li>
-</ol>
-<div class="thread-text">
-<p>Back to the manager and the sentence from the start.</p>
-</div>
-</div>
-
-Note:
-
-Chapter 8: Back to the start. Say the sentence and go on.
-
----
-
-<!-- .slide: data-auto-animate data-auto-animate-id="close" -->
-
-<div class="stage">
-<div class="just abs" style="left:110px; top:150px;" data-id="just">“Just port it.”</div>
-<div class="verdict abs fragment" style="left:110px; top:300px; font-size:40px;">“Sure. New shell, same application.”</div>
-</div>
-
-<div class="notify fragment" data-id="bios"><div class="notify-head"><span>⚠ Development environment</span><span>✕</span></div><div class="notify-body"><b>New requirement detected</b>Your development environment does not meet it yet.</div><div class="notify-buttons"><span class="disabled">Remind me later</span><span class="primary">Open</span></div></div>
-
-Note:
-
-Section 8, about 2 minutes. The opening line comes back, without the asterisk.
-
----
-
-<!-- .slide: data-background-color="#0000a8" data-auto-animate data-auto-animate-id="close" -->
-
-<div class="mc">
-<div class="mc-top">.config - development environment for a product line</div>
-<div class="mc-box" data-id="bios">
-<div class="mc-title">Take a photo</div>
-<div class="mc-help">Collected along the story. <b>&lt;Y&gt;</b> includes, <b>&lt;N&gt;</b> excludes, <b>&lt;?&gt;</b> asks the speaker.</div>
-<ul class="mc-list">
-<li>[*] R1 One product, several platforms</li>
-<li>[*] R2 A new platform leaves the products unchanged</li>
-<li>[*] R3 Documentation and reports</li>
-<li>[*] R4 Feature model</li>
-<li>[*] R5 Variant model</li>
-<li>[*] R6 Platform model</li>
-<li>[*] R7 Component model</li>
-<li>[*] R8 Two feature models</li>
-<li>[*] R9 Product and platform choices in separate files</li>
-<li>[*] R10 Models as data</li>
-</ul>
-<div class="mc-buttons"><span class="sel">&lt;Select&gt;</span><span>&lt; Exit &gt;</span><span>&lt; Help &gt;</span><span>&lt; Save &gt;</span><span>&lt; Load &gt;</span></div>
-</div>
-</div>
-
-Note:
-
-The photo slide. Leave it up while people take pictures, then go to questions.
-
----
-
-### Questions?
-
-<div class="qr">
-
-![QR code of the slides](../images/qr_zephyr_meets_sple.png)
-
-</div>
-
-https://avengineers.github.io/ESE-2026/docs/zephyr_meets_sple/ <!-- .element: class="deck-url" -->
-
----
-
-### Some Links
-
-- [We@GitHub](https://github.com/avengineers)
-- [Printable Slides](https://avengineers.github.io/ESE-2026/docs/zephyr_meets_sple/?print-pdf)
