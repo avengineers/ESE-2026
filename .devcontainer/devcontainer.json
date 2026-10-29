@@ -25,7 +25,8 @@
         "streetsidesoftware.code-spell-checker-german",
         "davidanson.vscode-markdownlint",
         "tamasfe.even-better-toml",
-        "ms-vscode-remote.remote-containers"
+        "ms-vscode-remote.remote-containers",
+        "the0807.git-graph-plus"
       ],
       "settings": {
         "remote.SSH.enableAgentForwarding": true,
