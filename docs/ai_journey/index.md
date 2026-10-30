@@ -1,9 +1,7 @@
 ## „Frag doch den Agenten!"
 
-```text
-Setz die User Story auf Folie 2 in SPLed um:
-https://avengineers.github.io/ESE-2026/docs/ai_journey/user_story.md
-```
+<pre class="copyable"><code class="language-plaintext">Setz die User Story auf Folie 2 in SPLed um:
+https://avengineers.github.io/ESE-2026/docs/ai_journey/user_story.md</code></pre>
 
 Note:
 
@@ -46,98 +44,91 @@ erzählen wir euch, wie es dazu kam.“
 
 ### 2022: Ein Schülerpraktikant im Editor
 
-- Code Completion schlägt vor: mal eine Funktion, mal eine Schleife
-- Die Syntax muss man nicht mehr im Kopf haben
-- Eine große Hilfe bei Python, CMake, C++, GoogleTest und Dokumentation
-- Struktur und Architektur kommen weiter von uns
+- Code Completion
+- Python, CMake, C++, GoogleTest
+- Architektur bleibt bei uns
+- Klingt immer gut, ist oft falsch
 
 Note:
 
-Judith. Kapitel 1 des Artikels. Das Werkzeug entlastet bei Routineaufgaben, und wir gewinnen
-Zeit für die kreative Arbeit.
+Judith. Kapitel 1 des Artikels. Die Code Completion schlägt beim Programmieren mal eine Funktion
+vor, mal eine Schleife. Die Syntax muss man nicht mehr im Kopf haben. Eine große Hilfe bei
+Python, CMake, C++, GoogleTest und beim Schreiben von Dokumentation. Struktur und Architektur
+kommen weiter von uns. Das Werkzeug entlastet bei Routineaufgaben, und wir gewinnen Zeit für die
+kreative Arbeit.
+
+Die Vorschläge klingen immer gut, trotzdem sind sie oft falsch: Der Code läuft nicht, vieles ist
+halluziniert. Wir prüfen jede Zeile, wie man die Arbeit eines Praktikanten prüft.
 
 ---
 
-### Die Vorschläge klingen immer gut
+### Chatbots halfen auch mit
 
-- Trotzdem sind sie oft falsch: Der Code läuft nicht, vieles ist halluziniert
-- Wir prüfen jede Zeile, wie bei einem Praktikanten
+- Skripte, kleine VS-Code-Erweiterungen
+- Läuft? Übernommen!
+- *Vibe Coding*
 
 Note:
 
-Judith. Überleitung zum Bild auf der nächsten Folie: „Ein Beispiel.“
+Judith. Ein Chatbot schreibt uns ein Skript oder eine kleine Erweiterung für VS Code. Hier waren
+wir weniger streng als bei der Code Completion: Lief das Ergebnis, haben wir es übernommen, ohne
+jede Zeile zu verstehen. Heute heißt das Vibe Coding. Das kommt später wieder.
+
+Überleitung zur nächsten Folie: „Nicht alles lief.“
 
 ---
 
-### Wir wollten ein Mermaid-Diagramm
-
-![Gefragt war ein Mermaid-Diagramm. Gekommen ist eine Meerjungfrau mit UML.](../images/ai_journey_mermaid.png) <!-- .element: style="height: 480px; margin: 0;" -->
+![Ein Chat: Gefragt war ein Mermaid-Diagramm einer Git-History. Die Antwort sind vier Bilder von Meerjungfrauen.](../images/ai_journey_mermaid.png) <!-- .element: style="height: 660px; margin: 0;" -->
 
 Note:
 
-Judith. Unser Prompt war: ein Mermaid-Diagramm. Die Antwort: eine Meerjungfrau, mermaid, mit
-UML-Diagrammen auf dem Thron und auf der Flosse. Die Antwort klingt gut, sie sieht sogar gut
-aus, und sie ist trotzdem falsch.
-
----
-
-### Dann kam ChatGPT
-
-- Ein Skript hier, eine kleine Erweiterung für VS Code da
-- Lief das Ergebnis, haben wir es übernommen, ohne jede Zeile zu verstehen
-- Heute heißt das *Vibe Coding*
-
-Note:
-
-Judith. Hier waren wir weniger streng als bei der Code Completion. Das kommt später wieder.
+Judith. Die Frage war: ein Mermaid-Diagramm einer Git-History mit vier Commits und einem
+Branch develop, der auf den letzten Commit zeigt. Mermaid ist eine Sprache für Diagramme als
+Text. Die Antwort: „I'll try to create that.“ Und dann vier Bilder von Meerjungfrauen, englisch
+mermaid, mit Commits und Branches, die „develoop“ und „Develice“ heißen. Die Antwort klingt gut,
+sie sieht sogar gut aus, und sie ist trotzdem falsch.
 
 ---
 
 ### Ende 2025: Der Wendepunkt
 
-- Neue Modelle, zum Beispiel Claude Opus 4.5
-- Eine Schulung zu agentischer Entwicklung gibt uns einen neuen Blick
-- Vorher: „Schreib mir bitte eine Funktion, die das und das macht.“
-- Jetzt: eine ganze User Story oder ein ganzes Feature
+- Neue Modelle, z. B. Claude Opus 4.5
+- Schulung: agentische Entwicklung
+- Repository lesen, bauen, testen, Fehler korrigieren
+- MCP: Ticketsystem, CI-Server
+
+<p class="fragment"><strong>„Frag doch den Agenten!“</strong></p>
 
 Note:
 
 Karsten. Kapitel 2 des Artikels. Die ersten Agenten haben wir benutzt wie die Code Completion,
-nur mit Prompts. Die Trainer haben uns gezeigt, was ein Agent sonst noch kann.
+nur mit Prompts. Ende 2025 kamen neue Modelle, und unser Team besuchte eine Schulung zu
+agentischer Entwicklung. Die Trainer haben uns gezeigt, was ein Agent kann: Er liest das
+Repository, schreibt Code, führt Befehle aus, baut, testet und korrigiert seine eigenen Fehler.
+Über MCP, das Model Context Protocol, erreicht er Ticketsystem und CI-Server.
+
+Und auf fast jede Frage im Team heißt die Antwort: „Frag doch den Agenten!“ Das ist der Titel des
+Vortrags.
 
 ---
 
-### Was ein Agent kann
+### „Mein Agent programmiert besser als deiner!“
 
-- Er liest das Repository
-- Er schreibt Code, führt Befehle aus, baut und testet
-- Er korrigiert seine eigenen Fehler
-- Über MCP erreicht er Ticketsystem und CI-Server
-
-<p class="fragment">Und auf fast jede Frage im Team heißt die Antwort: <strong>„Frag doch den Agenten!“</strong></p>
+- Eigene `AGENTS.md`
+- Eigene Skill-Sammlungen
+- Gleiches Projekt, andere Ergebnisse
 
 Note:
 
-Karsten. MCP ist das Model Context Protocol. Der Satz am Schluss ist der Titel des Vortrags.
+Judith. Kapitel 3 des Artikels. Jeder pflegt seinen eigenen Werkzeugkasten: eine persönliche
+AGENTS.md mit eigenen Regeln, bevorzugte und selbst geschriebene Skills. Dasselbe Projekt liefert
+dann verschiedene Ergebnisse, je nachdem, wer fragt.
 
----
+Keine Produkte nennen und keine bewerten: Es geht um die persönlichen Setups, nicht um das
+Werkzeug.
 
-### „Meine Claude programmiert besser als deiner!“
-
-- Im Unternehmen ist GitHub Copilot verbreitet, im Team arbeitet jeder mit Claude Code
-- Jeder pflegt seinen eigenen Werkzeugkasten:
-  - eine persönliche `CLAUDE.md` mit eigenen Regeln
-  - bevorzugte Skill-Sammlungen
-  - selbst geschriebene Skills
-- Dasselbe Projekt liefert verschiedene Ergebnisse, je nachdem, wer fragt
-
-Note:
-
-Judith. Kapitel 3 des Artikels. Eine saubere Begründung für Claude Code haben wir nicht, nur die
-gemeinsame Beobachtung, dass es für unsere Arbeit besser passt.
-
-Offen sagen: Der Agent, der gerade für uns arbeitet, läuft mit Karstens Setup. Es ist „seine
-Claude“.
+Offen sagen: Der Agent, der gerade für uns arbeitet, läuft mit Karstens Setup. Es ist „sein
+Agent“.
 
 ---
 
@@ -173,34 +164,41 @@ Prüfungen am Ende. Das ist ein Ausschnitt aus unserem Skill für Unit-Tests in 
 
 ### Skills als Produkt eines Plattform-Teams
 
-- Wir liefern Werkzeuge, Schulungen und jetzt auch Skills
-  - Wie schreibt man gute Unit-Tests?
-  - Wie startet man einen Build?
-  - Wie erzeugt man einen Testbericht?
-- Der Entwickler muss die Regeln nicht auswendig kennen: Sein Agent lädt sie
-- Aus vielen persönlichen Setups wird ein gemeinsamer Stand
+- Werkzeuge, Schulungen – und Skills
+- Unit-Tests, Build, Testbericht
+- Ein gemeinsamer Stand für alle
 
 Note:
 
-Karsten. Damit ist die Frage von eben beantwortet: Wie passt man einen Agenten an eine
-Umgebung an?
+Karsten. Als Plattform-Team liefern wir neben Werkzeugen und Schulungen jetzt auch Skills: wie
+man gute Unit-Tests schreibt, wie man einen Build startet, wie man einen Testbericht erzeugt. Der
+Entwickler muss diese Regeln nicht auswendig kennen, denn sein Agent lädt sie. So wird aus vielen
+persönlichen Setups ein gemeinsamer Stand. Damit ist die Frage von eben beantwortet: Wie passt man
+einen Agenten an eine Umgebung an?
 
 ---
 
 ### Der Agent schreibt das Backlog
 
-- User Stories, Backlog-Einträge, Vorbereitung der Sprintplanung
-- Immer im gleichen Format
-- Das große Kontextfenster hilft: Er denkt an Fakten, die ein Mensch oft vergisst
-- Schnell eine Grundlage, über die das Team diskutieren kann
-- Aber: Für einen Menschen sind es oft zu viele Details
+- User Stories, Sprintplanung
+- Einheitliches Format
+- Großes Kontextfenster
+- Aber: zu viele Details
 
-Die User Story auf Folie 2 hat der Agent geschrieben. Und das Ticket für diese Folien auch. <!-- .element: class="fragment" -->
+<p class="fragment">Auch die User Story auf Folie 2</p>
 
 Note:
 
-Karsten. Kapitel 4 des Artikels, zweites Beispiel. Das erste Beispiel, Automotive SPICE, läuft
-gerade im Hintergrund. Wir zeigen es am Ende.
+Karsten. Kapitel 4 des Artikels, zweites Beispiel. Der Agent schreibt User Stories und
+Backlog-Einträge und bereitet die Sprintplanung vor, immer im gleichen Format. Durch sein großes
+Kontextfenster denkt er an Fakten und Randbedingungen, die ein Mensch oft vergisst, und er
+liefert schnell eine Grundlage, über die das Team diskutieren kann. Der Nachteil: Für einen
+Menschen sind es oft zu viele Details.
+
+Die User Story auf Folie 2 hat der Agent geschrieben, und das Ticket für diese Folien auch.
+
+Das erste Beispiel des Artikels, Automotive SPICE, läuft gerade im Hintergrund. Wir zeigen es am
+Ende.
 
 Entwurf: Hier kann eine bereinigte Kopie des Tickets für die Folien hin, ohne Ticket-Nummer und
 ohne interne Links.
@@ -212,114 +210,129 @@ ohne interne Links.
 ````text
 ### Folien als Code
 
-- Präsentationen in Markdown, mit reveal.js
-- Sie liegen als Text in einem Git-Repository
-- Wir prüfen und ändern sie wie Code
+- Markdown, reveal.js
+- Git-Repository
+- Review wie Code
 ````
-
-- Das ist der Quelltext einer Folie wie dieser
-- Der Agent schreibt auch Tabellen und Dokumente in den gängigen Office-Formaten
 
 Note:
 
-Judith. Kapitel 4 des Artikels, drittes Beispiel. Diese Folien sind genau so entstanden: zwei
-Menschen und ein Agent.
+Judith. Kapitel 4 des Artikels, drittes Beispiel. Das ist der Quelltext einer Folie wie dieser.
+Die Präsentationen liegen als Markdown in einem Git-Repository, und wir prüfen und ändern sie wie
+Code. Der Agent schreibt auch Tabellen und Dokumente in den gängigen Office-Formaten. Diese Folien
+sind genau so entstanden: zwei Menschen und ein Agent.
 
 ---
 
 ### Jede Antwort klingt gut
 
-- Schon 2022 klangen die Vorschläge immer gut. Das ist geblieben.
-- Geändert hat sich, wie oft sie stimmen
-- Wenn fast alles stimmt, fällt der eine Fehler kaum noch auf
+- 2022: klingt gut, oft falsch
+- Heute: klingt gut, meist richtig
+- Der eine Fehler fällt kaum auf
 
 Note:
 
-Judith und Karsten im Dialog. Kapitel 5 des Artikels.
+Judith und Karsten im Dialog. Kapitel 5 des Artikels. Schon 2022 klangen die Vorschläge immer
+gut. Das ist geblieben. Geändert hat sich, wie oft sie stimmen. Und das macht die Bewertung
+schwerer: Wenn fast alles stimmt, fällt der eine Fehler kaum noch auf.
 
 ---
 
 ### Vibe Coding: wann ja, wann nein
 
-- Für ein Skript, das wir einmal ausführen und dann löschen: in Ordnung
-- Für produktiven Code, der wiederverwendet wird: nein
-- Im Embedded-Umfeld kann niemand Code freigeben oder warten, den er nicht versteht
+- Wegwerf-Skript: ja
+- Produktiver Code: nein
 
 Note:
 
-Judith: „Was ich nicht verstehe, kann ich nicht freigeben.“
+Judith. Für ein Skript, das wir einmal ausführen und dann löschen, ist Vibe Coding in Ordnung.
+Für produktiven Code, der wiederverwendet wird, nicht: Im Embedded-Umfeld kann niemand Code
+freigeben oder warten, den er nicht versteht. „Was ich nicht verstehe, kann ich nicht freigeben.“
 
 ---
 
 ### Der Agent hilft beim Bewerten
 
-- Ein Pull Request mit 2.000 geänderten Zeilen: früher kaum zu prüfen
-- Heute prüft der Agent die ganze Änderung, der Mensch bewertet seine Befunde
-- Die letzte Entscheidung liegt weiter beim Menschen
+- Pull Request, 2.000 Zeilen
+- Agent prüft, Mensch bewertet
+- Mensch entscheidet
 
-Und genau das machen wir jetzt mit unserem Agenten. <!-- .element: class="fragment" -->
+<p class="fragment">Jetzt: unser Agent</p>
 
 Note:
 
-Karsten. Der Satz am Schluss leitet zur Demo über.
+Karsten. Einen Pull Request mit 2.000 geänderten Zeilen konnte ein Mensch früher kaum prüfen.
+Heute prüft der Agent die ganze Änderung, und der Mensch bewertet seine Befunde. Die letzte
+Entscheidung liegt weiter beim Menschen.
+
+Und genau das machen wir jetzt mit unserem Agenten. Überleitung zur Demo.
 
 ---
 
 ### Was hat der Agent geliefert?
 
-- Detailed Design
-- Testspezifikation
-- Feature-Schalter im Feature-Modell
-- Code und Unit-Tests
-- Komponentenbericht mit Coverage und Traceability
-- Seine Fragen: Was haben die Anforderungen offengelassen?
+- Detailed Design, Testspezifikation
+- Feature-Schalter
+- Code, Unit-Tests
+- Bericht: Coverage, Traceability
+- Eigene Entscheidungen
 
 Note:
 
 Judith wechselt ins Terminal und zeigt das Ergebnis. Ist der Agent nicht fertig, zeigt sie, was
 bis jetzt fertig ist, oder das Ergebnis aus einem Probelauf. Sie sagt offen, was sie zeigt.
 
+Eigene Entscheidungen: Was hat der Agent festgelegt, wo die Anforderungen nichts sagen?
+
 ---
 
 ### Die Abnahme
 
-- Stimmt es? Tests grün, Anforderungen abgedeckt
-- Passt es zu unserer Architektur und Arbeitsweise?
-- Kann ein Mensch es gut lesen?
-- Welche Fragen hat der Agent gestellt, und was hat er stillschweigend entschieden?
+- Korrekt?
+- Passend zu Architektur und Arbeitsweise?
+- Lesbar?
+- Eigene Entscheidungen vertretbar?
 
-Angenommen, mit Fragen zurück oder abgelehnt? <!-- .element: class="fragment" -->
+<p class="fragment">Angenommen?</p>
 
 Note:
 
 Karsten nimmt als Product Owner ab, nach den Akzeptanzkriterien von Folie 2 und nach diesen
-Fragen. Ehrlich bewerten, auch wenn etwas schiefgegangen ist.
+Fragen: Stimmt es, also Tests grün und Anforderungen abgedeckt? Passt es zu unserer Architektur
+und Arbeitsweise? Kann ein Mensch es gut lesen? Was hat der Agent selbst entschieden, und können
+wir damit leben? Dann das Urteil: angenommen, mit Fragen zurück oder abgelehnt. Ehrlich
+bewerten, auch wenn etwas schiefgegangen ist.
 
 ---
 
 ### Aus dem Praktikanten ist ein Kollege geworden
 
-- Er schreibt Code, Tests, Dokumentation, User Stories und Präsentationen
-- Mit Skills passen wir ihn an unsere Umgebung an
-- Seine Ergebnisse bewerten wir weiter selbst
-- Dabei hilft er uns, aber das Urteil fällen wir
+- Code, Tests, Doku, Stories, Folien
+- Skills passen ihn an
+- Das Urteil fällen wir
 
 Note:
 
-Karsten. Die Zusammenfassung des Artikels. Auch der Artikel ist so entstanden: zwei Menschen und
-ein Agent.
+Karsten. Die Zusammenfassung des Artikels. Er schreibt Code, Tests, Dokumentation, User Stories
+und Präsentationen. Mit Skills passen wir ihn an unsere Umgebung an. Seine Ergebnisse bewerten
+wir weiter selbst. Dabei hilft er uns, aber das Urteil fällen wir. Auch der Artikel ist so
+entstanden: zwei Menschen und ein Agent.
 
 ---
 
 ### Zur Diskussion
 
-- Ist ein möglichst kurzer Prompt besser, der dem Agenten viel Freiheit lässt?
-- Oder soll der Agent lieber alles nachfragen?
-- Wie viel Kontrolle braucht ein Agent?
+- Kurzer Prompt oder ausführlicher?
+- Selbst entscheiden oder nachfragen?
+- Wie viel Kontrolle?
 
 Note:
 
-Unsere Antwort von heute: ein Prompt von einer Zeile, und der Agent sammelt seine Fragen, statt
+Die drei offenen Fragen aus dem Artikel: Ist ein möglichst kurzer Prompt besser, der dem Agenten
+viel Freiheit lässt? Oder soll der Agent lieber alles nachfragen? Wie viel Kontrolle braucht ein
+Agent?
+
+Unsere Antwort von heute: ein Prompt von einer Zeile, und der Agent entscheidet selbst, statt
 nachzufragen. Was meint ihr?
 
 ---

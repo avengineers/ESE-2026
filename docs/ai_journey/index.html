@@ -48,6 +48,27 @@
       // Learn about plugins: https://revealjs.com/plugins/
       plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMermaid],
     });
+
+    // Give each <pre class="copyable"> a copy button, so the prompt of the live demo can be
+    // pasted into the terminal. The look is in css/custom.css.
+    Reveal.on("ready", () => {
+      document.querySelectorAll("pre.copyable").forEach((pre) => {
+        pre.classList.add("code-wrapper");
+        const button = document.createElement("button");
+        button.className = "copy-code-btn";
+        button.textContent = "Copy";
+        button.addEventListener("click", async () => {
+          await navigator.clipboard.writeText(pre.querySelector("code").innerText);
+          button.textContent = "Copied";
+          button.classList.add("copied");
+          setTimeout(() => {
+            button.textContent = "Copy";
+            button.classList.remove("copied");
+          }, 2000);
+        });
+        pre.appendChild(button);
+      });
+    });
   </script>
 </body>
 
