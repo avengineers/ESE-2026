@@ -216,22 +216,67 @@ ohne interne Links.
 
 ---
 
-### Folien als Code
+### Der Agent arbeitet am Vortrag mit
 
-````text
-### Folien als Code
+<div class="flex-container" style="align-items: flex-start;">
+<div class="half">
 
-- Markdown, reveal.js
-- Git-Repository
-- Review wie Code
-````
+<div class="mermaid git-graph">
+<pre>
+---
+config:
+  theme: base
+  themeVariables:
+    git0: "#4dd0e1"
+    git1: "#ffd54f"
+    gitBranchLabel0: "#002b36"
+    gitBranchLabel1: "#002b36"
+    commitLabelColor: "#ffffff"
+    commitLabelBackground: transparent
+    commitLabelFontSize: 16px
+    fontSize: 16px
+  gitGraph:
+    mainBranchName: develop
+---
+gitGraph TB:
+  commit id: "423436d: draft the article"
+  commit id: "3041588: add figure 2" type: HIGHLIGHT
+  commit id: "f7a5d3c: add the zephyr article"
+  branch feat/ai-journey-slides
+  commit id: "78d2191: draft the slides"
+  commit id: "0a488e2: tighten the slides"
+  commit id: "01d05f4: show a code completion"
+  commit id: "2b86dd4: highlight the skill excerpt"
+</pre>
+</div>
+
+</div>
+<div class="half" style="flex: 1.4; width: auto;">
+
+![Der Agent im Terminal: „Doch, es geht besser.“ Eine Tabelle vergleicht den Screenshot der Autoren, 1.055 × 791 Pixel, mit seinem, 2.688 × 1.901 Pixel.](../images/ai_journey_better_screenshot.png) <!-- .element: id="better-screenshot" style="width: 100%; margin-top: 0;" -->
+
+</div>
+</div>
+
+<svg class="slide-arrow" data-arrow-from=".git-graph .commit-highlight-outer" data-arrow-to="#better-screenshot"></svg>
 
 Note:
 
-Judith. Kapitel 4 des Artikels, drittes Beispiel. Das ist der Quelltext einer Folie wie dieser.
-Die Präsentationen liegen als Markdown in einem Git-Repository, und wir prüfen und ändern sie wie
-Code. Der Agent schreibt auch Tabellen und Dokumente in den gängigen Office-Formaten. Diese Folien
-sind genau so entstanden: zwei Menschen und ein Agent.
+Judith. Kapitel 4 des Artikels, drittes Beispiel. Der Agent arbeitet nicht nur am Code mit,
+sondern auch an Präsentationen und Vorträgen. Dieser Vortrag ist so entstanden: zwei Menschen und
+ein Agent.
+
+Links: Erinnert ihr euch an die Meerjungfrauen? Das ist das Diagramm, das wir damals wollten: ein
+Mermaid-Diagramm einer Git-History mit einem Branch develop. Diesmal hat es der Agent geschrieben,
+und alle Commits sind echt: Auf develop stehen der Artikel für den Tagungsband und seine
+Abbildung, auf dem Branch daneben die Arbeit an genau diesen Folien. Artikel und Folien liegen als
+Markdown in einem Git-Repository, und wir prüfen und ändern sie wie Code.
+
+Der Pfeil: Mit dem markierten Commit kam Abbildung 2 des Artikels ins Repository. Für diese
+Abbildung hatten wir einen Screenshot gemacht. Die Antwort des Agenten: „Doch, es geht besser.“
+Sein Screenshot hat 2.688 × 1.901 Pixel statt 1.055 × 791, genug für 300 dpi im Druck.
+
+Der Agent schreibt auch Tabellen und Dokumente in den gängigen Office-Formaten.
 
 ---
 

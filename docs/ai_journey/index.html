@@ -69,6 +69,67 @@
         pre.appendChild(button);
       });
     });
+
+    // Draw each <svg class="slide-arrow"> as an arrow from the element named by data-arrow-from to
+    // the one named by data-arrow-to, both on the same slide. Mermaid renders after the slides
+    // are ready, so the arrow is drawn once both elements exist, and again on every resize.
+    function drawArrow(svg) {
+      const slide = svg.closest("section");
+      const from = slide.querySelector(svg.dataset.arrowFrom);
+      const to = slide.querySelector(svg.dataset.arrowTo);
+      if (!from || !to || to.getBoundingClientRect().width === 0) {
+        return false;
+      }
+      const scale = Reveal.getScale();
+      const origin = slide.getBoundingClientRect();
+      const a = from.getBoundingClientRect();
+      const b = to.getBoundingClientRect();
+      const x1 = (a.right - origin.left) / scale + 8;
+      const y1 = (a.top + a.height / 2 - origin.top) / scale;
+      const x2 = (b.left - origin.left) / scale - 8;
+      const y2 = (b.top + b.height / 2 - origin.top) / scale;
+      svg.innerHTML =
+        '<defs><marker id="arrow-head" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">' +
+        '<path d="M0,0 L10,4 L0,8 Z" fill="#ffffff"/></marker></defs>' +
+        `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#ffffff" stroke-width="3" marker-end="url(#arrow-head)"/>`;
+      return true;
+    }
+
+    // Mermaid sizes a gitGraph for labels rotated by 45 degrees. css/custom.css sets them level,
+    // so the frame is too tall and too narrow: fit it to what is drawn.
+    function fitGitGraph(graph) {
+      const box = graph.getBBox();
+      const pad = 8;
+      graph.setAttribute(
+        "viewBox",
+        `${box.x - pad} ${box.y - pad} ${box.width + 2 * pad} ${box.height + 2 * pad}`,
+      );
+    }
+
+    function drawArrows() {
+      document.querySelectorAll("svg.slide-arrow").forEach((svg) => {
+        let tries = 0;
+        const attempt = () => {
+          if (!drawArrow(svg)) {
+            if (tries++ < 100) {
+              setTimeout(attempt, 100);
+            }
+          } else if (!svg.dataset.centered) {
+            // The diagram rendered after reveal.js centred the slide: fit it, centre the slide
+            // again, and draw the arrow in its new place.
+            svg.dataset.centered = "true";
+            svg.closest("section").querySelectorAll(".git-graph svg").forEach(fitGitGraph);
+            Reveal.layout();
+            drawArrow(svg);
+          }
+        };
+        attempt();
+      });
+    }
+
+    Reveal.on("ready", drawArrows);
+    Reveal.on("slidechanged", drawArrows);
+    Reveal.on("resize", drawArrows);
   </script>
 </body>
 
