@@ -82,6 +82,16 @@ common slides, only "Some Links" is the same in every deck; the other three carr
 the speakers or the URL of their deck. A shared file for one slide is not worth the extra
 `<section>` in every `index.html`.
 
+`ai_journey` is the one exception. Its talk opens with a live demo: the title slide is
+followed by a user story that an agent implements while the speakers talk, and "Who are we?"
+comes after it. The agent reads the user story alone, without the rest of the deck, so the
+deck has three files, each loaded by its own `<section>` in `index.html`:
+
+- `title.md` holds the title slide.
+- `user_story.md` holds the user story. It holds nothing else, speaker notes included: the
+  agent would read them as part of its task.
+- `index.md` holds the rest of the deck.
+
 ## The theme
 
 `css/marquardt.css` is a copy of the Marquardt reveal.js theme: the League theme with the
@@ -208,6 +218,7 @@ between them.
   Its lettering is white instead of blue, as in the banner of the organiser's website, so
   that it reads on the dark background.
 - Change the title slide in `index.md` first. Then make the same change in `linkedin.md`.
+  In `ai_journey`, the title slide is in `title.md`.
 
 To make the picture, run `npm run dev`. Then run the command below. On Linux, use
 `chromium` with the same flags.
