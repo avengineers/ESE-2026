@@ -47,7 +47,9 @@ erzählen wir euch, wie es dazu kam.“
 - Code Completion
 - Python, CMake, C++, GoogleTest
 - Architektur bleibt bei uns
-- Klingt immer gut, ist oft falsch
+- Vorschläge klingen gut
+
+![Code Completion in einer CMake-Datei: Als erste Zeile schlägt sie einen Copyright-Kommentar einer fremden Firma vor.](../images/ai_journey_completion.png) <!-- .element: class="fragment" style="width: 80%; margin: 0;" -->
 
 Note:
 
@@ -60,13 +62,16 @@ kreative Arbeit.
 Die Vorschläge klingen immer gut, trotzdem sind sie oft falsch: Der Code läuft nicht, vieles ist
 halluziniert. Wir prüfen jede Zeile, wie man die Arbeit eines Praktikanten prüft.
 
+Dann das Bild einblenden: In einer CMake-Datei von uns schlägt die Code Completion als erste Zeile
+den Copyright-Kommentar einer ganz anderen Firma vor. Klingt gut, sieht richtig aus, ist falsch.
+
 ---
 
 ### Chatbots halfen auch mit
 
 - Skripte, kleine VS-Code-Erweiterungen
 - Läuft? Übernommen!
-- *Vibe Coding*
+- Heute: *Vibe Coding*
 
 Note:
 
