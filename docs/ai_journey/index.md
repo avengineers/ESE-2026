@@ -139,14 +139,18 @@ Agent“.
 
 ### Skills: Wie wir Agenten steuern
 
-```text
+<div class="joined-code">
+
+```yaml
 ---
 name: c-unit-testing
 description: Write GTest/GMock unit tests for embedded
   C components using Arrange-Act-Assert and
   hammocking. […]
 ---
+```
 
+```markdown
 # GTest Unit Testing for Embedded C
 
 ## First Contact
@@ -156,6 +160,8 @@ description: Write GTest/GMock unit tests for embedded
    tests for a specific function, fix a failing test,
    or refactoring safety net? […]
 ```
+
+</div>
 
 <p class="deck-url">Quelle: <a href="https://github.com/avengineers/sple-skills">avengineers/sple-skills</a>, MIT-Lizenz</p>
 
@@ -170,7 +176,7 @@ Prüfungen am Ende. Das ist ein Ausschnitt aus unserem Skill für Unit-Tests in 
 ### Skills als Produkt eines Plattform-Teams
 
 - Werkzeuge, Schulungen – und Skills
-- Unit-Tests, Build, Testbericht
+- Für Unit-Tests, Build, Testbericht
 - Ein gemeinsamer Stand für alle
 
 Note:
@@ -187,8 +193,8 @@ einen Agenten an eine Umgebung an?
 
 - User Stories, Sprintplanung
 - Einheitliches Format
-- Großes Kontextfenster
-- Aber: zu viele Details
+- Großes Kontextfenster: denkt an mehr Fakten
+- Aber: zu viele Details für Menschen
 
 <p class="fragment">Auch die User Story auf Folie 2</p>
 
@@ -258,7 +264,7 @@ freigeben oder warten, den er nicht versteht. „Was ich nicht verstehe, kann ic
 
 ### Der Agent hilft beim Bewerten
 
-- Pull Request, 2.000 Zeilen
+- Pull Request mit 2.000 Zeilen
 - Agent prüft, Mensch bewertet
 - Mensch entscheidet
 
@@ -280,7 +286,7 @@ Und genau das machen wir jetzt mit unserem Agenten. Überleitung zur Demo.
 - Feature-Schalter
 - Code, Unit-Tests
 - Bericht: Coverage, Traceability
-- Eigene Entscheidungen
+- Seine Entscheidungen, wo Anforderungen schweigen
 
 Note:
 
@@ -296,7 +302,7 @@ Eigene Entscheidungen: Was hat der Agent festgelegt, wo die Anforderungen nichts
 - Korrekt?
 - Passend zu Architektur und Arbeitsweise?
 - Lesbar?
-- Eigene Entscheidungen vertretbar?
+- Seine Entscheidungen vertretbar?
 
 <p class="fragment">Angenommen?</p>
 
@@ -313,7 +319,7 @@ bewerten, auch wenn etwas schiefgegangen ist.
 ### Aus dem Praktikanten ist ein Kollege geworden
 
 - Code, Tests, Doku, Stories, Folien
-- Skills passen ihn an
+- Skills passen ihn an unsere Umgebung an
 - Das Urteil fällen wir
 
 Note:

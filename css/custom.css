@@ -335,3 +335,10 @@ pre.code-wrapper {
 .reveal .deck-url {
     font-size: 0.6em;
 }
+
+/* Several code blocks shown as one file, each block with its own highlighting:
+ * for example the YAML front matter and the Markdown body of a skill. */
+.reveal .joined-code pre {
+    margin-top: 0;
+    margin-bottom: 0;
+}
