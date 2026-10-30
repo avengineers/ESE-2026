@@ -55,16 +55,18 @@ sie ab. Bewerten wird so zu einer Abnahme, die jeder im Saal kennt.
 | min | Abschnitt | Wer | Artikel |
 |---|---|---|---|
 | 1 | Wer sind wir? | beide, jede Person über sich | — |
-| 3 | Ein Schülerpraktikant im Editor: Code Completion seit 2022, ChatGPT, Vibe Coding | Judith | Kap. 1 |
+| 4 | Ein Schülerpraktikant im Editor: Code Completion seit 2022, ChatGPT, Vibe Coding | Judith | Kap. 1 |
 | 3 | Der Wendepunkt: Ende 2025, Schulung, neue Modelle, MCP, eine ganze Story für den Agenten | Karsten | Kap. 2 |
 | 2,5 | Skills I: „Meine Claude programmiert besser als deiner!“, persönliche Setups, ein Skill als Beispiel | Judith | Kap. 3 |
 | 2,5 | Skills II: Skills als Produkt eines Plattform-Teams | Karsten | Kap. 3 |
-| 2 | Beispiel A.SPICE: was der Agent gerade baut | Judith | Kap. 4 |
 | 1,5 | Beispiel Backlog: Die Story auf Folie 2 und das Ticket für diesen Vortrag hat der Agent geschrieben; auf der Folie steht eine bereinigte Kopie ohne Ticket-Nummer und interne Links *(Entscheidung von Claude)* | Karsten | Kap. 4 |
 | 1,5 | Beispiel Folien als Code: auch diese Folien | Judith | Kap. 4 |
-| 3 | Jede Antwort klingt gut: Vibe Coding gegen produktiven Code, die offenen Fragen ans Publikum | beide, als Dialog | Kap. 5 |
+| 4 | Jede Antwort klingt gut: Vibe Coding gegen produktiven Code, der Agent hilft beim Bewerten, die letzte Entscheidung bleibt beim Menschen | beide, als Dialog | Kap. 5 |
 
-Wir wechseln etwa alle drei Minuten.
+Wir wechseln etwa alle drei Minuten. Das erste Beispiel des Artikels, Automotive SPICE, hat
+in Teil 2 keinen eigenen Abschnitt: Es ist die Demo, und wir zeigen es in Teil 3. Seine zwei
+Minuten gehen an den Schülerpraktikanten und an „Jede Antwort klingt gut“.
+*(Verteilung: Entscheidung von Claude.)*
 
 **Teil 3 · Demo-Ergebnis (5 min)**
 
@@ -77,7 +79,16 @@ Wir wechseln etwa alle drei Minuten.
    Agent gestellt, und was hat er stillschweigend entschieden?
 3. Wir bewerten das Ergebnis für sich, ohne Vergleich mit der Implementierung, die es schon gab.
 4. Karsten schließt mit der Zusammenfassung: Aus dem Schülerpraktikanten ist ein Kollege
-   geworden. Dann folgen „Questions?“ und „Some Links“.
+   geworden.
+5. Die Fragerunde. Sie ist die einzige Stelle, an der das Publikum spricht. Eine Folie vor
+   „Questions?“ zeigt die drei offenen Fragen aus dem Artikel als Einstieg in eine kurze
+   Diskussion: Ist ein möglichst kurzer Prompt besser, der dem Agenten viel Freiheit lässt? Oder
+   soll der Agent lieber alles nachfragen? Wie viel Kontrolle braucht ein Agent? Die Demo hat
+   gerade eine Antwort gezeigt, die wir zur Diskussion stellen: ein Prompt von einer Zeile, und
+   der Agent sammelt seine Fragen, statt nachzufragen. Die Fragen stehen auf einer eigenen
+   Folie, weil „Questions?“ in allen drei Decks gleich aussieht. *(Eigene Folie: Entscheidung
+   von Claude.)*
+6. Dann folgen „Questions?“ und „Some Links“.
 
 ### Die Demo
 
@@ -120,9 +131,11 @@ Wir wechseln etwa alle drei Minuten.
   Testläufe. Hier hat er rund 20 Minuten. Das `AGENTS.md` von SPLed bekommt dafür eine allgemeine
   Regel: nur die betroffenen Varianten bauen und testen, den vollen Lauf über alle Varianten
   einmal am Ende.
-- **Abbruchregel:** Zwei bis drei Probeläufe vom kalten Start, mit Stoppuhr. Bleibt der Agent
-  sicher unter 18 Minuten, zeigen wir in Teil 3 das Live-Ergebnis. Sonst starten wir ihn trotzdem
-  live, zeigen in Teil 3 einen vorbereiteten Lauf aus der Probe und sagen das offen.
+- **Probeläufe:** Zwei bis drei Läufe vom kalten Start, mit Stoppuhr. Sie zeigen, ob der Agent
+  in 20 Minuten fertig wird, und liefern das Backup.
+- **Wenn die Demo nicht fertig ist:** Wir starten den Agenten in jedem Fall live. Ist er in Teil 3
+  nicht fertig, zeigen wir entweder, was bis dahin fertig ist, oder das Ergebnis aus einem
+  Probelauf, das Backup. Wir sagen offen, was wir zeigen.
 - **Plan B:** Ein aufgezeichneter Lauf liegt in jedem Fall bereit, auch für den Fall, dass das
   Netz vor Ort ausfällt.
 
