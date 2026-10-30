@@ -342,3 +342,30 @@ pre.code-wrapper {
     margin-top: 0;
     margin-bottom: 0;
 }
+
+/* A Mermaid gitGraph, drawn large enough to read in the room, with its commit labels level.
+ * Mermaid 11.4 rotates the labels by 45 degrees whatever the rotateCommitLabel option says;
+ * in a top-to-bottom graph the rotation is the labels' only transform. */
+.reveal .git-graph svg {
+    width: 100%;
+    height: auto;
+    max-width: none !important;
+    /* The width Mermaid computes is for rotated labels; level ones reach further left. */
+    overflow: visible;
+}
+
+.reveal .git-graph .commit-label,
+.reveal .git-graph .commit-label-bkg {
+    transform: none;
+}
+
+/* An arrow between two elements of a slide, drawn by the script in the deck's index.html. */
+.reveal svg.slide-arrow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+}
