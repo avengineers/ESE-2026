@@ -186,6 +186,70 @@
     font-style: normal;
 }
 
+/* --- The move between build environments ------------------------------ */
+
+.reveal table.move {
+    width: 880px;
+    margin: 0 auto 24px;
+    border-collapse: collapse;
+    font-size: 19px;
+    line-height: 1.35;
+    text-align: left;
+}
+
+.reveal table.move th,
+.reveal table.move td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+    text-align: left;
+}
+
+.reveal table.move th {
+    font-size: 16px;
+    font-weight: normal;
+    color: var(--muted);
+}
+
+.reveal table.move td:first-child { font-weight: bold; white-space: nowrap; }
+.reveal table.move code { font-family: var(--mono); font-size: 16px; }
+.reveal table.move .cost { color: var(--tied); }
+.reveal table.move .cost.ok { color: var(--muted); }
+.reveal table.move + .verdict { width: 880px; margin: 0 auto; text-align: left; }
+
+/* --- The idea: boxes on a grid, centred content ----------------------- */
+
+.node {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface-strong);
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+}
+
+.node .chip { margin: 0; }
+
+.reveal svg.flow { overflow: visible; }
+.flow line { stroke: var(--line); stroke-width: 2; }
+.flow marker path { fill: var(--line); }
+
+/* --- Which format: one cut, one pick ---------------------------------- */
+
+/* A reaction over a box. */
+.scared { font-size: 80px; line-height: 1; }
+
+/* Appears like any fragment, then the step after it outlines it in the accent. */
+.reveal .slides section .fragment.pick.visible { transition: opacity 0.4s, box-shadow 0.5s; }
+.reveal .slides section .fragment.pick.visible:not(.current-fragment) { box-shadow: 0 0 0 3px var(--accent); }
+
 /* --- Components on a platform ------------------------------------------ */
 
 .app {
@@ -305,7 +369,7 @@
     color: var(--code-fg);
 }
 
-.code .f { color: var(--code-comment); }
+.code .f, .term .f { color: var(--code-comment); }
 
 .reader {
     padding: 6px 12px;
@@ -800,8 +864,6 @@
     font-size: 14px;
     color: var(--line);
 }
-/* The one step all platforms share works on the product data: paper. */
-.pstep.shared { background: var(--paper); border-color: transparent; color: var(--ink); }
 .pstep.build { font-family: var(--mono); }
 
 /* Emphasis: plain text first, then the next click makes it bigger and highlighted. */
