@@ -1,21 +1,45 @@
 /* Styles of the content slides of this deck. The common slides keep custom.css. */
 
+/* The palette. Diagrams use only these tokens; the artefacts (menuconfig,
+   notification, e-mail, terminal, the 2000 homepage) keep their real look.
+   - neutral boxes: platform, tools, layers, steps
+   - paper: the application and its components, the one thing that stands out
+   - accent: "look here" (current item, highlighter, emphasis)
+   - tied: "problem" (code tied to the platform, holes, the wall)
+   - disco / sleep: only the two variants */
 :root {
     --disco: #3ddc84;
     --sleep: #b58cff;
-    --common: rgba(255, 255, 255, 0.45);
+    --accent: #FEEFA4;
+    --accent-soft: rgba(254, 239, 164, 0.35);
+    --accent-on-paper: #ffe14d;
     --tied: #ff6b5b;
     --bios: #0000a8;
+
+    --fg: #eee;
+    --muted: rgba(255, 255, 255, 0.65);
+    --line: rgba(255, 255, 255, 0.35);
+    --common: var(--line);
+    --surface: rgba(255, 255, 255, 0.08);
+    --surface-strong: rgba(255, 255, 255, 0.16);
+    --paper: #e9e6df;
+    --ink: #222;
+    --code-bg: #272822;
+    --code-fg: #f8f8f2;
+    --code-comment: #a6a28c;
+
+    --mono: ui-monospace, Menlo, Consolas, monospace;
+    --radius: 8px;
 }
 
 /* A small label instead of a slide title. */
 .reveal .label {
     margin: 0 0 24px;
     text-align: left;
-    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-family: var(--mono);
     font-size: 22px;
     letter-spacing: 0.05em;
-    color: rgba(255, 255, 255, 0.75);
+    color: var(--muted);
 }
 
 .stage {
@@ -31,15 +55,13 @@
 }
 
 .verdict {
-    font-family: Georgia, serif;
-    font-style: italic;
-    font-size: 24px;
+    font-size: 26px;
+    color: var(--fg);
 }
 
 /* --- Context and customer e-mails -------------------------------------- */
 
 .lead {
-    font-family: Georgia, serif;
     font-size: 38px;
     line-height: 1.4;
 }
@@ -48,8 +70,9 @@
     width: 300px;
     height: 150px;
     padding-top: 40px;
-    border: 2px solid var(--common);
-    border-radius: 10px;
+    border: 2px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
     text-align: center;
     font-size: 26px;
     box-sizing: border-box;
@@ -64,16 +87,16 @@
 .msg {
     width: 410px;
     padding: 18px 22px;
-    border-radius: 6px;
-    background: #f4f1ea;
-    color: #222;
+    border-radius: var(--radius);
+    background: var(--paper);
+    color: var(--ink);
     font-size: 21px;
     line-height: 1.6;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 .msg-head {
-    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-family: var(--mono);
     font-size: 14px;
     color: #666;
     border-bottom: 1px solid #ccc;
@@ -83,7 +106,6 @@
 
 .msg p {
     margin: 0;
-    font-family: Georgia, serif;
 }
 
 .w {
@@ -104,7 +126,12 @@
     background-size: 100% 100%;
 }
 
-.c-common { --c: rgba(120, 160, 255, 0.45); }
+.c-common { --c: var(--accent-soft); }
+
+/* On paper the soft accent washes out: a real highlighter, and stronger variant colours. */
+.msg .c-common, .comp .c-common, .app .c-common { --c: var(--accent-on-paper); }
+.msg .c-disco, .comp .c-disco, .app .c-disco { --c: rgba(61, 220, 132, 0.8); }
+.msg .c-sleep, .comp .c-sleep, .app .c-sleep { --c: rgba(181, 140, 255, 0.8); }
 .c-disco { --c: rgba(61, 220, 132, 0.6); }
 .c-sleep { --c: rgba(181, 140, 255, 0.6); }
 
@@ -113,10 +140,10 @@
 .card {
     width: 230px;
     padding: 10px 14px;
-    border-radius: 8px;
+    border-radius: var(--radius);
     font-size: 18px;
     line-height: 1.4;
-    color: #111;
+    color: var(--ink);
 }
 
 .card b { display: block; font-size: 22px; }
@@ -128,7 +155,7 @@
     text-align: center;
     font-size: 20px;
     padding: 8px 0;
-    border-bottom: 2px solid var(--common);
+    border-bottom: 2px solid var(--line);
 }
 
 .col-head small { display: block; font-size: 14px; opacity: 0.7; }
@@ -138,19 +165,18 @@
     height: 80px;
     line-height: 80px;
     text-align: center;
-    border-radius: 8px;
+    border-radius: var(--radius);
     font-size: 20px;
 }
 
-.cell.done { background: rgba(255, 255, 255, 0.12); }
-.cell.open { border: 2px dashed var(--common); font-size: 34px; }
+.cell.done { background: var(--surface-strong); }
+.cell.open { border: 2px dashed var(--line); font-size: 34px; }
 
 /* --- Just port it ------------------------------------------------------ */
 
 .just {
-    font-family: Georgia, serif;
-    font-style: italic;
-    font-size: 96px;
+    font-family: var(--r-heading-font);
+    font-size: 120px;
     color: #fff;
     white-space: nowrap;
 }
@@ -160,27 +186,15 @@
     font-style: normal;
 }
 
-.reveal ol.bill {
-    display: block;
-    list-style: none;
-    margin: 0;
-    font-family: Georgia, serif;
-    font-size: 30px;
-    line-height: 1.7;
-    color: #fff;
-}
-
-.bill em { color: var(--tied); font-style: normal; }
-
 /* --- Components on a platform ------------------------------------------ */
 
 .app {
     width: 400px;
     height: 130px;
     padding: 10px 18px;
-    border-radius: 6px;
-    background: #e9e6df;
-    color: #222;
+    border-radius: var(--radius);
+    background: var(--paper);
+    color: var(--ink);
     font-size: 20px;
     box-sizing: border-box;
 }
@@ -196,7 +210,7 @@
     height: 28px;
     margin: 8px 8px 0 0;
     border-radius: 4px;
-    background: #cfcac0;
+    background: rgba(0, 0, 0, 0.12);
 }
 
 .tile {
@@ -204,10 +218,10 @@
     height: 44px;
     line-height: 44px;
     text-align: center;
-    border-radius: 6px;
-    background: #e9e6df;
-    color: #222;
-    font-family: ui-monospace, Menlo, Consolas, monospace;
+    border-radius: var(--radius);
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--mono);
     font-size: 14px;
 }
 
@@ -219,7 +233,9 @@
     height: 56px;
     line-height: 56px;
     padding-left: 18px;
-    border-radius: 6px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface-strong);
     font-size: 20px;
     color: #fff;
 }
@@ -228,23 +244,21 @@
     height: 26px;
     line-height: 26px;
     font-size: 14px;
-    font-family: ui-monospace, Menlo, Consolas, monospace;
-    background: repeating-linear-gradient(45deg, #555, #555 8px, #666 8px, #666 16px);
+    font-family: var(--mono);
+    background: repeating-linear-gradient(45deg, var(--surface), var(--surface) 8px, var(--surface-strong) 8px, var(--surface-strong) 16px);
 }
 
-.layer.zephyr { background: #3c4a5e; }
-.layer.autosar { background: #1f5f8b; }
-.layer.board { background: #2e7d32; height: 44px; line-height: 44px; font-size: 17px; }
-.layer.board.series { background: #8d6e3f; }
+/* Zephyr, AUTOSAR and the boards differ by their names, not by colour. */
+.layer.board { background: var(--surface); height: 44px; line-height: 44px; font-size: 17px; }
 .ghost { opacity: 0.4; }
 
 .comp {
     width: 620px;
     padding: 18px 24px;
-    border-radius: 8px;
-    background: #e9e6df;
-    color: #222;
-    font-family: ui-monospace, Menlo, Consolas, monospace;
+    border-radius: var(--radius);
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--mono);
     font-size: 19px;
     line-height: 1.7;
 }
@@ -253,8 +267,8 @@
     display: inline-block;
     padding: 0 10px;
     border-radius: 12px;
-    background: #222;
-    color: #FEEFA4;
+    background: var(--ink);
+    color: var(--accent);
     font-size: 15px;
 }
 
@@ -266,55 +280,43 @@
     width: 820px;
     margin: 0 auto;
     padding: 16px 22px;
-    background: #111;
-    border-radius: 8px;
-    font-family: ui-monospace, Menlo, Consolas, monospace;
+    background: var(--code-bg);
+    border-radius: var(--radius);
+    font-family: var(--mono);
     font-size: 19px;
     line-height: 1.75;
     text-align: left;
-    color: #ddd;
+    color: var(--code-fg);
 }
 
-.term .head { color: #888; font-size: 14px; }
-.term .n { color: #666; display: inline-block; width: 2.5em; }
+.term .head { color: var(--code-comment); font-size: 14px; }
+.term .n { color: var(--code-comment); display: inline-block; width: 2.5em; }
 .term .instead { color: var(--tied); padding-left: 1em; font-size: 16px; }
-
-.reveal .slides section .fragment.cross {
-    opacity: 1;
-    visibility: inherit;
-    background: linear-gradient(var(--tied), var(--tied)) no-repeat 0 55%;
-    background-size: 0% 3px;
-    transition: background-size 0.5s ease, color 0.5s;
-}
-
-.reveal .slides section .fragment.cross.visible {
-    background-size: 100% 3px;
-    color: #777;
-}
 
 .code {
     width: 400px;
     padding: 12px 16px;
-    background: #111;
-    border-radius: 6px;
-    font-family: ui-monospace, Menlo, Consolas, monospace;
+    background: var(--code-bg);
+    border-radius: var(--radius);
+    font-family: var(--mono);
     font-size: 14px;
     line-height: 1.45;
     white-space: pre;
-    color: #ddd;
+    color: var(--code-fg);
 }
 
-.code .f { color: #888; }
+.code .f { color: var(--code-comment); }
 
 .reader {
     padding: 6px 12px;
-    border: 2px solid var(--common);
+    border: 2px solid var(--line);
     border-radius: 18px;
+    background: var(--surface);
     font-size: 17px;
     color: #fff;
 }
 
-.readers-lines line { stroke: rgba(255, 255, 255, 0.5); stroke-width: 2; }
+.readers-lines line { stroke: var(--line); stroke-width: 2; }
 
 .where {
     display: flex;
@@ -396,7 +398,7 @@
     display: flex;
     justify-content: space-between;
     padding: 6px 12px;
-    background: #ffd54f;
+    background: var(--accent);
     font-size: 13px;
 }
 
@@ -412,7 +414,7 @@
 }
 
 .notify-buttons span { padding: 3px 10px; border: 1px solid #bbb; border-radius: 4px; }
-.notify-buttons .primary { background: #1f5f8b; border-color: #1f5f8b; color: #fff; }
+.notify-buttons .primary { background: var(--ink); border-color: var(--ink); color: #fff; }
 
 .reveal .slides section .notify.fragment.visible {
     animation: nag 0.5s ease 0.3s 2;
@@ -432,17 +434,17 @@
 
 .step small {
     display: block;
-    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-family: var(--mono);
     font-size: 13px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--muted);
 }
 
-.step.l1 { font-family: Georgia, serif; font-style: italic; font-size: 34px; }
-.step.l2, .step.l3, .step.l4 { font-family: ui-monospace, Menlo, Consolas, monospace; }
+.step.l1 { font-size: 34px; }
+.step.l2, .step.l3, .step.l4 { font-family: var(--mono); }
 .step.l3 { font-size: 21px; }
-.step.l4 { font-size: 16px; color: #FEEFA4; }
+.step.l4 { font-size: 16px; color: var(--accent); }
 .notify-buttons .disabled { color: #aaa; border-color: #ddd; background: #f2f2f2; }
 
 /* --- A homepage from 2000 in Internet Explorer ------------------------- */
@@ -626,53 +628,94 @@
 }
 
 .reveal ol.rail {
+    --rail-done: #dfe9ec;
+    --rail-now: var(--accent);
+    --rail-todo: rgba(255, 255, 255, 0.28);
     display: block;
     list-style: none;
     margin: 0;
-    padding: 0 0 0 26px;
-    border-left: 2px solid var(--common);
+    padding: 0;
     font-size: 22px;
 }
 
+/* One row per chapter: a dot, and a line segment down to the next dot. */
 .reveal ol.rail li {
     position: relative;
-    margin: 0 0 16px;
-    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+    padding: 0 0 18px 44px;
+    line-height: 30px;
+    color: rgba(255, 255, 255, 0.55);
 }
 
 .reveal ol.rail li::before {
     content: "";
     position: absolute;
-    left: -35px;
-    top: 9px;
-    width: 14px;
-    height: 14px;
+    z-index: 1;
+    left: 2px;
+    top: 7px;
+    box-sizing: border-box;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
-    border: 2px solid var(--common);
+    border: 2px solid rgba(255, 255, 255, 0.5);
     background: #0b3c4a;
 }
 
+.reveal ol.rail li::after {
+    content: "";
+    position: absolute;
+    left: 9px;
+    top: 15px;
+    bottom: -15px;
+    width: 2px;
+    background: var(--rail-todo);
+}
+
+.reveal ol.rail li:last-child::after { display: none; }
+
+.reveal ol.rail li.done { color: rgba(255, 255, 255, 0.8); }
+.reveal ol.rail li.done::before {
+    border: none;
+    background: var(--rail-done) center / 10px no-repeat
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M1.5 5.2l2.3 2.3 4.7-5' fill='none' stroke='%230b3c4a' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+.reveal ol.rail li.done::after { background: var(--rail-done); }
+
 .reveal ol.rail li.now { color: #fff; font-weight: bold; }
-.reveal ol.rail li.now::before { background: #FEEFA4; border-color: #FEEFA4; }
-.reveal ol.rail li.done::before { background: var(--common); border-color: transparent; }
+.reveal ol.rail li.now::before {
+    left: 0;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    border: none;
+    background: var(--rail-now);
+    box-shadow: 0 0 0 6px rgba(254, 239, 164, 0.22);
+}
+
+.reveal ol.rail li.jump { cursor: pointer; }
+.reveal ol.rail li.jump:hover { color: #fff; }
+
+/* A jump from the rail is navigation, not part of the talk: no slide transition. */
+.reveal.rail-jump .slides section,
+.reveal.rail-jump .backgrounds .slide-background { transition: none !important; }
 
 .thread-text {
     flex: 1;
-    font-family: Georgia, serif;
     font-size: 30px;
     line-height: 1.4;
 }
 
 /* --- The prototype stack ----------------------------------------------- */
 
-.layer.app-layer { background: #e9e6df; color: #222; }
-.layer.host { background: #5d4037; }
+.layer.app-layer { background: var(--paper); border-color: transparent; color: var(--ink); }
+.layer.host { background: var(--surface); }
 
 .zbox {
     width: 762px;
     padding: 10px 18px 14px;
-    border-radius: 6px;
-    background: #3c4a5e;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface-strong);
     color: #fff;
     font-size: 20px;
     box-sizing: content-box;
@@ -683,27 +726,27 @@
     margin: 10px 8px 0 0;
     padding: 4px 12px;
     border-radius: 14px;
-    background: rgba(255, 255, 255, 0.15);
-    font-family: ui-monospace, Menlo, Consolas, monospace;
+    background: var(--surface-strong);
+    font-family: var(--mono);
     font-size: 15px;
 }
 
 .chip-test {
     padding: 6px 14px;
-    border-radius: 6px;
-    background: #FEEFA4;
-    color: #222;
-    font-family: ui-monospace, Menlo, Consolas, monospace;
+    border-radius: var(--radius);
+    background: var(--accent);
+    color: var(--ink);
+    font-family: var(--mono);
     font-size: 16px;
 }
 
 .zrow { display: flex; align-items: center; margin-top: 10px; }
-.zrow .zk { width: 170px; font-size: 16px; color: rgba(255, 255, 255, 0.7); }
+.zrow .zk { width: 170px; font-size: 16px; color: var(--muted); }
 .zrow .chip { margin: 0 8px 0 0; }
 
 /* --- The first Zephyr application -------------------------------------- */
 
-.code .hl { color: #FEEFA4; }
+.code .hl { color: var(--accent); }
 .code.bar-disco { border-top: 6px solid var(--disco); }
 .code.bar-sleep { border-top: 6px solid var(--sleep); }
 .reveal .code .fragment.mark.visible { color: #fff; }
@@ -712,8 +755,8 @@
 /* Highlighted only while it is the current step. */
 .reveal .slides section .fragment.hl-current { opacity: 1; visibility: inherit; }
 .reveal .slides section .fragment.hl-current.current-fragment {
-    background: rgba(254, 239, 164, 0.25);
-    outline: 2px solid #FEEFA4;
+    background: var(--accent-soft);
+    border-radius: 3px;
 }
 
 /* --- Separation of concerns: wishes to components ----------------------- */
@@ -722,18 +765,17 @@
     padding: 2px 10px;
     border-radius: 3px;
     background: var(--c);
-    font-family: Georgia, serif;
     font-size: 22px;
 }
 
-.arrow { font-size: 30px; line-height: 44px; color: var(--common); }
-.tile.option { background: transparent; border: 2px dashed var(--common); color: #fff; box-sizing: border-box; }
+.arrow { font-size: 30px; line-height: 44px; color: var(--line); }
+.tile.option { background: transparent; border: 2px dashed var(--line); color: #fff; box-sizing: border-box; }
 
 /* --- The series chapter ------------------------------------------------ */
 
-.layer.mocks { background: #6d5a8a; height: 168px; line-height: 168px; }
-.tile.mock { background: transparent; border: 2px dashed var(--common); color: #fff; box-sizing: border-box; }
-.tile-note { width: 220px; font-size: 15px; font-style: italic; color: rgba(255, 255, 255, 0.75); }
+.layer.mocks { background: transparent; border: 2px dashed var(--line); height: 168px; line-height: 168px; }
+.tile.mock { background: transparent; border: 2px dashed var(--line); color: #fff; box-sizing: border-box; }
+.tile-note { width: 220px; font-size: 15px; color: var(--muted); }
 
 /* --- Platform pipelines ------------------------------------------------ */
 
@@ -741,8 +783,9 @@
 .pstep {
     position: relative;
     padding: 6px 10px;
-    border-radius: 6px;
-    background: #3c4a5e;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface-strong);
     color: #fff;
     font-size: 15px;
     line-height: 1.3;
@@ -755,10 +798,11 @@
     bottom: -18px;
     transform: translateX(-50%);
     font-size: 14px;
-    color: var(--common);
+    color: var(--line);
 }
-.pstep.shared { background: #e9e6df; color: #222; }
-.pstep.build { background: #2e7d32; font-family: ui-monospace, Menlo, Consolas, monospace; }
+/* The one step all platforms share works on the product data: paper. */
+.pstep.shared { background: var(--paper); border-color: transparent; color: var(--ink); }
+.pstep.build { font-family: var(--mono); }
 
 /* Emphasis: plain text first, then the next click makes it bigger and highlighted. */
 .reveal .slides section .fragment.emph {
@@ -772,7 +816,7 @@
 
 .reveal .slides section .fragment.emph.visible {
     padding: 4px 14px;
-    background-color: #FEEFA4;
-    color: #222;
+    background-color: var(--accent);
+    color: var(--ink);
     font-size: 30px;
 }

@@ -63,8 +63,6 @@ I started with embedded software engineering when websites looked like this and 
 
 ---
 
-<p class="label">// the thread</p>
-
 <div class="thread">
 <ol class="rail">
 <li class="now">Two customers, one product line</li>
@@ -87,13 +85,16 @@ The common thread, not an agenda: one product line, from the e-mail to series pr
 
 ---
 
-<p class="label">// context</p>
+### Context
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:40px; width:880px;">
 <div class="lead abs" style="left:0; top:0; width:880px;">We are a supplier. We build SPLed, a small light controller, for two customers.</div>
 <div class="customer abs" style="left:80px; top:220px;">Customer A</div>
 <div class="customer abs" style="left:500px; top:220px;">Customer B</div>
 <div class="wall abs fragment" style="left:438px; top:200px;"></div>
+</div>
 </div>
 
 Note:
@@ -101,8 +102,6 @@ Note:
 Section 1, context, about 2 minutes. One code base, two customers. Each customer sees only their own product: in the code, in the binary and in the documents.
 
 ---
-
-<p class="label">// the thread</p>
 
 <div class="thread">
 <ol class="rail">
@@ -127,9 +126,11 @@ Chapter 2: From wishes to features. Say the sentence and go on.
 
 <!-- .slide: data-auto-animate data-auto-animate-id="fm" -->
 
-<p class="label">// customer input</p>
+### Customer input
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:54px; width:880px;">
 <div class="msg abs" style="left:0; top:10px;">
 <div class="msg-head">From: Customer A<br>Subject: light for our party room</div>
 <p>We need a <span class="w fragment mark c-common" data-fragment-index="0">light</span> for our party room. It shall <span class="w fragment mark c-disco" data-fragment-index="1" data-id="blink">blink</span> so people notice it. Please make it <span class="w fragment mark c-disco" data-fragment-index="1" data-id="green">green</span>. We want to <span class="w fragment mark c-common" data-fragment-index="0">switch it on and off</span> with one button.</p>
@@ -137,6 +138,7 @@ Chapter 2: From wishes to features. Say the sentence and go on.
 <div class="msg abs" style="left:460px; top:70px;">
 <div class="msg-head">From: Customer B<br>Subject: bedroom lights</div>
 <p>Our hotel needs a calm <span class="w fragment mark c-common" data-fragment-index="0">light</span> for the bedrooms. Guests shall <span class="w fragment mark c-sleep" data-fragment-index="1" data-id="dim">dim it by hand</span>. A soft <span class="w fragment mark c-sleep" data-fragment-index="1" data-id="purple">purple</span> works best. And of course a button to <span class="w fragment mark c-common" data-fragment-index="0">switch it on and off</span>.</p>
+</div>
 </div>
 </div>
 
@@ -196,9 +198,12 @@ First ticks: a feature model, with its rules, as the single source of what diffe
 
 <!-- .slide: data-auto-animate data-auto-animate-id="concerns" -->
 
-<p class="label">// separation of concerns</p>
+### Separation of concerns
 
 <div class="stage">
+<!-- The content is 315px high: this offset centres it in the stage. -->
+<div class="abs" style="left:0; top:108px; width:880px;">
+<p class="label abs fragment" style="left:0; top:-30px;" data-fragment-index="0">// wishes</p>
 <div class="fragment" data-fragment-index="0">
 <span class="wish c-common abs" style="left:0; top:38px;">light</span>
 <span class="wish c-common abs" style="left:0; top:108px;">switch it on and off</span>
@@ -219,6 +224,7 @@ First ticks: a feature model, with its rules, as the single source of what diffe
 <div class="tile option abs" style="left:480px; top:240px; width:380px;">options inside light_controller</div>
 </div>
 <p class="label abs fragment" style="left:480px; top:-30px;" data-fragment-index="1">// components</p>
+</div>
 </div>
 
 <div class="notify fragment" data-id="bios"><div class="notify-head"><span>⚠ Development environment</span><span>✕</span></div><div class="notify-body"><b>New requirement detected</b>Your development environment does not meet it yet.</div><div class="notify-buttons"><span class="disabled">Remind me later</span><span class="primary">Open</span></div></div>
@@ -251,8 +257,6 @@ Third tick: a component model. Each concern lives in its own component, and a fe
 
 ---
 
-<p class="label">// the thread</p>
-
 <div class="thread">
 <ol class="rail">
 <li class="done">Two customers, one product line</li>
@@ -274,12 +278,15 @@ Chapter 3: A prototype on Zephyr. Say the sentence and go on.
 
 ---
 
-<p class="label">// the decision</p>
+### The decision
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:88px; width:880px;">
 <div class="msg abs" style="left:78px; top:40px; width:680px;">
 <div class="msg-head">From: Innovation team<br>Subject: prototypes for Disco and Sleep</div>
 <p>We build the prototypes on the <span class="w fragment mark c-common">ESP32-H2 dev board</span> with <span class="w fragment mark c-common">Zephyr</span>. Drivers, shell and logging come with it, so the board runs <span class="w fragment mark c-common">within days</span>.</p>
+</div>
 </div>
 </div>
 
@@ -289,12 +296,15 @@ Section 3, the prototype. The innovation department decides: a dev board and Zep
 
 ---
 
-<p class="label">// what Zephyr brings</p>
+### What Zephyr brings
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:118px; width:880px;">
 <div class="zbox abs" style="left:0; top:20px; width:380px;">Software components<div><span class="chip">Kernel</span><span class="chip">Device drivers</span><span class="chip">Shell</span><span class="chip">Logging</span><span class="chip">HAL modules</span></div></div>
 <div class="zbox abs fragment" style="left:446px; top:20px; width:380px;">Tooling and build environment<div><span class="chip">west</span><span class="chip">CMake</span><span class="chip">Kconfig</span><span class="chip">devicetree</span><span class="chip">Zephyr SDK</span><span class="chip">Twister</span></div></div>
 <div class="verdict abs fragment" style="left:0; top:180px;">The team takes both: the code and the way of working.</div>
+</div>
 </div>
 
 Note:
@@ -305,14 +315,17 @@ A Zephyr project has two parts. The software components: kernel, drivers, subsys
 
 <!-- .slide: data-auto-animate data-auto-animate-id="zapp" -->
 
-<p class="label">// the first application</p>
+### The first application
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:40px; width:880px;">
 <div class="code abs" style="left:0; top:20px; width:700px; font-size:22px;" data-id="tree">app/
 ├── CMakeLists.txt   <span class="f"># finds Zephyr, lists the sources</span>
 ├── Kconfig          <span class="f"># the SPLed features</span>
 ├── prj.conf         <span class="f"># the selection for this build</span>
 └── src/             <span class="f"># the SPLed components</span></div>
+</div>
 </div>
 
 Note:
@@ -323,9 +336,11 @@ The innovation team creates the first Zephyr application. A folder with four ent
 
 <!-- .slide: data-auto-animate data-auto-animate-id="zapp" -->
 
-<p class="label">// where is the feature model?</p>
+### Where is the feature model?
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:40px; width:880px;">
 <div class="code abs" style="left:0; top:20px; width:250px; font-size:16px;" data-id="tree">app/
 ├── CMakeLists.txt
 ├── <span class="hl">Kconfig</span>
@@ -345,6 +360,7 @@ The innovation team creates the first Zephyr application. A folder with four ent
     endchoice
 endmenu</span><span class="fragment hl-current blk">source "Kconfig.zephyr"</span></div>
 </div>
+</div>
 
 Note:
 
@@ -354,9 +370,11 @@ The feature model is app/Kconfig. First click: the menu, with our features from 
 
 <!-- .slide: data-auto-animate data-auto-animate-id="zvar" -->
 
-<p class="label">// where is the variant model?</p>
+### Where is the variant model?
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:40px; width:880px;">
 <div class="code abs" style="left:0; top:20px; width:250px; font-size:16px;" data-id="tree">app/
 ├── CMakeLists.txt
 ├── Kconfig
@@ -379,6 +397,7 @@ CONFIG_COLOR_PURPLE=y</div>
 <div>$ west build <span class="fragment" data-fragment-index="3">-b esp32h2_devkitm</span> <span class="fragment" data-fragment-index="4">app</span> <span class="fragment" data-fragment-index="5">-- -D<span class="w fragment mark c-disco" data-fragment-index="6">FILE_SUFFIX=disco</span></span></div>
 </div>
 </div>
+</div>
 
 Note:
 
@@ -386,9 +405,11 @@ Two variants, two files, written by hand. menuconfig shows the options, but save
 
 ---
 
-<p class="label">// from the selection to the code</p>
+### From the selection to the code
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:52px; width:880px;">
 <div class="code abs" style="left:0; top:20px; width:400px; font-size:14px;"><span class="f">build/zephyr/include/generated/zephyr/autoconf.h</span>
 #define CONFIG_GPIO 1
 #define CONFIG_SHELL 1
@@ -410,6 +431,7 @@ CONFIG_COLOR_GREEN=y
 <div class="code abs fragment" style="left:448px; top:240px; width:400px; font-size:14px;" data-fragment-index="2"><span class="f">app/CMakeLists.txt</span>
 target_sources_ifdef(CONFIG_BLINKING ...)</div>
 </div>
+</div>
 
 Note:
 
@@ -419,9 +441,11 @@ The build turns the selection of the variant into two files. autoconf.h has one 
 
 <!-- .slide: data-auto-animate data-auto-animate-id="zvar" -->
 
-<p class="label">// where is the component model?</p>
+### Where is the component model?
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:40px; width:880px;">
 <div class="code abs" style="left:0; top:20px; width:250px; font-size:16px;" data-id="tree">app/
 ├── <span class="hl">CMakeLists.txt</span>
 ├── Kconfig
@@ -439,6 +463,7 @@ target_sources(app PRIVATE
     src/power_signal_processing.c)
 target_sources_ifdef(CONFIG_MANUAL_DIMMING
     app PRIVATE src/brightness_controller.c)</div>
+</div>
 </div>
 
 Note:
@@ -469,9 +494,11 @@ All three come in unticked. Then tick the feature model and the variant model. T
 
 ---
 
-<p class="label">// debugging without the board</p>
+### Debugging without the board
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:22px; width:880px;">
 <div class="layer abs app-layer" style="left:40px; top:20px;">Application: SPLed components</div>
 <div class="chip-test abs fragment" style="left:600px; top:28px;" data-fragment-index="1">+ ztest unit tests</div>
 <div class="zbox abs" style="left:40px; top:96px;">Zephyr RTOS<div class="zrow"><span class="zk">Subsystems</span><span class="chip">Shell</span><span class="chip">Logging</span></div><div class="zrow"><span class="zk">Device drivers</span><span class="chip">GPIO</span><span class="chip">LED strip (WS2812)</span></div><div class="zrow"><span class="zk">Kernel</span><span class="chip">Threads</span><span class="chip">Timers</span></div></div>
@@ -479,14 +506,13 @@ All three come in unticked. Then tick the feature model and the variant model. T
 <div class="layer abs host fragment" style="left:40px; top:290px;" data-fragment-index="0">native_sim on the host PC</div>
 <div class="verdict abs fragment" style="left:40px; top:370px;" data-fragment-index="1">Bugs are reproduced in unit tests on the host, not on the board.</div>
 </div>
+</div>
 
 Note:
 
 The first bugs come in. Debugging on the board is slow, so the team reproduces each problem in a unit test that runs on the host PC: Zephyr's native_sim board and ztest.
 
 ---
-
-<p class="label">// the thread</p>
 
 <div class="thread">
 <ol class="rail">
@@ -509,12 +535,15 @@ Chapter 4: The series product on AUTOSAR. Same questions as for the prototype.
 
 ---
 
-<p class="label">// the decision</p>
+### The decision
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:88px; width:880px;">
 <div class="msg abs" style="left:78px; top:40px; width:680px;">
 <div class="msg-head">From: Business Unit Light<br>Subject: series development for Disco and Sleep</div>
 <p>We build the series products on our <span class="w fragment mark c-common">in-house board</span> with <span class="w fragment mark c-common">AUTOSAR</span>. Our product lines are built with <span class="w fragment mark c-common">spl-core</span>, and the safety case needs a qualified stack.</p>
+</div>
 </div>
 </div>
 
@@ -524,12 +553,15 @@ Section 4, the series product. The business unit decides: its own board with an 
 
 ---
 
-<p class="label">// what the series platform brings</p>
+### What the series platform brings
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:90px; width:880px;">
 <div class="zbox abs" style="left:0; top:20px; width:380px;">Software components<div><span class="chip">OS</span><span class="chip">RTE</span><span class="chip">COM</span><span class="chip">I/O hardware abstraction</span><span class="chip">MCAL</span></div></div>
 <div class="zbox abs fragment" style="left:446px; top:20px; width:380px;">Tooling and build environment<div><span class="chip">Vendor configurator</span><span class="chip">ARXML</span><span class="chip">RTE generator</span><span class="chip">spl-core</span><span class="chip">CMake</span><span class="chip">Kconfig</span><span class="chip">GoogleTest</span></div></div>
 <div class="verdict abs fragment" style="left:0; top:200px;">Again both: the code and the way of working. None of it is Zephyr's.</div>
+</div>
 </div>
 
 Note:
@@ -540,14 +572,17 @@ The same two boxes as for Zephyr. The software components of AUTOSAR Classic: OS
 
 <!-- .slide: data-auto-animate data-auto-animate-id="sapp" -->
 
-<p class="label">// the first series application</p>
+### The first series application
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:28px; width:880px;">
 <div class="code abs" style="left:0; top:20px; width:700px; font-size:22px;" data-id="stree">SPLed/
 ├── CMakeLists.txt   <span class="f"># includes spl-core</span>
 ├── KConfig          <span class="f"># the SPLed features</span>
 ├── variants/        <span class="f"># one folder per variant</span>
 └── components/      <span class="f"># one folder per component</span></div>
+</div>
 </div>
 
 Note:
@@ -558,9 +593,11 @@ The business unit sets up the series project the spl-core way. A folder with fou
 
 <!-- .slide: data-auto-animate data-auto-animate-id="sapp" -->
 
-<p class="label">// where is the feature model?</p>
+### Where is the feature model?
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:28px; width:880px;">
 <div class="code abs" style="left:0; top:20px; width:250px; font-size:16px;" data-id="stree">SPLed/
 ├── CMakeLists.txt
 ├── <span class="hl">KConfig</span>
@@ -580,6 +617,7 @@ The business unit sets up the series project the spl-core way. A folder with fou
     endchoice
 endmenu</span></div>
 </div>
+</div>
 
 Note:
 
@@ -589,9 +627,11 @@ The feature model is KConfig again, the same language as in the prototype. First
 
 <!-- .slide: data-auto-animate data-auto-animate-id="svar" -->
 
-<p class="label">// where is the variant model?</p>
+### Where is the variant model?
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:26px; width:880px;">
 <div class="code abs" style="left:0; top:20px; width:270px; font-size:16px;" data-id="stree">SPLed/
 ├── KConfig
 ├── variants/
@@ -613,6 +653,7 @@ spl_add_component(components/power_signal_processing)
 <div>$ ./build.sh <span class="fragment" data-fragment-index="3">--build</span> <span class="fragment" data-fragment-index="4">--variant</span> <span class="fragment" data-fragment-index="5"><span class="w fragment mark c-disco" data-fragment-index="6">Disco</span></span></div>
 </div>
 </div>
+</div>
 
 Note:
 
@@ -622,9 +663,11 @@ A variant is a folder with its name. config.txt holds the feature selection, par
 
 <!-- .slide: data-auto-animate data-auto-animate-id="svar" -->
 
-<p class="label">// where is the component model?</p>
+### Where is the component model?
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:26px; width:880px;">
 <div class="code abs" style="left:0; top:20px; width:270px; font-size:16px;" data-id="stree">components/
 └── light_controller/
     ├── <span class="hl">CMakeLists.txt</span>
@@ -633,6 +676,7 @@ A variant is a folder with its name. config.txt holds the feature selection, par
     ├── test/
     └── doc/</div>
 <div class="code abs fragment" style="left:320px; top:20px; width:520px; font-size:16px;"><span class="f blk">components/light_controller/CMakeLists.txt</span><span class="blk"><span class="fragment hl-current">spl_add_source</span>(src/light_controller.c)</span><span class="blk"><span class="fragment hl-current">spl_add_test_source</span>(test/test_light_controller.cc)</span><span class="blk"><span class="fragment hl-current">spl_add_required_interface</span>(components/rte)</span><span class="blk"><span class="fragment hl-current">spl_create_component</span>(LONG_NAME "Light Controller")</span></div>
+</div>
 </div>
 
 Note:
@@ -663,9 +707,11 @@ All three come in unticked, then all three get ticked. spl-core has a variant mo
 
 ---
 
-<p class="label">// unit tests</p>
+### Unit tests
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:74px; width:880px;">
 <div class="tile abs" style="left:0; top:30px;">light_controller.c</div>
 <span class="arrow abs fragment" style="left:196px; top:30px;" data-fragment-index="0">+</span>
 <div class="tile abs fragment" style="left:230px; top:30px; width:240px;" data-fragment-index="0">test_light_controller.cc</div>
@@ -679,14 +725,13 @@ All three come in unticked, then all three get ticked. spl-core has a variant mo
 <div class="fragment" data-fragment-index="6">$ ./build.sh --build --variant Disco --build-kit test --target unittests</div>
 </div>
 </div>
+</div>
 
 Note:
 
 What goes into one unit test: the production source of the component, its test source, and mocks for everything the component calls from other components, here the RTE. The mocks are not written by hand: hammocking generates them. The result is one test executable per component, built and run on the host PC. Select the test build kit and build the unittests target of one component, or unittests for all components of the variant.
 
 ---
-
-<p class="label">// the thread</p>
 
 <div class="thread">
 <ol class="rail">
@@ -758,7 +803,7 @@ Pick it up, put it down. Next slide: open the block and look inside.
 
 <!-- .slide: data-auto-animate data-auto-animate-id="tangled" -->
 
-<p class="label">// what is inside the block</p>
+### What is inside the block
 
 <div class="stage">
 <div class="tile abs" style="left:40px; top:40px;" data-id="t1">light_controller</div>
@@ -782,7 +827,7 @@ Section 5, why it is not just, about 6 minutes. The components of SPLed. The red
 
 <!-- .slide: data-auto-animate data-auto-animate-id="tangled" -->
 
-<p class="label">// just port it</p>
+### Just port it
 
 <div class="stage">
 <div class="tile abs" style="left:40px; top:40px;" data-id="t1">light_controller</div>
@@ -834,8 +879,6 @@ Two requirements from the manager's request. The manager wants one product on tw
 
 ---
 
-<p class="label">// the thread</p>
-
 <div class="thread">
 <ol class="rail">
 <li class="done">Two customers, one product line</li>
@@ -857,14 +900,17 @@ Chapter 6: What if. The prototype team and the series team sit together. Say the
 
 ---
 
-<p class="label">// the question</p>
+### The question
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:42px; width:880px;">
 <div class="term abs fragment" style="left:0; top:110px; width:836px;" data-fragment-index="0">
 <div class="head">terminal</div>
 <div>$ … --variant Disco --platform zephyr</div>
 <div class="fragment" data-fragment-index="1">$ … --variant Disco --platform autosar</div>
 <div class="fragment" data-fragment-index="2">$ … --variant Disco --platform gtest</div>
+</div>
 </div>
 </div>
 
@@ -874,9 +920,11 @@ The question the two teams ask: can one repository build Disco for all three? Ze
 
 ---
 
-<p class="label">// the product line is in the build files</p>
+### The product line is in the build files
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:60px; width:880px;">
 <div class="code abs" style="left:0; top:20px; width:400px; font-size:16px;"><span class="f">Zephyr: app/CMakeLists.txt</span>
 target_sources_ifdef(
     <span class="w fragment mark c-common" data-fragment-index="0">CONFIG_MANUAL_DIMMING</span>
@@ -889,6 +937,7 @@ include(variants/<span class="w fragment mark c-common" data-fragment-index="1">
     components/light_controller)</div>
 <div class="verdict abs fragment" style="left:0; top:260px;" data-fragment-index="2">Both build with CMake, and the product line lives inside the build files.</div>
 </div>
+</div>
 
 Note:
 
@@ -898,9 +947,11 @@ The room has seen both files. First click: in Zephyr, a feature decides in CMake
 
 <!-- .slide: data-auto-animate data-auto-animate-id="bios6" -->
 
-<p class="label">// the idea</p>
+### The idea
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:100px; width:880px;">
 <div class="zbox abs fragment" style="left:0; top:60px; width:200px;" data-fragment-index="0">product line data<div class="zrow"><span class="chip">features</span></div><div class="zrow"><span class="chip">variants</span></div><div class="zrow"><span class="chip">components</span></div></div>
 <span class="arrow abs fragment" style="left:250px; top:110px;" data-fragment-index="1">→</span>
 <div class="zbox abs fragment" style="left:290px; top:60px; width:180px;" data-fragment-index="1">generator<div class="zrow"><span class="chip">one per platform</span></div></div>
@@ -909,6 +960,7 @@ The room has seen both files. First click: in Zephyr, a feature decides in CMake
 <div class="zbox abs fragment" style="left:560px; top:0; width:240px;" data-fragment-index="2">CMake glue<div class="zrow"><span class="chip">Zephyr build</span></div></div>
 <div class="zbox abs fragment" style="left:560px; top:130px; width:240px;" data-fragment-index="2">CMake glue<div class="zrow"><span class="chip">series build</span></div></div>
 <div class="verdict abs fragment" style="left:0; top:245px; font-size:20px; white-space:nowrap;" data-fragment-index="3">The steps differ, so <span class="fragment emph" data-fragment-index="4">the platform knows how to build a variant.</span></div>
+</div>
 </div>
 
 <div class="notify fragment" data-id="bios" data-fragment-index="5"><div class="notify-head"><span>⚠ Development environment</span><span>✕</span></div><div class="notify-body"><b>New requirement detected</b>Your development environment does not meet it yet.</div><div class="notify-buttons"><span class="disabled">Remind me later</span><span class="primary">Open</span></div></div>
@@ -946,9 +998,11 @@ The product line models are data files. Any tool can read them, and a generator 
 
 <!-- .slide: data-auto-animate data-auto-animate-id="yapp" -->
 
-<p class="label">// one product line, three platforms</p>
+### One product line, three platforms
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:32px; width:880px;">
 <div class="code abs" style="left:0; top:0; width:760px; font-size:18px;" data-id="ytree">SPLed/
 ├── <span class="hl">yanga.yaml</span>             <span class="f"># the pipeline and the feature model</span>
 ├── KConfig                <span class="f"># the product features</span>
@@ -963,6 +1017,7 @@ The product line models are data files. Any tool can read them, and a generator 
     └── gtest/<span class="hl">yanga.yaml</span></div>
 <div class="verdict abs fragment" style="left:0; top:370px;">yanga reads every yanga.yaml, wherever it is.</div>
 </div>
+</div>
 
 Note:
 
@@ -972,9 +1027,11 @@ The what-if, built with yanga. One repository, one application, three platforms.
 
 <!-- .slide: data-auto-animate data-auto-animate-id="yapp" -->
 
-<p class="label">// where is the variant model?</p>
+### Where is the variant model?
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:32px; width:880px;">
 <div class="code abs" style="left:0; top:20px; width:250px; font-size:16px;" data-id="ytree">SPLed/
 ├── yanga.yaml
 ├── KConfig
@@ -992,6 +1049,7 @@ variants:
   feature_selection:
     file: variants/Disco/config.txt</div>
 </div>
+</div>
 
 Note:
 
@@ -1001,9 +1059,11 @@ The variant is data: its name, a description, its components and its feature sel
 
 <!-- .slide: data-auto-animate data-auto-animate-id="yapp" -->
 
-<p class="label">// where is the component model?</p>
+### Where is the component model?
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:32px; width:880px;">
 <div class="code abs" style="left:0; top:20px; width:250px; font-size:16px;" data-id="ytree">SPLed/
 ├── yanga.yaml
 ├── KConfig
@@ -1021,6 +1081,7 @@ The variant is data: its name, a description, its components and its feature sel
   - rte</span></div>
 <div class="verdict abs fragment" style="left:0; top:370px;">No CMake for it: the platform writes the build.</div>
 </div>
+</div>
 
 Note:
 
@@ -1028,9 +1089,11 @@ The real light_controller entry of the yanga port of SPLed, shortened. One click
 
 ---
 
-<p class="label">// where is the platform model?</p>
+### Where is the platform model?
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:34px; width:880px;">
 <div class="pipe abs fragment" style="left:0px; top:0;" data-fragment-index="0">
 <div class="col-head" style="width:270px;">zephyr<small>prototype</small></div>
 <div class="pstep">Install riscv64-zephyr-elf</div>
@@ -1058,6 +1121,7 @@ The real light_controller entry of the yanga port of SPLed, shortened. One click
 </div>
 <div class="verdict abs fragment" style="left:0; top:365px;" data-fragment-index="3">A platform brings its own tools and its own components.</div>
 </div>
+</div>
 
 Note:
 
@@ -1065,9 +1129,11 @@ Each platform brings its own pipeline: the steps that must run before its build.
 
 ---
 
-<p class="label">// a platform definition</p>
+### A platform definition
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:48px; width:880px;">
 <div class="code abs" style="left:60px; top:0; width:720px; font-size:15px;"><span class="f blk">platforms/zephyr/yanga.yaml (abridged)</span><span class="blk">platforms:
 - name: zephyr_esp32h2
   description: Zephyr on the ESP32-H2 devkit</span><span class="fragment hl-current blk">  feature_model:
@@ -1081,6 +1147,7 @@ Each platform brings its own pipeline: the steps that must run before its build.
     - step: ZephyrBuild
       config:
         board: esp32h2_devkitm/esp32h2</span><span class="fragment hl-current blk">  build_targets: [all, flash, report]</span></div>
+</div>
 </div>
 
 Note:
@@ -1112,8 +1179,6 @@ The same three rows as for Zephyr and spl-core, and all three get ticked. Then a
 
 ---
 
-<p class="label">// the thread</p>
-
 <div class="thread">
 <ol class="rail">
 <li class="done">Two customers, one product line</li>
@@ -1137,7 +1202,7 @@ Chapter 8: Back to the start. Say the sentence and go on.
 
 <!-- .slide: data-auto-animate data-auto-animate-id="bios8" -->
 
-<p class="label">// where does Disco live?</p>
+### Where does Disco live?
 
 <div class="where">
 <div>
@@ -1278,7 +1343,7 @@ Backup slides, for questions only.
 
 <!-- .slide: data-auto-animate data-auto-animate-id="shell" -->
 
-<p class="label">// with a thin shell</p>
+### With a thin shell
 
 <div class="stage">
 <div class="tile abs" style="left:40px; top:40px;">light_controller</div>
@@ -1303,7 +1368,7 @@ Section 6, can we improve, about 5 minutes. Same components. The only code that 
 
 <!-- .slide: data-auto-animate data-auto-animate-id="shell" -->
 
-<p class="label">// just port it, again</p>
+### Just port it, again
 
 <div class="stage">
 <div class="tile abs" style="left:40px; top:40px;">light_controller</div>
@@ -1330,13 +1395,16 @@ The platform leaves with its shell. Every tile stays. This is the answer the man
 
 <!-- .slide: data-auto-animate data-auto-animate-id="bios1" -->
 
-<p class="label">// the same light, four altitudes</p>
+### The same light, four altitudes
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:68px; width:880px;">
 <div class="step l1 abs" style="left:0; top:0;"><small>customer · sales</small>“A green light that blinks.”</div>
 <div class="step l2 abs fragment" style="left:120px; top:110px;"><small>product features · system engineer</small>BLINKING=y &nbsp; COLOR_GREEN=y</div>
 <div class="step l3 abs fragment" style="left:240px; top:210px;"><small>platform features · software engineer</small>WS2812_STRIP_SPI=y</div>
 <div class="step l4 abs fragment" style="left:360px; top:300px;"><small>platform value · hardware engineer</small>DELAY_T1H = 700 ns × CPU clock / 10⁹<br>(number of NOPs for a high bit)</div>
+</div>
 </div>
 
 <div class="notify fragment" data-id="bios"><div class="notify-head"><span>⚠ Development environment</span><span>✕</span></div><div class="notify-body"><b>New requirement detected</b>Your development environment does not meet it yet.</div><div class="notify-buttons"><span class="disabled">Remind me later</span><span class="primary">Open</span></div></div>
@@ -1375,7 +1443,7 @@ The platform is a model of its own: middle layer, hardware and its own component
 
 <!-- .slide: data-auto-animate data-auto-animate-id="comp" -->
 
-<p class="label">// a component</p>
+### A component
 
 <div class="stage">
 <div class="tile abs" style="left:350px; top:180px;" data-id="comp">light_controller</div>
@@ -1389,15 +1457,18 @@ One tile from the stack. Next click: open it.
 
 <!-- .slide: data-auto-animate data-auto-animate-id="comp" -->
 
-<p class="label">// a component</p>
+### A component
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:96px; width:880px;">
 <div class="comp abs" style="left:130px; top:40px;" data-id="comp">
 <b>light_controller</b> &nbsp; <span class="tag">scope: SPL</span><br>
 <span class="k">code</span> src/light_controller.c, .h<br>
 <span class="k">tests</span> test/test_light_controller.cc<br>
 <span class="k">docs</span> doc/index.md<br>
 <span class="k">features</span> KConfig
+</div>
 </div>
 </div>
 
@@ -1438,9 +1509,11 @@ A component carries its documentation, so the build can produce the documents an
 
 <!-- .slide: data-auto-animate data-auto-animate-id="bios7" -->
 
-<p class="label">// who can read your model?</p>
+### Who can read your model?
 
 <div class="stage">
+<!-- Centres the content in the stage. -->
+<div class="abs" style="left:0; top:26px; width:880px;">
 <svg class="readers-lines abs" width="880" height="470" style="left:0; top:0;">
 <line x1="420" y1="120" x2="600" y2="40"/>
 <line x1="420" y1="140" x2="600" y2="110"/>
@@ -1464,6 +1537,7 @@ target_sources_ifdef(CONFIG_SHELL
 <div class="reader abs" style="left:610px; top:162px;">the docs build</div>
 <div class="reader abs" style="left:610px; top:232px;">the CI matrix</div>
 <div class="reader abs" style="left:610px; top:382px;">the build</div>
+</div>
 </div>
 
 <div class="notify fragment" data-id="bios"><div class="notify-head"><span>⚠ Development environment</span><span>✕</span></div><div class="notify-body"><b>New requirement detected</b>Your development environment does not meet it yet.</div><div class="notify-buttons"><span class="disabled">Remind me later</span><span class="primary">Open</span></div></div>
@@ -1502,7 +1576,7 @@ Models as data: tools read them without running the build.
 
 ---
 
-<p class="label">// one command per cell</p>
+### One command per cell
 
 <div class="stage">
 <div class="card abs disco" style="left:0; top:112px; width:150px;"><b>Disco</b></div>
