@@ -43,6 +43,32 @@
       // Learn about plugins: https://revealjs.com/plugins/
       plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMermaid],
     });
+
+    // Each item on the thread rail jumps to the thread slide of its chapter.
+    // A thread slide belongs to the chapter whose item is marked "now".
+    Reveal.on("ready", () => {
+      const threads = [...document.querySelectorAll(".reveal .slides section")]
+        .filter((s) => s.querySelector(":scope ol.rail"));
+      const chapterSlide = {};
+      for (const slide of threads) {
+        const items = [...slide.querySelectorAll("ol.rail li")];
+        chapterSlide[items.findIndex((li) => li.classList.contains("now"))] = slide;
+      }
+      for (const slide of threads) {
+        slide.querySelectorAll("ol.rail li").forEach((li, i) => {
+          const target = chapterSlide[i];
+          if (!target) return;
+          li.classList.add("jump");
+          li.addEventListener("click", () => {
+            const { h, v } = Reveal.getIndices(target);
+            const reveal = document.querySelector(".reveal");
+            reveal.classList.add("rail-jump");
+            Reveal.slide(h, v);
+            requestAnimationFrame(() => requestAnimationFrame(() => reveal.classList.remove("rail-jump")));
+          });
+        });
+      }
+    });
   </script>
 </body>
 
