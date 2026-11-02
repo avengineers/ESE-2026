@@ -2,14 +2,14 @@
 
 Wie agentische KI unseren Embedded-Entwicklungsalltag verändert hat
 
-Judith Reichwein, Karsten Guenther, Marquardt GmbH
+Judith Reichwein, Karsten Guenther, Marquardt Gruppe
 
 <!-- The proceedings article for this talk, in German.
      The organiser's rules are in AGENTS.md, section "The articles".
      Draft of 2026-09-24. scripts/make_docx.py makes the Word file, and Figure 1 becomes an image there. Figure 2 is a screenshot at device scale factor 3, in the light theme, window 1536 px wide.
      2688 px give 300 dpi up to 22.8 cm width. -->
 
-2022 setzte unser Team zum ersten Mal KI-gestützte Code Completion ein. Das Ergebnis glich eher der Arbeit eines Schülerpraktikanten als der eines erfahrenen Entwicklers. Heute bearbeiten Agenten bei uns ganze User Stories, vom Design bis zum getesteten Code. In diesem Beitrag beschreiben wir den Weg dorthin. Wir zeigen, wie wir Agenten mit Skills steuern und an unsere Embedded-Umgebung anpassen, und wir stellen drei Einsatzfelder aus unserem Alltag vor. Am Ende steht unsere wichtigste Erfahrung: Der Agent liefert für jedes Problem eine Antwort, und wir müssen lernen, diese Antwort zu bewerten.
+2022 setzte unser Team zum ersten Mal KI-gestützte Code Completion ein. Das Ergebnis glich eher der Arbeit eines Schülerpraktikanten als der eines erfahrenen Entwicklers. Heute bearbeiten Agenten in unserem Team ganze User Stories, vom Design bis zum getesteten Code. In diesem Beitrag beschreiben wir den Weg dorthin. Wir zeigen, wie wir Agenten mit Skills steuern und an unsere Embedded-Umgebung anpassen, und wir stellen drei Einsatzfelder aus unserem Alltag vor. Am Ende steht unsere wichtigste Erfahrung: Der Agent liefert für jedes Problem eine Antwort, und wir müssen lernen, diese Antwort zu bewerten.
 
 ## Ein Schülerpraktikant im Editor
 
@@ -21,13 +21,13 @@ Danach folgten einzelne Versuche mit ChatGPT. Es schrieb uns ein Skript oder ein
 
 ## Der Wendepunkt
 
-Die ersten Agenten benutzten wir zunächst wie die Code Completion, nur mit Prompts wie: „Schreib mir bitte eine Funktion, die das und das macht.“ Ende 2025 änderte sich das. Neue Modelle wie Claude Opus 4.5 kamen auf den Markt, und unser Team besuchte eine Schulung zu agentischer Entwicklung. Die Trainer gaben uns einen neuen Blick auf die Werkzeuge. Ein Agent liest das Repository, schreibt Code, führt Befehle aus, baut, testet und korrigiert seine eigenen Fehler. Über das Model Context Protocol (MCP) [2] erreicht er auch externe Systeme wie das Ticketsystem oder den CI-Server.
+Die ersten Agenten benutzten wir zunächst wie die Code Completion, nur mit Prompts wie: „Schreib mir bitte eine Funktion, die das und das macht.“ Ende 2025 änderte sich das. Neue Modelle wie Claude Opus 4.5 kamen auf den Markt, und unser Team besuchte eine Schulung zu agentischer Entwicklung. Die Trainer gaben uns einen neuen Blick auf die Werkzeuge. Ein Agent kann ein Repository lesen, Code schreiben, Befehle ausführen, bauen, testen und seine eigenen Fehler korrigieren. Über das Model Context Protocol (MCP) [2] kann er auch externe Systeme erreichen, etwa ein Ticketsystem oder einen CI-Server.
 
 Plötzlich gaben wir einem Agenten eine ganze User Story oder ein ganzes Feature zur Bearbeitung. Coding, Testfälle und Dokumentation wurden Routine. Und auf fast jede Frage im Team hieß die Antwort: „Frag doch den Agenten!“
 
 ## Skills: Wie wir Agenten steuern
 
-In unserem Umfeld ist GitHub Copilot verbreitet. In unserem Team arbeitet trotzdem jeder mit Claude Code. Eine saubere Begründung dafür haben wir nicht, nur die gemeinsame Beobachtung, dass es für unsere Arbeit besser passt. Außerdem pflegt jeder seinen eigenen Werkzeugkasten: eine persönliche Kontextdatei CLAUDE.md mit eigenen Regeln, bevorzugte Skill-Sammlungen und selbst geschriebene Skills. Bald hieß es im Team: „Meine Claude programmiert besser als deiner!“
+In unserem Team haben wir verschiedene agentische Entwicklungswerkzeuge erprobt. Dabei pflegt jeder seinen eigenen Werkzeugkasten: eine persönliche Kontextdatei mit eigenen Regeln, bevorzugte Skill-Sammlungen und selbst geschriebene Skills. Bald hieß es im Team: „Mein Agent programmiert besser als deiner!“
 
 Wenn jeder Agent anders arbeitet, liefert dasselbe Projekt unterschiedliche Ergebnisse, je nachdem, wer gerade fragt. Wie steuert man also einen Agenten, und wie passt man ihn an eine bestimmte Umgebung an? Unsere Antwort sind Skills. Ein Skill ist eine Anleitung in Textform, die der Agent lädt, sobald eine Aufgabe dazu passt. Er beschreibt, wie ein Team eine Aufgabe in seiner Umgebung erledigt: welche Werkzeuge es verwendet, welche Konventionen gelten und welche Prüfungen am Ende stehen. Abbildung 1 zeigt einen Ausschnitt aus unserem Skill für Unit-Tests in Embedded C.
 
@@ -71,7 +71,7 @@ Heute hilft uns der Agent an vielen Stellen. Er findet heraus, warum ein CI-Buil
 
 ### Von der Anforderung zum getesteten Code
 
-Das erste Beispiel ist Softwareentwicklung nach Automotive SPICE [4]. Wir zeigen es am öffentlichen Demo-Projekt SPLed [5], einer kleinen, aber vollständigen Software-Produktlinie, deren Varianten jeweils eigene Binärdateien erzeugen. Die Funktion heißt Auto Off. Sie schaltet das Licht nach einer einstellbaren Zeit ohne Bedienung aus. Der Agent bekommt eine User Story. Sie nennt die Anforderungen und die gewünschte Wirkung je Variante, enthält aber kein Design, keinen Algorithmus und keine Dateinamen.
+Das erste Beispiel ist Softwareentwicklung nach Automotive SPICE [4]. Wir zeigen es am öffentlichen Demo-Projekt SPLed [5], einer kleinen, aber vollständigen Software-Produktlinie für Schulungszwecke, deren Varianten jeweils eigene Binärdateien erzeugen. Die Funktion heißt Auto Off. Sie schaltet das Licht nach einer einstellbaren Zeit ohne Bedienung aus. Der Agent bekommt eine User Story. Sie nennt die Anforderungen und die gewünschte Wirkung je Variante, enthält aber kein Design, keinen Algorithmus und keine Dateinamen.
 
 Aus der User Story erzeugt der Agent die Kette, die der Prozess verlangt: das Detailed Design, die Testspezifikation, einen Konfigurationsschalter für die Varianten, den Code und die Unit-Tests mit GoogleTest. Danach baut er die Software und führt die Tests aus. Am Ende liegt ein Komponentenbericht vor, mit Requirements Coverage, Code Coverage und Traceability von der Anforderung bis zum Test (Abbildung 2).
 
@@ -121,8 +121,8 @@ Aus dem Schülerpraktikanten von 2022 ist ein Kollege geworden. Er schreibt Code
 
 ## Die Autoren
 
-Judith ist Softwareingenieurin mit über 14 Jahren Erfahrung in der Automobilbranche. Ihr beruflicher Werdegang deckt nahezu das gesamte V-Modell ab – von Requirements Engineering über Softwareautomatisierung und Verifikation, Projektkoordination und Unit-Testing von Security-Komponenten bis hin zur Simulation. Diese Erfahrung bringt sie heute als Senior Software Engineer im Rhein-Main Team (RMT) der Marquardt GmbH ein, wo sie sich auf CI/CD, Testautomatisierung und Software Product Line Engineering (SPLE) konzentriert.
+Judith ist Softwareingenieurin mit über 14 Jahren Erfahrung in der Automobilbranche. Ihr beruflicher Werdegang deckt nahezu das gesamte V-Modell ab – von Requirements Engineering über Softwareautomatisierung und Verifikation, Projektkoordination und Unit-Testing von Security-Komponenten bis hin zur Simulation. Diese Erfahrung bringt sie heute als Senior Software Engineer im Rhein-Main Team (RMT) der Marquardt Gruppe ein, wo sie sich auf CI/CD, Testautomatisierung und Software Product Line Engineering (SPLE) konzentriert.
 
-Karsten ist seit 25 Jahren leidenschaftlicher Softwareingenieur und kann auf Erfahrungen in der Signalverarbeitung, in eingebetteten Echtzeitsystemen, in der Automatisierung von Entwicklungsprozessen sowie in der Entwicklung von Methoden, Werkzeugen und Pipelines für Continuous Integration (CI) zurückgreifen. Nach Stationen als Ingenieur, Tester und Architekt in der Automobilbranche ist er heute Product Owner der SPLE Platform – Marquardts Internal Developer Platform für eingebettete Softwareteams – im Rhein-Main Team (RMT) der Marquardt GmbH. Er treibt Produktvision und Roadmap, etabliert agentische KI-gestützte Entwicklungspraktiken sowie „Engineering as Code“, führt Softwaremetriken und KPIs zur Messung der Produktreife ein und entwickelt das Schulungsprogramm der Plattform kontinuierlich weiter.
+Karsten ist seit 25 Jahren leidenschaftlicher Softwareingenieur und kann auf Erfahrungen in der Signalverarbeitung, in eingebetteten Echtzeitsystemen, in der Automatisierung von Entwicklungsprozessen sowie in der Entwicklung von Methoden, Werkzeugen und Pipelines für Continuous Integration (CI) zurückgreifen. Nach Stationen als Ingenieur, Tester und Architekt in der Automobilbranche ist er heute Product Owner der SPLE Platform – Marquardts Internal Developer Platform für eingebettete Softwareteams – im Rhein-Main Team (RMT) der Marquardt Gruppe. Er treibt Produktvision und Roadmap, etabliert agentische KI-gestützte Entwicklungspraktiken sowie „Engineering as Code“, führt Softwaremetriken und KPIs zur Messung der Produktreife ein und entwickelt das Schulungsprogramm der Plattform kontinuierlich weiter.
 
 Der Agent ist seit 2022 im Team. Er fing als Schülerpraktikant in der Code Completion an. Seine Vorschläge klangen schon damals immer gut, und manchmal funktionierten sie auch. Ende 2025 stieg er zum Agenten auf. Seitdem wechselt er mehrmals am Tag die Rolle: Entwickler, Tester, Reviewer, Assistent. Er selbst nimmt nie Urlaub, schreibt aber die Übergabe, wenn die anderen gehen. Einen festen Namen hat er nicht: Jeder im Team nennt ihn anders, und jeder hält seinen für den besten. An diesem Beitrag hat er mitgeschrieben. Seine Fehler darin haben Judith und Karsten hoffentlich alle gefunden.
