@@ -2,7 +2,7 @@
 
 Asking the SPLE Question First
 
-Alexandru Maxiniuc, Marquardt GmbH
+Alexandru Maxiniuc, Marquardt Group
 
 Most embedded teams choose the real-time operating system first and meet the variant problem later, when the build system, the configuration model and the way components are wired are already fixed. Software Product Line Engineering (SPLE), building a family of related products from one code base, sits one layer above that choice. This article derives requirements for the build environment of an embedded product line from the needs of a project and a small example, then evaluates Zephyr, spl-core and yanga against them. The product line question and the basic software question turn out to be separate decisions.
 
@@ -10,7 +10,7 @@ Most embedded teams choose the real-time operating system first and meet the var
 
 When the software work on a new embedded product starts, the team needs four things. The first is fast feedback, at least unit tests on the developer's computer. The second is a prototype on a development board, because the real hardware arrives late and a demonstrator is often needed early. The third is the same software running on the target hardware once that hardware is there, without rewriting everything that already runs on the prototype. The fourth is documentation and reports, which series development in regulated domains such as automotive or medical devices requires.
 
-Imagine a company with two departments. An advance development team builds prototypes on Zephyr, because its many supported boards make trying out a function on real hardware quick. The business unit builds series products on AUTOSAR. The prototype is meant to become the product, so the application, where the business logic sits, should run on both. Prototype and series product live side by side in one repository, and each build chooses which of the two it produces (Figure 1).
+Imagine a fictitious company with two departments. An advance development team builds prototypes on Zephyr, because its many supported boards make trying out a function on real hardware quick. The business unit builds series products on AUTOSAR. The prototype is meant to become the product, so the application, where the business logic sits, should run on both. Prototype and series product live side by side in one repository, and each build chooses which of the two it produces (Figure 1).
 
 ![The same application on Zephyr and on AUTOSAR](../../images/zephyr_meets_sple_platforms.png)
 
@@ -34,7 +34,7 @@ The fourth need comes from regulated series development: documents and test repo
 
 ## Product line terms
 
-This chapter introduces the terms the requirements build on: feature, variant, platform and component. It uses SPLed, a small open source product line around one LED, as a running example [1, 2, 3]. One customer asked for a disco light: the LED blinks, and the colour and the blinking frequency can be adjusted. Another customer asked for a sleep light: the LED keeps a constant colour, and the user can adjust its brightness.
+This chapter introduces the terms the requirements build on: feature, variant, platform and component. It uses SPLed, a small open source product line around one LED built for training, as a running example [1, 2, 3]. One customer asked for a disco light: the LED blinks, and the colour and the blinking frequency can be adjusted. Another customer asked for a sleep light: the LED keeps a constant colour, and the user can adjust its brightness.
 
 ### Features and variants
 
@@ -167,4 +167,4 @@ A product line is more than a set of boards. It needs four models, for features,
 
 ## The author
 
-Alexandru has nearly 20 years of experience in the automotive industry, where he specialised in safety-critical embedded software for braking systems. He is a Senior Platform Engineer in the Rhine-Main Team (RMT) of Marquardt GmbH, where he works on build environments and Software Product Line Engineering for embedded teams. He develops and contributes to open source tools for this, among them spl-core and yanga.
+Alexandru has nearly 20 years of experience in the automotive industry, where he specialised in safety-critical embedded software for braking systems. He is a Senior Platform Engineer in the Rhine-Main Team (RMT) of the Marquardt Group, where he works on build environments and Software Product Line Engineering for embedded teams. He develops and contributes to open source tools for this, among them spl-core and yanga.

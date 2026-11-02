@@ -2,7 +2,7 @@
 
 How requirements, architecture, design and tests become one traceable repository
 
-Akshit Kobagapu, Judith Reichwein, Rhine-Main Team of Marquardt GmbH
+Akshit Kobagapu, Judith Reichwein, Marquardt Group
 
 <!-- The proceedings article for this talk, in English.
      The organizer's rules are in AGENTS.md, section "The articles".
@@ -15,11 +15,11 @@ An embedded team keeps its source code in a repository. The engineering artifact
 
 ## Between the tools
 
-Between a new requirement and tested code there is typically more than one system, each owned by a different part of the organization. The problem we describe remains even when every tool has been chosen well.
+Between a new requirement and tested code there is typically more than one system, each owned by a different part of an organization. This is the setup of many classic development environments, and the problem we describe remains even when every tool has been chosen well.
 
 At each boundary the information is copied. A copy is accurate on the day it is made, and from then on it is a claim about a document somebody else owns. The developer works against the design they were given, not against the design as it stands today. The tester works against the specification they were given. Each handoff is sound in itself, and none of them is checked again afterwards.
 
-Consistency across the whole chain is therefore a periodic human activity, often a spreadsheet filled in before a review or an audit. When a requirement changes afterwards and the design does not follow, nothing brings the two together. The build passes, the tests pass, and the spreadsheet stays green, because the requirement and the design are reviewed by different people in different systems and nobody sees both changes at once. The defect lives in the relationship between two documents, and no tool in the chain owns that relationship.
+In such an environment, consistency across the whole chain is a periodic human activity, often a spreadsheet filled in before a review or an audit. When a requirement changes afterwards and the design does not follow, nothing brings the two together. The build passes, the tests pass, and the spreadsheet stays green, because the requirement and the design are reviewed by different people in different systems and nobody sees both changes at once. The defect lives in the relationship between two documents, and no tool in the chain owns that relationship.
 
 ## What Engineering as Code means
 
@@ -31,7 +31,7 @@ This is not the same as keeping documentation in the repository, which many team
 
 ## One repository, one chain
 
-In SPLed [1], a small product line that builds a configurable light, the engineering artifacts live in the same repository as the source code. SPLed is our open-source demonstrator of the way we work in product development.
+In SPLed [1], a small product line that builds a configurable light, the engineering artifacts live in the same repository as the source code. SPLed is an open-source demonstrator that we built for training.
 
 ```code
 SPLed/
@@ -194,6 +194,6 @@ None of it depends on our particular tools. It depends on treating an engineerin
 
 ## The authors
 
-Akshit is a software engineer with more than 10 years of experience in the automotive industry. His work spans embedded software development, build systems and continuous integration, and the tooling that carries a change from a developer’s machine to a released product. He brings that experience to Marquardt GmbH as an Advanced Software Development Engineer, where he concentrates on software product line engineering, CI/CD and traceable engineering artifacts. He is one of the maintainers of SPLed and spl-core.
+Akshit is a software engineer with more than 10 years of experience in the automotive industry. His work spans embedded software development, build systems and continuous integration, and the tooling that carries a change from a developer’s machine to a released product. He brings that experience to the Marquardt Group as an Advanced Software Development Engineer, where he concentrates on software product line engineering, CI/CD and traceable engineering artifacts. He is one of the maintainers of SPLed and spl-core.
 
-Judith is a software engineer with more than 14 years of experience in the automotive industry. Her career covers almost the whole V-model, from requirements engineering through software automation and verification, project coordination and unit testing of security components, to simulation. She brings that experience to Marquardt GmbH as a Senior Software Engineer, where she concentrates on CI/CD, test automation and software product line engineering. She is one of the maintainers of SPLed and spl-core.
+Judith is a software engineer with more than 14 years of experience in the automotive industry. Her career covers almost the whole V-model, from requirements engineering through software automation and verification, project coordination and unit testing of security components, to simulation. She brings that experience to the Marquardt Group as a Senior Software Engineer, where she concentrates on CI/CD, test automation and software product line engineering. She is one of the maintainers of SPLed and spl-core.
