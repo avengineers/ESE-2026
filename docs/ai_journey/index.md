@@ -284,8 +284,8 @@ Der Agent schreibt auch Tabellen und Dokumente in den gängigen Office-Formaten.
 
 ### Jede Antwort klingt gut
 
-- 2022: klingt gut, oft falsch
-- Heute: klingt gut, meist richtig
+- <span class="highlighted-red">2022:</span> klingt gut, oft falsch
+- <span class="highlighted-green">Heute:</span> klingt gut, meist richtig
 - Der eine Fehler fällt kaum auf
 - Es läuft – aber ist es gut?
 - Unsere Kriterien muss man ihm sagen
