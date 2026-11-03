@@ -66,6 +66,8 @@ Dann: „Und während unser Agent arbeitet, erzählen wir euch, wie es dazu kam.
 
 ### 2022: Ein Schülerpraktikant im Editor
 
+<div class="agent-face"><img src="../images/ai_journey_agent_intern.webp" alt="Der Agent als Schülerpraktikant"></div>
+
 - Code Completion
 - Python, CMake, C++, GoogleTest
 - Architektur bleibt bei uns
@@ -213,6 +215,8 @@ einen Agenten an eine Umgebung an?
 
 ### Der Product-Owner-Agent
 
+<div class="agent-face"><img src="../images/ai_journey_agent_product_owner.webp" alt="Der Agent als Product Owner"></div>
+
 - User Stories, Sprintplanung
 - Einheitliches Format
 - Großes Kontextfenster: denkt an mehr Fakten
@@ -240,6 +244,8 @@ ohne interne Links.
 ---
 
 ### Der Consultant-Agent
+
+<div class="agent-face"><img src="../images/ai_journey_agent_consultant.webp" alt="Die Agentin als Beraterin"></div>
 
 <div class="flex-container" style="align-items: flex-start;">
 <div class="half">
@@ -305,6 +311,8 @@ Der Agent schreibt auch Tabellen und Dokumente in den gängigen Office-Formaten.
 ---
 
 ### Der Review-Agent
+
+<div class="agent-face"><img src="../images/ai_journey_agent_reviewer.webp" alt="Der Agent als Reviewer"></div>
 
 - Pull Request mit 2.000 Zeilen
 - Agent prüft, Mensch bewertet
