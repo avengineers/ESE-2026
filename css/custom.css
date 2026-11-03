@@ -79,6 +79,23 @@ pre.code-wrapper {
     color: #FFD54F;
 }
 
+/* The face of the agent in its role, in the top right corner of a slide */
+.agent-face {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+}
+
+.reveal .agent-face img {
+    width: 130px;
+    height: 130px;
+    margin: 0;
+    border: 3px solid #2b2b3a;
+    border-radius: 50%;
+    box-shadow: none;
+    background: none;
+}
+
 .highlighted-blue {
     color: #c8ebf8;
 }
