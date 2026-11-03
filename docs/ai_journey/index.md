@@ -99,7 +99,7 @@ Note:
 
 Judith. Ein Chatbot schreibt uns ein Skript oder eine kleine Erweiterung für VS Code. Hier waren
 wir weniger streng als bei der Code Completion: Lief das Ergebnis, haben wir es übernommen, ohne
-jede Zeile zu verstehen. Heute heißt das Vibe Coding. Das kommt später wieder.
+jede Zeile zu verstehen. Heute heißt das Vibe Coding.
 
 Überleitung zur nächsten Folie: „Nicht alles lief.“
 
@@ -304,6 +304,22 @@ Der Agent schreibt auch Tabellen und Dokumente in den gängigen Office-Formaten.
 
 ---
 
+### Der Review-Agent
+
+- Pull Request mit 2.000 Zeilen
+- Agent prüft, Mensch bewertet
+- Mensch entscheidet
+
+Note:
+
+Karsten. Der Agent in der Rolle des Reviewers. Einen Pull Request mit 2.000 geänderten Zeilen
+konnte ein Mensch früher kaum prüfen. Heute prüft der Agent die ganze Änderung, und der Mensch
+bewertet seine Befunde. Die letzte Entscheidung liegt weiter beim Menschen.
+
+Überleitung: „Und wie bewerten wir, was der Agent liefert?“
+
+---
+
 ### Jede Antwort klingt gut
 
 - <span class="highlighted-red">2022:</span> klingt gut, oft falsch
@@ -320,38 +336,10 @@ schwerer: Wenn fast alles stimmt, fällt der eine Fehler kaum noch auf.
 
 Und selbst wenn alles funktioniert, ist die Qualität damit nicht sichergestellt. Der Agent kennt
 die Kriterien nicht, die uns wichtig sind, solange wir sie ihm nicht sagen: in der `AGENTS.md`,
-in den Skills, in der User Story.
+in den Skills, in der User Story. Im Embedded-Umfeld gilt: „Was ich nicht verstehe, kann ich
+nicht freigeben.“
 
----
-
-### Vibe Coding: wann ja, wann nein
-
-- Wegwerf-Skript: ja
-- Produktiver Code: nein
-
-Note:
-
-Judith. Für ein Skript, das wir einmal ausführen und dann löschen, ist Vibe Coding in Ordnung.
-Für produktiven Code, der wiederverwendet wird, nicht: Im Embedded-Umfeld kann niemand Code
-freigeben oder warten, den er nicht versteht. „Was ich nicht verstehe, kann ich nicht freigeben.“
-
----
-
-### Der Review-Agent
-
-- Pull Request mit 2.000 Zeilen
-- Agent prüft, Mensch bewertet
-- Mensch entscheidet
-
-<p class="fragment">Jetzt: unser Agent</p>
-
-Note:
-
-Karsten. Der Agent in der Rolle des Reviewers. Einen Pull Request mit 2.000 geänderten Zeilen konnte ein Mensch früher kaum prüfen.
-Heute prüft der Agent die ganze Änderung, und der Mensch bewertet seine Befunde. Die letzte
-Entscheidung liegt weiter beim Menschen.
-
-Und genau das machen wir jetzt mit unserem Agenten. Überleitung zur Demo.
+Und genau das prüfen wir jetzt bei unserem Agenten. Überleitung zur Demo.
 
 ---
 
