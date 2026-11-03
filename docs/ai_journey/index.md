@@ -189,7 +189,7 @@ einen Agenten an eine Umgebung an?
 
 ---
 
-### Der Agent schreibt das Backlog
+### Der Product-Owner-Agent
 
 - User Stories, Sprintplanung
 - Einheitliches Format
@@ -200,7 +200,8 @@ einen Agenten an eine Umgebung an?
 
 Note:
 
-Karsten. Kapitel 4 des Artikels, zweites Beispiel. Der Agent schreibt User Stories und
+Karsten. Kapitel 4 des Artikels, zweites Beispiel. Der Agent in der Rolle des Product Owners:
+Er schreibt User Stories und
 Backlog-Einträge und bereitet die Sprintplanung vor, immer im gleichen Format. Durch sein großes
 Kontextfenster denkt er an Fakten und Randbedingungen, die ein Mensch oft vergisst, und er
 liefert schnell eine Grundlage, über die das Team diskutieren kann. Der Nachteil: Für einen
@@ -216,7 +217,7 @@ ohne interne Links.
 
 ---
 
-### Der Agent arbeitet am Vortrag mit
+### Der Consultant-Agent
 
 <div class="flex-container" style="align-items: flex-start;">
 <div class="half">
@@ -262,8 +263,9 @@ gitGraph TB:
 
 Note:
 
-Judith. Kapitel 4 des Artikels, drittes Beispiel. Der Agent arbeitet nicht nur am Code mit,
-sondern auch an Präsentationen und Vorträgen. Dieser Vortrag ist so entstanden: zwei Menschen und
+Judith. Kapitel 4 des Artikels, drittes Beispiel. Der Agent in der Rolle des Beraters: Er
+arbeitet nicht nur am Code mit, sondern auch an Präsentationen und Vorträgen, und er sagt uns,
+wo es besser geht. Dieser Vortrag ist so entstanden: zwei Menschen und
 ein Agent.
 
 Links: Erinnert ihr euch an die Meerjungfrauen? Das ist das Diagramm, das wir damals wollten: ein
@@ -307,7 +309,7 @@ freigeben oder warten, den er nicht versteht. „Was ich nicht verstehe, kann ic
 
 ---
 
-### Der Agent hilft beim Bewerten
+### Der Review-Agent
 
 - Pull Request mit 2.000 Zeilen
 - Agent prüft, Mensch bewertet
@@ -317,7 +319,7 @@ freigeben oder warten, den er nicht versteht. „Was ich nicht verstehe, kann ic
 
 Note:
 
-Karsten. Einen Pull Request mit 2.000 geänderten Zeilen konnte ein Mensch früher kaum prüfen.
+Karsten. Der Agent in der Rolle des Reviewers. Einen Pull Request mit 2.000 geänderten Zeilen konnte ein Mensch früher kaum prüfen.
 Heute prüft der Agent die ganze Änderung, und der Mensch bewertet seine Befunde. Die letzte
 Entscheidung liegt weiter beim Menschen.
 
@@ -331,14 +333,11 @@ Und genau das machen wir jetzt mit unserem Agenten. Überleitung zur Demo.
 - Feature-Schalter
 - Code, Unit-Tests
 - Bericht: Coverage, Traceability
-- Seine Entscheidungen, wo Anforderungen schweigen
 
 Note:
 
 Judith wechselt ins Terminal und zeigt das Ergebnis. Ist der Agent nicht fertig, zeigt sie, was
 bis jetzt fertig ist, oder das Ergebnis aus einem Probelauf. Sie sagt offen, was sie zeigt.
-
-Eigene Entscheidungen: Was hat der Agent festgelegt, wo die Anforderungen nichts sagen?
 
 ---
 
