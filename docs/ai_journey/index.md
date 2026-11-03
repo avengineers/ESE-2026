@@ -287,12 +287,18 @@ Der Agent schreibt auch Tabellen und Dokumente in den gängigen Office-Formaten.
 - 2022: klingt gut, oft falsch
 - Heute: klingt gut, meist richtig
 - Der eine Fehler fällt kaum auf
+- Es läuft – aber ist es gut?
+- Unsere Kriterien muss man ihm sagen
 
 Note:
 
 Judith und Karsten im Dialog. Kapitel 5 des Artikels. Schon 2022 klangen die Vorschläge immer
 gut. Das ist geblieben. Geändert hat sich, wie oft sie stimmen. Und das macht die Bewertung
 schwerer: Wenn fast alles stimmt, fällt der eine Fehler kaum noch auf.
+
+Und selbst wenn alles funktioniert, ist die Qualität damit nicht sichergestellt. Der Agent kennt
+die Kriterien nicht, die uns wichtig sind, solange wir sie ihm nicht sagen: in der `AGENTS.md`,
+in den Skills, in der User Story.
 
 ---
 
