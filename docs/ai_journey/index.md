@@ -37,8 +37,30 @@ Decks. Deshalb stehen dort keine Notizen.
 
 Note:
 
-Jede Person sagt in ein oder zwei Sätzen, wer sie ist. Dann: „Und während unser Agent arbeitet,
-erzählen wir euch, wie es dazu kam.“
+Jede Person sagt in ein oder zwei Sätzen, wer sie ist.
+
+---
+
+### Wer ist eigentlich der Agent?
+
+**Agent** (vom lateinischen *agere* = handeln, treiben) bezeichnet grundsätzlich eine Person,
+ein Programm oder ein System, das <span class="highlighted-yellow">in Vertretung oder im
+Auftrag</span> eines anderen agiert.
+
+<p class="deck-url">Nach: <a href="https://www.dwds.de/wb/Agent">DWDS</a> und <a href="https://de.wiktionary.org/wiki/Agent">Wiktionary</a>, Stichwort „Agent“</p>
+
+Note:
+
+Judith fragt: „Wer ist eigentlich der Agent?“ Karsten antwortet mit der Definition. Der Kern ist
+„in Vertretung oder im Auftrag“: Der Agent handelt für uns. Genau so hat er eben seine Aufgabe
+bekommen, vom Product Owner.
+
+Die Definition fasst zwei Wörterbücher zusammen und ist kein wörtliches Zitat. Das DWDS nennt
+den Agenten als jemanden, „der im Auftrag eines anderen Geschäfte vermittelt und abschließt“,
+und als Programm, das „selbstständig Entscheidungen trifft“. Herkunft: italienisch agente,
+„Vertreter“, von lateinisch agere, „treiben, tun“.
+
+Dann: „Und während unser Agent arbeitet, erzählen wir euch, wie es dazu kam.“
 
 ---
 
