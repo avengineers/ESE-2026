@@ -351,36 +351,35 @@ Und genau das prüfen wir jetzt bei unserem Agenten. Überleitung zur Demo.
 
 ---
 
-### Was hat der Agent geliefert?
-
-- Detailed Design, Testspezifikation
-- Feature-Schalter
-- Code, Unit-Tests
-- Bericht: Coverage, Traceability
-
-Note:
-
-Judith wechselt ins Terminal und zeigt das Ergebnis. Ist der Agent nicht fertig, zeigt sie, was
-bis jetzt fertig ist, oder das Ergebnis aus einem Probelauf. Sie sagt offen, was sie zeigt.
-
----
-
 ### Die Abnahme
 
-- Korrekt?
-- Passend zu Architektur und Arbeitsweise?
-- Lesbar?
-- Seine Entscheidungen vertretbar?
+- Anforderungen ↔ SDD
+- SDD ↔ Code
+- SDD ↔ Tests
+- Tests ↔ Testergebnisse
+- UAT: Geht das Licht nach 10 Sekunden aus?
 
 <p class="fragment">Angenommen?</p>
 
 Note:
 
-Karsten nimmt als Product Owner ab, nach den Akzeptanzkriterien von Folie 2 und nach diesen
-Fragen: Stimmt es, also Tests grün und Anforderungen abgedeckt? Passt es zu unserer Architektur
-und Arbeitsweise? Kann ein Mensch es gut lesen? Was hat der Agent selbst entschieden, und können
-wir damit leben? Dann das Urteil: angenommen, mit Fragen zurück oder abgelehnt. Ehrlich
-bewerten, auch wenn etwas schiefgegangen ist.
+Judith wechselt ins Terminal. Karsten nimmt als Product Owner ab und geht die Liste von oben nach
+unten durch. Judith zeigt zu jedem Punkt das Work Product, das der Agent geliefert hat. SDD heißt
+Software Detailed Design.
+
+1. Anforderungen ↔ SDD: Verweist das Detailed Design auf REQ_39, REQ_40 und REQ_59?
+2. SDD ↔ Code: Verweist der Code auf das Detailed Design?
+3. SDD ↔ Tests: Verweisen die Unit-Tests auf das Detailed Design?
+4. Tests ↔ Testergebnisse: Sind die Tests grün, und zeigt der Bericht Coverage und
+   Traceability?
+5. UAT: Geht das Licht nach 10 Sekunden ohne Bedienung aus?
+
+Dabei fragt Karsten: Kann ein Mensch es gut lesen? Was hat der Agent dort entschieden, wo die
+Anforderungen nichts sagen, und können wir damit leben?
+
+Dann das Urteil: angenommen, mit Fragen zurück oder abgelehnt. Ehrlich bewerten, auch wenn etwas
+schiefgegangen ist. Ist der Agent nicht fertig, zeigt Judith, was bis jetzt fertig ist, oder das
+Ergebnis aus einem Probelauf. Sie sagt offen, was sie zeigt.
 
 ---
 
