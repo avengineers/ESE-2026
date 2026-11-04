@@ -356,9 +356,9 @@ Und genau das prüfen wir jetzt bei unserem Agenten. Überleitung zur Demo.
 
 ### Die Abnahme
 
-- Anforderungen ↔ SDD
-- SDD ↔ Code
-- SDD ↔ Tests
+- Anforderungen ↔ SW Detailed Design (SWDD)
+- SWDD ↔ Code
+- SWDD ↔ Tests
 - Tests ↔ Testergebnisse
 - UAT: Geht das Licht nach 10 Sekunden aus?
 
@@ -367,12 +367,12 @@ Und genau das prüfen wir jetzt bei unserem Agenten. Überleitung zur Demo.
 Note:
 
 Judith wechselt ins Terminal. Karsten nimmt als Product Owner ab und geht die Liste von oben nach
-unten durch. Judith zeigt zu jedem Punkt das Work Product, das der Agent geliefert hat. SDD heißt
-Software Detailed Design.
+unten durch. Judith zeigt zu jedem Punkt das Work Product, das der Agent geliefert hat. Beim
+ersten Punkt einmal sagen: SWDD heißt Software Detailed Design.
 
-1. Anforderungen ↔ SDD: Verweist das Detailed Design auf REQ_39, REQ_40 und REQ_59?
-2. SDD ↔ Code: Verweist der Code auf das Detailed Design?
-3. SDD ↔ Tests: Verweisen die Unit-Tests auf das Detailed Design?
+1. Anforderungen ↔ SWDD: Verweist das Detailed Design auf REQ_39, REQ_40 und REQ_59?
+2. SWDD ↔ Code: Verweist der Code auf das Detailed Design?
+3. SWDD ↔ Tests: Verweisen die Unit-Tests auf das Detailed Design?
 4. Tests ↔ Testergebnisse: Sind die Tests grün, und zeigt der Bericht Coverage und
    Traceability?
 5. UAT: Geht das Licht nach 10 Sekunden ohne Bedienung aus?
@@ -386,11 +386,21 @@ Ergebnis aus einem Probelauf. Sie sagt offen, was sie zeigt.
 
 ---
 
-### Aus dem Praktikanten ist ein Kollege geworden
+### Fazit
 
-- Code, Tests, Doku, Stories, Folien
+- Aus dem Praktikanten ist ein Kollege geworden
 - Skills passen ihn an unsere Umgebung an
 - Das Urteil fällen wir
+
+<div class="fragment">
+
+**Was meint ihr?**
+
+- Kurzer Prompt oder ausführlicher?
+- Selbst entscheiden oder nachfragen?
+- Wie viel Kontrolle?
+
+</div>
 
 Note:
 
@@ -399,19 +409,9 @@ und Präsentationen. Mit Skills passen wir ihn an unsere Umgebung an. Seine Erge
 wir weiter selbst. Dabei hilft er uns, aber das Urteil fällen wir. Auch der Artikel ist so
 entstanden: zwei Menschen und ein Agent.
 
----
-
-### Zur Diskussion
-
-- Kurzer Prompt oder ausführlicher?
-- Selbst entscheiden oder nachfragen?
-- Wie viel Kontrolle?
-
-Note:
-
-Die drei offenen Fragen aus dem Artikel: Ist ein möglichst kurzer Prompt besser, der dem Agenten
-viel Freiheit lässt? Oder soll der Agent lieber alles nachfragen? Wie viel Kontrolle braucht ein
-Agent?
+Dann die Fragen einblenden, beide. Die drei offenen Fragen aus dem Artikel: Ist ein möglichst
+kurzer Prompt besser, der dem Agenten viel Freiheit lässt? Oder soll der Agent lieber alles
+nachfragen? Wie viel Kontrolle braucht ein Agent?
 
 Unsere Antwort von heute: ein Prompt von einer Zeile, und der Agent entscheidet selbst, statt
 nachzufragen. Was meint ihr?
