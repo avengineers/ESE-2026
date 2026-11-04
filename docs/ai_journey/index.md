@@ -270,12 +270,12 @@ config:
 gitGraph TB:
   commit id: "423436d: draft the article"
   commit id: "3041588: add figure 2" type: HIGHLIGHT
-  commit id: "f7a5d3c: add the zephyr article"
+  commit id: "9e6d4c7: apply the review"
   branch feat/ai-journey-slides
-  commit id: "78d2191: draft the slides"
-  commit id: "0a488e2: tighten the slides"
-  commit id: "01d05f4: show a code completion"
-  commit id: "2b86dd4: highlight the skill excerpt"
+  commit id: "ce8a99a: draft the slides"
+  commit id: "4e2722f: tighten the slides"
+  commit id: "6a7a0a6: show a code completion"
+  commit id: "dc38026: highlight the skill excerpt"
 </pre>
 </div>
 
@@ -301,6 +301,9 @@ Mermaid-Diagramm einer Git-History mit einem Branch develop. Diesmal hat es der 
 und alle Commits sind echt: Auf develop stehen der Artikel für den Tagungsband und seine
 Abbildung, auf dem Branch daneben die Arbeit an genau diesen Folien. Artikel und Folien liegen als
 Markdown in einem Git-Repository, und wir prüfen und ändern sie wie Code.
+
+Vor dem Vortrag prüfen: Jeder Rebase des Branches ändert die Commit-IDs auf dem Branch, und der
+Branch zweigt dann von einem neueren Commit auf develop ab.
 
 Der Pfeil: Mit dem markierten Commit kam Abbildung 2 des Artikels ins Repository. Für diese
 Abbildung hatten wir einen Screenshot gemacht. Die Antwort des Agenten: „Doch, es geht besser.“
