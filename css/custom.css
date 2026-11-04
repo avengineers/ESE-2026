@@ -79,6 +79,10 @@ pre.code-wrapper {
     color: #FFD54F;
 }
 
+.highlighted-cyan {
+    color: #4DD0E1;
+}
+
 /* The face of the agent in its role, in the top right corner of a slide */
 .agent-face {
     position: absolute;
@@ -389,4 +393,28 @@ pre.code-wrapper {
     height: 100%;
     overflow: visible;
     pointer-events: none;
+}
+
+/* A Mermaid flowchart that fills the width of the slide, drawn large enough to read in the room. */
+.reveal .loop-graph svg {
+    width: 100%;
+    height: auto;
+    max-width: none !important;
+}
+
+/* An edge label sits on a dark patch, so that its line does not cross the text. Its colour
+ * comes from the diagram's linkStyle. */
+.reveal .loop-graph .edgeLabel rect,
+.reveal .loop-graph .edgeLabel p {
+    background: none !important;
+    fill: none !important;
+}
+
+.reveal .loop-graph .labelBkg {
+    /* No padding: Mermaid sizes the label for its text alone and clips the rest. */
+    background: rgba(0, 43, 54, 0.8) !important;
+}
+
+.reveal .loop-graph .edgeLabel p {
+    color: inherit;
 }
