@@ -331,6 +331,63 @@ bewertet seine Befunde. Die letzte Entscheidung liegt weiter beim Menschen.
 
 ---
 
+### Unser Zielbild: Closed Loop Engineering
+
+<div class="mermaid loop-graph">
+<pre>
+---
+config:
+  theme: base
+  themeVariables:
+    fontSize: 30px
+    lineColor: "#ffffff"
+  flowchart:
+    curve: basis
+---
+flowchart LR
+  req(["Anforderungen"]):::human <-- Refinement --> story["User Story"]:::agent
+  story --> plan["Plan"]:::agent
+  plan --> tdd["TDD"]:::agent
+  tdd --> review["Review"]:::agent
+  review --> gate["Gate"]:::agent
+  gate -- grün --> accept(["Abnahme"]):::human
+  review -. Befund .-> tdd
+  gate -. rot .-> tdd
+  linkStyle 0 color:#ffffff
+  linkStyle 5 stroke:#76FF03,stroke-width:3px,color:#76FF03
+  linkStyle 7 stroke:#FF8A80,stroke-width:3px,color:#FF8A80
+  linkStyle 6 color:#ffffff
+  classDef human fill:#ffd54f,stroke:#ffd54f,color:#002b36
+  classDef agent fill:#4dd0e1,stroke:#4dd0e1,color:#002b36
+</pre>
+</div>
+
+<p class="deck-url"><span class="highlighted-yellow">Gelb:</span> Mensch · <span class="highlighted-cyan">Blau:</span> Agent</p>
+
+Note:
+
+Karsten. Das ist unser Zielbild, so wollen wir mit dem Agenten arbeiten. Wir sind noch nicht
+da. Gelb ist der Mensch, blau der Agent.
+
+Der Mensch bringt die Anforderungen mit. Im Refinement schreibt der Agent mit ihm zusammen die
+User Story, im Dialog: Der Agent fragt nach, der Mensch schärft die Anforderungen. Aus der User
+Story macht der Agent einen Plan aus kleinen Tasks. Jeden
+Task setzt er mit TDD um, testgetrieben: zuerst der Test, dann der Code. Ein zweiter Agent prüft die Änderung
+gegen eine Rubrik, also gegen unsere Kriterien. Findet er etwas, ist das ein Befund, und der Agent bessert nach.
+
+Am Ende läuft das Gate: alle Tests, der Lint, die CI. Fertig ist der Loop erst, wenn das Gate
+grün ist, nicht wenn ein Agent sagt, es sei gut. Rot schickt die Arbeit zurück, erst grün geht
+weiter zur Abnahme.
+
+Dann nimmt der Mensch ab: Er prüft den Nachweis, den der Agent in den Pull Request schreibt.
+Die Kriterien stehen in der Rubrik, das Urteil fällt der Mensch. Das führt direkt zur nächsten
+Folie.
+
+Offen sagen, wo wir heute stehen: Einzelne Schritte gibt es schon, aber noch nicht als
+geschlossenen Loop. Heute stoßen wir viele Schritte von Hand an und prüfen zwischendurch selbst.
+
+---
+
 ### Jede Antwort klingt gut
 
 - <span class="highlighted-red">2022:</span> klingt gut, oft falsch
