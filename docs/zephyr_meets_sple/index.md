@@ -14,7 +14,7 @@ ESE Kongress 2026 in Sindelfingen <!-- .element: class="ese-event" -->
 
 Note:
 
-Welcome the audience. Say the title of the talk.
+Welcome. The talk is about software product line engineering, Zephyr boards and other open source tools for building product lines.
 
 ---
 
@@ -30,7 +30,7 @@ Alexandru
 
 Note:
 
-Each speaker says who they are in one or two sentences.
+Who I am, in one sentence: a software engineer.
 
 ---
 
@@ -57,9 +57,7 @@ Each speaker says who they are in one or two sentences.
 
 Note:
 
-The old homepage, "updated for the conference". The sentence on the page is from the About page of maxiniuc.com.
-
-I started with embedded software engineering when websites looked like this and Windows 98 was the hyped OS.
+I started when websites looked like this. Embedded engineering, build systems and test frameworks since then. My current projects are on maxiniuc.com.
 
 ---
 
@@ -81,7 +79,7 @@ I started with embedded software engineering when websites looked like this and 
 
 Note:
 
-The common thread, not an agenda: one product line, from the e-mail to series production, and the requirements we find on the way.
+The thread: we follow one product line from the first customer e-mail to series production, and collect what the development environment needs on the way.
 
 ---
 
@@ -99,7 +97,7 @@ The common thread, not an agenda: one product line, from the e-mail to series pr
 
 Note:
 
-Section 1, context, about 2 minutes. One code base, two customers. Each customer sees only their own product: in the code, in the binary and in the documents.
+We are a supplier and build a small light controller, SPLed, for two customers who do not know about each other. Click: the wall between them.
 
 ---
 
@@ -120,7 +118,7 @@ Section 1, context, about 2 minutes. One code base, two customers. Each customer
 
 Note:
 
-Chapter 2: From wishes to features. Say the sentence and go on.
+We start with two customer e-mails and try to understand what each one wants.
 
 ---
 
@@ -144,7 +142,7 @@ Chapter 2: From wishes to features. Say the sentence and go on.
 
 Note:
 
-Section 2, the domain, about 5 minutes. Read both mails as they arrive. Step 1: what both want. Step 2: what only one of them wants. Next slide: the marked words leave the mails.
+Click 1: what both want, a light that switches on and off. Click 2: what differs, green and blinking for A, purple and dimmable for B.
 
 ---
 
@@ -171,7 +169,7 @@ Section 2, the domain, about 5 minutes. Read both mails as they arrive. Step 1: 
 
 Note:
 
-The words only one customer wrote are now the menu. What both want is not modelled: there is nothing to toggle. The round brackets mean pick one. Then the two selections: two variants, each a name and a feature selection. Components join the variant later.
+The differences become features, and each customer gets a variant: Disco for A, Sleep for B. The round brackets mean pick one.
 
 ---
 
@@ -192,7 +190,7 @@ The words only one customer wrote are now the menu. What both want is not modell
 
 Note:
 
-First ticks: a feature model, with its rules, as the single source of what differs; and a variant model that names each product and its selection.
+First requirements: model features and model variants, so that customer, system engineers and software engineers can see and discuss them.
 
 ---
 
@@ -231,7 +229,7 @@ First ticks: a feature model, with its rules, as the single source of what diffe
 
 Note:
 
-Before anyone writes code: which part does what. With separation of concerns, you think in parts of the code that each do one thing. Later, these parts become your components. The light, the button and its signal, the dimming: each concern gets a component. Blinking and the color are options of light_controller, not components. Features and components are not one to one. These are the components in src/ of the first application, and the tiles come back in chapter 5.
+To reason about the product, separate the concerns. Click 1: the wishes. Click 2: the components, such as light_controller and power_button. Features and components are not one to one.
 
 ---
 
@@ -253,7 +251,7 @@ Before anyone writes code: which part does what. With separation of concerns, yo
 
 Note:
 
-Third tick: a component model. Each concern lives in its own component, and a feature is either a component or an option inside one.
+New requirement: model components, the parts you split the functionality into.
 
 ---
 
@@ -274,7 +272,7 @@ Third tick: a component model. Each concern lives in its own component, and a fe
 
 Note:
 
-Chapter 3: A prototype on Zephyr. Say the sentence and go on.
+We know the features, the variants and the components. Now they have to run on a board.
 
 ---
 
@@ -292,7 +290,7 @@ Chapter 3: A prototype on Zephyr. Say the sentence and go on.
 
 Note:
 
-Section 3, the prototype. The innovation department decides: a dev board and Zephyr. Boards, drivers, shell and logging come with Zephyr, and the dev board runs within days. Stress "within days": Zephyr supports this board, so it runs almost at once.
+The innovation team builds the prototype on an ESP32 board with Zephyr. It runs within days.
 
 ---
 
@@ -309,7 +307,7 @@ Section 3, the prototype. The innovation department decides: a dev board and Zep
 
 Note:
 
-A Zephyr project has two parts. The software components: kernel, drivers, subsystems such as shell and logging, and the vendor HAL as a module. And the tooling: west fetches the repositories and runs the build, CMake builds, Kconfig and devicetree configure, the SDK compiles, Twister runs the tests.
+Zephyr brings software components (kernel, drivers, shell, logging) and tooling (west, CMake, Kconfig). The team takes both.
 
 ---
 
@@ -330,7 +328,7 @@ A Zephyr project has two parts. The software components: kernel, drivers, subsys
 
 Note:
 
-The innovation team creates the first Zephyr application. A folder with four entries, and west, CMake and Kconfig know what to do with each of them. Now we ask, model by model: where are the features, the variants and the components?
+A Zephyr application is a small folder. The pattern for every environment today: where is the feature model, the variant model, the component model?
 
 ---
 
@@ -364,7 +362,7 @@ endmenu</span><span class="fragment hl-current blk">source "Kconfig.zephyr"</spa
 
 Note:
 
-The feature model is app/Kconfig. First click: the menu, with our features from the customer e-mails and the choice of a color. Second click: the last line pulls in all the options of Zephyr, and Zephyr has a lot of them.
+The feature model is Kconfig: blinking and dimming as booleans, the color as a choice. Click 2: the last line pulls in all of Zephyr's own options.
 
 ---
 
@@ -401,7 +399,7 @@ CONFIG_COLOR_PURPLE=y</div>
 
 Note:
 
-Two variants, two files, written by hand. menuconfig shows the options, but saves to the build folder. To keep a selection, save a minimal configuration with D and copy it here. The file with the suffix replaces prj.conf, it does not add to it: GPIO and SHELL are in both files. The command: FILE_SUFFIX=disco takes prj_disco.conf; without such a file, Zephyr falls back to prj.conf.
+A variant is a prj_<name>.conf file; prj.conf is Zephyr's default name. One click per part of the command: the board, the app, and FILE_SUFFIX=disco picks the variant file.
 
 ---
 
@@ -435,7 +433,7 @@ target_sources_ifdef(CONFIG_BLINKING ...)</div>
 
 Note:
 
-The build turns the selection of the variant into two files. autoconf.h has one #define per option, and Zephyr passes it to every C file with -imacros: the components read CONFIG_BLINKING without an include. zephyr/.config has the same options for CMake: each one becomes a CMake variable, so the build system can add or leave out sources. Both files also hold every Zephyr option, not only ours.
+The build generates a header for the C code and a .config for CMake, so code and build differ per variant.
 
 ---
 
@@ -468,7 +466,7 @@ target_sources_ifdef(CONFIG_MANUAL_DIMMING
 
 Note:
 
-The component model is CMakeLists.txt. A component is a list of source files, and a Kconfig option decides whether they are built: brightness_controller only for Sleep. That is all Zephyr knows about a component.
+The component model is CMakeLists.txt: a list of source files, some taken only for a feature.
 
 ---
 
@@ -490,7 +488,7 @@ The component model is CMakeLists.txt. A component is a list of source files, an
 
 Note:
 
-All three come in unticked. Then tick the feature model and the variant model. The component model stays unticked. Zephyr gives us a feature model: Kconfig. A variant model only partly: the name is a file suffix, the selection is a file. Nothing lists the variants or describes them. A component model only partly: a component is a list of sources, without its tests and docs.
+Zephyr: feature model yes, variant model partly, component model no. CMake knows files and targets, not components.
 
 ---
 
@@ -510,7 +508,7 @@ All three come in unticked. Then tick the feature model and the variant model. T
 
 Note:
 
-The first bugs come in. Debugging on the board is slow, so the team reproduces each problem in a unit test that runs on the host PC: Zephyr's native_sim board and ztest.
+Change the board to native_sim and the same code runs on the host PC. Add ztest unit tests to debug without the board.
 
 ---
 
@@ -531,7 +529,7 @@ The first bugs come in. Debugging on the board is slow, so the team reproduces e
 
 Note:
 
-Chapter 4: The series product on AUTOSAR. Same questions as for the prototype.
+The business unit builds the series product: same features and variants, a different platform.
 
 ---
 
@@ -549,7 +547,7 @@ Chapter 4: The series product on AUTOSAR. Same questions as for the prototype.
 
 Note:
 
-Section 4, the series product. The business unit decides: its own board with an off-the-shelf MCU, AUTOSAR Classic, and spl-core as the build environment it already uses for its product lines.
+The business unit uses its in-house board, AUTOSAR and spl-core, an open source SPL build environment.
 
 ---
 
@@ -566,7 +564,7 @@ Section 4, the series product. The business unit decides: its own board with an 
 
 Note:
 
-The same two boxes as for Zephyr. The software components of AUTOSAR Classic: OS, RTE, communication, the I/O hardware abstraction and the MCAL drivers. The tooling: the AUTOSAR vendor's configurator, ARXML and the RTE generator, plus spl-core, a set of CMake functions with Kconfig for the features and GoogleTest for the unit tests. The AUTOSAR boxes are generic; no open-source SPLed port runs on AUTOSAR.
+The series platform brings the AUTOSAR basic software and its own tooling: RTE generator, spl-core, Kconfig, GoogleTest. None of it is Zephyr's.
 
 ---
 
@@ -587,7 +585,7 @@ The same two boxes as for Zephyr. The software components of AUTOSAR Classic: OS
 
 Note:
 
-The business unit sets up the series project the spl-core way. A folder with four entries. The same three questions: where are the features, the variants and the components?
+The spl-core project is also a small folder. Same three questions.
 
 ---
 
@@ -621,7 +619,7 @@ endmenu</span></div>
 
 Note:
 
-The feature model is KConfig again, the same language as in the prototype. First click: spl-core adds a few options of its own, not the thousands of Zephyr. Second click: the same features. The real file names the dimming option BRIGHTNESS_ADJUSTMENT_MANUAL; as in chapter 3, the slide uses short names.
+The feature model is Kconfig again, with the same features as in Zephyr.
 
 ---
 
@@ -657,7 +655,7 @@ spl_add_component(components/power_signal_processing)
 
 Note:
 
-A variant is a folder with its name. config.txt holds the feature selection, parts.cmake lists the components of this variant. No board options in the selection, unlike prj_disco.conf. A third file, config.cmake, picks the toolchain. The command: build.sh hands the name to CMake as -DVARIANT=Disco, and CMakeLists.txt includes variants/${VARIANT}/config.cmake. Like FILE_SUFFIX in Zephyr, a CMake define picks the variant. The real config.txt also holds a few build settings such as the name of the output file.
+A variant is a folder: config.txt holds the selection, parts.cmake lists the components. One click per part of the command: build.sh --build --variant Disco.
 
 ---
 
@@ -681,7 +679,7 @@ A variant is a folder with its name. config.txt holds the feature selection, par
 
 Note:
 
-A component is a folder with its sources, its unit tests, its documentation and its own options, and a CMakeLists.txt that declares them with spl-core functions. One click per line: the production source, the test source, the interface it needs from another component, and the call that creates the component with a readable name. Compare chapter 3: there a component was a line in a list of sources.
+A component is a folder with a CMakeLists.txt that declares its sources, tests and dependencies with spl-core functions. One click per line.
 
 ---
 
@@ -703,7 +701,7 @@ A component is a folder with its sources, its unit tests, its documentation and 
 
 Note:
 
-All three come in unticked, then all three get ticked. spl-core has a variant model and a component model. They live in CMake files that only the build reads.
+spl-core: feature, variant and component model, all ticked. They live in CMake files.
 
 ---
 
@@ -729,7 +727,7 @@ All three come in unticked, then all three get ticked. spl-core has a variant mo
 
 Note:
 
-What goes into one unit test: the production source of the component, its test source, and mocks for everything the component calls from other components, here the RTE. The mocks are not written by hand: hammocking generates them. The result is one test executable per component, built and run on the host PC. Select the test build kit and build the unittests target of one component, or unittests for all components of the variant.
+A component with a test gets its unit test target automatically, with generated mocks. The target name is the component path with underscores. unittests builds all of them.
 
 ---
 
@@ -750,7 +748,7 @@ What goes into one unit test: the production source of the component, its test s
 
 Note:
 
-Chapter 5: Just port it? Say the sentence and go on.
+Two environments, one application. How hard can the move be?
 
 ---
 
@@ -762,7 +760,7 @@ Chapter 5: Just port it? Say the sentence and go on.
 
 Note:
 
-Section 4, about 2 minutes. Say it like the manager, who really believes it is a piece of cake. And it should be: that is the goal of this talk. Pause. Ask the room what they would do.
+Say it like someone who believes it: "Just port it."
 
 ---
 
@@ -779,7 +777,7 @@ Section 4, about 2 minutes. Say it like the manager, who really believes it is a
 
 Note:
 
-This is how "just port it" looks from the manager's desk. The application is one block.
+From the outside, the application is one block.
 
 ---
 
@@ -797,7 +795,7 @@ This is how "just port it" looks from the manager's desk. The application is one
 
 Note:
 
-Pick it up, put it down. Next slide: open the block and look inside.
+Pick it up, put it down. No issues, it seems.
 
 ---
 
@@ -821,7 +819,7 @@ Pick it up, put it down. Next slide: open the block and look inside.
 
 Note:
 
-Section 5, why it is not just, about 6 minutes. The components of SPLed. The red ones include Zephyr headers, call the kernel and use devicetree macros. It was the fastest way to get the demo running.
+With a good architecture, only the red components call the platform.
 
 ---
 
@@ -849,7 +847,7 @@ Section 5, why it is not just, about 6 minutes. The components of SPLed. The red
 
 Note:
 
-The platform leaves, and the red tiles leave with it. The holes are the work. Click: this part everyone in the room knows. Cut the code cleanly, keep the platform calls in a thin adapter, and only the adapter is rewritten. Do not stay here; the expensive part is on the next slide.
+In theory, replace the red parts and the application runs on AUTOSAR. Give the room time to read. Click: the known cure, a thin adapter.
 
 ---
 
@@ -874,7 +872,7 @@ The platform leaves, and the red tiles leave with it. The holes are the work. Cl
 
 Note:
 
-The second migration, the one nobody puts in the estimate. Chapters 3 and 4 showed both build environments; now lay one over the other. One row per click. The features carry over: both use Kconfig. The variant file mixes board options and product features, so every line is sorted, and the component list per variant has to be written, because Zephyr never had one. The components are the worst: Zephyr never described a component, so there is nothing to port. One list of sources becomes a folder per component, each with its own CMakeLists.txt, and the dependencies between components are found and written down for the first time. Every ztest test becomes a GoogleTest test. And west build becomes build.sh: the team learns a new way of working. Then the sentence.
+The code is not the problem, the build environment is. One row per click: features carry over, variants, components, tests and the build do not. The product line is rebuilt in the new environment.
 
 ---
 
@@ -898,7 +896,7 @@ The second migration, the one nobody puts in the estimate. Chapters 3 and 4 show
 
 Note:
 
-Two requirements from the move. One product on several platforms: the product line lives once, not once per build environment. A new platform leaves the products unchanged: the variants, the components and their selections stay as they are; only the platform part is new. The move we just saw is the opposite of both.
+Critical requirements: one product on several platforms, and a new platform leaves the product unchanged.
 
 ---
 
@@ -919,7 +917,7 @@ Two requirements from the move. One product on several platforms: the product li
 
 Note:
 
-Chapter 6: What if. The prototype team and the series team sit together. Say the sentence and go on.
+What if we designed such an environment?
 
 ---
 
@@ -939,7 +937,7 @@ Chapter 6: What if. The prototype team and the series team sit together. Say the
 
 Note:
 
-The question the two teams ask: can one repository build Disco for all three? Zephyr for the prototype on the dev board, AUTOSAR for the series product, gtest for the unit tests on the host. One line per click. Only the platform name changes. Do not answer yet.
+What we want: the same variant, only the platform name changes. One line per click: zephyr, autosar, gtest.
 
 ---
 
@@ -964,7 +962,7 @@ include(variants/<span class="w fragment mark c-common" data-fragment-index="1">
 
 Note:
 
-The room has seen both files. First click: in Zephyr, a feature decides in CMake which sources are built. Second click: in spl-core, the variant is a CMake define, and the component list of a variant is CMake code. Both tools build with CMake, and in both the product line logic sits in the build files. Only the build can read it, and only this build.
+Today the product line lives in CMake, and CMake is a build system, not an SPL tool.
 
 ---
 
@@ -993,7 +991,7 @@ The room has seen both files. First click: in Zephyr, a feature decides in CMake
 
 Note:
 
-The idea: take the product line out of the build files. First click: the features, the variants and the components as data, in a format that no build tool owns. Second click: what each build needs, the CMake glue that starts a Zephyr build or the series build. Third click: in between, a generator per platform reads the data and writes that glue. Then the sentence, and click again for its second half: the steps differ per platform, so the platform knows how to build a variant. Nobody writes CMake for the variants and components; the platform's generators write it. The Zephyr platform of the open SPLed repository still has two small hand-written glue files.
+Describe the product line once and generate the CMake glue per platform. One click per box. The platform knows how to build; the product line does not care.
 
 ---
 
@@ -1018,7 +1016,7 @@ The idea: take the product line out of the build files. First click: the feature
 
 Note:
 
-The product line models are data files. Any tool can read them, and a generator turns them into a build.
+New requirement: the product line is described in data files, not in CMake.
 
 ---
 
@@ -1072,7 +1070,7 @@ The product line models are data files. Any tool can read them, and a generator 
 
 Note:
 
-The data needs a format. The same Disco variant three times. First XML: the room expects it, and the AUTOSAR people know it from ARXML. Click: the scared face. Then JSON, then YAML. Last click: let's go with YAML. Do not go into the reasons.
+XML is too much to write, JSON is better, YAML is the shortest. This is what yanga uses: a build-system-agnostic way to describe an SPL, with generators for CMake.
 
 ---
 
@@ -1099,7 +1097,7 @@ The data needs a format. The same Disco variant three times. First XML: the room
 
 Note:
 
-The variant is data. One click per part: its name, a description, its components and its feature selection. The same model as in spl-core, written as YAML instead of CMake. SPLed puts each variant in its own folder; yanga does not require it.
+A variant in yanga.yaml: name, description, components and feature selection. One click per part.
 
 ---
 
@@ -1129,7 +1127,7 @@ The variant is data. One click per part: its name, a description, its components
 
 Note:
 
-The light_controller entry of the yanga port of SPLed, shortened. One click per part: the documentation, the production source, the test source, and the component it needs. Simplified on the slide: in the real file, docs and testing each hold a sources list. The same component model as in spl-core, as data instead of CMake functions. Then say: there is no CMake for it; nobody writes CMake for the component, the platform's generator writes it.
+A component in yanga.yaml: docs, sources, tests and required components. The generators write the CMake. One click per part.
 
 ---
 
@@ -1169,7 +1167,7 @@ The light_controller entry of the yanga port of SPLed, shortened. One click per 
 
 Note:
 
-Each platform brings its own pipeline: the steps that must run before its build. One column per click. Zephyr and gtest are the real pipelines of the yanga port of SPLed; the autosar column is the what-if. Only one step is the same on all three: the header with the product features, generated from the product feature model. Everything else belongs to the platform. Last click: a platform brings its own tools and its own components, such as the adapters to the drivers.
+Every platform builds its own way. One column per click. The platform knows how to build a variant; the variant does not care.
 
 ---
 
@@ -1193,7 +1191,7 @@ Each platform brings its own pipeline: the steps that must run before its build.
 
 Note:
 
-The platform model is data too: the real definition of the zephyr_esp32h2 platform in the yanga port of SPLed, shortened. One click per part. components: the components only this platform has, such as the Zephyr adapters for the LED and the buttons. configs: the tools of the platform; poks.json names the toolchain, riscv64-zephyr-elf, that poks installs. pipeline: the steps before the build and the build itself, with the board. Left out on the slide: the platform's own feature model, the west manifest with the Zephyr version, and the build targets such as flash. The variant appears nowhere in it.
+The platform model: its components, its tools (poks installs them) and its pipeline. One click per part.
 
 ---
 
@@ -1216,7 +1214,7 @@ The platform model is data too: the real definition of the zephyr_esp32h2 platfo
 
 Note:
 
-The same three rows as for Zephyr and spl-core, and all three get ticked. Then a fourth row appears: the platform model. Zephyr is a platform and spl-core builds for one platform, so neither needed this row. Here the platform is a model of its own: its tools, its pipeline and its components. The variant does not change when the platform changes. The zephyr_esp32h2 and gtest platforms are real; autosar is the what-if.
+Now four models: feature, variant and component belong to the product; the platform is what you build for.
 
 ---
 
@@ -1237,7 +1235,7 @@ The same three rows as for Zephyr and spl-core, and all three get ticked. Then a
 
 Note:
 
-Chapter 7: Conclusion. Say the sentence and go on.
+Conclusion.
 
 ---
 
@@ -1263,7 +1261,7 @@ Chapter 7: Conclusion. Say the sentence and go on.
 
 Note:
 
-The next board arrives. It is added as one more platform: a folder with its yanga.yaml, its tools, its pipeline and its own components, here the adapters for the TC375 buttons and LED. Click: the new platform. Click: the same variant, built for it; only the platform name changes. The TC375 platform is real: SPLed runs bare metal on an AURIX TC375 board. In that port, the change outside platforms/tc375/ was five lines.
+Adding a platform is a new folder; the product stays as it is. Click: tc375. Click: the same variant, built for it. TC375 is a bare-metal TriCore build without AUTOSAR.
 
 ---
 
@@ -1277,7 +1275,7 @@ The next board arrives. It is added as one more platform: a folder with its yang
 
 Note:
 
-Section 8, about 2 minutes. The opening line comes back. This time it really is a piece of cake: there is nothing to port. All platforms, the prototype, the series, the test and the new one, and how each one builds, live in the same repository as the product line. Building for the series board means picking the variant and the platform.
+"Just port it." Click: there is nothing to port. Click: all platforms live in the same repository as the product line.
 
 ---
 
@@ -1304,7 +1302,7 @@ Section 8, about 2 minutes. The opening line comes back. This time it really is 
 
 Note:
 
-The photo slide. Leave it up while people take pictures, then go to questions. The IDs are the article's. The talk raises seven of the ten; the article adds documentation and reports, two feature models and selections by owner.
+Take a photo and check your own development environment against this list. The article has the details.
 
 ---
 
@@ -1317,6 +1315,10 @@ The photo slide. Leave it up while people take pictures, then go to questions. T
 </div>
 
 https://avengineers.github.io/ESE-2026/docs/zephyr_meets_sple/ <!-- .element: class="deck-url" -->
+
+Note:
+
+Thank you for your attention. Open for questions.
 
 ---
 
