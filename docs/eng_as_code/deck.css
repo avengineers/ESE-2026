@@ -101,6 +101,11 @@
     max-width: 150px;
 }
 
+/* A chain with room for the text below it. */
+.reveal .chain.spaced {
+    margin-bottom: 40px;
+}
+
 .reveal .chain .arrow {
     align-self: center;
     padding: 0 0.3em;

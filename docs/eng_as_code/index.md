@@ -418,7 +418,7 @@ The report for Disco has both specifications. The report for Sleep has only the 
 
 ### The top of the chain
 
-<div class="chain">
+<div class="chain spaced">
 <div class="box"><b>Requirements tool</b></div>
 <div class="arrow">→</div>
 <div class="box"><b>Export</b>CSV or ReqIF</div>
