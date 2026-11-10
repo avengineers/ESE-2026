@@ -42,6 +42,21 @@ Each speaker says who they are in one or two sentences.
 
 ---
 
+### Agenda
+
+- Between the tools
+- Engineering as Code
+- One repository, one chain
+- One source, many variants
+- The top of the chain
+- Why this suits an AI agent
+
+Note:
+
+About 30 seconds. We start with the problem: the chain between the tools. Then the idea of Engineering as Code, and how it looks in SPLed, our demonstrator: one repository and one chain from the requirement to the test result. Then how one source serves many variants, and what happens with requirements that live outside the repository. At the end: why all of this suits an AI agent.
+
+---
+
 ### Between the tools
 
 <div class="chain">
