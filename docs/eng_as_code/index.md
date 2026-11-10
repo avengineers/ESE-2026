@@ -468,53 +468,115 @@ Click 2: the links still resolve, so the build sees nothing wrong. Only a review
 
 ### Why this suits an AI agent
 
-- Not the reason we started <!-- .element: class="fragment" -->
-- The agent sees the structure: a folder per component, one rule for links <!-- .element: class="fragment" -->
-- It makes its changes in that structure <!-- .element: class="fragment" -->
+<div class="agent-view">
+<div class="box folder">
+<div class="head">components/light_controller/</div>
+<div class="item"><code>doc/</code><span>Specification <code>SWDD_LC-102</code></span></div>
+<div class="item"><code>src/</code><span>Implementation <code>SWIMPL_LC-003</code></span></div>
+<div class="item"><code>test/</code><span>Test <code>TS_LC-001</code></span></div>
+</div>
+<div class="flow">
+<span class="fragment">reads the structure →</span>
+<span class="fragment">← writes in the same shape</span>
+</div>
+<div class="box agent"><b>AI agent</b></div>
+</div>
+
+A folder per component. One rule for links. <!-- .element: class="small" -->
 
 Note:
 
-This benefit came as a surprise. Everything is in one place, so the agent can read the whole repository. It sees our structure and follows it.
+This benefit came as a surprise. It was not the reason we started. Everything is in one place, so the agent can read the whole repository.
+
+Click 1: the agent reads the structure: a folder per component with src, test and doc, and the rule that every artifact names what justifies it. Click 2: it makes its changes in that same structure.
 
 ---
 
 ### Skills: our rules, written down
 
-A skill is a set of written instructions that the agent loads when a task needs it. <!-- .element: class="small" -->
+<div class="skill-shape">
+<div class="label-top">The rule in the skill <code>c-unit-testing</code></div>
+<pre><code class="plaintext"> * .. test:: &lt;Component&gt;.DescriptiveTestName
+ *    :id: TS_&lt;COMP&gt;-001
+ *    :tests: SWDD_&lt;COMP&gt;-100</code></pre>
+<div class="fragment">
+<div class="down">↓ same shape</div>
+<div class="label-top">A test in SPLed</div>
+<pre><code class="plaintext"> * .. test:: light_controller.test_light_on_and_off
+ *    :id: TS_LC-001
+ *    :tests: SWDD_LC-100, SWDD_LC-102, SWDD_LC-300</code></pre>
+</div>
+</div>
 
-- How an artifact is written here <!-- .element: class="fragment" -->
-- Which identifier scheme it uses <!-- .element: class="fragment" -->
-- Which links it must carry <!-- .element: class="fragment" -->
-
-The agent's work goes through the same build, with the same report and the same warnings. <!-- .element: class="fragment small" -->
+Same build, same report, same warnings. <!-- .element: class="fragment small" -->
 
 Note:
 
-With the skills, the agent writes a specification, a test and an implementation in the shape the traceability needs, not prose a human has to rework. Our skills are public: sple-skills on GitHub.
+A skill is a set of written instructions that the agent loads when a task needs it. Ours describe how an artifact is written here, which identifier scheme it uses and which links it must carry.
+
+On top: a real excerpt from the unit test skill in sple-skills. It gives the agent the shape of a test entry, with its identifier and the specification it tests. Click 1: a test in SPLed has exactly that shape. So the agent writes a specification, a test and an implementation in the shape the traceability needs, not prose a human has to rework.
+
+Click 2: the agent's work goes through the same build as a human's, with the same report and the same warnings. Our skills are public: sple-skills on GitHub.
 
 ---
 
 ### The agent as a reviewer
 
-- It checks each change in a pull request against the structure <!-- .element: class="fragment" -->
-- It comments where something does not fit, for example a specification without a test <!-- .element: class="fragment" -->
-- One pull request holds the whole change: the agent and the human look at the same thing <!-- .element: class="fragment" -->
+<div class="pr">
+<div class="pr-head">Pull request: 3 files changed</div>
+<div class="file"><div><b>Requirement</b> <code>REQ_43</code><span class="path">doc/ubconnect/sw_requirements.json</span></div><span class="state changed">changed</span></div>
+<div class="file missing"><div><b>Design</b> <code>SWDD_LC-102</code><span class="path">components/light_controller/doc/index.md</span></div><span class="state">not in this pull request</span></div>
+<div class="comment fragment"><div class="who">AI agent <span class="tag">(example)</span></div>REQ_43 changed, but SWDD_LC-102, which refines it, is not in this pull request. Please update the design or say why it still fits.</div>
+<div class="file"><div><b>Code</b> <code>SWIMPL_LC-003</code><span class="path">components/light_controller/src/light_controller.c</span></div><span class="state changed">changed</span></div>
+<div class="file"><div><b>Test</b> <code>TS_LC-001</code><span class="path">components/light_controller/test/test_light_controller.cc</span></div><span class="state changed">changed</span></div>
+</div>
 
 Note:
 
-The same knowledge makes the agent a useful reviewer. Because the code, the specification and the test change together, one pull request holds the whole change.
+Back to the pull request where the design was left behind. The same knowledge that helps the agent write artifacts makes it a useful reviewer. It checks each change against the structure.
+
+Click 1: it comments on the gap. REQ_43 changed, and the design that refines it did not. This comment is an example we wrote for the slide. It shows the kind of comment the agent gives. The same works for other gaps, for example a specification without a test.
+
+Because the code, the specification and the test change together, one pull request holds the whole change. The agent and the human reviewer look at the same thing.
 
 ---
 
 ### What changed for us
 
-- The build resolves the chain from requirement to test result <!-- .element: class="fragment" -->
-- Every developer makes the full evidence locally, before the push <!-- .element: class="fragment" -->
-- One feature model resolves the documents and the code: one correct report per variant <!-- .element: class="fragment" -->
+<div class="before-after">
+<div class="before">
+<div class="col-head">Before</div>
+<div class="box">requirements tool</div>
+<div class="down">↓</div>
+<div class="box">modeling tool</div>
+<div class="down">↓</div>
+<div class="box">document</div>
+<div class="down">↓</div>
+<div class="box">repository</div>
+<div class="down">↓</div>
+<div class="box">test tool</div>
+<div class="down">↓</div>
+<div class="box">spreadsheet</div>
+</div>
+<div class="now fragment">
+<div class="col-head">Now</div>
+<div class="box"><b>One repository</b>requirements, design, code, tests</div>
+<div class="down">↓ one build, on every developer's machine</div>
+<div class="reports">
+<div><img src="../images/light_sleep.jpg" alt="The Sleeping Light"><span>Sleep report</span></div>
+<div><img src="../images/light_disco.jpg" alt="The Disco Light"><span>Disco report</span></div>
+<div><img src="../images/light_spa.jpg" alt="The Spa Light"><span>Spa report</span></div>
+</div>
+</div>
+</div>
 
 Note:
 
 Summary, about 2 minutes for three slides.
+
+Before: the chain from slide 3, held together by people and a spreadsheet.
+
+Click 1: now three things are different. The build resolves the chain from requirement to test result and shows it in a report, instead of a person assembling it by hand. Every developer makes the full evidence locally, before the push. And one feature model resolves the documents as well as the code, so each variant has its own correct report from a single source.
 
 ---
 
@@ -532,14 +594,16 @@ None of this depends on our particular tools. It depends on treating an artifact
 
 ### Try it yourself
 
-- [SPLed](https://github.com/avengineers/SPLed): the demonstrator product line
-- [spl-core](https://github.com/avengineers/spl-core): the build framework
-- [Sphinx-Needs](https://sphinx-needs.readthedocs.io/): the traceability extension
-- [sple-skills](https://github.com/avengineers/sple-skills): our agent skills
+<div class="qr-links">
+<a href="https://github.com/avengineers/SPLed"><img src="../images/qr_link_spled.png" alt="QR code of SPLed"><b>SPLed</b><span>the demonstrator</span></a>
+<a href="https://github.com/avengineers/spl-core"><img src="../images/qr_link_spl_core.png" alt="QR code of spl-core"><b>spl-core</b><span>the build framework</span></a>
+<a href="https://sphinx-needs.readthedocs.io/"><img src="../images/qr_link_sphinx_needs.png" alt="QR code of Sphinx-Needs"><b>Sphinx-Needs</b><span>the traceability</span></a>
+<a href="https://github.com/avengineers/sple-skills"><img src="../images/qr_link_sple_skills.png" alt="QR code of sple-skills"><b>sple-skills</b><span>our agent skills</span></a>
+</div>
 
 Note:
 
-Everything we showed is open source. Clone SPLed and run the build on your own machine.
+Everything we showed is open source. Scan the codes, clone SPLed and run the build on your own machine.
 
 ---
 

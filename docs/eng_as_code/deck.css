@@ -347,6 +347,170 @@
     color: var(--stale);
 }
 
+/* A review comment on the file above it. */
+.reveal .pr .comment {
+    margin: 0.4em 0.8em 0.4em 2.4em;
+    padding: 0.5em 0.8em;
+    background: rgba(0, 0, 0, 0.25);
+    border-left: 4px solid var(--r-link-color);
+}
+
+.reveal .pr .comment .who {
+    font-weight: bold;
+    color: var(--r-link-color);
+}
+
+.reveal .pr .comment .tag {
+    font-weight: normal;
+    color: var(--muted);
+}
+
+/* An agent beside a component folder: what it reads and what it writes. */
+.reveal .agent-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    margin-bottom: 30px;
+    font-size: 0.5em;
+}
+
+.reveal .agent-view .folder {
+    width: 420px;
+    text-align: left;
+}
+
+.reveal .agent-view .folder .head {
+    margin-bottom: 0.4em;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.reveal .agent-view .folder .item {
+    display: flex;
+    gap: 0.8em;
+    padding: 0.35em 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.reveal .agent-view .folder .item > code {
+    width: 3.5em;
+}
+
+.reveal .agent-view .flow {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+.reveal .agent-view .agent {
+    padding: 1.2em 1.5em;
+    font-size: 1.2em;
+}
+
+/* A rule from a skill above an artifact that follows it. */
+.reveal .skill-shape {
+    width: 820px;
+    margin: 0 auto 20px;
+    font-size: 0.5em;
+    text-align: left;
+}
+
+.reveal .skill-shape .label-top {
+    color: var(--muted);
+}
+
+.reveal .skill-shape pre {
+    width: 100%;
+    margin: 0.3em 0 0.6em;
+    font-size: 1em;
+}
+
+.reveal .skill-shape .down {
+    color: var(--muted);
+    text-align: center;
+}
+
+/* Before and now: the tool chain beside one repository with its reports. */
+.reveal .before-after {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3em;
+    font-size: 0.5em;
+}
+
+.reveal .before-after .col-head {
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.reveal .before-after .down {
+    color: var(--muted);
+}
+
+.reveal .before-after .before {
+    width: 220px;
+    opacity: 0.5;
+}
+
+.reveal .before-after .before .box {
+    padding: 0.2em 0.5em;
+}
+
+.reveal .before-after .before .down {
+    line-height: 1.1;
+}
+
+.reveal .before-after .now {
+    width: 520px;
+}
+
+.reveal .before-after .now .down {
+    margin: 0.6em 0;
+}
+
+.reveal .before-after .reports {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+.reveal .before-after .reports img {
+    display: block;
+    width: 140px;
+    margin: 0 0 0.3em;
+    border-radius: 12px;
+}
+
+/* Links as QR codes, each with its name and what it is. */
+.reveal .qr-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.2em;
+    font-size: 0.5em;
+}
+
+.reveal .qr-links a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--r-main-color);
+}
+
+.reveal .qr-links img {
+    width: 180px;
+    margin: 0 0 0.4em;
+    padding: 8px;
+    background: #fff;
+}
+
+.reveal .qr-links span {
+    color: var(--muted);
+}
+
 /* The SPLED logo: a tile with its own light background. */
 .reveal img.logo {
     width: 400px;
