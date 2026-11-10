@@ -383,6 +383,12 @@
     font-size: 0.7em;
 }
 
+/* A code block that keeps its step-by-step highlights but hides the line
+ * numbers, for example because it shows excerpts of several files. */
+.reveal pre.no-numbers .hljs-ln-numbers {
+    display: none;
+}
+
 /* A code block that is too long for the default font size. */
 .reveal pre.tall {
     font-size: 0.45em;
