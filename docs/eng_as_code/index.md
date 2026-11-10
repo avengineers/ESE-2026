@@ -541,45 +541,6 @@ Because the code, the specification and the test change together, one pull reque
 
 ---
 
-### What changed for us
-
-<div class="before-after">
-<div class="before">
-<div class="col-head">Before</div>
-<div class="box">requirements tool</div>
-<div class="down">↓</div>
-<div class="box">modeling tool</div>
-<div class="down">↓</div>
-<div class="box">document</div>
-<div class="down">↓</div>
-<div class="box">repository</div>
-<div class="down">↓</div>
-<div class="box">test tool</div>
-<div class="down">↓</div>
-<div class="box">spreadsheet</div>
-</div>
-<div class="now fragment">
-<div class="col-head">Now</div>
-<div class="box"><b>One repository</b>requirements, design, code, tests</div>
-<div class="down">↓ one build, on every developer's machine</div>
-<div class="reports">
-<div><img src="../images/light_sleep.jpg" alt="The Sleeping Light"><span>Sleep report</span></div>
-<div><img src="../images/light_disco.jpg" alt="The Disco Light"><span>Disco report</span></div>
-<div><img src="../images/light_spa.jpg" alt="The Spa Light"><span>Spa report</span></div>
-</div>
-</div>
-</div>
-
-Note:
-
-Summary, about 2 minutes for three slides.
-
-Before: the chain from slide 3, held together by people and a spreadsheet.
-
-Click 1: now three things are different. The build resolves the chain from requirement to test result and shows it in a report, instead of a person assembling it by hand. Every developer makes the full evidence locally, before the push. And one feature model resolves the documents as well as the code, so each variant has its own correct report from a single source.
-
----
-
 ### It is not about our tools
 
 An engineering artifact is something with an identifier and a link, not a document. <!-- .element: class="statement" -->
@@ -588,22 +549,24 @@ Then the chain is something the build can read. <!-- .element: class="fragment s
 
 Note:
 
+Summary, about 2 minutes for two slides.
+
+Three things changed for us. The build resolves the chain from requirement to test result and shows it in a report, instead of a person assembling it by hand. Every developer makes the full evidence locally, before the push. And one feature model resolves the documents as well as the code, so each variant has its own correct report from a single source.
+
 None of this depends on our particular tools. It depends on treating an artifact as something with an identifier and a link. The chain stops being a matter of discipline alone.
 
 ---
 
 ### Try it yourself
 
-<div class="qr-links">
-<a href="https://github.com/avengineers/SPLed"><img src="../images/qr_link_spled.png" alt="QR code of SPLed"><b>SPLed</b><span>the demonstrator</span></a>
-<a href="https://github.com/avengineers/spl-core"><img src="../images/qr_link_spl_core.png" alt="QR code of spl-core"><b>spl-core</b><span>the build framework</span></a>
-<a href="https://sphinx-needs.readthedocs.io/"><img src="../images/qr_link_sphinx_needs.png" alt="QR code of Sphinx-Needs"><b>Sphinx-Needs</b><span>the traceability</span></a>
-<a href="https://github.com/avengineers/sple-skills"><img src="../images/qr_link_sple_skills.png" alt="QR code of sple-skills"><b>sple-skills</b><span>our agent skills</span></a>
-</div>
+- [SPLed](https://github.com/avengineers/SPLed): the demonstrator product line
+- [spl-core](https://github.com/avengineers/spl-core): the build framework
+- [Sphinx-Needs](https://sphinx-needs.readthedocs.io/): the traceability extension
+- [sple-skills](https://github.com/avengineers/sple-skills): our agent skills
 
 Note:
 
-Everything we showed is open source. Scan the codes, clone SPLed and run the build on your own machine.
+Everything we showed is open source. Clone SPLed and run the build on your own machine.
 
 ---
 
