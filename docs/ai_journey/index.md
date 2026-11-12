@@ -119,9 +119,8 @@ Judith: Kommt drauf an. Als nettes Kunstwerk im Büro? Vielleicht. Das kam dabei
 
 (Judith: Antwort einblenden)
 
-Judith: „I'll try to create that.“ Und dann vier Meerjungfrauen, auf Englisch mermaid, mit
-Branches, die „develoop“ und „Develice“ heißen. Klingt gut, sieht sogar gut aus, und ist
-trotzdem falsch.
+Judith: „I'll try to create that.“ Und dann vier Meerjungfrauen, mit Branches, die „develoop“
+und „Develice“ heißen.
 
 ---
 
