@@ -392,11 +392,11 @@ Abnahme aussieht.
 
 ### Die Abnahme
 
-- Anforderungen ↔ SW Detailed Design (SWDD)
-- SWDD ↔ Code
-- SWDD ↔ Tests
-- Tests ↔ Testergebnisse
-- UAT: Geht das Licht nach 10 Sekunden aus?
+- <!-- .element: class="fragment" --> Anforderungen ↔ SW Detailed Design (SWDD)
+- <!-- .element: class="fragment" --> SWDD ↔ Code
+- <!-- .element: class="fragment" --> SWDD ↔ Tests
+- <!-- .element: class="fragment" --> Tests ↔ Testergebnisse
+- <!-- .element: class="fragment" --> UAT: Geht das Licht nach 10 Sekunden aus?
 
 <p class="fragment"><strong>Angenommen?</strong></p>
 
@@ -404,10 +404,27 @@ Note:
 
 (Judith wechselt ins Terminal.)
 
-Judith: Dann schauen wir mal, was der Agent geliefert hat. SWDD heißt Software Detailed Design.
-Ich gehe die Liste von oben nach unten durch: Verweist das Detailed Design auf die drei
-Anforderungen? Verweisen Code und Tests auf das Design? Sind die Tests grün, und zeigt der
-Bericht Coverage und Traceability? Und geht das Licht nach 10 Sekunden aus?
+Judith: Dann schauen wir mal, was der Agent geliefert hat.
+
+(Judith: nächster Punkt)
+
+Judith: Verweist das Detailed Design auf die drei Anforderungen?
+
+(Judith: nächster Punkt)
+
+Judith: Verweist der Code auf das Design?
+
+(Judith: nächster Punkt)
+
+Judith: Verweisen die Tests auf das Design?
+
+(Judith: nächster Punkt)
+
+Judith: Sind die Tests grün, und zeigt der Bericht Coverage und Traceability?
+
+(Judith: nächster Punkt)
+
+Judith: Und geht das Licht nach 10 Sekunden aus?
 
 (Judith zeigt zu jedem Punkt das Ergebnis und sagt, was ihr auffällt: Ist es gut lesbar? Was hat
 der Agent entschieden, wo die Anforderungen nichts sagen?)
