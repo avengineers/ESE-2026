@@ -369,12 +369,15 @@ flowchart LR
 
 Note:
 
-Karsten: Ungefähr so. Der Mensch bringt die Anforderungen mit, und im Refinement schreibt der Agent mit ihm die User Story. Daraus macht der Agent einen
-Plan aus kleinen Tasks und setzt jeden testgetrieben um: erst der Test, dann der Code. Ein
-zweiter Agent prüft die Änderung gegen unsere Kriterien. Am Ende läuft das Gate: alle Tests, der
-Lint, die CI. Fertig ist die Arbeit erst, wenn das Gate grün ist, nicht wenn ein Agent sagt, es
-sei gut. Dann nimmt der Mensch ab, und das Urteil fällen wir. Ganz ehrlich: Da sind wir noch
-nicht, einzelne Schritte gibt es schon.
+Karsten: Closed Loop Engineering. Das heißt: Der Mensch steht am Anfang und am Ende, und
+dazwischen arbeitet der Agent in einer geschlossenen Schleife. Er prüft seine Arbeit selbst und
+bessert nach, bis sie nachweislich fertig ist. Am Anfang bringt der Mensch die Anforderungen
+mit, und im Refinement schreibt der Agent mit ihm die User Story. Daraus macht der Agent einen
+Plan aus kleinen Tasks und setzt jeden testgetrieben um. Ein zweiter Agent prüft die Änderung
+gegen unsere Kriterien. Am Ende läuft das Gate: alle Tests, der Lint, die CI. Fertig ist die
+Arbeit erst, wenn das Gate grün ist, nicht wenn ein Agent sagt, es sei gut. Dann nimmt der
+Mensch ab, und das Urteil fällen wir. Ganz ehrlich: Da sind wir noch nicht, einzelne Schritte
+gibt es schon.
 
 ---
 
