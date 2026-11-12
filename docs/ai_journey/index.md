@@ -113,11 +113,15 @@ Note:
 Judith: Ich wollte ein Mermaid-Diagramm einer Git-History, vier Commits und ein Branch develop.
 Mermaid ist eine Sprache für Diagramme als Text.
 
+Karsten: Und? Das konnte er doch sicherlich ohne Probleme erstellen?
+
+Judith: Kommt drauf an. Als nettes Kunstwerk im Büro? Vielleicht. Das kam dabei raus:
+
 (Judith: Antwort einblenden)
 
-Judith: Die Antwort: „I'll try to create that.“ Und dann vier Meerjungfrauen, auf Englisch
-mermaid, mit Branches, die „develoop“ und „Develice“ heißen. Klingt gut, sieht sogar gut aus,
-und ist trotzdem falsch.
+Judith: „I'll try to create that.“ Und dann vier Meerjungfrauen, auf Englisch mermaid, mit
+Branches, die „develoop“ und „Develice“ heißen. Klingt gut, sieht sogar gut aus, und ist
+trotzdem falsch.
 
 ---
 
