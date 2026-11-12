@@ -104,7 +104,7 @@ man ungesehen übernehmen. Mein Lieblingsbeispiel, wenn die KI mal wieder Mist g
 ---
 
 Can you create a mermaid diagram showing a git history of 4 commits and a develop branch
-that points to the latest commit? <!-- .element: style="font-size: 0.6em;" -->
+that points to the latest commit?
 
 ![Die Antwort des Chatbots: „I'll try to create that.“ Darunter vier Bilder von Meerjungfrauen.](../images/ai_journey_mermaid_answer.png) <!-- .element: class="fragment" style="width: 472px; margin: 0;" -->
 
