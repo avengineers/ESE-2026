@@ -103,19 +103,10 @@ man ungesehen übernehmen. Mein Lieblingsbeispiel, wenn die KI mal wieder Mist g
 
 ---
 
-<div class="flex-container" style="align-items: center;">
-<div class="half">
+Can you create a mermaid diagram showing a git history of 4 commits and a develop branch
+that points to the latest commit? <!-- .element: style="font-size: 0.6em;" -->
 
-<blockquote style="width: 100%; font-size: 0.8em;">Can you create a mermaid diagram showing a git
-history of 4 commits and a develop branch that points to the latest commit?</blockquote>
-
-</div>
-<div class="half">
-
-![Die Antwort des Chatbots: „I'll try to create that.“ Darunter vier Bilder von Meerjungfrauen.](../images/ai_journey_mermaid_answer.png) <!-- .element: class="fragment" style="height: 620px; margin: 0;" -->
-
-</div>
-</div>
+![Die Antwort des Chatbots: „I'll try to create that.“ Darunter vier Bilder von Meerjungfrauen.](../images/ai_journey_mermaid_answer.png) <!-- .element: class="fragment" style="width: 472px; margin: 0;" -->
 
 Note:
 
