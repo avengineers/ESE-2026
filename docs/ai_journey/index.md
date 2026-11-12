@@ -129,7 +129,7 @@ und „Develice“ heißen. Und „GEIM“!
 - Neue Modelle, z. B. Claude Opus 4.5
 - Schulung: agentische Entwicklung
 - Repository lesen, bauen, testen, Fehler korrigieren
-- MCP: Ticketsystem, CI-Server
+- Erste Skills ausprobiert
 
 <p class="fragment"><strong>„Frag doch den Agenten!“</strong></p>
 
@@ -138,8 +138,8 @@ Note:
 Karsten: Die ersten Agenten haben wir benutzt wie die Code Completion, nur mit Prompts. Ende
 2025 kamen neue Modelle, und unser Team hat eine Schulung zu agentischer Entwicklung besucht. Da
 haben wir gesehen, was ein Agent kann: Er liest das Repository, schreibt Code, baut, testet und
-korrigiert seine eigenen Fehler. Über MCP, das Model Context Protocol, erreicht er auch
-Ticketsystem und CI-Server.
+korrigiert seine eigenen Fehler. Und in der Schulung haben wir zum ersten Mal Skills
+ausprobiert. Dazu gleich mehr.
 
 (Karsten: Fazit einblenden)
 
