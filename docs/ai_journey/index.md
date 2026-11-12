@@ -32,7 +32,13 @@ Judith: Frag nicht mich, frag doch den Agenten!
 
 Note:
 
-Jede Person sagt in ein oder zwei Sätzen, wer sie ist.
+Karsten: Wer sind wir eigentlich?
+
+Judith: Ich bin Judith, Entwicklerin im Rhein-Main-Team. Ich kümmere mich um die SPLE
+Platform, mit Schwerpunkt auf Engineering as Code und Testautomatisierung.
+
+Karsten: Ich bin Karsten, Product Owner der SPLE Platform, unserer IDP für Embedded
+Engineering. Und neuerdings kümmern wir uns beide um die Aufzucht und Erziehung von Agenten.
 
 ---
 
@@ -46,16 +52,14 @@ Auftrag</span> eines anderen agiert.
 
 Note:
 
-Judith fragt: „Wer ist eigentlich der Agent?“ Karsten antwortet mit der Definition. Der Kern ist
-„in Vertretung oder im Auftrag“: Der Agent handelt für uns. Genau so hat er eben seine Aufgabe
-bekommen, vom Product Owner.
+Judith: Und wer ist eigentlich der Agent?
 
-Die Definition fasst zwei Wörterbücher zusammen und ist kein wörtliches Zitat. Das DWDS nennt
-den Agenten als jemanden, „der im Auftrag eines anderen Geschäfte vermittelt und abschließt“,
-und als Programm, das „selbstständig Entscheidungen trifft“. Herkunft: italienisch agente,
-„Vertreter“, von lateinisch agere, „treiben, tun“.
+Karsten: Das Wort kommt vom lateinischen agere, handeln. Ein Agent handelt in Vertretung oder
+im Auftrag eines anderen.
 
-Dann: „Und während unser Agent arbeitet, erzählen wir euch, wie es dazu kam.“
+Judith: So wie eben. Du hast ihm die Story als Product Owner gegeben.
+
+Karsten: Genau. Und während er arbeitet, erzählen wir euch, wie es dazu kam.
 
 ---
 
@@ -72,17 +76,21 @@ Dann: „Und während unser Agent arbeitet, erzählen wir euch, wie es dazu kam.
 
 Note:
 
-Judith. Kapitel 1 des Artikels. Die Code Completion schlägt beim Programmieren mal eine Funktion
-vor, mal eine Schleife. Die Syntax muss man nicht mehr im Kopf haben. Eine große Hilfe bei
-Python, CMake, C++, GoogleTest und beim Schreiben von Dokumentation. Struktur und Architektur
-kommen weiter von uns. Das Werkzeug entlastet bei Routineaufgaben, und wir gewinnen Zeit für die
-kreative Arbeit.
+Judith: Angefangen hat es 2022 mit der Code Completion. Sie schlägt mal eine Funktion vor, mal
+eine Schleife. Die Syntax musste ich nicht mehr im Kopf haben, bei Python, CMake, C++ und
+GoogleTest.
 
-Die Vorschläge klingen immer gut, trotzdem sind sie oft falsch: Der Code läuft nicht, vieles ist
-halluziniert. Wir prüfen jede Zeile, wie man die Arbeit eines Praktikanten prüft.
+Karsten: Und die Architektur?
 
-Dann das Bild einblenden: In einer CMake-Datei von uns schlägt die Code Completion als erste Zeile
-den Copyright-Kommentar einer ganz anderen Firma vor. Klingt gut, sieht richtig aus, ist falsch.
+Judith: Die kam weiter von uns. Die Vorschläge klangen immer gut, aber oft waren sie falsch.
+Wir haben jede Zeile geprüft, so wie man die Arbeit eines Praktikanten prüft.
+
+(Judith: Bild einblenden)
+
+Karsten: Mein Lieblingsbeispiel: In einer CMake-Datei von uns schlägt sie als erste Zeile den
+Copyright-Kommentar einer ganz anderen Firma vor.
+
+Judith: Klingt gut, sieht richtig aus, ist falsch.
 
 ---
 
@@ -94,11 +102,14 @@ den Copyright-Kommentar einer ganz anderen Firma vor. Klingt gut, sieht richtig 
 
 Note:
 
-Judith. Ein Chatbot schreibt uns ein Skript oder eine kleine Erweiterung für VS Code. Hier waren
-wir weniger streng als bei der Code Completion: Lief das Ergebnis, haben wir es übernommen, ohne
-jede Zeile zu verstehen. Heute heißt das Vibe Coding.
+Karsten: Dann kamen die Chatbots.
 
-Überleitung zur nächsten Folie: „Nicht alles lief.“
+Judith: Die haben uns Skripte geschrieben oder kleine Erweiterungen für VS Code. Da waren wir
+weniger streng: Lief es, haben wir es übernommen, ohne jede Zeile zu verstehen.
+
+Karsten: Heute heißt das Vibe Coding.
+
+Judith: Nur: Nicht alles lief.
 
 ---
 
@@ -106,11 +117,15 @@ jede Zeile zu verstehen. Heute heißt das Vibe Coding.
 
 Note:
 
-Judith. Die Frage war: ein Mermaid-Diagramm einer Git-History mit vier Commits und einem
-Branch develop, der auf den letzten Commit zeigt. Mermaid ist eine Sprache für Diagramme als
-Text. Die Antwort: „I'll try to create that.“ Und dann vier Bilder von Meerjungfrauen, englisch
-mermaid, mit Commits und Branches, die „develoop“ und „Develice“ heißen. Die Antwort klingt gut,
-sie sieht sogar gut aus, und sie ist trotzdem falsch.
+Judith: Ich wollte ein Mermaid-Diagramm einer Git-History, vier Commits und ein Branch develop.
+
+Karsten: Mermaid ist eine Sprache für Diagramme als Text.
+
+Judith: Die Antwort: „I'll try to create that.“ Und dann kamen vier Meerjungfrauen.
+
+Karsten: Auf Englisch mermaid. Mit Branches, die „develoop“ und „Develice“ heißen.
+
+Judith: Klingt gut, sieht sogar gut aus, und ist trotzdem falsch.
 
 ---
 
@@ -125,14 +140,20 @@ sie sieht sogar gut aus, und sie ist trotzdem falsch.
 
 Note:
 
-Karsten. Kapitel 2 des Artikels. Die ersten Agenten haben wir benutzt wie die Code Completion,
-nur mit Prompts. Ende 2025 kamen neue Modelle, und unser Team besuchte eine Schulung zu
-agentischer Entwicklung. Die Trainer haben uns gezeigt, was ein Agent kann: Er liest das
-Repository, schreibt Code, führt Befehle aus, baut, testet und korrigiert seine eigenen Fehler.
-Über MCP, das Model Context Protocol, erreicht er Ticketsystem und CI-Server.
+Karsten: Die ersten Agenten haben wir benutzt wie die Code Completion, nur mit Prompts.
 
-Und auf fast jede Frage im Team heißt die Antwort: „Frag doch den Agenten!“ Das ist der Titel des
-Vortrags.
+Judith: Bis Ende 2025. Da kamen neue Modelle, und wir waren in einer Schulung zu agentischer
+Entwicklung.
+
+Karsten: Da haben wir gesehen, was ein Agent kann: Er liest das Repository, schreibt Code, baut,
+testet und korrigiert seine eigenen Fehler. Über MCP, das Model Context Protocol, erreicht er
+auch Ticketsystem und CI-Server.
+
+Judith: Und seitdem heißt bei uns die Antwort auf fast jede Frage …
+
+(Judith: Fazit einblenden)
+
+Karsten und Judith: Frag doch den Agenten!
 
 ---
 
@@ -144,15 +165,16 @@ Vortrags.
 
 Note:
 
-Judith. Kapitel 3 des Artikels. Jeder pflegt seinen eigenen Werkzeugkasten: eine persönliche
-AGENTS.md mit eigenen Regeln, bevorzugte und selbst geschriebene Skills. Dasselbe Projekt liefert
-dann verschiedene Ergebnisse, je nachdem, wer fragt.
+Judith: Dann hat jeder angefangen, seinen eigenen Werkzeugkasten zu pflegen: eine eigene
+AGENTS.md mit eigenen Regeln, eigene Skills.
 
-Keine Produkte nennen und keine bewerten: Es geht um die persönlichen Setups, nicht um das
-Werkzeug.
+Karsten: Und dasselbe Projekt liefert verschiedene Ergebnisse, je nachdem, wer fragt.
 
-Offen sagen: Der Agent, der gerade für uns arbeitet, läuft mit Karstens Setup. Es ist „sein
-Agent“.
+Judith: Der Agent, der gerade für uns arbeitet, läuft übrigens mit deinem Setup.
+
+Karsten: Stimmt. Es ist mein Agent.
+
+(Keine Produkte nennen und keine bewerten.)
 
 ---
 
@@ -186,9 +208,15 @@ description: Write GTest/GMock unit tests for embedded
 
 Note:
 
-Karsten. Ein Skill ist eine Anleitung in Textform. Der Agent lädt sie, sobald eine Aufgabe dazu
-passt. Sie sagt, wie ein Team eine Aufgabe in seiner Umgebung erledigt: Werkzeuge, Konventionen,
-Prüfungen am Ende. Das ist ein Ausschnitt aus unserem Skill für Unit-Tests in Embedded C.
+Judith: Was ist eigentlich ein Skill?
+
+Karsten: Eine Anleitung in Textform. Der Agent lädt sie, sobald eine Aufgabe dazu passt. Sie
+sagt ihm, wie ein Team eine Aufgabe in seiner Umgebung erledigt: Werkzeuge, Konventionen,
+Prüfungen am Ende.
+
+Judith: Und das hier?
+
+Karsten: Ein Ausschnitt aus unserem Skill für Unit-Tests in Embedded C.
 
 ---
 
@@ -200,11 +228,13 @@ Prüfungen am Ende. Das ist ein Ausschnitt aus unserem Skill für Unit-Tests in 
 
 Note:
 
-Karsten. Als Plattform-Team liefern wir neben Werkzeugen und Schulungen jetzt auch Skills: wie
-man gute Unit-Tests schreibt, wie man einen Build startet, wie man einen Testbericht erzeugt. Der
-Entwickler muss diese Regeln nicht auswendig kennen, denn sein Agent lädt sie. So wird aus vielen
-persönlichen Setups ein gemeinsamer Stand. Damit ist die Frage von eben beantwortet: Wie passt man
-einen Agenten an eine Umgebung an?
+Karsten: Als Plattform-Team liefern wir neben Werkzeugen und Schulungen jetzt auch Skills: für
+Unit-Tests, für den Build, für den Testbericht.
+
+Judith: Dann muss ich die Regeln nicht mehr auswendig kennen.
+
+Karsten: Nein, dein Agent lädt sie. So wird aus vielen persönlichen Setups ein gemeinsamer
+Stand.
 
 ---
 
@@ -221,20 +251,19 @@ einen Agenten an eine Umgebung an?
 
 Note:
 
-Karsten. Kapitel 4 des Artikels, zweites Beispiel. Der Agent in der Rolle des Product Owners:
-Er schreibt User Stories und
-Backlog-Einträge und bereitet die Sprintplanung vor, immer im gleichen Format. Durch sein großes
-Kontextfenster denkt er an Fakten und Randbedingungen, die ein Mensch oft vergisst, und er
-liefert schnell eine Grundlage, über die das Team diskutieren kann. Der Nachteil: Für einen
-Menschen sind es oft zu viele Details.
+Judith: In welchen Rollen arbeitet der Agent bei uns?
 
-Die User Story auf Folie 2 hat der Agent geschrieben, und das Ticket für diese Folien auch.
+Karsten: Zum Beispiel als Product Owner. Er schreibt User Stories und bereitet die
+Sprintplanung vor, immer im gleichen Format. Durch sein großes Kontextfenster denkt er an
+Fakten, die ein Mensch oft vergisst.
 
-Das erste Beispiel des Artikels, Automotive SPICE, läuft gerade im Hintergrund. Wir zeigen es am
-Ende.
+Judith: Aber für Menschen sind es oft zu viele Details.
 
-Entwurf: Hier kann eine bereinigte Kopie des Tickets für die Folien hin, ohne Ticket-Nummer und
-ohne interne Links.
+(Karsten: Fazit einblenden)
+
+Karsten: Auch die User Story auf Folie 2 hat der Agent geschrieben.
+
+Judith: Was er daraus gemacht hat, sehen wir am Ende.
 
 ---
 
@@ -286,25 +315,21 @@ gitGraph TB:
 
 Note:
 
-Judith. Kapitel 4 des Artikels, drittes Beispiel. Der Agent in der Rolle des Beraters: Er
-arbeitet nicht nur am Code mit, sondern auch an Präsentationen und Vorträgen, und er sagt uns,
-wo es besser geht. Dieser Vortrag ist so entstanden: zwei Menschen und
-ein Agent.
+Judith: Als Berater arbeitet der Agent auch an Vorträgen mit, und er sagt uns, wo es besser
+geht.
 
-Links: Erinnert ihr euch an die Meerjungfrauen? Das ist das Diagramm, das wir damals wollten: ein
-Mermaid-Diagramm einer Git-History mit einem Branch develop. Diesmal hat es der Agent geschrieben,
-und alle Commits sind echt: Auf develop stehen der Artikel für den Tagungsband und seine
-Abbildung, auf dem Branch daneben die Arbeit an genau diesen Folien. Artikel und Folien liegen als
-Markdown in einem Git-Repository, und wir prüfen und ändern sie wie Code.
+Karsten: Erinnert ihr euch an die Meerjungfrauen? Links ist das Diagramm, das wir damals
+wollten.
 
-Vor dem Vortrag prüfen: Jeder Rebase des Branches ändert die Commit-IDs auf dem Branch, und der
-Branch zweigt dann von einem neueren Commit auf develop ab.
+Judith: Diesmal hat es der Agent geschrieben, und alle Commits sind echt: Auf develop steht der
+Artikel für den Tagungsband, daneben die Arbeit an genau diesen Folien. Artikel und Folien
+liegen als Markdown in Git, und wir prüfen sie wie Code.
 
-Der Pfeil: Mit dem markierten Commit kam Abbildung 2 des Artikels ins Repository. Für diese
-Abbildung hatten wir einen Screenshot gemacht. Die Antwort des Agenten: „Doch, es geht besser.“
-Sein Screenshot hat 2.688 × 1.901 Pixel statt 1.055 × 791, genug für 300 dpi im Druck.
+Karsten: Und der markierte Commit?
 
-Der Agent schreibt auch Tabellen und Dokumente in den gängigen Office-Formaten.
+Judith: Damit kam ein Screenshot für den Artikel ins Repository. Die Antwort des Agenten: „Doch,
+es geht besser.“ Sein Screenshot hat 2.688 × 1.901 Pixel statt 1.055 × 791, genug für den
+Druck.
 
 ---
 
@@ -318,11 +343,14 @@ Der Agent schreibt auch Tabellen und Dokumente in den gängigen Office-Formaten.
 
 Note:
 
-Karsten. Der Agent in der Rolle des Reviewers. Einen Pull Request mit 2.000 geänderten Zeilen
-konnte ein Mensch früher kaum prüfen. Heute prüft der Agent die ganze Änderung, und der Mensch
-bewertet seine Befunde. Die letzte Entscheidung liegt weiter beim Menschen.
+Karsten: Und als Reviewer. Einen Pull Request mit 2.000 geänderten Zeilen konnte früher kaum
+ein Mensch prüfen.
 
-Überleitung: „Und wie bewerten wir, was der Agent liefert?“
+Judith: Heute prüft der Agent die ganze Änderung, und wir bewerten seine Befunde.
+
+Karsten: Die Entscheidung bleibt bei uns.
+
+Judith: Und wie bewerten wir, was der Agent liefert?
 
 ---
 
@@ -361,25 +389,26 @@ flowchart LR
 
 Note:
 
-Karsten. Das ist unser Zielbild, so wollen wir mit dem Agenten arbeiten. Wir sind noch nicht
-da. Gelb ist der Mensch, blau der Agent.
+Karsten: So wollen wir mit dem Agenten arbeiten. Gelb ist der Mensch, blau der Agent.
 
-Der Mensch bringt die Anforderungen mit. Im Refinement schreibt der Agent mit ihm zusammen die
-User Story, im Dialog: Der Agent fragt nach, der Mensch schärft die Anforderungen. Aus der User
-Story macht der Agent einen Plan aus kleinen Tasks. Jeden
-Task setzt er mit TDD um, testgetrieben: zuerst der Test, dann der Code. Ein zweiter Agent prüft die Änderung
-gegen eine Rubrik, also gegen unsere Kriterien. Findet er etwas, ist das ein Befund, und der Agent bessert nach.
+Judith: Und da sind wir schon?
 
-Am Ende läuft das Gate: alle Tests, der Lint, die CI. Fertig ist der Loop erst, wenn das Gate
-grün ist, nicht wenn ein Agent sagt, es sei gut. Rot schickt die Arbeit zurück, erst grün geht
-weiter zur Abnahme.
+Karsten: Ganz ehrlich: noch nicht. Einzelne Schritte gibt es schon, aber noch nicht als
+geschlossenen Loop.
 
-Dann nimmt der Mensch ab: Er prüft den Nachweis, den der Agent in den Pull Request schreibt.
-Die Kriterien stehen in der Rubrik, das Urteil fällt der Mensch. Das führt direkt zur nächsten
-Folie.
+Judith: Der Mensch bringt die Anforderungen mit. Im Refinement schreibt der Agent mit ihm die
+User Story, er fragt nach, und der Mensch schärft die Anforderungen.
 
-Offen sagen, wo wir heute stehen: Einzelne Schritte gibt es schon, aber noch nicht als
-geschlossenen Loop. Heute stoßen wir viele Schritte von Hand an und prüfen zwischendurch selbst.
+Karsten: Daraus macht der Agent einen Plan aus kleinen Tasks und setzt jeden testgetrieben um:
+erst der Test, dann der Code. Ein zweiter Agent prüft die Änderung gegen unsere Kriterien.
+Findet er etwas, bessert der erste nach.
+
+Judith: Und wann ist es fertig?
+
+Karsten: Wenn das Gate grün ist: alle Tests, der Lint, die CI. Nicht, wenn ein Agent sagt, es
+sei gut. Dann nimmt der Mensch ab.
+
+Judith: Das Urteil fällen wir.
 
 ---
 
@@ -394,16 +423,20 @@ geschlossenen Loop. Heute stoßen wir viele Schritte von Hand an und prüfen zwi
 
 Note:
 
-Judith und Karsten im Dialog. Kapitel 5 des Artikels. Schon 2022 klangen die Vorschläge immer
-gut. Das ist geblieben. Geändert hat sich, wie oft sie stimmen. Und das macht die Bewertung
-schwerer: Wenn fast alles stimmt, fällt der eine Fehler kaum noch auf.
+Judith: 2022 klangen die Vorschläge immer gut, und oft waren sie falsch.
 
-Und selbst wenn alles funktioniert, ist die Qualität damit nicht sichergestellt. Der Agent kennt
-die Kriterien nicht, die uns wichtig sind, solange wir sie ihm nicht sagen: in der `AGENTS.md`,
-in den Skills, in der User Story. Im Embedded-Umfeld gilt: „Was ich nicht verstehe, kann ich
-nicht freigeben.“
+Karsten: Heute klingen sie immer noch gut, aber meistens stimmen sie.
 
-Und genau das prüfen wir jetzt bei unserem Agenten. Überleitung zur Demo.
+Judith: Und das macht es schwerer: Wenn fast alles stimmt, fällt der eine Fehler kaum noch auf.
+
+Karsten: Und selbst wenn alles läuft, ist es noch nicht gut. Der Agent kennt unsere Kriterien
+nicht, solange wir sie ihm nicht sagen: in der AGENTS.md, in den Skills, in der User Story.
+
+(Judith: Fazit einblenden)
+
+Judith: Im Embedded-Umfeld gilt: Was ich nicht verstehe, kann ich nicht freigeben.
+
+Karsten: Schauen wir also, was unser Agent geliefert hat.
 
 ---
 
@@ -419,23 +452,30 @@ Und genau das prüfen wir jetzt bei unserem Agenten. Überleitung zur Demo.
 
 Note:
 
-Judith wechselt ins Terminal. Karsten nimmt als Product Owner ab und geht die Liste von oben nach
-unten durch. Judith zeigt zu jedem Punkt das Work Product, das der Agent geliefert hat. Beim
-ersten Punkt einmal sagen: SWDD heißt Software Detailed Design.
+(Judith wechselt ins Terminal und zeigt zu jedem Punkt, was der Agent geliefert hat.)
 
-1. Anforderungen ↔ SWDD: Verweist das Detailed Design auf REQ_39, REQ_40 und REQ_59?
-2. SWDD ↔ Code: Verweist der Code auf das Detailed Design?
-3. SWDD ↔ Tests: Verweisen die Unit-Tests auf das Detailed Design?
-4. Tests ↔ Testergebnisse: Sind die Tests grün, und zeigt der Bericht Coverage und
-   Traceability?
-5. UAT: Geht das Licht nach 10 Sekunden ohne Bedienung aus?
+Karsten: Ich nehme jetzt als Product Owner ab. SWDD heißt Software Detailed Design. Verweist das
+Detailed Design auf die drei Anforderungen?
 
-Dabei fragt Karsten: Kann ein Mensch es gut lesen? Was hat der Agent dort entschieden, wo die
-Anforderungen nichts sagen, und können wir damit leben?
+Judith: (zeigt das Detailed Design)
 
-Dann das Urteil: angenommen, mit Fragen zurück oder abgelehnt. Ehrlich bewerten, auch wenn etwas
-schiefgegangen ist. Ist der Agent nicht fertig, zeigt Judith, was bis jetzt fertig ist, oder das
-Ergebnis aus einem Probelauf. Sie sagt offen, was sie zeigt.
+Karsten: Verweisen der Code und die Tests auf das Design?
+
+Judith: (zeigt Code und Tests)
+
+Karsten: Sind die Tests grün, und zeigt der Bericht Coverage und Traceability?
+
+Judith: (zeigt den Bericht)
+
+Karsten: Und geht das Licht nach 10 Sekunden aus?
+
+Judith: (zeigt das Ergebnis)
+
+Karsten: Kann ein Mensch das gut lesen? Und was hat der Agent entschieden, wo die Anforderungen
+nichts sagen?
+
+(Karsten: Urteil – angenommen, mit Fragen zurück oder abgelehnt. Ehrlich bewerten. Ist der
+Agent nicht fertig, zeigt Judith den Stand oder einen Probelauf und sagt, was sie zeigt.)
 
 ---
 
@@ -456,15 +496,21 @@ Ergebnis aus einem Probelauf. Sie sagt offen, was sie zeigt.
 
 Note:
 
-Karsten. Die Zusammenfassung des Artikels. Er schreibt Code, Tests, Dokumentation, User Stories
-und Präsentationen. Aus dem Praktikanten ist ein Mitarbeiter geworden, und wir sind die Chefs
-von Agenten: Wir geben die Aufgabe vor, und das Urteil fällen wir. Mit Skills und
-Qualitätskriterien passen wir sie an unsere Umgebung an. Auch der Artikel ist so entstanden:
-zwei Menschen und ein Agent.
+Karsten: Aus dem Praktikanten ist ein Mitarbeiter geworden. Er schreibt Code, Tests,
+Dokumentation, User Stories und Präsentationen.
 
-Dann die Fragen einblenden. Wie sieht euer Workflow mit Agenten aus? Und wie viel Kontrolle
-braucht ein Agent? Unsere Antwort von heute: ein Prompt von einer Zeile, und der Agent
-entscheidet selbst, statt nachzufragen. Was meint ihr?
+Judith: Und wir sind die Chefs: Wir geben die Aufgabe vor, und das Urteil fällen wir.
+
+Karsten: Mit Skills und Qualitätskriterien passen wir die Agenten an unsere Umgebung an.
+
+(Karsten: Fragen einblenden)
+
+Judith: Jetzt seid ihr dran. Wie sieht euer Workflow mit Agenten aus?
+
+Karsten: Und wie viel Kontrolle braucht ein Agent? Unsere Antwort heute: ein Prompt von einer
+Zeile, und der Agent entscheidet selbst.
+
+Judith: Was meint ihr?
 
 ---
 
