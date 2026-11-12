@@ -241,8 +241,10 @@ msedge --headless --hide-scrollbars --window-size=1920,1080 --virtual-time-budge
   is a full sentence. A question or an exclamation keeps its `?` or `!`. Titles, subtitles,
   source lines and sentence fragments get no period.
 - Write speaker notes as the script: the words the speakers say, in full spoken sentences, each
-  part opened with the speaker's name, as in `Karsten: …`. A talk of two speakers is a dialog
-  on every slide: they take turns, ask each other and answer. Put what a speaker does in
+  part opened with the speaker's name, as in `Karsten: …`. A talk of two speakers is a dialog:
+  each speaker carries their own slides and examples, and the other hands over or adds one
+  line. Keep the changes of speaker few. Let neither speaker explain to the other what they
+  know, and give neither a naive question for the other to answer. Put what a speaker does in
   parentheses, as in `(Judith: nächste Folie)`. Keep it short. Explain how the deck works in
   `AGENTS.md` or in a code comment, never in a note.
 
