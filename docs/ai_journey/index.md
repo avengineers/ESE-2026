@@ -197,9 +197,9 @@ description: Write GTest/GMock unit tests for embedded
 Note:
 
 Judith: Ein Skill ist eine Anleitung in Textform. Der Agent lädt sie, sobald eine Aufgabe dazu
-passt. Sie sagt ihm, wie ein Team eine Aufgabe in seiner Umgebung erledigt: Werkzeuge,
-Konventionen, Prüfungen am Ende. Hier seht ihr einen Ausschnitt aus unserem Skill für Unit-Tests
-in Embedded C.
+passt. Sie beschreibt, wie er eine wiederkehrende Aufgabe erledigen soll: Werkzeuge,
+Konventionen, Prüfungen am Ende. Der Skill befähigt ihn. Hier seht ihr einen Ausschnitt aus
+unserem Skill für Unit-Tests in Embedded C.
 
 ---
 
