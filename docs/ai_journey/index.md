@@ -402,30 +402,22 @@ Abnahme aussieht.
 
 Note:
 
-(Judith wechselt ins Terminal und zeigt zu jedem Punkt, was der Agent geliefert hat.)
+(Judith wechselt ins Terminal.)
 
-Karsten: Ich nehme jetzt als Product Owner ab. SWDD heißt Software Detailed Design. Verweist das
-Detailed Design auf die drei Anforderungen?
+Judith: Dann schauen wir mal, was der Agent geliefert hat. SWDD heißt Software Detailed Design.
+Ich gehe die Liste von oben nach unten durch: Verweist das Detailed Design auf die drei
+Anforderungen? Verweisen Code und Tests auf das Design? Sind die Tests grün, und zeigt der
+Bericht Coverage und Traceability? Und geht das Licht nach 10 Sekunden aus?
 
-Judith: (zeigt das Detailed Design)
+(Judith zeigt zu jedem Punkt das Ergebnis und sagt, was ihr auffällt: Ist es gut lesbar? Was hat
+der Agent entschieden, wo die Anforderungen nichts sagen?)
 
-Karsten: Verweisen der Code und die Tests auf das Design?
+(Judith: Fazit einblenden)
 
-Judith: (zeigt Code und Tests)
+Judith: Was meint ihr: angenommen? Mein Urteil: …
 
-Karsten: Sind die Tests grün, und zeigt der Bericht Coverage und Traceability?
-
-Judith: (zeigt den Bericht)
-
-Karsten: Und geht das Licht nach 10 Sekunden aus?
-
-Judith: (zeigt das Ergebnis)
-
-Karsten: Kann ein Mensch das gut lesen? Und was hat der Agent entschieden, wo die Anforderungen
-nichts sagen?
-
-(Karsten: Urteil – angenommen, mit Fragen zurück oder abgelehnt. Ehrlich bewerten. Ist der
-Agent nicht fertig, zeigt Judith den Stand oder einen Probelauf und sagt, was sie zeigt.)
+(Judith: angenommen, mit Fragen zurück oder abgelehnt, ehrlich bewertet. Ist der Agent nicht
+fertig, zeigt sie den Stand oder einen Probelauf und sagt, was sie zeigt.)
 
 ---
 
