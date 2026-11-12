@@ -215,6 +215,8 @@ Karsten: Als Plattform-Team liefern wir neben Werkzeugen und Schulungen jetzt au
 Unit-Tests, für den Build, für den Testbericht. Niemand muss diese Regeln auswendig kennen, der
 Agent lädt sie. So wird aus vielen persönlichen Setups ein gemeinsamer Stand.
 
+Judith: Alles gut und schön. Aber wie benutzen wir die Skills denn konkret im Alltag?
+
 ---
 
 ### Der Product-Owner-Agent
@@ -230,8 +232,10 @@ Agent lädt sie. So wird aus vielen persönlichen Setups ein gemeinsamer Stand.
 
 Note:
 
-Karsten: Der Agent arbeitet bei uns in verschiedenen Rollen. Als Product Owner schreibt er User
-Stories und bereitet die Sprintplanung vor, immer im gleichen Format. Durch sein großes
+Karsten: Ganz einfach: Ich schreibe dem Agenten „Let's refine“ oder „Let's create a user
+story“. Daran erkennt er die Aufgabe, lädt unseren Skill fürs Refinement, und schon arbeitet er
+als Product Owner. Dann schreibt er User Stories und bereitet die Sprintplanung vor, immer im
+gleichen Format. Durch sein großes
 Kontextfenster denkt er an Fakten, die ein Mensch oft vergisst. Der Nachteil: Für Menschen sind
 es oft zu viele Details.
 
