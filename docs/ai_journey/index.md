@@ -444,10 +444,10 @@ Judith: Karsten, was ist dein Fazit?
 
 ### Fazit
 
-- Praktikant ist jetzt Mitarbeiter.
-- Wir sind Chefs von Agenten.
-- Agenten übernehmen SW-Entwicklungsaufgaben.
-- Wir definieren den Rahmen mit Skills, Agenten und Kriterien.
+- <!-- .element: class="fragment" --> Praktikant ist jetzt Mitarbeiter.
+- <!-- .element: class="fragment" --> Wir sind Chefs von Agenten.
+- <!-- .element: class="fragment" --> Agenten übernehmen SW-Entwicklungsaufgaben.
+- <!-- .element: class="fragment" --> Wir definieren den Rahmen mit Skills, Agenten und Kriterien.
 
 <div class="fragment">
 
@@ -460,10 +460,22 @@ Judith: Karsten, was ist dein Fazit?
 
 Note:
 
-Karsten: Aus dem Praktikanten ist ein Mitarbeiter geworden. Er schreibt Code, Tests,
-Dokumentation, User Stories und Präsentationen. Wir sind die Chefs: Wir geben die Aufgabe vor,
-und das Urteil fällen wir. Die Agenten übernehmen Aufgaben der Softwareentwicklung, und wir
-definieren den Rahmen dafür: mit Skills, mit Agenten und mit Kriterien.
+(Karsten: nächster Punkt)
+
+Karsten: Aus dem Praktikanten ist ein Mitarbeiter geworden.
+
+(Karsten: nächster Punkt)
+
+Karsten: Und wir sind die Chefs: Wir geben die Aufgabe vor, und das Urteil fällen wir.
+
+(Karsten: nächster Punkt)
+
+Karsten: Die Agenten übernehmen Aufgaben der Softwareentwicklung: Code, Tests, Dokumentation,
+User Stories, sogar Präsentationen.
+
+(Karsten: nächster Punkt)
+
+Karsten: Und wir definieren den Rahmen dafür: mit Skills, mit Agenten und mit Kriterien.
 
 (Karsten: Fragen einblenden)
 
