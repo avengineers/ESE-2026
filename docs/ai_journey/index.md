@@ -446,33 +446,30 @@ Ergebnis aus einem Probelauf. Sie sagt offen, was sie zeigt.
 
 ### Fazit
 
-- Aus dem Praktikanten ist ein Kollege geworden
-- Skills passen ihn an unsere Umgebung an
-- Das Urteil fällen wir
+- Praktikant ist jetzt Mitarbeiter
+- Wir sind Chefs von Agenten
+- Skills und Qualitätskriterien passen sie an
 
 <div class="fragment">
 
 **Was meint ihr?**
 
-- Kurzer Prompt oder ausführlicher?
-- Selbst entscheiden oder nachfragen?
-- Wie viel Kontrolle?
+- Wie sieht euer Workflow aus?
+- Wie viel Kontrolle braucht ein Agent?
 
 </div>
 
 Note:
 
 Karsten. Die Zusammenfassung des Artikels. Er schreibt Code, Tests, Dokumentation, User Stories
-und Präsentationen. Mit Skills passen wir ihn an unsere Umgebung an. Seine Ergebnisse bewerten
-wir weiter selbst. Dabei hilft er uns, aber das Urteil fällen wir. Auch der Artikel ist so
-entstanden: zwei Menschen und ein Agent.
+und Präsentationen. Aus dem Praktikanten ist ein Mitarbeiter geworden, und wir sind die Chefs
+von Agenten: Wir geben die Aufgabe vor, und das Urteil fällen wir. Mit Skills und
+Qualitätskriterien passen wir sie an unsere Umgebung an. Auch der Artikel ist so entstanden:
+zwei Menschen und ein Agent.
 
-Dann die Fragen einblenden, beide. Die drei offenen Fragen aus dem Artikel: Ist ein möglichst
-kurzer Prompt besser, der dem Agenten viel Freiheit lässt? Oder soll der Agent lieber alles
-nachfragen? Wie viel Kontrolle braucht ein Agent?
-
-Unsere Antwort von heute: ein Prompt von einer Zeile, und der Agent entscheidet selbst, statt
-nachzufragen. Was meint ihr?
+Dann die Fragen einblenden. Wie sieht euer Workflow mit Agenten aus? Und wie viel Kontrolle
+braucht ein Agent? Unsere Antwort von heute: ein Prompt von einer Zeile, und der Agent
+entscheidet selbst, statt nachzufragen. Was meint ihr?
 
 ---
 
