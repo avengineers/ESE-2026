@@ -284,24 +284,28 @@ gitGraph TB:
 </div>
 <div class="half" style="flex: 1.4; width: auto;">
 
-![Der Agent im Terminal: „Doch, es geht besser.“ Eine Tabelle vergleicht den Screenshot der Autoren, 1.055 × 791 Pixel, mit seinem, 2.688 × 1.901 Pixel.](../images/ai_journey_better_screenshot.png) <!-- .element: id="better-screenshot" style="width: 100%; margin-top: 0;" -->
+![Der Agent im Terminal: „Doch, es geht besser.“ Eine Tabelle vergleicht den Screenshot der Autoren, 1.055 × 791 Pixel, mit seinem, 2.688 × 1.901 Pixel.](../images/ai_journey_better_screenshot.png) <!-- .element: id="better-screenshot" class="fragment" data-fragment-index="0" style="width: 100%; margin-top: 0;" -->
 
 </div>
 </div>
 
-<svg class="slide-arrow" data-arrow-from=".git-graph .commit-highlight-outer" data-arrow-to="#better-screenshot"></svg>
+<svg class="slide-arrow fragment" data-fragment-index="0" data-arrow-from=".git-graph .commit-highlight-outer" data-arrow-to="#better-screenshot"></svg>
 
 Note:
 
-Judith: Als Berater arbeitet der Agent auch an Vorträgen mit, und er sagt uns, wo es besser
-geht. Erinnert ihr euch an die Meerjungfrauen? Links ist das Diagramm, das ich damals wollte.
-Diesmal hat es der Agent geschrieben, und alle Commits sind echt: Auf develop steht der Artikel
-für den Tagungsband, daneben die Arbeit an genau diesen Folien. Artikel und Folien liegen als
-Markdown in Git, und wir prüfen sie wie Code.
+Judith: Als Berater hat uns der Agent bei genau diesem Vortrag geholfen. Links seht ihr seine
+Commits: auf develop der Artikel für den Tagungsband, daneben die Arbeit an diesen Folien. Das
+ist übrigens ein echtes Mermaid-Diagramm.
 
-Mit dem markierten Commit kam ein Screenshot für den Artikel ins Repository. Die Antwort des
-Agenten: „Doch, es geht besser.“ Sein Screenshot hat 2.688 × 1.901 Pixel statt 1.055 × 791,
-genug für den Druck.
+Karsten: Und wo hilft er konkret?
+
+Judith: Naja, wir hatten die Anforderungen des Tagungsbands gar nicht vor Augen. Aber wir haben
+sie dem Agenten als Kontext mitgegeben. Dadurch hat er erkannt, dass unsere Screenshots
+nicht den Anforderungen genügen.
+
+(Judith: Screenshot einblenden)
+
+Judith: Und er hat uns gezeigt, dass er es besser kann.
 
 ---
 
