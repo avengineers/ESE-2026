@@ -325,8 +325,12 @@ Note:
 
 Judith: Zum Beispiel als Review-Agent. Jeder kennt das: Ein Pull-Request-Review steht an, und
 man schaut auf 2.000 Zeilen fremden Code. Heute prüft der Agent die ganze Änderung, und wir
-bewerten seine Befunde. Die Entscheidung bleibt bei uns. Bleibt die Frage: Wie bewerten wir,
-was der Agent liefert?
+bewerten seine Befunde. Die Entscheidung bleibt bei uns.
+
+Judith: Aber das ist nur ein Aspekt der Softwareentwicklung. Wie stellst du dir eigentlich das
+Zielbild für Agentic Software Engineering vor?
+
+(Karsten: nächste Folie)
 
 ---
 
@@ -365,15 +369,12 @@ flowchart LR
 
 Note:
 
-Karsten: So wollen wir mit dem Agenten arbeiten. Gelb ist der Mensch, blau der Agent. Ganz
-ehrlich: Da sind wir noch nicht, einzelne Schritte gibt es schon. Der Mensch bringt die
-Anforderungen mit. Im Refinement schreibt der Agent mit ihm die User Story. Daraus macht er einen
+Karsten: Ungefähr so. Der Mensch bringt die Anforderungen mit, und im Refinement schreibt der Agent mit ihm die User Story. Daraus macht der Agent einen
 Plan aus kleinen Tasks und setzt jeden testgetrieben um: erst der Test, dann der Code. Ein
-zweiter Agent prüft die Änderung gegen unsere Kriterien.
-
-Judith: Am Ende läuft das Gate: alle Tests, der Lint, die CI. Fertig ist die Arbeit erst, wenn
-das Gate grün ist, nicht wenn ein Agent sagt, es sei gut. Rot schickt sie zurück. Erst dann
-nimmt der Mensch ab, und das Urteil fällen wir.
+zweiter Agent prüft die Änderung gegen unsere Kriterien. Am Ende läuft das Gate: alle Tests, der
+Lint, die CI. Fertig ist die Arbeit erst, wenn das Gate grün ist, nicht wenn ein Agent sagt, es
+sei gut. Dann nimmt der Mensch ab, und das Urteil fällen wir. Ganz ehrlich: Da sind wir noch
+nicht, einzelne Schritte gibt es schon.
 
 ---
 
