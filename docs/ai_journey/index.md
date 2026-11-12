@@ -234,8 +234,14 @@ Karsten: Ganz einfach: Ich schreibe dem Agenten „Let's refine“ oder „Let's
 story“. Daran erkennt er die Aufgabe, lädt unseren Skill fürs Refinement, und schon arbeitet er
 als Product Owner. Dann schreibt er User Stories und bereitet die Sprintplanung vor, immer im
 gleichen Format. Durch sein großes Kontextfenster denkt er an Fakten, die ein Mensch oft
-vergisst. Der Nachteil: Für Menschen sind es oft zu viele Details. Auch die User Story auf
-Folie 2 hat der Agent geschrieben. Was er daraus gemacht hat, sehen wir am Ende.
+vergisst. Der Nachteil: Für Menschen sind es oft zu viele Details.
+
+Judith: Auch die User Story auf Folie 2 hat der Agent geschrieben. Was er daraus gemacht hat,
+sehen wir am Ende.
+
+Karsten: Und was hast du so für Agenten auf Lager?
+
+(Judith: nächste Folie)
 
 ---
 
