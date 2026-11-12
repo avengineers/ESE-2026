@@ -234,6 +234,9 @@ msedge --headless --hide-scrollbars --window-size=1920,1080 --virtual-time-budge
 - Each deck and its article use the language of the talk. See the table in
   [Structure](#structure).
 - `AGENTS.md`, `README.md`, code comments and commit messages are in English.
+- On a slide, end a full sentence with a period. End a bullet point without one, even when it
+  is a full sentence. A question or an exclamation keeps its `?` or `!`. Titles, subtitles,
+  source lines and sentence fragments get no period.
 
 ## Viewing and checking
 
