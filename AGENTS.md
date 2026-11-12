@@ -245,7 +245,8 @@ msedge --headless --hide-scrollbars --window-size=1920,1080 --virtual-time-budge
   each speaker carries their own slides and examples, and the other hands over or adds one
   line. Keep the changes of speaker few. Let neither speaker explain to the other what they
   know, and give neither a naive question for the other to answer. Put what a speaker does in
-  parentheses, as in `(Judith: nächste Folie)`. Keep it short. Explain how the deck works in
+  parentheses, as in `(Judith: nächste Folie)`. Keep it short: say what the slide does not, and
+leave out what the audience can see for itself, such as a legend, a colour or a number. Explain how the deck works in
   `AGENTS.md` or in a code comment, never in a note.
 
 ## Viewing and checking
