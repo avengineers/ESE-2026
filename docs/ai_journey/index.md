@@ -222,7 +222,7 @@ einen Agenten an eine Umgebung an?
 - Großes Kontextfenster: denkt an mehr Fakten
 - Aber: zu viele Details für Menschen
 
-<p class="fragment">Auch die User Story auf Folie 2</p>
+<p class="fragment"><strong>Auch die User Story auf Folie 2</strong></p>
 
 Note:
 
@@ -394,7 +394,8 @@ geschlossenen Loop. Heute stoßen wir viele Schritte von Hand an und prüfen zwi
 - <span class="highlighted-green">Heute:</span> klingt gut, meist richtig
 - Der eine Fehler fällt kaum auf
 - Es läuft – aber ist es gut?
-- Unsere Kriterien muss man ihm sagen
+
+<p class="fragment"><strong>Der Agent braucht Qualitätskriterien von uns!</strong></p>
 
 Note:
 
@@ -419,7 +420,7 @@ Und genau das prüfen wir jetzt bei unserem Agenten. Überleitung zur Demo.
 - Tests ↔ Testergebnisse
 - UAT: Geht das Licht nach 10 Sekunden aus?
 
-<p class="fragment">Angenommen?</p>
+<p class="fragment"><strong>Angenommen?</strong></p>
 
 Note:
 
