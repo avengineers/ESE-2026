@@ -158,12 +158,11 @@ Note:
 
 Judith: Dann hat jeder angefangen, seinen eigenen Werkzeugkasten zu pflegen: eine eigene
 AGENTS.md mit eigenen Regeln, eigene Skills. Dasselbe Projekt liefert dann verschiedene
-Ergebnisse, je nachdem, wer fragt. Der Agent, der gerade für uns arbeitet, läuft übrigens mit
-Karstens Setup.
+Ergebnisse, je nachdem, wer fragt.
 
-Karsten: Stimmt. Es ist mein Agent.
+Karsten: Was ist eigentlich ein Skill?
 
-(Keine Produkte nennen und keine bewerten.)
+(Judith: nächste Folie)
 
 ---
 
@@ -197,10 +196,10 @@ description: Write GTest/GMock unit tests for embedded
 
 Note:
 
-Karsten: Wie steuern wir Agenten? Mit Skills. Ein Skill ist eine Anleitung in Textform. Der
-Agent lädt sie, sobald eine Aufgabe dazu passt. Sie sagt ihm, wie ein Team eine Aufgabe in
-seiner Umgebung erledigt: Werkzeuge, Konventionen, Prüfungen am Ende. Hier seht ihr einen
-Ausschnitt aus unserem Skill für Unit-Tests in Embedded C.
+Judith: Ein Skill ist eine Anleitung in Textform. Der Agent lädt sie, sobald eine Aufgabe dazu
+passt. Sie sagt ihm, wie ein Team eine Aufgabe in seiner Umgebung erledigt: Werkzeuge,
+Konventionen, Prüfungen am Ende. Hier seht ihr einen Ausschnitt aus unserem Skill für Unit-Tests
+in Embedded C.
 
 ---
 
