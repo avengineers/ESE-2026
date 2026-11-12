@@ -436,13 +436,18 @@ Judith: Was meint ihr: angenommen? Mein Urteil: …
 (Judith: angenommen, mit Fragen zurück oder abgelehnt, ehrlich bewertet. Ist der Agent nicht
 fertig, zeigt sie den Stand oder einen Probelauf und sagt, was sie zeigt.)
 
+Judith: Karsten, was ist dein Fazit?
+
+(Karsten: nächste Folie)
+
 ---
 
 ### Fazit
 
 - Praktikant ist jetzt Mitarbeiter
 - Wir sind Chefs von Agenten
-- Skills und Qualitätskriterien passen sie an
+- Agenten übernehmen SW-Entwicklungsaufgaben
+- Wir definieren den Rahmen mit Skills, Agenten und Kriterien
 
 <div class="fragment">
 
@@ -457,8 +462,8 @@ Note:
 
 Karsten: Aus dem Praktikanten ist ein Mitarbeiter geworden. Er schreibt Code, Tests,
 Dokumentation, User Stories und Präsentationen. Wir sind die Chefs: Wir geben die Aufgabe vor,
-und das Urteil fällen wir. Mit Skills und Qualitätskriterien passen wir die Agenten an unsere
-Umgebung an.
+und das Urteil fällen wir. Die Agenten übernehmen Aufgaben der Softwareentwicklung, und wir
+definieren den Rahmen dafür: mit Skills, mit Agenten und mit Kriterien.
 
 (Karsten: Fragen einblenden)
 
