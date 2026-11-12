@@ -143,7 +143,8 @@ Ticketsystem und CI-Server.
 
 (Karsten: Fazit einblenden)
 
-Karsten: Seitdem heißt bei uns die Antwort auf fast jede Frage: Frag doch den Agenten!
+Karsten: Seitdem heißt bei uns die Antwort auf fast jede Frage: Frag doch den Agenten! Wie
+Judith ja bereits gezeigt hat.
 
 ---
 
