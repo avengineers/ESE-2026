@@ -383,30 +383,10 @@ testgetrieben um. Ein zweiter Agent prüft die Änderung gegen unsere Kriterien.
 Gate: alle Tests, der Lint, die CI. Fertig ist die Arbeit erst, wenn das Gate grün ist, nicht
 wenn ein Agent sagt, es sei gut. Dann nimmt der Mensch ab, und das Urteil fällen wir.
 
----
+Judith: Okay, dann schauen wir doch mal, was unser aktuelles Setup so liefern kann und wie eine
+Abnahme aussieht.
 
-### Jede Antwort klingt gut
-
-- <span class="highlighted-red">2022:</span> klingt gut, oft falsch
-- <span class="highlighted-green">Heute:</span> klingt gut, meist richtig
-- Der eine Fehler fällt kaum auf
-- Es läuft – aber ist es gut?
-
-<p class="fragment"><strong>Der Agent braucht Qualitätskriterien von uns!</strong></p>
-
-Note:
-
-Judith: 2022 klangen die Vorschläge immer gut, und oft waren sie falsch. Heute klingen sie immer
-noch gut, aber meistens stimmen sie. Das macht es schwerer: Wenn fast alles stimmt, fällt der
-eine Fehler kaum noch auf.
-
-Karsten: Und selbst wenn alles läuft, ist es noch nicht gut. Der Agent kennt unsere Kriterien
-nicht, solange wir sie ihm nicht sagen: in der AGENTS.md, in den Skills, in der User Story.
-
-(Karsten: Fazit einblenden)
-
-Karsten: Im Embedded-Umfeld gilt: Was ich nicht verstehe, kann ich nicht freigeben. Schauen wir
-also, was unser Agent geliefert hat.
+(Judith: nächste Folie)
 
 ---
 
