@@ -228,21 +228,14 @@ Judith: Alles gut und schön. Aber wie benutzen wir die Skills denn konkret im A
 - Großes Kontextfenster: denkt an mehr Fakten
 - Aber: zu viele Details für Menschen
 
-<p class="fragment"><strong>Auch die User Story auf Folie 2</strong></p>
-
 Note:
 
 Karsten: Ganz einfach: Ich schreibe dem Agenten „Let's refine“ oder „Let's create a user
 story“. Daran erkennt er die Aufgabe, lädt unseren Skill fürs Refinement, und schon arbeitet er
 als Product Owner. Dann schreibt er User Stories und bereitet die Sprintplanung vor, immer im
-gleichen Format. Durch sein großes
-Kontextfenster denkt er an Fakten, die ein Mensch oft vergisst. Der Nachteil: Für Menschen sind
-es oft zu viele Details.
-
-(Karsten: Fazit einblenden)
-
-Karsten: Auch die User Story auf Folie 2 hat der Agent geschrieben. Was er daraus gemacht hat,
-sehen wir am Ende.
+gleichen Format. Durch sein großes Kontextfenster denkt er an Fakten, die ein Mensch oft
+vergisst. Der Nachteil: Für Menschen sind es oft zu viele Details. Auch die User Story auf
+Folie 2 hat der Agent geschrieben. Was er daraus gemacht hat, sehen wir am Ende.
 
 ---
 
