@@ -307,6 +307,10 @@ nicht den Anforderungen genügen.
 
 Judith: Und er hat uns gezeigt, dass er es besser kann.
 
+Karsten: Und wo helfen uns Agenten in der Softwareentwicklung?
+
+(Judith: nächste Folie)
+
 ---
 
 ### Der Review-Agent
@@ -319,9 +323,10 @@ Judith: Und er hat uns gezeigt, dass er es besser kann.
 
 Note:
 
-Karsten: Und als Reviewer: Einen Pull Request mit 2.000 geänderten Zeilen konnte früher kaum ein
-Mensch prüfen. Heute prüft der Agent die ganze Änderung, und wir bewerten seine Befunde. Die
-Entscheidung bleibt bei uns. Bleibt die Frage: Wie bewerten wir, was der Agent liefert?
+Judith: Zum Beispiel als Review-Agent. Jeder kennt das: Ein Pull-Request-Review steht an, und
+man schaut auf 2.000 Zeilen fremden Code. Heute prüft der Agent die ganze Änderung, und wir
+bewerten seine Befunde. Die Entscheidung bleibt bei uns. Bleibt die Frage: Wie bewerten wir,
+was der Agent liefert?
 
 ---
 
