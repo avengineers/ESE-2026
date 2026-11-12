@@ -110,8 +110,8 @@ that points to the latest commit?
 
 Note:
 
-Judith: Ich wollte ein Mermaid-Diagramm einer Git-History, vier Commits und ein Branch develop.
-Mermaid ist eine Sprache für Diagramme als Text.
+Judith: Ich wollte nur ein kleines Mermaid-Diagramm, also ein Diagramm, das man als Text
+schreibt: eine Git-History mit vier Commits und einem Branch develop.
 
 Karsten: Und? Das konnte er doch sicherlich ohne Probleme erstellen?
 
