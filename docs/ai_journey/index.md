@@ -66,8 +66,8 @@ erzählen wir euch, wie es dazu kam.
 
 - Code Completion
 - Python, CMake, C++, GoogleTest
-- Architektur bleibt bei uns
-- Vorschläge klingen gut
+- Architektur bleibt bei uns.
+- Vorschläge klingen gut.
 
 ![Code Completion in einer CMake-Datei: Als erste Zeile schlägt sie einen Copyright-Kommentar einer fremden Firma vor.](../images/ai_journey_completion.png) <!-- .element: class="fragment" style="width: 80%; margin: 0;" -->
 
@@ -318,8 +318,8 @@ Karsten: Und wo helfen uns Agenten in der Softwareentwicklung?
 <div class="agent-face"><img src="../images/ai_journey_agent_reviewer.webp" alt="Der Agent als Reviewer"></div>
 
 - Pull Request mit 2.000 Zeilen
-- Agent prüft, Mensch bewertet
-- Mensch entscheidet
+- Agent prüft, Mensch bewertet.
+- Mensch entscheidet.
 
 Note:
 
@@ -444,10 +444,10 @@ Judith: Karsten, was ist dein Fazit?
 
 ### Fazit
 
-- Praktikant ist jetzt Mitarbeiter
-- Wir sind Chefs von Agenten
-- Agenten übernehmen SW-Entwicklungsaufgaben
-- Wir definieren den Rahmen mit Skills, Agenten und Kriterien
+- Praktikant ist jetzt Mitarbeiter.
+- Wir sind Chefs von Agenten.
+- Agenten übernehmen SW-Entwicklungsaufgaben.
+- Wir definieren den Rahmen mit Skills, Agenten und Kriterien.
 
 <div class="fragment">
 
