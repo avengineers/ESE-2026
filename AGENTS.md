@@ -89,7 +89,10 @@ deck has three files, each loaded by its own `<section>` in `index.html`:
 
 - `title.md` holds the title slide.
 - `user_story.md` holds the user story. It holds nothing else, speaker notes included: the
-  agent would read them as part of its task.
+  agent would read them as part of its task. Its speaker notes go into the attribute
+  `data-speaker-notes` of its `<section>` in `index.html`. The Markdown plugin drops
+  `data-notes` from a section it loads from a file, so a script in `index.html` copies
+  `data-speaker-notes` into `data-notes`.
 - `index.md` holds the rest of the deck.
 
 ## The theme
@@ -237,6 +240,10 @@ msedge --headless --hide-scrollbars --window-size=1920,1080 --virtual-time-budge
 - On a slide, end a full sentence with a period. End a bullet point without one, even when it
   is a full sentence. A question or an exclamation keeps its `?` or `!`. Titles, subtitles,
   source lines and sentence fragments get no period.
+- Write speaker notes as the script: the words the speakers say, in full spoken sentences, each
+  part opened with the speaker's name, as in `Karsten: …`. Put what a speaker does in
+  parentheses, as in `(Judith: nächste Folie)`. Keep it short. Explain how the deck works in
+  `AGENTS.md` or in a code comment, never in a note.
 
 ## Viewing and checking
 

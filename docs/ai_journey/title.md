@@ -13,6 +13,7 @@ ESE Kongress 2026 in Sindelfingen <!-- .element: class="ese-event" -->
 
 Note:
 
-Karsten: Begrüßung, Titel des Vortrags. Dann die Entschuldigung: „Bevor wir anfangen, müssen
-wir erst noch unserer SW Factory eine Aufgabe geben. Das dauert nicht lange.“ Weiter zur
-nächsten Folie, ohne Judith anzusehen.
+Karsten: Hallo und herzlich willkommen zu „Frag doch den Agenten!“. Bevor es weitergeht, müssen
+wir noch schnell eine Story für unser Produkt SPLed umsetzen.
+
+(Karsten: nächste Folie)

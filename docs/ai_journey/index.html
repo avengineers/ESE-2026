@@ -20,10 +20,16 @@
   <div class="reveal">
     <div class="slides">
       <!-- The agent of the live demo reads user_story.md alone, so the user story is a file and a
-           section of its own, between the title slide and the rest of the deck. -->
+           section of its own, between the title slide and the rest of the deck. Its speaker notes
+           stay out of that file and live in data-speaker-notes here: the Markdown plugin drops
+           data-notes, and the script below copies data-speaker-notes into it. -->
       <section data-markdown="title.md">
       </section>
-      <section data-markdown="user_story.md">
+      <section data-markdown="user_story.md" data-speaker-notes="Karsten: SPLed ist unser Demo-Projekt, eine kleine Produktlinie von Lampen. Die Story: Das Sleep Light soll nach einer Weile von selbst ausgehen. Judith, kannst du dich darum kümmern?
+
+Judith: Echt jetzt? Ich halte gerade einen Vortrag!
+
+(Judith: nächste Folie)">
       </section>
       <section data-markdown="index.md" data-separator="^\r?\n---\r?\n$" data-separator-vertical="^\r?\n--\r?\n$">
       </section>
@@ -47,6 +53,14 @@
       backgroundTransition: "slide",
       // Learn about plugins: https://revealjs.com/plugins/
       plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMermaid],
+    });
+
+    // The Markdown plugin drops data-notes from a section it loads from a file, so the notes of
+    // such a slide come as data-speaker-notes and become its data-notes here.
+    Reveal.on("ready", () => {
+      document.querySelectorAll("[data-speaker-notes]").forEach((slide) => {
+        slide.setAttribute("data-notes", slide.getAttribute("data-speaker-notes"));
+      });
     });
 
     // Give each <pre class="copyable"> a copy button, so the prompt of the live demo can be

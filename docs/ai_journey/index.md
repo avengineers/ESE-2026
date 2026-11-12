@@ -5,14 +5,9 @@ https://avengineers.github.io/ESE-2026/docs/ai_journey/user_story.md</code></pre
 
 Note:
 
-Judith hat die Folie davor zum ersten Mal gesehen und reagiert genervt und gestresst: „Jetzt? Ich
-halte gerade einen Vortrag!“ Pause. Dann: „Frag doch den Agenten!“
+Judith: Frag nicht mich, frag doch den Agenten!
 
-Judith wechselt ins Terminal, fügt den vorbereiteten Prompt ein und startet den Agenten. Das
-Terminal bleibt kurz sichtbar, dann zurück zu den Folien.
-
-Die Datei user_story.md ist die Folie davor. Der Agent liest sie allein, ohne den Rest des
-Decks. Deshalb stehen dort keine Notizen.
+(Judith startet den Agenten im Terminal, dann zurück zu den Folien.)
 
 ---
 
