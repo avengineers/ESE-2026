@@ -882,3 +882,28 @@
     color: var(--ink);
     font-size: 30px;
 }
+
+/* The PDF shows every fragment at once. Leave out the pop-ups, which would cover the
+   slide, and the items that fade out on screen. */
+html.reveal-print .reveal .notify,
+html.reveal-print .reveal .slides section .fragment.fade-out {
+    display: none;
+}
+
+/* Title slide: the line, the event and the logos at the bottom; the title and the
+   subtitle centred in the space above the line. The margins fill the 700 px slide. */
+.reveal .slides > section:first-child h2 {
+    margin-top: 97px;
+}
+
+.reveal .slides > section:first-child hr {
+    margin-top: 96px;
+}
+
+.reveal .slides > section:first-child .ese-logos {
+    margin-bottom: 20px;
+}
+
+.reveal .slides > section:first-child .ese-logos img {
+    height: 130px;
+}
