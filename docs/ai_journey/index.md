@@ -120,7 +120,7 @@ Judith: Kommt drauf an. Als nettes Kunstwerk im Büro? Vielleicht. Das kam dabei
 (Judith: Antwort einblenden)
 
 Judith: „I'll try to create that.“ Und dann vier Meerjungfrauen, mit Branches, die „develoop“
-und „Develice“ heißen.
+und „Develice“ heißen. Und „GEIM“!
 
 ---
 
