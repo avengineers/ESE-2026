@@ -4,7 +4,7 @@
 
 Note:
 
-Judith: Frag nicht mich, frag doch den Agenten!
+Judith: Er zieht die Story und arbeitet sie in unserer Loop ab.
 
 (Judith startet den Agenten im Terminal, dann zurück zu den Folien.)
 
@@ -54,8 +54,8 @@ Note:
 Judith: Und wer ist eigentlich der Agent? Das Wort kommt vom lateinischen agere, handeln. Ein
 Agent handelt in Vertretung oder im Auftrag eines anderen.
 
-Karsten: So wie eben: Ich habe ihm als Product Owner die Story gegeben. Und während er arbeitet,
-erzählen wir euch, wie es dazu kam.
+Karsten: So wie eben: Er hat die Story aus unserem Backlog gezogen und setzt sie für uns um. Und
+während er arbeitet, erzählen wir euch, wie es dazu kam.
 
 ---
 
