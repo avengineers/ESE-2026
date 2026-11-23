@@ -1,7 +1,6 @@
-## „Frag doch den Agenten!"
+<pre class="copyable"><code class="language-plaintext">Packe DEMO-002 in die Loop!</code></pre>
 
-<pre class="copyable"><code class="language-plaintext">Setz die User Story auf Folie 2 in SPLed um:
-https://avengineers.github.io/ESE-2026/docs/ai_journey/user_story.md</code></pre>
+<p class="deck-url">Backlog-Item: <a href="https://github.com/xxthunder/asf-closed-loop-demo/blob/develop/docs/backlog/demo-002.md">DEMO-002: Auto Off</a></p>
 
 Note:
 
