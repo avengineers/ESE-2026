@@ -2,7 +2,7 @@
 
 <div class="slide-text">
 
-**Von:** Karsten, Product Owner · **An:** Judith · **Fällig:** jetzt
+**Von:** Karsten, Product Owner · **Produkt:** SPLed · **Fällig:** jetzt
 
 **Als** Nutzerin des Sleep Light **möchte ich**, dass das Licht nach einer Weile ohne Bedienung
 von selbst ausgeht, **damit** es nicht die ganze Nacht brennt, wenn ich einschlafe.
