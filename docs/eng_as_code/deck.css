@@ -19,7 +19,7 @@
 .reveal .toc.at li.now,
 .reveal .toc li.now.visible {
     opacity: 1;
-    color: var(--r-link-color);
+    color: var(--r-main-color);
 }
 
 /* A box in a diagram. */
