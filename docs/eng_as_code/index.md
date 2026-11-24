@@ -24,7 +24,7 @@ Welcome the audience. Say the title of the talk.
 
 ![Akshit](../images/akshit.png)
 
-Akshit
+[Akshit](https://www.linkedin.com/in/akshit-kobagapu/)
 
 </div>
 <div class="speaker">
