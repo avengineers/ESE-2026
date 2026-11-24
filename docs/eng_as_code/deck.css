@@ -1,0 +1,393 @@
+/* Styles of the content slides of this deck. The common slides keep custom.css. */
+
+:root {
+    --box: rgba(255, 255, 255, 0.1);
+    --line: rgba(255, 255, 255, 0.55);
+    --muted: rgba(255, 255, 255, 0.7);
+    --ok: #3ddc84;
+    --changed: #ffd166;
+    --stale: #ff6b5b;
+}
+
+/* A box in a diagram. */
+.reveal .box {
+    background: var(--box);
+    border: 2px solid var(--line);
+    border-radius: 8px;
+    padding: 0.4em 0.5em;
+    text-align: center;
+}
+
+.reveal .box b {
+    display: block;
+}
+
+.reveal .box .who {
+    display: block;
+    margin-top: 0.3em;
+    font-size: 0.85em;
+    color: var(--muted);
+}
+
+.reveal .box .status {
+    display: block;
+    margin-top: 0.4em;
+    font-weight: bold;
+}
+
+.reveal .ok {
+    color: var(--ok);
+}
+
+.reveal .stale {
+    color: var(--stale);
+}
+
+/* A box or an arrow that changes its state on a click. It is a custom
+ * fragment, which reveal.js does not hide: .old shows before the click,
+ * .new after it. */
+.reveal .fragment.custom .new,
+.reveal .fragment.custom.visible .old {
+    display: none;
+}
+
+.reveal .fragment.custom.visible .new {
+    display: inline;
+}
+
+.reveal .box.to-changed.visible {
+    border-color: var(--changed);
+}
+
+.reveal .to-changed.visible .new {
+    color: var(--changed);
+}
+
+.reveal .box.to-stale.visible {
+    border-color: var(--stale);
+}
+
+.reveal .to-stale.visible .status,
+.reveal .arrow.to-stale.visible {
+    color: var(--stale);
+}
+
+/* An arrow with a lightning bolt above it, the sign of a contradiction in a
+ * proof: the two artifacts contradict each other. */
+.reveal .arrow.cross {
+    position: relative;
+}
+
+.reveal .arrow.cross.visible::after {
+    content: "↯";
+    position: absolute;
+    left: 50%;
+    bottom: 75%;
+    transform: translateX(-50%);
+    font-size: 0.8em;
+    color: var(--stale);
+}
+
+/* A chain of boxes from left to right. */
+.reveal .chain {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    font-size: 0.45em;
+}
+
+.reveal .chain .box {
+    flex: 1;
+    max-width: 150px;
+}
+
+.reveal .chain .arrow {
+    align-self: center;
+    padding: 0 0.3em;
+    font-size: 1.6em;
+}
+
+/* The links of one specification: boxes at fixed places, and an SVG with the
+ * arrows behind them. An arrow points from an artifact to the one it names. */
+.reveal .two-cols {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.reveal .two-cols > div {
+    flex: 1;
+}
+
+.reveal .two-cols > .links {
+    flex: none;
+}
+
+.reveal .links {
+    position: relative;
+    width: 540px;
+    height: 468px;
+    font-size: 0.5em;
+}
+
+.reveal .links svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.reveal .links line {
+    stroke: var(--muted);
+    stroke-width: 2;
+    marker-end: url(#link-arrow);
+}
+
+.reveal .links marker path {
+    fill: var(--muted);
+}
+
+/* The flow through the lifecycle: each click brings in one artifact and the
+ * links it names. Later steps are dimmed, the current step is highlighted. */
+.reveal .links .fragment.custom:not(.visible, .flip) {
+    opacity: 0.25;
+}
+
+.reveal .links .box.current-fragment,
+.reveal .links .box:has(.current-fragment) {
+    border-color: var(--r-link-color);
+    box-shadow: 0 0 12px var(--r-link-color);
+}
+
+/* A test result that fails first and passes after a later click. */
+.reveal .links .flip .after,
+.reveal .links .flip.visible .before {
+    display: none;
+}
+
+.reveal .links .flip.visible .after {
+    display: inline;
+}
+
+.reveal .links line.current-fragment {
+    stroke: var(--r-link-color);
+    marker-end: url(#link-arrow-now);
+}
+
+.reveal .links #link-arrow-now path {
+    fill: var(--r-link-color);
+}
+
+.reveal .links .label.current-fragment {
+    color: var(--r-link-color);
+}
+
+/* The name of a link, beside its arrow. */
+.reveal .links .label {
+    position: absolute;
+    font-size: 0.9em;
+    line-height: 1;
+    white-space: nowrap;
+    color: var(--muted);
+}
+
+.reveal .links .realizes {
+    left: 270px;
+    top: 10px;
+    transform: translateX(-50%);
+}
+
+.reveal .links .refines-req {
+    right: 380px;
+    top: 86px;
+}
+
+.reveal .links .refines-arch {
+    left: 380px;
+    top: 86px;
+}
+
+.reveal .links .implements {
+    right: 370px;
+    top: 226px;
+}
+
+.reveal .links .fulfills {
+    left: 48px;
+    top: 165px;
+}
+
+.reveal .links .tests {
+    left: 375px;
+    top: 226px;
+}
+
+.reveal .links .result-of {
+    right: 108px;
+    top: 365px;
+}
+
+.reveal .links .box {
+    position: absolute;
+    width: 200px;
+    height: 68px;
+    box-sizing: border-box;
+}
+
+.reveal .links .req {
+    left: 0;
+    top: 0;
+}
+
+.reveal .links .arch {
+    left: 340px;
+    top: 0;
+}
+
+.reveal .links .spec {
+    left: 170px;
+    top: 140px;
+}
+
+.reveal .links .impl {
+    left: 0;
+    top: 280px;
+}
+
+.reveal .links .test {
+    left: 340px;
+    top: 280px;
+}
+
+.reveal .links .result {
+    left: 340px;
+    top: 400px;
+}
+
+.reveal .links code,
+.reveal .chain code {
+    font-size: 0.9em;
+}
+
+/* Two things side by side, for comparison. */
+.reveal .versus {
+    display: flex;
+    gap: 1em;
+    font-size: 0.6em;
+}
+
+.reveal .versus .box {
+    flex: 1;
+}
+
+.reveal .versus pre {
+    width: 100%;
+    font-size: 0.9em;
+    text-align: left;
+}
+
+.reveal .versus .caption {
+    font-size: 0.85em;
+}
+
+/* A pull request, drawn as its list of changed files. */
+.reveal .pr {
+    width: 820px;
+    margin: 0 auto;
+    font-size: 0.5em;
+    text-align: left;
+    background: var(--box);
+    border: 2px solid var(--line);
+    border-radius: 8px;
+}
+
+.reveal .pr .pr-head {
+    padding: 0.5em 0.8em;
+    font-weight: bold;
+    border-bottom: 2px solid var(--line);
+}
+
+.reveal .pr .file {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em 0.8em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.reveal .pr .file:last-child {
+    border-bottom: none;
+}
+
+.reveal .pr .path {
+    display: block;
+    font-family: monospace;
+    font-size: 0.8em;
+    color: var(--muted);
+}
+
+.reveal .pr .state {
+    font-weight: bold;
+}
+
+.reveal .pr .state.changed {
+    color: var(--changed);
+}
+
+.reveal .pr .file.missing {
+    color: var(--stale);
+    border: 2px dashed var(--stale);
+}
+
+.reveal .pr .file.missing .path {
+    color: var(--stale);
+}
+
+/* The three lights of SPLed, side by side. */
+.reveal .lights {
+    display: flex;
+    gap: 1.5em;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.reveal .lights img {
+    width: 300px;
+    margin: 0;
+    border-radius: 20px;
+}
+
+.reveal .lights .caption {
+    margin: 0.2em 0;
+    font-size: 0.6em;
+    color: var(--r-main-color);
+}
+
+/* Screenshots of the generated report. */
+.reveal img.shot {
+    max-height: 420px;
+    margin: 0.2em auto;
+    padding: 8px;
+    background: #fff;
+}
+
+.reveal .caption {
+    font-size: 0.5em;
+    color: var(--muted);
+}
+
+.reveal .statement {
+    font-size: 1.2em;
+}
+
+.reveal .small {
+    font-size: 0.7em;
+}
+
+/* A code block that is too long for the default font size. */
+.reveal pre.tall {
+    font-size: 0.45em;
+}
+
+.reveal pre.tall code {
+    max-height: 560px;
+}
