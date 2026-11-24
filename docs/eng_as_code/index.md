@@ -292,6 +292,7 @@ test/test_light_controller.cc
        :id: TS_LC-001
        :tests: SWDD_LC-100, SWDD_LC-102, SWDD_LC-300
 ```
+<!-- .element: class="no-numbers" -->
 
 Note:
 
