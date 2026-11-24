@@ -363,11 +363,14 @@ variants/Disco/config.txt
 
 variants/Sleep/config.txt
     # CONFIG_BLINKING is not set
+
+variants/Spa/config.txt
+    # CONFIG_BLINKING is not set
 ```
 
 Note:
 
-Blinking shows it end to end. The feature model has the blinking feature. Disco selects it, Sleep leaves it out.
+Blinking shows it end to end. The feature model has the blinking feature. Disco selects it, Sleep and Spa leave it out.
 
 ---
 
