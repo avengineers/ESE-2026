@@ -44,16 +44,22 @@ Each speaker says who they are in one or two sentences.
 
 ### Agenda
 
-- Between the tools
+<div class="toc">
+
+- Between the tools <!-- .element: class="fragment custom now" -->
 - Engineering as Code
 - One repository, one chain
 - One source, many variants
 - The top of the chain
 - Why this suits an AI agent
 
+</div>
+
 Note:
 
 About 30 seconds. We start with the problem: the chain between the tools. Then the idea of Engineering as Code, and how it looks in SPLed, our demonstrator: one repository and one chain from the requirement to the test result. Then how one source serves many variants, and what happens with requirements that live outside the repository. At the end: why all of this suits an AI agent.
+
+Click: the first part, between the tools. The agenda comes back before each part.
 
 ---
 
@@ -119,6 +125,25 @@ Pause after "No tool owns that relationship". This is the problem the rest of th
 
 ---
 
+### Agenda
+
+<div class="toc at">
+
+- Between the tools
+- Engineering as Code <!-- .element: class="now" -->
+- One repository, one chain
+- One source, many variants
+- The top of the chain
+- Why this suits an AI agent
+
+</div>
+
+Note:
+
+Next: Engineering as Code.
+
+---
+
 ### Engineering as Code
 
 All engineering artifacts live in the repository, beside the code. <!-- .element: class="small" -->
@@ -164,6 +189,25 @@ The useful questions are the ones nobody can answer by reading:
 - Which results belong to this variant and not to that one?
 
 With links as data, the build answers these questions for the whole repository, every time.
+
+---
+
+### Agenda
+
+<div class="toc at">
+
+- Between the tools
+- Engineering as Code
+- One repository, one chain <!-- .element: class="now" -->
+- One source, many variants
+- The top of the chain
+- Why this suits an AI agent
+
+</div>
+
+Note:
+
+Next: one repository, one chain. We show it in SPLed.
 
 ---
 
@@ -327,6 +371,25 @@ Be honest about the state: today the build resolves the links and warns on a mis
 
 ---
 
+### Agenda
+
+<div class="toc at">
+
+- Between the tools
+- Engineering as Code
+- One repository, one chain
+- One source, many variants <!-- .element: class="now" -->
+- The top of the chain
+- Why this suits an AI agent
+
+</div>
+
+Note:
+
+Next: one source, many variants.
+
+---
+
 ### One component, many variants
 
 The same component behaves differently in each variant. <!-- .element: class="small" -->
@@ -431,6 +494,25 @@ The report for Disco has both specifications. The report for Sleep has only the 
 
 ---
 
+### Agenda
+
+<div class="toc at">
+
+- Between the tools
+- Engineering as Code
+- One repository, one chain
+- One source, many variants
+- The top of the chain <!-- .element: class="now" -->
+- Why this suits an AI agent
+
+</div>
+
+Note:
+
+Next: the top of the chain, the requirements that live outside the repository.
+
+---
+
 ### The top of the chain
 
 <div class="chain spaced">
@@ -456,6 +538,25 @@ Not everything fits in one repository. System requirements are the clearest exam
 We do not rewrite every existing requirement. We take the export the tool already offers, CSV or ReqIF, convert it into JSON, and trace it like everything else. The same process works for any artifact that lives outside the repository.
 
 The weakness: the import is accurate on the day of the export. The requirements tool is too slow to run in every build. We are still working on this.
+
+---
+
+### Agenda
+
+<div class="toc at">
+
+- Between the tools
+- Engineering as Code
+- One repository, one chain
+- One source, many variants
+- The top of the chain
+- Why this suits an AI agent <!-- .element: class="now" -->
+
+</div>
+
+Note:
+
+Next: why all of this suits an AI agent.
 
 ---
 
