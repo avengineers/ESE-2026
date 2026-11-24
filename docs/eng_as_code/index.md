@@ -22,7 +22,7 @@ Welcome the audience. Say the title of the talk.
 <div class="speakers">
 <div class="speaker">
 
-![Akshit](../images/speaker_placeholder.svg)
+![Akshit](../images/akshit.png)
 
 Akshit
 
