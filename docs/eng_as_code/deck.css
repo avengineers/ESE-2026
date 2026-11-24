@@ -511,3 +511,17 @@
 .reveal pre.tall code {
     max-height: 560px;
 }
+
+/* A folder tree whose clicks highlight lines. The line numbers mean nothing in a tree. */
+.reveal pre.tree .hljs-ln-numbers {
+    display: none;
+}
+
+/* The PDF shows all clicks on one page, so show the whole tree without highlights. */
+html.print-pdf .reveal pre.tree code.fragment {
+    display: none;
+}
+
+html.print-pdf .reveal pre.tree tr {
+    opacity: 1 !important;
+}
