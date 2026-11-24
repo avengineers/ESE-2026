@@ -342,6 +342,13 @@
     color: var(--stale);
 }
 
+/* The SPLED logo: a tile with its own light background. */
+.reveal img.logo {
+    width: 400px;
+    margin: 0.4em auto;
+    border-radius: 20px;
+}
+
 /* The three lights of SPLed, side by side. */
 .reveal .lights {
     display: flex;
@@ -360,6 +367,12 @@
     margin: 0.2em 0;
     font-size: 0.6em;
     color: var(--r-main-color);
+}
+
+.reveal .lights .feature {
+    display: block;
+    font-size: 0.85em;
+    color: var(--muted);
 }
 
 /* Screenshots of the generated report. */
