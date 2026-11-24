@@ -417,7 +417,7 @@ Note:
 
 Note:
 
-Akshit hands over to Judith.
+[Akshit hands over to Judith.]
 
 Judith: Thank you, Akshit. You have seen the idea and the chain. Now we look at some aspects of Engineering as Code in more detail. The first one is variants. SPLed is a product line. That means several products that share most of their software and differ in a few features. Let us see how one source serves all of them.
 
@@ -428,21 +428,21 @@ Judith: Thank you, Akshit. You have seen the idea and the chain. Now we look at 
 The same component behaves differently in each variant. <!-- .element: class="small" -->
 
 <div class="lights">
-<div class="fragment" data-fragment-index="1">
+<div class="fragment" data-fragment-index="1" data-notes="The Sleeping Light. It helps you fall asleep. [Click.]">
 
 ![The Sleeping Light](../images/light_sleep.jpg)
 
-<p class="caption">Sleep<span class="feature fragment" data-fragment-index="4">no blinking</span></p>
+<p class="caption">Sleep<span class="feature fragment" data-fragment-index="4" data-notes="A party light should blink, the other two should not. So blinking is a feature. Disco has it, Sleep and Spa do not. [Click.]">no blinking</span></p>
 
 </div>
-<div class="fragment" data-fragment-index="2">
+<div class="fragment" data-fragment-index="2" data-notes="The Disco Light. It is a light for parties. [Click.]">
 
 ![The Disco Light](../images/light_disco.jpg)
 
 <p class="caption">Disco<span class="feature fragment" data-fragment-index="4">blinking</span></p>
 
 </div>
-<div class="fragment" data-fragment-index="3">
+<div class="fragment" data-fragment-index="3" data-notes="The Spa Light. It is a light for wellness. [Click.]">
 
 ![The Spa Light](../images/light_spa.jpg)
 
@@ -451,23 +451,13 @@ The same component behaves differently in each variant. <!-- .element: class="sm
 </div>
 </div>
 
-The documents carry the same feature conditions as the code. <!-- .element: class="fragment small" data-fragment-index="5" -->
+The documents carry the same feature conditions as the code. <!-- .element: class="fragment small" data-fragment-index="5" data-notes="We do not want a separate document for each variant. So the documents and the tests carry the same feature conditions as the code." -->
 
 Note:
 
-Part 4, variants, about 5 minutes for four slides.
+[Part 4, variants, about 5 minutes for four slides.]
 
-SPLed has three products. All of them use the same light controller.
-
-Click 1: the Sleeping Light. It helps you fall asleep.
-
-Click 2: the Disco Light. It is a light for parties.
-
-Click 3: the Spa Light. It is a light for wellness.
-
-Click 4: a party light should blink, the other two should not. So blinking is a feature. Disco has it, Sleep and Spa do not.
-
-Click 5: we do not want a separate document for each variant. So the documents and the tests carry the same feature conditions as the code.
+From this one product line, we build three different lights. Each of them is a variant. All three use the same software component: the light controller. It switches the light on and off and sets its color. [Click.]
 
 ---
 
@@ -490,22 +480,17 @@ variants/Sleep/config.txt
 variants/Spa/config.txt
     # CONFIG_BLINKING is not set
 ```
-<!-- .element: class="fragment" -->
+<!-- .element: class="fragment" data-notes="Each variant has its own config file. It selects the features of that product. Disco switches blinking on. Sleep and Spa leave it off. From this selection, KConfig generates files for the build: a C header for the code and the tests, and a JSON file for the documents. So the code, the tests and the documents all read the same selection." -->
 
 Note:
 
-So how do the code and the documents know which features a product has? It starts with the feature model. We describe the features in a KConfig file. KConfig comes from the Linux kernel. Here is the blinking feature. It is a simple yes or no, and it is off by default.
-
-Click 1: each variant has its own config file. It selects the features of that product. Disco switches blinking on. Sleep and Spa leave it off.
-
-From this selection, KConfig generates files for the build: a C header for the code and the tests, and a JSON file for the documents. So the code, the tests and the documents all read the same selection.
+So how do the code and the documents know which features a product has? It starts with the feature model. We describe the features in a KConfig file. KConfig comes from the Linux kernel. Here is the blinking feature. It is a simple yes or no, and it is off by default. [Click.]
 
 ---
 
 ### A condition in the design
 
-````plaintext [1-8|9-18]
-```{spec} State Management
+<pre class="tall"><code class="plaintext" data-line-numbers="1-8|9-18" data-notes="The second specification describes the blinking. It sits inside a condition on the blinking feature. For Disco, the condition is true, and the specification is in the document. For Sleep and Spa, it is left out. The code uses the same condition.">```{spec} State Management
 :id: SWDD_LC-100
 :refines: SWARCH_001, REQ_42
 
@@ -522,15 +507,11 @@ When the light is ON, it may exhibit a blinking behavior.
 The blinking rate is configurable and is determined based
 on an external input (main knob value).
 ```
-{% endif %}
-````
-<!-- .element: class="tall" -->
+{% endif %}</code></pre>
 
 Note:
 
-Now let us see the JSON file at work. This is part of the design document of the light controller. The first specification describes the two states, on and off. Every variant needs it, so it has no condition.
-
-Click 1: the second specification describes the blinking. It sits inside a condition on the blinking feature. For Disco, the condition is true, and the specification is in the document. For Sleep and Spa, it is left out. The code uses the same condition.
+Now let us see the JSON file at work. This is part of the design document of the light controller. The first specification describes the two states, on and off. Every variant needs it, so it has no condition. [Click.]
 
 ---
 
@@ -538,13 +519,11 @@ Click 1: the second specification describes the blinking. It sits inside a condi
 
 ![The same component report for Disco and for Sleep, side by side](../images/spled_variant_comparison.png) <!-- .element: class="shot" -->
 
-One source, one feature model, a correct report per variant. No document maintained twice. <!-- .element: class="fragment caption" -->
+One source, one feature model, a correct report per variant. No document maintained twice. <!-- .element: class="fragment caption" data-notes="One source and one feature model give a correct report for each variant. Nobody maintains a document twice." -->
 
 Note:
 
-And this is the result. On the left is the report of the light controller for Disco, on the right the one for Sleep. Disco has both specifications, with their implementations and tests. Sleep has only the first one. Every reader sees only what belongs to their product.
-
-Click 1: one source and one feature model give a correct report for each variant. Nobody maintains a document twice.
+And this is the result. On the left is the report of the light controller for Disco, on the right the one for Sleep. Disco has both specifications, with their implementations and tests. Sleep has only the first one. Every reader sees only what belongs to their product. [Click.]
 
 ---
 
@@ -571,35 +550,23 @@ This concludes the variants. The next part shows a different aspect of Engineeri
 
 <div class="chain spaced">
 <div class="box"><b>Requirements tool</b></div>
-<div class="arrow fragment" data-fragment-index="1">→</div>
+<div class="arrow fragment" data-fragment-index="1" data-notes="We do not copy them by hand. The tool can export them as CSV or ReqIF. [Click.]">→</div>
 <div class="box fragment" data-fragment-index="1"><b>Export</b>CSV or ReqIF</div>
-<div class="arrow fragment" data-fragment-index="2">→</div>
+<div class="arrow fragment" data-fragment-index="2" data-notes="We convert the export into JSON. [Click.]">→</div>
 <div class="box fragment" data-fragment-index="2"><b>Convert</b>JSON</div>
-<div class="arrow fragment" data-fragment-index="3">→</div>
+<div class="arrow fragment" data-fragment-index="3" data-notes="The build reads the JSON and traces the requirements like everything else. [Click.]">→</div>
 <div class="box fragment" data-fragment-index="3"><b>Report</b>traced like everything else</div>
 </div>
 
-- New requirements: write them in the repository <!-- .element: class="fragment" data-fragment-index="4" -->
-- Existing requirements: import the export <!-- .element: class="fragment" data-fragment-index="5" -->
-- The import is a copy too. We are working on it. <!-- .element: class="fragment" data-fragment-index="6" -->
+- New requirements: write them in the repository <!-- .element: class="fragment" data-fragment-index="4" data-notes="Our recommendation: write new requirements directly in the repository. [Click.]" -->
+- Existing requirements: import the export <!-- .element: class="fragment" data-fragment-index="5" data-notes="And the existing requirements? We simply import the export. [Click.]" -->
+- The import is a copy too. We are working on it. <!-- .element: class="fragment" data-fragment-index="6" data-notes="But the import is a copy too. It is correct on the day of the export. We are working on a mechanism that lets projects keep their imported requirements up to date." -->
 
 Note:
 
-Part 5, about 2 minutes.
+[Part 5, about 2 minutes.]
 
-Many software requirements live in a requirements tool today. Sadly, that is the hard truth for most projects.
-
-Click 1: we do not copy them by hand. The tool can export them as CSV or ReqIF.
-
-Click 2: we convert the export into JSON.
-
-Click 3: the build reads the JSON and traces the requirements like everything else.
-
-Click 4: our recommendation: write new requirements directly in the repository.
-
-Click 5: and the existing requirements? We simply import the export.
-
-Click 6: but the import is a copy too. It is correct on the day of the export. We are working on a mechanism that lets projects keep their imported requirements up to date.
+Many software requirements live in a requirements tool today. Sadly, that is the hard truth for most projects. [Click.]
 
 ---
 
@@ -627,22 +594,18 @@ The last part is about something we did not plan when we started: AI agents. Eve
 <div class="pr">
 <div class="pr-head">Pull request: 3 files changed</div>
 <div class="file"><div><b>Requirement</b> <code>REQ_43</code><span class="path">doc/ubconnect/sw_requirements.json</span></div><span class="state changed">changed</span></div>
-<div class="file missing fragment" data-fragment-index="1"><div><b>Design</b> <code>SWDD_LC-102</code><span class="path">components/light_controller/doc/index.md</span></div><span class="state">not in this pull request</span></div>
+<div class="file missing fragment" data-fragment-index="1" data-notes="But this time, the design is not part of it. [Click.]"><div><b>Design</b> <code>SWDD_LC-102</code><span class="path">components/light_controller/doc/index.md</span></div><span class="state">not in this pull request</span></div>
 <div class="file"><div><b>Code</b> <code>SWIMPL_LC-003</code><span class="path">components/light_controller/src/light_controller.c</span></div><span class="state changed">changed</span></div>
 <div class="file"><div><b>Test</b> <code>TS_LC-001</code><span class="path">components/light_controller/test/test_light_controller.cc</span></div><span class="state changed">changed</span></div>
 </div>
 
-The links still resolve. The build sees nothing wrong. <!-- .element: class="fragment small" data-fragment-index="2" -->
+The links still resolve. The build sees nothing wrong. <!-- .element: class="fragment small" data-fragment-index="2" data-notes="The links still resolve, so the build sees nothing wrong. Only a reviewer who knows the structure would notice. This is where an AI agent helps." -->
 
 Note:
 
-Part 6, AI, about 5 minutes for four slides.
+[Part 6, AI, about 5 minutes for four slides.]
 
-Let me start with an example. This is the pull request from before. The requirement, the code and the test changed.
-
-Click 1: but this time, the design is not part of it.
-
-Click 2: the links still resolve, so the build sees nothing wrong. Only a reviewer who knows the structure would notice. This is where an AI agent helps.
+Let me start with an example. This is the pull request from before. The requirement, the code and the test changed. [Click.]
 
 ---
 
@@ -656,8 +619,8 @@ Click 2: the links still resolve, so the build sees nothing wrong. Only a review
 <div class="item"><code>test/</code><span>Test <code>TS_LC-001</code></span></div>
 </div>
 <div class="flow">
-<span class="fragment">reads the structure →</span>
-<span class="fragment">← writes in the same shape</span>
+<span class="fragment" data-notes="The agent reads the structure. Each component has a folder with the design, the code and the tests. And every artifact names what justifies it. [Click.]">reads the structure →</span>
+<span class="fragment" data-notes="Then the agent writes its own changes in that same structure.">← writes in the same shape</span>
 </div>
 <div class="box agent"><b>AI agent</b></div>
 </div>
@@ -666,11 +629,7 @@ A folder per component. One rule for links. <!-- .element: class="small" -->
 
 Note:
 
-Why does an agent help here? Everything is in one place, and everything follows the same structure. So the agent can read the whole repository.
-
-Click 1: the agent reads the structure. Each component has a folder with the design, the code and the tests. And every artifact names what justifies it.
-
-Click 2: then the agent writes its own changes in that same structure.
+Why does an agent help here? Everything is in one place, and everything follows the same structure. So the agent can read the whole repository. [Click.]
 
 ---
 
@@ -681,7 +640,7 @@ Click 2: then the agent writes its own changes in that same structure.
 <pre><code class="plaintext"> * .. test:: &lt;Component&gt;.DescriptiveTestName
  *    :id: TS_&lt;COMP&gt;-001
  *    :tests: SWDD_&lt;COMP&gt;-100</code></pre>
-<div class="fragment">
+<div class="fragment" data-notes="And this is a real test in SPLed. It has exactly that shape. [Click.]">
 <div class="down">↓ same shape</div>
 <div class="label-top">A test in SPLed</div>
 <pre><code class="plaintext"> * .. test:: light_controller.test_light_on_and_off
@@ -690,15 +649,11 @@ Click 2: then the agent writes its own changes in that same structure.
 </div>
 </div>
 
-Same build, same report, same warnings. <!-- .element: class="fragment small" -->
+Same build, same report, same warnings. <!-- .element: class="fragment small" data-notes="The agent's work goes through the same build as ours, with the same report and the same warnings. Our skills are public, on GitHub." -->
 
 Note:
 
-How does the agent know our rules? We write them down as skills. A skill is a set of instructions that the agent loads when a task needs it. On top you see a rule from our unit test skill. It shows the agent what a test entry looks like.
-
-Click 1: and this is a real test in SPLed. It has exactly that shape.
-
-Click 2: the agent's work goes through the same build as ours, with the same report and the same warnings. Our skills are public, on GitHub.
+How does the agent know our rules? We write them down as skills. A skill is a set of instructions that the agent loads when a task needs it. On top you see a rule from our unit test skill. It shows the agent what a test entry looks like. [Click.]
 
 ---
 
@@ -708,16 +663,14 @@ Click 2: the agent's work goes through the same build as ours, with the same rep
 <div class="pr-head">Pull request: 3 files changed</div>
 <div class="file"><div><b>Requirement</b> <code>REQ_43</code><span class="path">doc/ubconnect/sw_requirements.json</span></div><span class="state changed">changed</span></div>
 <div class="file missing"><div><b>Design</b> <code>SWDD_LC-102</code><span class="path">components/light_controller/doc/index.md</span></div><span class="state">not in this pull request</span></div>
-<div class="comment fragment"><div class="who">AI agent <span class="tag">(example)</span></div>REQ_43 changed, but SWDD_LC-102, which refines it, is not in this pull request. Please update the design or say why it still fits.</div>
+<div class="comment fragment" data-notes="It finds the gap and writes a comment. REQ_43 changed, but the design that refines it did not. We wrote this comment for the slide, but it shows the kind of comment the agent gives. It works for other gaps too, for example a specification without a test."><div class="who">AI agent <span class="tag">(example)</span></div>REQ_43 changed, but SWDD_LC-102, which refines it, is not in this pull request. Please update the design or say why it still fits.</div>
 <div class="file"><div><b>Code</b> <code>SWIMPL_LC-003</code><span class="path">components/light_controller/src/light_controller.c</span></div><span class="state changed">changed</span></div>
 <div class="file"><div><b>Test</b> <code>TS_LC-001</code><span class="path">components/light_controller/test/test_light_controller.cc</span></div><span class="state changed">changed</span></div>
 </div>
 
 Note:
 
-Back to our example, where the design was left behind. The agent knows the structure, so it can also review a pull request.
-
-Click 1: it finds the gap and writes a comment. REQ_43 changed, but the design that refines it did not. We wrote this comment for the slide, but it shows the kind of comment the agent gives. It works for other gaps too, for example a specification without a test.
+Back to our example, where the design was left behind. The agent knows the structure, so it can also review a pull request. [Click.]
 
 ---
 
@@ -725,17 +678,13 @@ Click 1: it finds the gap and writes a comment. REQ_43 changed, but the design t
 
 An engineering artifact is something with an identifier and a link, not a document. <!-- .element: class="statement" -->
 
-Then the chain is something the build can read. <!-- .element: class="fragment statement" -->
+Then the chain is something the build can read. <!-- .element: class="fragment statement" data-notes="Then the build can read the chain. It makes the traceability for every variant, on every developer's machine. [Pause.] Akshit, do you have anything to add?" -->
 
 Note:
 
-Summary, about 2 minutes for two slides.
+[Summary, about 2 minutes for two slides.]
 
-What we showed today does not depend on our tools. It depends on one idea: an engineering artifact is something with an identifier and a link, not a document.
-
-Click 1: then the build can read the chain. It makes the traceability for every variant, on every developer's machine.
-
-Akshit, do you have anything to add?
+What we showed today does not depend on our tools. It depends on one idea: an engineering artifact is something with an identifier and a link, not a document. [Click.]
 
 ---
 
