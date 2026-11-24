@@ -45,7 +45,7 @@ Note:
 
 <div hidden>
 <span class="fragment" data-notes="Judith: I am Judith, a senior software engineer at Marquardt. I have worked in automotive for more than 14 years, across almost the whole V-model, from requirements to integration tests. [Click.]"></span>
-<span class="fragment" data-notes="Today Akshit and I work in the same team, on CI/CD, test automation and product line engineering. We both maintain SPLed and spl-core."></span>
+<span class="fragment" data-notes="Today Akshit and I work in the same team, on CI/CD, test automation and product line engineering. We both maintain SPLed and spl-core. [Turn to Akshit.] Akshit, what can everyone here expect from us today? [Click.]"></span>
 </div>
 
 Note:
