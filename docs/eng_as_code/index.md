@@ -13,7 +13,8 @@ ESE Kongress 2026 in Sindelfingen <!-- .element: class="ese-event" -->
 
 <div hidden>
 <span class="fragment" data-notes="Our talk: Beyond Software, the rise of Engineering as Code. [Click.]"></span>
-<span class="fragment" data-notes="Imagine a customer changes a requirement. The code follows, the tests follow, but the design is left behind. How do we keep the chain from requirement to test intact? That is what this talk answers."></span>
+<span class="fragment" data-notes="Imagine a customer changes a requirement. The code follows, the tests follow, but the design is left behind. How do we keep the chain from requirement to test intact? That is what this talk answers. [Click.]"></span>
+<span class="fragment" data-notes="But first, let us introduce ourselves. [Click.]"></span>
 </div>
 
 Note:
@@ -44,6 +45,7 @@ Note:
 </div>
 
 <div hidden>
+<span class="fragment" data-notes="Judith, over to you. [Click.]"></span>
 <span class="fragment" data-notes="Judith: I am Judith, a senior software engineer at Marquardt. I have worked in automotive for more than 14 years, across almost the whole V-model, from requirements to integration tests. [Click.]"></span>
 <span class="fragment" data-notes="Today Akshit and I work in the same team, on CI/CD, test automation and product line engineering. We both maintain SPLed and spl-core. [Turn to Akshit.] Akshit, what can everyone here expect from us today? [Click.]"></span>
 </div>
@@ -73,7 +75,7 @@ Note:
 
 [About 30 seconds. One click per point.]
 
-Here is where we're going. [Click.]
+Here is what you can expect. [Click.]
 
 ---
 
@@ -191,12 +193,18 @@ That is the difference. [Click.]"></span>
 <p>"This design implements requirement 43."</p>
 <p class="caption">A reader learns something.</p>
 </div>
-<div class="box fragment" data-notes="Now the same fact as data: a named link. Now the build learns something too. And we can ask questions nobody can answer by reading. Which requirements have no test? Which specifications does nothing implement? Which results belong to this variant? The build answers them for the whole repository, every time.">
+<div class="box fragment" data-notes="Now the same fact as data: a named link. Now the build learns something too. And we can ask questions nobody can answer by reading. [Click.]">
 <b>Data</b>
 <pre><code class="plaintext">:id: SWDD_LC-102
 :refines: REQ_43</code></pre>
 <p class="caption">The build learns something.</p>
 </div>
+</div>
+
+<div hidden>
+<span class="fragment" data-notes="Which requirements have no test? [Pause.] [Click.]"></span>
+<span class="fragment" data-notes="Which specifications does nothing implement? [Pause.] [Click.]"></span>
+<span class="fragment" data-notes="Which results belong to this variant? [Pause.] The build answers them for the whole repository, every time."></span>
 </div>
 
 Note:
@@ -247,8 +255,12 @@ To show you how this looks, meet SPLed, our Software Product Line Engineering De
 
 ### One repository
 
-```plaintext
-SPLed/
+<div hidden>
+<span class="fragment" data-fragment-index="1" data-notes="Below, one folder per component. Here, the light controller. Every component has three parts: src, test and doc. And doc is not a write-up after the work. It holds the detailed design, split into specifications, each with its own identifier. It is built with the software. [Click.]"></span>
+<span class="fragment" data-fragment-index="2" data-notes="[Point at variants/, do not explain.] And the variants: Judith explains them in a few minutes."></span>
+</div>
+
+<pre class="tree"><code class="plaintext" data-line-numbers="2-6|7-11|12-14" data-fragment-index="1">SPLed/
 ├── doc/                        product-level artifacts
 │   ├── customer_requirements/  what the customer wants
 │   ├── sw_requirements/        from a requirements tool
@@ -261,17 +273,11 @@ SPLed/
 │       └── doc/                the detailed design
 └── variants/
     ├── Disco/config.txt        the feature selection
-    └── Sleep/config.txt
-```
-
-<div hidden>
-<span class="fragment" data-notes="Below, one folder per component. Here, the light controller. Every component has three parts: src, test and doc. And doc is not a write-up after the work. It holds the detailed design, split into specifications, each with its own identifier. It is built with the software. [Click.]"></span>
-<span class="fragment" data-notes="[Point at variants/, do not explain.] And the variants: Judith explains them in a few minutes."></span>
-</div>
+    └── Sleep/config.txt</code></pre>
 
 Note:
 
-[Clicks change only the notes.]
+[Each click highlights the part of the tree you talk about.]
 
 This is the SPLed repository. At the top, the product-level artifacts: customer requirements, software requirements, the architecture and the results. The software requirements come from a requirements tool. More on that later. [Click.]
 
