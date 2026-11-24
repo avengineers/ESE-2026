@@ -156,41 +156,17 @@ With links as data, the build answers these questions for the whole repository, 
 
 Software Product Line Engineering Demonstrator <!-- .element: class="small" -->
 
-<div class="lights">
-<div class="fragment">
+![The SPLED logo](../images/spled_logo.png) <!-- .element: class="logo" -->
 
-![The Sleeping Light](../images/light_sleep.jpg)
-
-<p class="caption">Sleep</p>
-
-</div>
-<div class="fragment">
-
-![The Disco Light](../images/light_disco.jpg)
-
-<p class="caption">Disco</p>
-
-</div>
-<div class="fragment">
-
-![The Spa Light](../images/light_spa.jpg)
-
-<p class="caption">Spa</p>
-
-</div>
-</div>
-
-<p class="small fragment">Open source, MIT license: <a href="https://github.com/avengineers/SPLed">github.com/avengineers/SPLed</a></p>
+<p class="small">Open source, MIT license: <a href="https://github.com/avengineers/SPLed">github.com/avengineers/SPLed</a></p>
 
 Note:
 
 Part 3, one repository, one chain, about 7 minutes for six slides.
 
-SPLed is our Software Product Line Engineering Demonstrator, and it is open source under the MIT license: a product line of lights. The Sleeping Light, the Disco Light and the Spa Light. One repository, three products. Nobody forked anything to get the third one.
+SPLed is our Software Product Line Engineering Demonstrator, and it is open source under the MIT license: a product line of lights with three products, the Sleeping Light, the Disco Light and the Spa Light. One repository, three products. Nobody forked anything to get the third one. We meet the three products again when we come to variants.
 
 SPLed is more than a demo of how this works. It shows how our software developers work every day. And it is the basis for the development of our SPLE Platform: every new feature of the platform is tested in SPLed first.
-
-We use two of its products in this talk: Disco has the blinking feature, Sleep does not.
 
 ---
 
@@ -340,15 +316,37 @@ Be honest about the state: today the build resolves the links and warns on a mis
 
 The same component behaves differently in each variant. <!-- .element: class="small" -->
 
-- <span class="stale">✗</span> A document per variant
-- <span class="stale">✗</span> One document for all variants that matches none
-- <span class="ok">✓</span> The documents carry the same feature conditions as the code <!-- .element: class="fragment" -->
+<div class="lights">
+<div class="fragment">
+
+![The Sleeping Light](../images/light_sleep.jpg)
+
+<p class="caption">Sleep<span class="feature">no blinking</span></p>
+
+</div>
+<div class="fragment">
+
+![The Disco Light](../images/light_disco.jpg)
+
+<p class="caption">Disco<span class="feature">blinking</span></p>
+
+</div>
+<div class="fragment">
+
+![The Spa Light](../images/light_spa.jpg)
+
+<p class="caption">Spa<span class="feature">no blinking</span></p>
+
+</div>
+</div>
+
+The documents carry the same feature conditions as the code. <!-- .element: class="fragment small" -->
 
 Note:
 
 Part 4, variants, about 5 minutes for four slides.
 
-A product line has a problem a single product does not have. There are two bad options. We take a third: a specification that belongs to an optional feature is wrapped in a condition on that feature, and so is the test that verifies it.
+The three products of SPLed share the light controller, but it behaves differently in each of them: Disco blinks, Sleep and Spa do not. A product line has a problem a single product does not have. There are two bad options: a document per variant, or one document for all variants that matches none. We take a third: a specification that belongs to an optional feature is wrapped in a condition on that feature, and so is the test that verifies it.
 
 ---
 
