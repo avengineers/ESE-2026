@@ -11,9 +11,16 @@ ESE Kongress 2026 in Sindelfingen <!-- .element: class="ese-event" -->
 <img src="../images/Marquardt-100-Years-Keyvisual-white-gold.png" alt="Marquardt logo">
 </div>
 
+<div hidden>
+<span class="fragment" data-notes="Our talk: Beyond Software, the rise of Engineering as Code. [Click.]"></span>
+<span class="fragment" data-notes="Imagine a customer changes a requirement. The code follows, the tests follow, but the design is left behind. How do we keep the chain from requirement to test intact? That is what this talk answers."></span>
+</div>
+
 Note:
 
-Welcome the audience. Say the title of the talk.
+[Text in square brackets is for you. Plain text is what you say. On this slide, clicks change only the notes.]
+
+[Pause after "best for last".] Welcome. The organisers put us last. We choose to believe they saved the best for last. Please don't check that claim. We have no traceability for it. [Click.]
 
 ---
 
@@ -36,11 +43,16 @@ Welcome the audience. Say the title of the talk.
 </div>
 </div>
 
+<div hidden>
+<span class="fragment" data-notes="Judith: I am Judith, a senior software engineer at Marquardt. I have worked in automotive for more than 14 years, across almost the whole V-model, from requirements to integration tests. [Click.]"></span>
+<span class="fragment" data-notes="Today Akshit and I work in the same team, on CI/CD, test automation and product line engineering. We both maintain SPLed and spl-core."></span>
+</div>
+
 Note:
 
-Each speaker says who they are in one or two sentences.
+[Akshit. The click changes only the notes.]
 
-Judith: I am Judith, a senior software engineer at Marquardt. I have worked in automotive for more than 14 years, across almost the whole V-model. Today I work on CI/CD, test automation and product line engineering.
+I am Akshit, Advanced Software Development Engineer at Marquardt, with more than 10 years in automotive. I come from embedded software and build systems, with a focus on resources and timing: resource estimation, timing architecture and timing analysis. [Click.]
 
 ---
 
@@ -48,20 +60,20 @@ Judith: I am Judith, a senior software engineer at Marquardt. I have worked in a
 
 <div class="toc">
 
-- Between the tools <!-- .element: class="fragment custom now" -->
-- Engineering as Code
-- One repository, one chain
-- One source, many variants
-- The top of the chain
-- Why this suits an AI agent
+- Between the tools <!-- .element: class="fragment" data-notes="First, the problem: what happens between the tools." -->
+- Engineering as Code <!-- .element: class="fragment" data-notes="Then the idea that fixes it: Engineering as Code." -->
+- One repository, one chain <!-- .element: class="fragment" data-notes="We show how it looks in SPLed, our demonstrator: one repository, one chain from requirement to test result." -->
+- One source, many variants <!-- .element: class="fragment" data-notes="Judith then shows how one source serves many variants." -->
+- The top of the chain <!-- .element: class="fragment" data-notes="After that, the top of the chain: requirements that live in a requirements tool, outside the repository, and how we bring them in." -->
+- Why this suits an AI agent <!-- .element: class="fragment" data-notes="And at the end, a bonus: why all of this suits an AI agent. [Next click: part 1.]" -->
 
 </div>
 
 Note:
 
-About 30 seconds. We start with the problem: the chain between the tools. Then the idea of Engineering as Code, and how it looks in SPLed, our demonstrator: one repository and one chain from the requirement to the test result. Then how one source serves many variants, and what happens with requirements that live outside the repository. At the end: why all of this suits an AI agent.
+[About 30 seconds. One click per point.]
 
-Click: the first part, between the tools. The agenda comes back before each part.
+Here is where we're going. [Click.]
 
 ---
 
@@ -69,61 +81,55 @@ Click: the first part, between the tools. The agenda comes back before each part
 
 <div class="chain">
 <div class="box"><b>Requirements</b>requirements tool<span class="who">requirements engineer</span></div>
-<div class="arrow fragment" data-fragment-index="1">→</div>
+<div class="arrow fragment" data-fragment-index="1" data-notes="From the requirements, the architect builds the architecture, in a second tool. Its pictures end up copied into discussions. [Click.]">→</div>
 <div class="box fragment" data-fragment-index="1"><b>Architecture</b>modeling tool<span class="who">architect</span></div>
-<div class="arrow fragment" data-fragment-index="2">→</div>
+<div class="arrow fragment" data-fragment-index="2" data-notes="Then the design goes into a document and is handed over to the developer. [Click.]">→</div>
 <div class="box fragment" data-fragment-index="2"><b>Design</b>document<span class="who">designer</span></div>
-<div class="arrow fragment" data-fragment-index="3">→</div>
+<div class="arrow fragment" data-fragment-index="3" data-notes="The developer writes the code. But there is no way to test it against the requirements. [Click.]">→</div>
 <div class="box fragment" data-fragment-index="3"><b>Code</b>repository<span class="who">developer</span></div>
-<div class="arrow fragment" data-fragment-index="4">→</div>
+<div class="arrow fragment" data-fragment-index="4" data-notes="So the tester tests in yet another tool. And the results cannot be traced back to the code. [Click.]">→</div>
 <div class="box fragment" data-fragment-index="4"><b>Tests</b>test tool<span class="who">tester</span></div>
-<div class="arrow fragment" data-fragment-index="5">→</div>
+<div class="arrow fragment" data-fragment-index="5" data-notes="And at the end, before the audit, someone collects everything into a spreadsheet and says: looks okay. [Hands up.] Who has filled in a traceability spreadsheet the week before an audit? [Pause.] Keep your hand up if you enjoyed it. [Click.]">→</div>
 <div class="box fragment" data-fragment-index="5"><b>Traceability</b>spreadsheet<span class="who">someone, before the audit</span></div>
 </div>
 
-Each tool is good at its job. People hold the chain together. <!-- .element: class="fragment" data-fragment-index="6" -->
+Each tool is good at its job. People hold the chain together. <!-- .element: class="fragment" data-fragment-index="6" data-notes="Each of these tools is good at its job. None of them is the problem. The problem is the chain between them. And today, people hold that chain together." -->
 
 Note:
 
-Part 1, the problem, about 4 minutes for two slides.
+[Part 1, the problem: about 4 minutes, two slides. One click per box.]
 
-Walk through the daily life of a developer, one click per box. The customer requirements sit in a tool that needs a license and an approval, and it is slow: you click a requirement today and read it tomorrow. The architecture lives in a second tool, and its pictures are copied into discussions. The design goes from the architect to the developer. The developer has no way to test against the requirements. The tester uses another tool, and the results cannot be traced back to the code. At the end, a person collects everything into a spreadsheet and says whether it is okay.
-
-None of these tools is bad. The chain between them is the problem.
+Let's start where every project starts: with the requirements. They sit in a requirements tool. To read them, you need a license and an approval. And the tool is slow: you click a requirement today, and you read it tomorrow. [Click.]
 
 ---
 
 ### A requirement changes
 
 <div class="chain">
-<div class="box fragment custom to-changed" data-fragment-index="1"><b>Requirements</b><span class="status"><span class="old">v1</span><span class="new">v2</span></span></div>
+<div class="box fragment custom to-changed" data-fragment-index="1" data-notes="A customer changes a requirement. It is now v2. [Click.]"><b>Requirements</b><span class="status"><span class="old">v1</span><span class="new">v2</span></span></div>
 <div class="arrow">→</div>
-<div class="box fragment custom to-changed" data-fragment-index="2"><b>Architecture</b><span class="status"><span class="old">v1</span><span class="new">v2</span></span></div>
+<div class="box fragment custom to-changed" data-fragment-index="2" data-notes="The architect updates the architecture. Also v2. [Click.]"><b>Architecture</b><span class="status"><span class="old">v1</span><span class="new">v2</span></span></div>
 <div class="arrow">→</div>
-<div class="box fragment custom to-stale" data-fragment-index="4"><b>Design</b><span class="status">v1</span></div>
+<div class="box fragment custom to-stale" data-fragment-index="4" data-notes="But nobody updates the design. It still says v1, and it no longer matches the code. And look: the traceability is still green. [Click.]"><b>Design</b><span class="status">v1</span></div>
 <div class="arrow fragment custom to-stale cross" data-fragment-index="4">→</div>
-<div class="box fragment custom to-changed" data-fragment-index="3"><b>Code</b><span class="status"><span class="old">v1</span><span class="new">v2</span></span><span class="status ok">build ✓</span></div>
+<div class="box fragment custom to-changed" data-fragment-index="3" data-notes="The developer changes the code and the tests. The build passes, the tests pass. [Click.]"><b>Code</b><span class="status"><span class="old">v1</span><span class="new">v2</span></span><span class="status ok">build ✓</span></div>
 <div class="arrow">→</div>
 <div class="box fragment custom to-changed" data-fragment-index="3"><b>Tests</b><span class="status"><span class="old">v1</span><span class="new">v2</span></span><span class="status ok">pass ✓</span></div>
 <div class="arrow">→</div>
 <div class="box"><b>Traceability</b><span class="status ok">green ✓</span></div>
 </div>
 
-Every handoff is a copy. <!-- .element: class="fragment statement" data-fragment-index="5" -->
+Every handoff is a copy. <!-- .element: class="fragment statement" data-fragment-index="5" data-notes="How can that happen? Every handoff is a copy. A copy is correct on the day it is made. After that, it is just a claim about someone else's document. The developer works against the design they were given, not the design as it is today. [Click.]" -->
 
-The defect lives between two documents. <!-- .element: class="fragment statement" data-fragment-index="6" -->
+The defect lives between two documents. <!-- .element: class="fragment statement" data-fragment-index="6" data-notes="So the defect lives between two documents. The requirement and the design are reviewed by different people, in different systems. Nobody sees both changes at once. [Click.]" -->
 
-No tool owns that relationship. <!-- .element: class="fragment statement" data-fragment-index="7" -->
+No tool owns that relationship. <!-- .element: class="fragment statement" data-fragment-index="7" data-notes="And no tool owns that relationship. [Pause.] This is the problem the rest of the talk solves." -->
 
 Note:
 
-Tell the change as a story, one click per step. At the start, everything is v1 and in sync. Click 1: the requirement changes to v2. Click 2: the architecture follows. Click 3: the developer changes the code and the tests. Click 4: nobody updates the design, so the design no longer matches the code. The tests pass and the traceability stays green the whole time.
+[Tell it as a story, one click per step.]
 
-At each boundary the information is copied. A copy is correct on the day it is made. After that, it is a claim about someone else's document. The developer works against the design they were given, not the design as it is today. Each handoff is sound in itself, and none of them is checked again afterwards.
-
-A requirement changes after the design is done. The design does not follow. The build passes, the tests pass, and the spreadsheet stays green. The requirement and the design are reviewed by different people in different systems, and nobody sees both changes at once.
-
-Pause after "No tool owns that relationship". This is the problem the rest of the talk solves.
+Now let's see what happens when something changes. At the start, everything is v1 and in sync. [Click.]
 
 ---
 
@@ -142,7 +148,7 @@ Pause after "No tool owns that relationship". This is the problem the rest of th
 
 Note:
 
-Next: Engineering as Code.
+So what do we do about it? Engineering as Code.
 
 ---
 
@@ -150,21 +156,34 @@ Next: Engineering as Code.
 
 All engineering artifacts live in the repository, beside the code. <!-- .element: class="small" -->
 
-- Artifacts are text <!-- .element: class="fragment" -->
-- Links are data <!-- .element: class="fragment" -->
-- The build resolves the links <!-- .element: class="fragment" -->
+<div hidden>
+<span class="fragment" data-notes="We move the engineering artifacts into the repository, beside the code they describe. [Click.]"></span>
+<span class="fragment" data-notes="The name comes from infrastructure as code and documentation as code: the same move, for servers and for manuals. In practice, that means three things. [Click.]"></span>
+</div>
+
+- Artifacts are text <!-- .element: class="fragment" data-notes="First: the artifacts are text. So they are versioned, diffed and reviewed like code. [Click.]" -->
+- Links are data <!-- .element: class="fragment" data-notes="Second: links are data. Each artifact has an identifier and names what it depends on. A link is no longer a sentence somebody has to notice. [Click.]" -->
+- The build resolves the links <!-- .element: class="fragment" data-notes="Third, and most important: the build resolves the links. The evidence comes out of the same command that compiles the software. Every time, not from a person before a review." -->
 
 Note:
 
-Part 2, the idea, about 3 minutes for two slides.
+[Part 2, the idea: about 3 minutes, two slides. The first two clicks change only the notes.]
 
-If no tool owns the relationship between two documents, the relationship has to become something a tool can own. That is the whole idea. We move the engineering artifacts into the repository, beside the code they describe. The name follows infrastructure as code and documentation as code, which made the same move for servers and for manuals.
-
-In practice it means three things. The artifacts are text, so they are versioned, diffed and reviewed like code. Each artifact has an identifier and names what it depends on, so a link is data and not a sentence somebody has to notice. And the build resolves the links, so the evidence comes out of the command that compiles the software. The third one is the important one: the evidence comes out of the build, every time, and not out of a person before a review.
+Our answer: if no tool owns the relationship, we make it something a tool can own. That is the whole idea. [Click.]
 
 ---
 
 ### A sentence is not a link
+
+<div hidden>
+<span class="fragment" data-notes="[If needed:
+Teammate's hand up: That's my team. You don't count.
+Other hands up: Great. Let's compare notes after the talk.
+Many hands up: Then this slide is quick.
+No hands: Then the next 10 minutes are for you.]
+That is the difference. [Click.]"></span>
+<span class="fragment" data-notes="[Point at the prose box.] Here a design document says in its text: this design implements requirement 43. A reader learns something. The build learns nothing, because a sentence is prose. [Click.]"></span>
+</div>
 
 <div class="versus">
 <div class="box">
@@ -172,7 +191,7 @@ In practice it means three things. The artifacts are text, so they are versioned
 <p>"This design implements requirement 43."</p>
 <p class="caption">A reader learns something.</p>
 </div>
-<div class="box fragment">
+<div class="box fragment" data-notes="Now the same fact as data: a named link. Now the build learns something too. And we can ask questions nobody can answer by reading. Which requirements have no test? Which specifications does nothing implement? Which results belong to this variant? The build answers them for the whole repository, every time.">
 <b>Data</b>
 <pre><code class="plaintext">:id: SWDD_LC-102
 :refines: REQ_43</code></pre>
@@ -182,15 +201,7 @@ In practice it means three things. The artifacts are text, so they are versioned
 
 Note:
 
-Many teams keep documentation in the repository already. That is not the same thing. A design document can say in its own text that it implements requirement 43. A person who reads the sentence learns something. The build learns nothing, because a sentence is prose. Written as a named link, the same fact becomes a question anyone can ask of the whole repository.
-
-The useful questions are the ones nobody can answer by reading:
-
-- Which requirements have no test?
-- Which specifications does nothing implement?
-- Which results belong to this variant and not to that one?
-
-With links as data, the build answers these questions for the whole repository, every time.
+[Hands up. The first two clicks change only the notes.] Who keeps documentation in the repository already? [Pause.] Good. Now keep it up if your build can tell you which requirement has no test. [Click.]
 
 ---
 
@@ -209,7 +220,7 @@ With links as data, the build answers these questions for the whole repository, 
 
 Note:
 
-Next: one repository, one chain. We show it in SPLed.
+Now let's see it in practice: one repository, one chain. We show it in SPLed.
 
 ---
 
@@ -221,13 +232,16 @@ Software Product Line Engineering Demonstrator <!-- .element: class="small" -->
 
 <p class="small">Open source, MIT license: <a href="https://github.com/avengineers/SPLed">github.com/avengineers/SPLed</a></p>
 
+<div hidden>
+<span class="fragment" data-notes="SPLed is a product line of lights with three variants. All three live in one repository, with one chain from requirement to test result. That is what we show you next. [Click.]"></span>
+<span class="fragment" data-notes="But it is more than a demo. It shows how our developers work every day. And every new feature of our SPLE Platform is tested in SPLed first. Everything on the next slides comes from SPLed. You will see the three lights again in Judith's part."></span>
+</div>
+
 Note:
 
-Part 3, one repository, one chain, about 7 minutes for six slides.
+[Part 3, one repository, one chain: about 7 minutes, six slides. Clicks change only the notes.]
 
-SPLed is our Software Product Line Engineering Demonstrator, and it is open source under the MIT license: a product line of lights with three products, the Sleeping Light, the Disco Light and the Spa Light. One repository, three products. Nobody forked anything to get the third one. We meet the three products again when we come to variants.
-
-SPLed is more than a demo of how this works. It shows how our software developers work every day. And it is the basis for the development of our SPLE Platform: every new feature of the platform is tested in SPLed first.
+To show you how this looks, meet SPLed, our Software Product Line Engineering Demonstrator. We built it for training, and it is open source. The link is on the slide: you can clone it and run the build yourself. [Click.]
 
 ---
 
@@ -250,11 +264,16 @@ SPLed/
     └── Sleep/config.txt
 ```
 
+<div hidden>
+<span class="fragment" data-notes="Below, one folder per component. Here, the light controller. Every component has three parts: src, test and doc. And doc is not a write-up after the work. It holds the detailed design, split into specifications, each with its own identifier. It is built with the software. [Click.]"></span>
+<span class="fragment" data-notes="[Point at variants/, do not explain.] And the variants: Judith explains them in a few minutes."></span>
+</div>
+
 Note:
 
-Product-level artifacts at the top, a folder per component, a feature selection per variant.
+[Clicks change only the notes.]
 
-Every component has three parts: src, test and doc. The doc part is not a write-up after the work. It holds the detailed design, split into separate specifications, each with its own identifier. It is built along with the software.
+This is the SPLed repository. At the top, the product-level artifacts: customer requirements, software requirements, the architecture and the results. The software requirements come from a requirements tool. More on that later. [Click.]
 
 ---
 
@@ -267,13 +286,13 @@ Every component has three parts: src, test and doc. The doc part is not a write-
 <marker id="link-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z"/></marker>
 <marker id="link-arrow-now" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z"/></marker>
 </defs>
-<line class="fragment custom" data-fragment-index="2" x1="340" y1="34" x2="200" y2="34"/>
-<line class="fragment custom" data-fragment-index="3" x1="230" y1="140" x2="130" y2="68"/>
+<line class="fragment custom" data-fragment-index="2" data-notes="The architecture realizes the requirement. [Click.]" x1="340" y1="34" x2="200" y2="34"/>
+<line class="fragment custom" data-fragment-index="3" data-notes="The specification refines both: the requirement and the architecture. [Click.]" x1="230" y1="140" x2="130" y2="68"/>
 <line class="fragment custom" data-fragment-index="3" x1="310" y1="140" x2="410" y2="68"/>
-<line class="fragment custom" data-fragment-index="6" x1="130" y1="280" x2="230" y2="208"/>
+<line class="fragment custom" data-fragment-index="6" data-notes="Now the developer writes the implementation. It implements the specification and fulfills the requirement. [Click.]" x1="130" y1="280" x2="230" y2="208"/>
 <line class="fragment custom" data-fragment-index="6" x1="40" y1="280" x2="40" y2="68"/>
-<line class="fragment custom" data-fragment-index="4" x1="410" y1="280" x2="310" y2="208"/>
-<line class="fragment custom" data-fragment-index="5" x1="440" y1="400" x2="440" y2="348"/>
+<line class="fragment custom" data-fragment-index="4" data-notes="And now, test first: the developer writes the test for the specification, before any code. [Click.]" x1="410" y1="280" x2="310" y2="208"/>
+<line class="fragment custom" data-fragment-index="5" data-notes="The build runs the test and links the result to it. Nobody writes this link. And the test fails, because nothing implements the specification yet. [Click.]" x1="440" y1="400" x2="440" y2="348"/>
 </svg>
 <span class="label realizes fragment custom" data-fragment-index="2">realizes</span>
 <span class="label refines-req fragment custom" data-fragment-index="3">refines</span>
@@ -282,38 +301,40 @@ Every component has three parts: src, test and doc. The doc part is not a write-
 <span class="label fulfills fragment custom" data-fragment-index="6">fulfills</span>
 <span class="label tests fragment custom" data-fragment-index="4">tests</span>
 <span class="label result-of fragment custom" data-fragment-index="5">linked by the build</span>
-<div class="box req fragment custom" data-fragment-index="1"><b>Requirement</b><code>REQ_43</code></div>
+<div class="box req fragment custom" data-fragment-index="1" data-notes="It starts with the requirement. [Click.]"><b>Requirement</b><code>REQ_43</code></div>
 <div class="box arch fragment custom" data-fragment-index="2"><b>Architecture</b><code>SWARCH_001</code></div>
 <div class="box spec fragment custom" data-fragment-index="3"><b>Specification</b><code>SWDD_LC-102</code></div>
 <div class="box test fragment custom" data-fragment-index="4"><b>Test</b><code>TS_LC-001</code></div>
-<div class="box result fragment custom" data-fragment-index="5"><b>Test result</b><span class="fragment custom flip" data-fragment-index="7"><span class="before stale">fails ✗</span><span class="after ok">passes ✓</span></span></div>
+<div class="box result fragment custom" data-fragment-index="5"><b>Test result</b><span class="fragment custom flip" data-fragment-index="7" data-notes="The build runs the test again, and now it passes. [Click.]"><span class="before stale">fails ✗</span><span class="after ok">passes ✓</span></span></div>
 <div class="box impl fragment custom" data-fragment-index="6"><b>Implementation</b><code>SWIMPL_LC-003</code></div>
 </div>
 <div class="small">
 
-Every artifact names what justifies it. <!-- .element: class="fragment" data-fragment-index="8" -->
+Every artifact names what justifies it. <!-- .element: class="fragment" data-fragment-index="8" data-notes="Did you notice the direction of the arrows? One rule holds it all together: every artifact names what justifies it. [Click.]" -->
 
-Nothing names what follows from it. <!-- .element: class="fragment" data-fragment-index="9" -->
+Nothing names what follows from it. <!-- .element: class="fragment" data-fragment-index="9" data-notes="Nothing names what follows from it. All links point upwards. [Click.]" -->
 
-A new test changes nothing above it. <!-- .element: class="fragment" data-fragment-index="10" -->
+A new test changes nothing above it. <!-- .element: class="fragment" data-fragment-index="10" data-notes="So we can add a new test without touching anything above it." -->
 
 </div>
 </div>
 
 Note:
 
-Walk through the development lifecycle, test first, one click per step. Click 1: the requirement comes first. Click 2: the architecture realizes it. Click 3: the specification refines the requirement and the architecture. Click 4: the developer writes the test for the specification, before any code. Click 5: the build runs the test, links the result to it, and the test fails, because nothing implements the specification yet. Click 6: the developer writes the implementation, which implements the specification and fulfills the requirement. Click 7: the build runs the test again, and it passes.
+[The development lifecycle, test first. One click per step.]
 
-One rule holds the three parts together. The architecture realizes the requirement. A specification refines the architecture and the requirement. An implementation names the specification it implements and the requirement it fulfills. A test names the specification it verifies. All links point upwards. That is why we can add a test without touching anything above it.
-
-The chain ends at the test result. Nobody writes that link: the build runs the test, and spl-core links each result to its test by the name of the test.
+Now let's walk through how a change is developed in this repository, test first. [Click.]
 
 ---
 
 ### One specification, three files
 
-```plaintext [1-4|6-10|12-15]
-doc/index.md
+<div hidden>
+<span class="fragment" data-fragment-index="0" data-notes="[src] In the source code, the implementation sits in a C comment. It implements the specification and fulfills REQ_43. [Click.]"></span>
+<span class="fragment" data-fragment-index="1" data-notes="[test] And in the test file, the test sits in a C++ comment. It tests the specification. Each one names only what is above it."></span>
+</div>
+
+<pre class="no-numbers"><code class="plaintext" data-line-numbers="1-4|6-10|12-15" data-fragment-index="0">doc/index.md
     {spec} Color Management
     :id: SWDD_LC-102
     :refines: SWARCH_001, REQ_43
@@ -327,29 +348,33 @@ src/light_controller.c
 test/test_light_controller.cc
     .. test:: light_controller.test_light_on_and_off
        :id: TS_LC-001
-       :tests: SWDD_LC-100, SWDD_LC-102, SWDD_LC-300
-```
-<!-- .element: class="no-numbers" -->
+       :tests: SWDD_LC-100, SWDD_LC-102, SWDD_LC-300</code></pre>
 
 Note:
 
-The same specification from three sides, one excerpt from each part of the component folder. In the C and C++ files, the entries sit in comments. Each one names only what is above it.
+[Each click moves the code highlight to the next file.]
+
+Here it is in the files: one specification, three sides. [doc] First the design: the specification SWDD_LC-102. It refines the architecture SWARCH_001 and the requirement REQ_43. [Click.]
 
 ---
 
 ### Nobody assembled this table
 
-![Traceability matrix of the generated report, Sleep variant](../images/spled_traceability_matrix.png) <!-- .element: class="shot" -->
+![Traceability matrix of the generated report, Disco variant](../images/spled_traceability_matrix_disco.png) <!-- .element: class="shot" -->
 
-Three rows of the traceability matrix, Sleep variant <!-- .element: class="caption" -->
+Three rows of the traceability matrix, Disco variant <!-- .element: class="caption" -->
+
+<div hidden>
+<span class="fragment" data-notes="[Point at REQ_43.] This table is part of that report. Here is REQ_43, with the specification and the implementation from the previous slides. Nobody filled in this table. The build made it. [Click.]"></span>
+<span class="fragment" data-notes="[Joke. Pause first.] Remember the spreadsheet from the beginning? It just retired. My favourite kind of document: the one nobody had to write. [Click.]"></span>
+<span class="fragment" data-notes="And the same command runs on every developer's machine. So the report exists before the push, not only on the build server."></span>
+</div>
 
 Note:
 
-The identifiers are data, so the build can follow them. One build reads the source code, the tests, the design documents and the variant configuration. It produces the software, the test results and a report with the traceability. The report shows the path from each requirement to the tests that verify it, and it comes from the same command that compiles the software. We use spl-core and Sphinx-Needs for this.
+[Clicks change only the notes.]
 
-This table is part of that report. REQ_43 carries the specification and the implementation from the previous slides. REQ_44, the blinking behavior, has no entries: Sleep does not select that feature. Nobody filled in this table. The build made it.
-
-The same command runs on every developer's machine. So the report exists before the push, not only on the build server.
+And because the identifiers are data, the build can follow them. One build makes the software, the test results, and a report with the traceability: from each requirement to the tests that verify it. We use spl-core and Sphinx-Needs for this. [Click.]
 
 ---
 
@@ -363,13 +388,17 @@ The same command runs on every developer's machine. So the report exists before 
 <div class="file"><div><b>Test</b> <code>TS_LC-001</code><span class="path">components/light_controller/test/test_light_controller.cc</span></div><span class="state changed">changed</span></div>
 </div>
 
-The reviewer sees the whole chain before the merge. <!-- .element: class="fragment small" -->
+The reviewer sees the whole chain before the merge. <!-- .element: class="fragment small" data-notes="So the reviewer sees the whole chain at once, before the merge. Not months later in an audit. [Be honest about the state.] Today the build warns on a missing link, but it does not fail yet. That is our next step. [Click.]" -->
+
+<div hidden>
+<span class="fragment" data-notes="[Handover to Judith. This click changes only the notes.] So far: one chain, for one product. But remember the three lights? Judith now shows how one source serves all three, without a copy of the code or the documents for each light. Judith, the disco is yours."></span>
+</div>
 
 Note:
 
-This is the answer to the problem slide. The same change as before: the requirement changes, and the design, the code and the test change with it. All of it is in one pull request. The reviewer sees the whole chain at once, before the merge, not months later in an audit.
-
-Be honest about the state: today the build resolves the links and warns on a missing link. It does not refuse to finish when a link is missing. That is our next step.
+- Remember the problem slide? A requirement changed, and the design was left behind.
+- Here is the same change in our setup. The requirement changes, and the design, the code and the test change with it.
+- All of it is in one pull request. [Click.]
 
 ---
 

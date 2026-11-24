@@ -9,15 +9,12 @@
     --stale: #ff6b5b;
 }
 
-/* The agenda, shown again before each part with that part highlighted.
- * On the first agenda, a click highlights the first part. */
-.reveal .toc.at li,
-.reveal .toc:has(.now.visible) li {
+/* The agenda, shown again before each part with that part highlighted. */
+.reveal .toc.at li {
     opacity: 0.45;
 }
 
-.reveal .toc.at li.now,
-.reveal .toc li.now.visible {
+.reveal .toc.at li.now {
     opacity: 1;
     color: var(--r-main-color);
 }
