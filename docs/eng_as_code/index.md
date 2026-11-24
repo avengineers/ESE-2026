@@ -40,6 +40,8 @@ Note:
 
 Each speaker says who they are in one or two sentences.
 
+Judith: I am Judith, a senior software engineer at Marquardt. I have worked in automotive for more than 14 years, across almost the whole V-model. Today I work on CI/CD, test automation and product line engineering.
+
 ---
 
 ### Agenda
@@ -386,7 +388,9 @@ Be honest about the state: today the build resolves the links and warns on a mis
 
 Note:
 
-Next: one source, many variants.
+Akshit hands over to Judith.
+
+Judith: Thank you, Akshit. You have seen the idea and the chain. Now we look at some aspects of Engineering as Code in more detail. The first one is variants. SPLed is a product line. That means several products that share most of their software and differ in a few features. Let us see how one source serves all of them.
 
 ---
 
@@ -395,36 +399,46 @@ Next: one source, many variants.
 The same component behaves differently in each variant. <!-- .element: class="small" -->
 
 <div class="lights">
-<div class="fragment">
+<div class="fragment" data-fragment-index="1">
 
 ![The Sleeping Light](../images/light_sleep.jpg)
 
-<p class="caption">Sleep<span class="feature">no blinking</span></p>
+<p class="caption">Sleep<span class="feature fragment" data-fragment-index="4">no blinking</span></p>
 
 </div>
-<div class="fragment">
+<div class="fragment" data-fragment-index="2">
 
 ![The Disco Light](../images/light_disco.jpg)
 
-<p class="caption">Disco<span class="feature">blinking</span></p>
+<p class="caption">Disco<span class="feature fragment" data-fragment-index="4">blinking</span></p>
 
 </div>
-<div class="fragment">
+<div class="fragment" data-fragment-index="3">
 
 ![The Spa Light](../images/light_spa.jpg)
 
-<p class="caption">Spa<span class="feature">no blinking</span></p>
+<p class="caption">Spa<span class="feature fragment" data-fragment-index="4">no blinking</span></p>
 
 </div>
 </div>
 
-The documents carry the same feature conditions as the code. <!-- .element: class="fragment small" -->
+The documents carry the same feature conditions as the code. <!-- .element: class="fragment small" data-fragment-index="5" -->
 
 Note:
 
 Part 4, variants, about 5 minutes for four slides.
 
-The three products of SPLed share the light controller, but it behaves differently in each of them: Disco blinks, Sleep and Spa do not. A product line has a problem a single product does not have. There are two bad options: a document per variant, or one document for all variants that matches none. We take a third: a specification that belongs to an optional feature is wrapped in a condition on that feature, and so is the test that verifies it.
+SPLed has three products. All of them use the same light controller.
+
+Click 1: the Sleeping Light. It helps you fall asleep.
+
+Click 2: the Disco Light. It is a light for parties.
+
+Click 3: the Spa Light. It is a light for wellness.
+
+Click 4: a party light should blink, the other two should not. So blinking is a feature. Disco has it, Sleep and Spa do not.
+
+Click 5: we do not want a separate document for each variant. So the documents and the tests carry the same feature conditions as the code.
 
 ---
 
@@ -435,7 +449,9 @@ KConfig
     config BLINKING
         bool "Blinking Feature"
         default n
+```
 
+```plaintext
 variants/Disco/config.txt
     CONFIG_BLINKING=y
 
@@ -445,10 +461,15 @@ variants/Sleep/config.txt
 variants/Spa/config.txt
     # CONFIG_BLINKING is not set
 ```
+<!-- .element: class="fragment" -->
 
 Note:
 
-Blinking shows it end to end. The feature model has the blinking feature. Disco selects it, Sleep and Spa leave it out.
+So how do the code and the documents know which features a product has? It starts with the feature model. We describe the features in a KConfig file. KConfig comes from the Linux kernel. Here is the blinking feature. It is a simple yes or no, and it is off by default.
+
+Click 1: each variant has its own config file. It selects the features of that product. Disco switches blinking on. Sleep and Spa leave it off.
+
+From this selection, KConfig generates files for the build: a C header for the code and the tests, and a JSON file for the documents. So the code, the tests and the documents all read the same selection.
 
 ---
 
@@ -478,7 +499,9 @@ on an external input (main knob value).
 
 Note:
 
-Two specifications from the design document of the Light Controller. The first one is in every variant. The second one depends on the blinking feature, with the same condition as the code.
+Now let us see the JSON file at work. This is part of the design document of the light controller. The first specification describes the two states, on and off. Every variant needs it, so it has no condition.
+
+Click 1: the second specification describes the blinking. It sits inside a condition on the blinking feature. For Disco, the condition is true, and the specification is in the document. For Sleep and Spa, it is left out. The code uses the same condition.
 
 ---
 
@@ -490,7 +513,9 @@ One source, one feature model, a correct report per variant. No document maintai
 
 Note:
 
-The report for Disco has both specifications. The report for Sleep has only the first one. The reader sees the specifications and test results of their product and nothing else.
+And this is the result. On the left is the report of the light controller for Disco, on the right the one for Sleep. Disco has both specifications, with their implementations and tests. Sleep has only the first one. Every reader sees only what belongs to their product.
+
+Click 1: one source and one feature model give a correct report for each variant. Nobody maintains a document twice.
 
 ---
 
@@ -509,7 +534,7 @@ The report for Disco has both specifications. The report for Sleep has only the 
 
 Note:
 
-Next: the top of the chain, the requirements that live outside the repository.
+This concludes the variants. The next part shows a different aspect of Engineering as Code. So far, every artifact lived in the repository. In practice, some artifacts still come from tools outside the repository, for example the software requirements. That is not where we want to be, but it is where many projects are today. We call this the top of the chain, because these artifacts sit above everything we have shown so far.
 
 ---
 
@@ -517,27 +542,35 @@ Next: the top of the chain, the requirements that live outside the repository.
 
 <div class="chain spaced">
 <div class="box"><b>Requirements tool</b></div>
-<div class="arrow">→</div>
-<div class="box"><b>Export</b>CSV or ReqIF</div>
-<div class="arrow">→</div>
-<div class="box"><b>Convert</b>JSON</div>
-<div class="arrow">→</div>
-<div class="box"><b>Report</b>traced like everything else</div>
+<div class="arrow fragment" data-fragment-index="1">→</div>
+<div class="box fragment" data-fragment-index="1"><b>Export</b>CSV or ReqIF</div>
+<div class="arrow fragment" data-fragment-index="2">→</div>
+<div class="box fragment" data-fragment-index="2"><b>Convert</b>JSON</div>
+<div class="arrow fragment" data-fragment-index="3">→</div>
+<div class="box fragment" data-fragment-index="3"><b>Report</b>traced like everything else</div>
 </div>
 
-- New requirements: write them in the repository <!-- .element: class="fragment" -->
-- Existing requirements: import the export <!-- .element: class="fragment" -->
-- The import is a copy too. Keeping it current is still open. <!-- .element: class="fragment" -->
+- New requirements: write them in the repository <!-- .element: class="fragment" data-fragment-index="4" -->
+- Existing requirements: import the export <!-- .element: class="fragment" data-fragment-index="5" -->
+- The import is a copy too. We are working on it. <!-- .element: class="fragment" data-fragment-index="6" -->
 
 Note:
 
 Part 5, about 2 minutes.
 
-Not everything fits in one repository. System requirements are the clearest example: once hardware is in scope, they cover more than software, and they live in a requirements management tool.
+Many software requirements live in a requirements tool today. Sadly, that is the hard truth for most projects.
 
-We do not rewrite every existing requirement. We take the export the tool already offers, CSV or ReqIF, convert it into JSON, and trace it like everything else. The same process works for any artifact that lives outside the repository.
+Click 1: we do not copy them by hand. The tool can export them as CSV or ReqIF.
 
-The weakness: the import is accurate on the day of the export. The requirements tool is too slow to run in every build. We are still working on this.
+Click 2: we convert the export into JSON.
+
+Click 3: the build reads the JSON and traces the requirements like everything else.
+
+Click 4: our recommendation: write new requirements directly in the repository.
+
+Click 5: and the existing requirements? We simply import the export.
+
+Click 6: but the import is a copy too. It is correct on the day of the export. We are working on a mechanism that lets projects keep their imported requirements up to date.
 
 ---
 
@@ -556,7 +589,7 @@ The weakness: the import is accurate on the day of the export. The requirements 
 
 Note:
 
-Next: why all of this suits an AI agent.
+The last part is about something we did not plan when we started: AI agents. Everything we showed so far is text in one repository, with clear rules. It turns out that this is exactly what an AI agent needs.
 
 ---
 
@@ -576,9 +609,11 @@ Note:
 
 Part 6, AI, about 5 minutes for four slides.
 
-Back to the pull request from before, with one difference. Click 1: the design is not in the pull request. The requirement, the code and the test changed, the design did not.
+Let me start with an example. This is the pull request from before. The requirement, the code and the test changed.
 
-Click 2: the links still resolve, so the build sees nothing wrong. Only a reviewer who knows the structure notices that a file is missing. This is where an AI agent helps.
+Click 1: but this time, the design is not part of it.
+
+Click 2: the links still resolve, so the build sees nothing wrong. Only a reviewer who knows the structure would notice. This is where an AI agent helps.
 
 ---
 
@@ -602,9 +637,11 @@ A folder per component. One rule for links. <!-- .element: class="small" -->
 
 Note:
 
-This benefit came as a surprise. It was not the reason we started. Everything is in one place, so the agent can read the whole repository.
+Why does an agent help here? Everything is in one place, and everything follows the same structure. So the agent can read the whole repository.
 
-Click 1: the agent reads the structure: a folder per component with src, test and doc, and the rule that every artifact names what justifies it. Click 2: it makes its changes in that same structure.
+Click 1: the agent reads the structure. Each component has a folder with the design, the code and the tests. And every artifact names what justifies it.
+
+Click 2: then the agent writes its own changes in that same structure.
 
 ---
 
@@ -628,11 +665,11 @@ Same build, same report, same warnings. <!-- .element: class="fragment small" --
 
 Note:
 
-A skill is a set of written instructions that the agent loads when a task needs it. Ours describe how an artifact is written here, which identifier scheme it uses and which links it must carry.
+How does the agent know our rules? We write them down as skills. A skill is a set of instructions that the agent loads when a task needs it. On top you see a rule from our unit test skill. It shows the agent what a test entry looks like.
 
-On top: a real excerpt from the unit test skill in sple-skills. It gives the agent the shape of a test entry, with its identifier and the specification it tests. Click 1: a test in SPLed has exactly that shape. So the agent writes a specification, a test and an implementation in the shape the traceability needs, not prose a human has to rework.
+Click 1: and this is a real test in SPLed. It has exactly that shape.
 
-Click 2: the agent's work goes through the same build as a human's, with the same report and the same warnings. Our skills are public: sple-skills on GitHub.
+Click 2: the agent's work goes through the same build as ours, with the same report and the same warnings. Our skills are public, on GitHub.
 
 ---
 
@@ -649,11 +686,9 @@ Click 2: the agent's work goes through the same build as a human's, with the sam
 
 Note:
 
-Back to the pull request where the design was left behind. The same knowledge that helps the agent write artifacts makes it a useful reviewer. It checks each change against the structure.
+Back to our example, where the design was left behind. The agent knows the structure, so it can also review a pull request.
 
-Click 1: it comments on the gap. REQ_43 changed, and the design that refines it did not. This comment is an example we wrote for the slide. It shows the kind of comment the agent gives. The same works for other gaps, for example a specification without a test.
-
-Because the code, the specification and the test change together, one pull request holds the whole change. The agent and the human reviewer look at the same thing.
+Click 1: it finds the gap and writes a comment. REQ_43 changed, but the design that refines it did not. We wrote this comment for the slide, but it shows the kind of comment the agent gives. It works for other gaps too, for example a specification without a test.
 
 ---
 
@@ -667,9 +702,11 @@ Note:
 
 Summary, about 2 minutes for two slides.
 
-Three things changed for us. The build resolves the chain from requirement to test result and shows it in a report, instead of a person assembling it by hand. Every developer makes the full evidence locally, before the push. And one feature model resolves the documents as well as the code, so each variant has its own correct report from a single source.
+What we showed today does not depend on our tools. It depends on one idea: an engineering artifact is something with an identifier and a link, not a document.
 
-None of this depends on our particular tools. It depends on treating an artifact as something with an identifier and a link. The chain stops being a matter of discipline alone.
+Click 1: then the build can read the chain. It makes the traceability for every variant, on every developer's machine.
+
+Akshit, do you have anything to add?
 
 ---
 
@@ -682,7 +719,7 @@ None of this depends on our particular tools. It depends on treating an artifact
 
 Note:
 
-Everything we showed is open source. Clone SPLed and run the build on your own machine.
+Everything we showed is open source. SPLed is our demonstrator. Clone it and run the build on your own machine. spl-core is the build framework behind it. Sphinx-Needs handles the links and the traceability. And sple-skills holds our agent skills.
 
 ---
 
@@ -695,6 +732,10 @@ Everything we showed is open source. Clone SPLed and run the build on your own m
 </div>
 
 https://avengineers.github.io/ESE-2026/docs/eng_as_code/ <!-- .element: class="deck-url" -->
+
+Note:
+
+Thank you for listening. We are happy to take your questions. The QR code takes you to the slides.
 
 ---
 
