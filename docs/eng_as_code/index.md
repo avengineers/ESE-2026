@@ -108,20 +108,20 @@ Let's start where every project starts: with the requirements. They sit in a req
 ### A requirement changes
 
 <div class="chain">
-<div class="box fragment custom to-changed" data-fragment-index="1" data-notes="A customer changes a requirement. It is now v2. [Click.]"><b>Requirements</b><span class="status"><span class="old">v1</span><span class="new">v2</span></span></div>
+<div class="box fragment custom to-changed" data-fragment-index="1" data-notes="Then, one morning, the customer sends an e-mail: a requirement changes. It is now v2. [Click.]"><b>Requirements</b><span class="status"><span class="old">v1</span><span class="new">v2</span></span></div>
 <div class="arrow">→</div>
-<div class="box fragment custom to-changed" data-fragment-index="2" data-notes="The architect updates the architecture. Also v2. [Click.]"><b>Architecture</b><span class="status"><span class="old">v1</span><span class="new">v2</span></span></div>
+<div class="box fragment custom to-changed" data-fragment-index="2" data-notes="The architect reads the e-mail and updates the architecture. Also v2. [Click.]"><b>Architecture</b><span class="status"><span class="old">v1</span><span class="new">v2</span></span></div>
 <div class="arrow">→</div>
-<div class="box fragment custom to-stale" data-fragment-index="4" data-notes="But nobody updates the design. It still says v1, and it no longer matches the code. And look: the traceability is still green. [Click.]"><b>Design</b><span class="status">v1</span></div>
+<div class="box fragment custom to-stale" data-fragment-index="4" data-notes="But the designer was on holiday that week, and nobody told them. Nobody updates the design. It still says v1, and it no longer matches the code. [Pause.] And look: the traceability is still green. [Click.]"><b>Design</b><span class="status">v1</span></div>
 <div class="arrow fragment custom to-stale cross" data-fragment-index="4">→</div>
-<div class="box fragment custom to-changed" data-fragment-index="3" data-notes="The developer changes the code and the tests. The build passes, the tests pass. [Click.]"><b>Code</b><span class="status"><span class="old">v1</span><span class="new">v2</span></span><span class="status ok">build ✓</span></div>
+<div class="box fragment custom to-changed" data-fragment-index="3" data-notes="The developer gets a ticket and changes the code and the tests. The build passes, the tests pass. Everyone is happy. [Click.]"><b>Code</b><span class="status"><span class="old">v1</span><span class="new">v2</span></span><span class="status ok">build ✓</span></div>
 <div class="arrow">→</div>
 <div class="box fragment custom to-changed" data-fragment-index="3"><b>Tests</b><span class="status"><span class="old">v1</span><span class="new">v2</span></span><span class="status ok">pass ✓</span></div>
 <div class="arrow">→</div>
 <div class="box"><b>Traceability</b><span class="status ok">green ✓</span></div>
 </div>
 
-Every handoff is a copy. <!-- .element: class="fragment statement" data-fragment-index="5" data-notes="How can that happen? Every handoff is a copy. A copy is correct on the day it is made. After that, it is just a claim about someone else's document. The developer works against the design they were given, not the design as it is today. [Click.]" -->
+Every handoff is a copy. <!-- .element: class="fragment statement" data-fragment-index="5" data-notes="How can that happen? Nobody did anything wrong. Every handoff is a copy. A copy is correct on the day it is made. After that, it is just a claim about someone else's document. The developer works against the design they were given, not the design as it is today. [Click.]" -->
 
 The defect lives between two documents. <!-- .element: class="fragment statement" data-fragment-index="6" data-notes="So the defect lives between two documents. The requirement and the design are reviewed by different people, in different systems. Nobody sees both changes at once. [Click.]" -->
 
@@ -131,7 +131,9 @@ Note:
 
 [Tell it as a story, one click per step.]
 
-Now let's see what happens when something changes. At the start, everything is v1 and in sync. [Click.]
+People hold the chain together. So what happens when one of them misses a single step? Let me tell you a short story.
+
+Picture a project in good shape. Requirements, architecture, design, code and tests: all at v1, all in sync. Everyone has done their job. [Click.]
 
 ---
 
@@ -178,25 +180,23 @@ Our answer: if no tool owns the relationship, we make it something a tool can ow
 ### A sentence is not a link
 
 <div hidden>
-<span class="fragment" data-notes="[If needed:
-Teammate's hand up: That's my team. You don't count.
-Other hands up: Great. Let's compare notes after the talk.
-Many hands up: Then this slide is quick.
-No hands: Then the next 10 minutes are for you.]
-That is the difference. [Click.]"></span>
-<span class="fragment" data-notes="[Point at the prose box.] Here a design document says in its text: this design implements requirement 43. A reader learns something. The build learns nothing, because a sentence is prose. [Click.]"></span>
+<span class="fragment" data-notes="[Point at the prose box.] Here a design document says in its text: the color of the light is an RGB value, to meet requirement 43. A reader learns something. The build learns nothing, because a sentence is prose. [Click.]"></span>
 </div>
 
 <div class="versus">
 <div class="box">
 <b>Prose</b>
-<p>"This design implements requirement 43."</p>
+<p>"The color of the light is specified as an RGB value to meet requirement 43."</p>
 <p class="caption">A reader learns something.</p>
 </div>
-<div class="box fragment" data-notes="Now the same fact as data: a named link. Now the build learns something too. And we can ask questions nobody can answer by reading. [Click.]">
+<div class="box fragment" data-notes="Now the same sentence as a specification: with an identifier and a named link to REQ_43. Now the build learns something too. And we can ask questions nobody can answer by reading. [Click.]">
 <b>Data</b>
-<pre><code class="plaintext">:id: SWDD_LC-102
-:refines: REQ_43</code></pre>
+<pre><code class="plaintext">```{spec} Color Management
+:id: SWDD_LC-102
+:refines: SWARCH_001, REQ_43
+&#32;
+The color of the light is specified as an RGB value.
+```</code></pre>
 <p class="caption">The build learns something.</p>
 </div>
 </div>
@@ -209,7 +209,18 @@ That is the difference. [Click.]"></span>
 
 Note:
 
-[Hands up. The first two clicks change only the notes.] Who keeps documentation in the repository already? [Pause.] Good. Now keep it up if your build can tell you which requirement has no test. [Click.]
+[Hands up. The first click changes only the notes.]
+
+Who keeps documentation in the repository already? [Pause.] Good. Now keep it up if your build can tell you which requirement has no test. [Pause.]
+
+[React if needed:]
+
+- Teammate's hand up: That's my team. You don't count.
+- Other hands up: Great. Let's compare notes after the talk.
+- Many hands up: Then this slide is quick.
+- No hands: Then the next 10 minutes are for you.
+
+That is the difference. [Click.]
 
 ---
 
@@ -283,7 +294,7 @@ This is the SPLed repository. At the top, the product-level artifacts: customer 
 
 ---
 
-### Name what justifies you
+### Every link points up
 
 <div class="two-cols">
 <div class="links">
@@ -293,7 +304,7 @@ This is the SPLed repository. At the top, the product-level artifacts: customer 
 <marker id="link-arrow-now" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z"/></marker>
 </defs>
 <line class="fragment custom" data-fragment-index="2" data-notes="The architecture realizes the requirement. [Click.]" x1="340" y1="34" x2="200" y2="34"/>
-<line class="fragment custom" data-fragment-index="3" data-notes="The specification refines both: the requirement and the architecture. [Click.]" x1="230" y1="140" x2="130" y2="68"/>
+<line class="fragment custom" data-fragment-index="3" data-notes="The specification refines both: the requirement and the architecture. This is the handoff from our story. The designer gets no copy of the requirement. The specification names REQ_43, so it always points to the current one. [Click.]" x1="230" y1="140" x2="130" y2="68"/>
 <line class="fragment custom" data-fragment-index="3" x1="310" y1="140" x2="410" y2="68"/>
 <line class="fragment custom" data-fragment-index="6" data-notes="Now the developer writes the implementation. It implements the specification and fulfills the requirement. [Click.]" x1="130" y1="280" x2="230" y2="208"/>
 <line class="fragment custom" data-fragment-index="6" x1="40" y1="280" x2="40" y2="68"/>
@@ -306,7 +317,7 @@ This is the SPLed repository. At the top, the product-level artifacts: customer 
 <span class="label implements fragment custom" data-fragment-index="6">implements</span>
 <span class="label fulfills fragment custom" data-fragment-index="6">fulfills</span>
 <span class="label tests fragment custom" data-fragment-index="4">tests</span>
-<span class="label result-of fragment custom" data-fragment-index="5">linked by the build</span>
+<span class="label result-of fragment custom" data-fragment-index="5">results from</span>
 <div class="box req fragment custom" data-fragment-index="1" data-notes="It starts with the requirement. [Click.]"><b>Requirement</b><code>REQ_43</code></div>
 <div class="box arch fragment custom" data-fragment-index="2"><b>Architecture</b><code>SWARCH_001</code></div>
 <div class="box spec fragment custom" data-fragment-index="3"><b>Specification</b><code>SWDD_LC-102</code></div>
@@ -316,9 +327,9 @@ This is the SPLed repository. At the top, the product-level artifacts: customer 
 </div>
 <div class="small">
 
-Every artifact names what justifies it. <!-- .element: class="fragment" data-fragment-index="8" data-notes="Did you notice the direction of the arrows? One rule holds it all together: every artifact names what justifies it. [Click.]" -->
+Each artifact links to where it comes from. <!-- .element: class="fragment" data-fragment-index="8" data-notes="Did you notice the direction of the arrows? One rule holds it all together: each artifact links to where it comes from. [Click.]" -->
 
-Nothing names what follows from it. <!-- .element: class="fragment" data-fragment-index="9" data-notes="Nothing names what follows from it. All links point upwards. [Click.]" -->
+A handoff is a link, not a copy. <!-- .element: class="fragment" data-fragment-index="9" data-notes="Remember our story: every handoff is a copy. Not here. Every handoff is a link, and the link has an owner: the artifact that needs it, in its own file. [Click.]" -->
 
 A new test changes nothing above it. <!-- .element: class="fragment" data-fragment-index="10" data-notes="So we can add a new test without touching anything above it." -->
 
@@ -404,6 +415,7 @@ Note:
 
 - Remember the problem slide? A requirement changed, and the design was left behind.
 - Here is the same change in our setup. The requirement changes, and the design, the code and the test change with it.
+- The requirement comes in as a new export from the requirements tool. Judith shows later how it gets here.
 - All of it is in one pull request. [Click.]
 
 ---
@@ -504,7 +516,7 @@ The light can be in one of two states: ON or OFF. The
 state transitions are triggered by changes in the
 system's power state.
 ```
-{% if config.BLINKING %}
+:::{if} var.features.BLINKING
 ```{spec} Blinking Behavior
 :id: SWDD_LC-101
 :refines: SWARCH_001, REQ_44
@@ -513,7 +525,7 @@ When the light is ON, it may exhibit a blinking behavior.
 The blinking rate is configurable and is determined based
 on an external input (main knob value).
 ```
-{% endif %}</code></pre>
+:::</code></pre>
 
 Note:
 
@@ -625,7 +637,7 @@ Let me start with an example. This is the pull request from before. The requirem
 <div class="item"><code>test/</code><span>Test <code>TS_LC-001</code></span></div>
 </div>
 <div class="flow">
-<span class="fragment" data-notes="The agent reads the structure. Each component has a folder with the design, the code and the tests. And every artifact names what justifies it. [Click.]">reads the structure →</span>
+<span class="fragment" data-notes="The agent reads the structure. Each component has a folder with the design, the code and the tests. And each artifact links to where it comes from. [Click.]">← reads the structure</span>
 <span class="fragment" data-notes="Then the agent writes its own changes in that same structure.">← writes in the same shape</span>
 </div>
 <div class="box agent"><b>AI agent</b></div>
@@ -684,7 +696,7 @@ Back to our example, where the design was left behind. The agent knows the struc
 
 An engineering artifact is something with an identifier and a link, not a document. <!-- .element: class="statement" -->
 
-Then the chain is something the build can read. <!-- .element: class="fragment statement" data-notes="Then the build can read the chain. It makes the traceability for every variant, on every developer's machine. [Pause.] Akshit, do you have anything to add?" -->
+Then the chain is something the build can read. <!-- .element: class="fragment statement" data-notes="Then the build can read the chain. It makes the traceability for every variant, on every developer's machine. And remember the designer on holiday? Today, the pull request shows the gap, and the agent points at it before the merge. [Pause.] Akshit, do you have anything to add?" -->
 
 Note:
 
