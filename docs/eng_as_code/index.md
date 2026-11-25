@@ -294,7 +294,7 @@ This is the SPLed repository. At the top, the product-level artifacts: customer 
 
 ---
 
-### Every link points up
+### Links hold the chain
 
 <div class="two-cols">
 <div class="links">
@@ -304,11 +304,11 @@ This is the SPLed repository. At the top, the product-level artifacts: customer 
 <marker id="link-arrow-now" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z"/></marker>
 </defs>
 <line class="fragment custom" data-fragment-index="2" data-notes="The architecture realizes the requirement. [Click.]" x1="340" y1="34" x2="200" y2="34"/>
-<line class="fragment custom" data-fragment-index="3" data-notes="The specification refines both: the requirement and the architecture. This is the handoff from our story. The designer gets no copy of the requirement. The specification names REQ_43, so it always points to the current one. [Click.]" x1="230" y1="140" x2="130" y2="68"/>
+<line class="fragment custom" data-fragment-index="3" data-notes="The specification refines both: the requirement and the architecture. [Click.]" x1="230" y1="140" x2="130" y2="68"/>
 <line class="fragment custom" data-fragment-index="3" x1="310" y1="140" x2="410" y2="68"/>
 <line class="fragment custom" data-fragment-index="6" data-notes="Now the developer writes the implementation. It implements the specification and fulfills the requirement. [Click.]" x1="130" y1="280" x2="230" y2="208"/>
 <line class="fragment custom" data-fragment-index="6" x1="40" y1="280" x2="40" y2="68"/>
-<line class="fragment custom" data-fragment-index="4" data-notes="And now, test first: the developer writes the test for the specification, before any code. [Click.]" x1="410" y1="280" x2="310" y2="208"/>
+<line class="fragment custom" data-fragment-index="4" data-notes="Then the developer writes the test for the specification. [Click.]" x1="410" y1="280" x2="310" y2="208"/>
 <line class="fragment custom" data-fragment-index="5" data-notes="The build runs the test and links the result to it. Nobody writes this link. And the test fails, because nothing implements the specification yet. [Click.]" x1="440" y1="400" x2="440" y2="348"/>
 </svg>
 <span class="label realizes fragment custom" data-fragment-index="2">realizes</span>
@@ -327,9 +327,9 @@ This is the SPLed repository. At the top, the product-level artifacts: customer 
 </div>
 <div class="small">
 
-Each artifact links to where it comes from. <!-- .element: class="fragment" data-fragment-index="8" data-notes="Did you notice the direction of the arrows? One rule holds it all together: each artifact links to where it comes from. [Click.]" -->
+Each artifact links to where it comes from. <!-- .element: class="fragment" data-fragment-index="8" data-notes="Look at the arrows. Each one starts at the newer artifact and points to the older one. The test names its specification. The specification names its requirement. [Click.]" -->
 
-A handoff is a link, not a copy. <!-- .element: class="fragment" data-fragment-index="9" data-notes="Remember our story: every handoff is a copy. Not here. Every handoff is a link, and the link has an owner: the artifact that needs it, in its own file. [Click.]" -->
+Each link is written once. <!-- .element: class="fragment" data-fragment-index="9" data-notes="The test says: I test SWDD_LC-102. That is the only place this link is written. The report shows it from the other side too: SWDD_LC-102 is tested by TS_LC-001. Nobody writes that twice. [Click.]" -->
 
 A new test changes nothing above it. <!-- .element: class="fragment" data-fragment-index="10" data-notes="So we can add a new test without touching anything above it." -->
 
@@ -338,9 +338,9 @@ A new test changes nothing above it. <!-- .element: class="fragment" data-fragme
 
 Note:
 
-[The development lifecycle, test first. One click per step.]
+[The development lifecycle. One click per step.]
 
-Now let's walk through how a change is developed in this repository, test first. [Click.]
+Remember: between the tools, people held the chain together. Here, links do. Let's walk through how a change is developed in this repository. [Click.]
 
 ---
 
@@ -415,7 +415,7 @@ Note:
 
 - Remember the problem slide? A requirement changed, and the design was left behind.
 - Here is the same change in our setup. The requirement changes, and the design, the code and the test change with it.
-- The requirement comes in as a new export from the requirements tool. Judith shows later how it gets here.
+- [Only if someone asks about the JSON file:] The requirement comes in as a new export from the requirements tool. Judith shows later how it gets here.
 - All of it is in one pull request. [Click.]
 
 ---
@@ -469,7 +469,7 @@ The same component behaves differently in each variant. <!-- .element: class="sm
 </div>
 </div>
 
-The documents carry the same feature conditions as the code. <!-- .element: class="fragment small" data-fragment-index="5" data-notes="We do not want a separate document for each variant. So the documents and the tests carry the same feature conditions as the code." -->
+The documents use the same feature conditions as the code. <!-- .element: class="fragment small" data-fragment-index="5" data-notes="We do not want a separate document for each variant. So the documents and the tests use the same feature conditions as the code." -->
 
 Note:
 
@@ -481,24 +481,45 @@ From this one product line, we build three different lights. Each of them is a v
 
 ### The feature model
 
-```plaintext
-KConfig
-    config BLINKING
-        bool "Blinking Feature"
-        default n
-```
-
-```plaintext
-variants/Disco/config.txt
-    CONFIG_BLINKING=y
-
-variants/Sleep/config.txt
-    # CONFIG_BLINKING is not set
-
-variants/Spa/config.txt
-    # CONFIG_BLINKING is not set
-```
-<!-- .element: class="fragment" data-notes="Each variant has its own config file. It selects the features of that product. Disco switches blinking on. Sleep and Spa leave it off. From this selection, KConfig generates files for the build: a C header for the code and the tests, and a JSON file for the documents. So the code, the tests and the documents all read the same selection." -->
+<div class="feature-flow">
+<div class="file kconfig">
+<div class="name">KConfig</div>
+<pre><code class="plaintext">config BLINKING
+    bool "Blinking Feature"
+    default n</code></pre>
+</div>
+<div class="selection fragment" data-fragment-index="1" data-notes="Each variant has its own config file. It selects the features of that product. Disco switches blinking on. Sleep and Spa leave it off. [Click.]">
+<div class="file">
+<div class="name">variants/Disco/config.txt</div>
+<pre><code class="plaintext">CONFIG_BLINKING=y</code></pre>
+</div>
+<div class="file">
+<div class="name">variants/Sleep/config.txt</div>
+<pre><code class="plaintext"># CONFIG_BLINKING is not set</code></pre>
+</div>
+<div class="file">
+<div class="name">variants/Spa/config.txt</div>
+<pre><code class="plaintext"># CONFIG_BLINKING is not set</code></pre>
+</div>
+</div>
+<div class="generates fragment" data-fragment-index="2" data-notes="From this selection, KConfig generates two files for each variant. The C header is for the code and the tests. The JSON file is for the documents. So the code, the tests and the documents all read the same selection."><svg width="80" height="24" viewBox="0 0 80 24"><path class="shaft" d="M0,12 H62"/><path class="head" d="M56,3 L80,12 L56,21 Z"/></svg><span>generates</span></div>
+<div class="stack header fragment" data-fragment-index="2">
+<div class="file card"><div class="name">&nbsp;</div></div>
+<div class="file card"><div class="name">&nbsp;</div></div>
+<div class="file card">
+<div class="name">autoconf.h<span class="variant">Disco</span></div>
+<pre><code class="plaintext">#define CONFIG_BLINKING 1</code></pre>
+</div>
+</div>
+<div class="stack json fragment" data-fragment-index="2">
+<div class="file card"><div class="name">&nbsp;</div></div>
+<div class="file card"><div class="name">&nbsp;</div></div>
+<div class="file card">
+<div class="name">autoconf.json<span class="variant">Disco</span></div>
+<pre><code class="plaintext">{"features": {"BLINKING": true}}</code></pre>
+</div>
+</div>
+</div>
 
 Note:
 
@@ -535,7 +556,10 @@ Now let us see the JSON file at work. This is part of the design document of the
 
 ### One report per variant
 
-![The same component report for Disco and for Sleep, side by side](../images/spled_variant_comparison.png) <!-- .element: class="shot" -->
+<div class="reports">
+<div class="report"><img src="../images/spled_report_disco.png" alt="The component report for Disco"></div>
+<div class="report"><img src="../images/spled_report_sleep.png" alt="The component report for Sleep"></div>
+</div>
 
 One source, one feature model, a correct report per variant. No document maintained twice. <!-- .element: class="fragment caption" data-notes="One source and one feature model give a correct report for each variant. Nobody maintains a document twice." -->
 

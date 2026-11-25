@@ -484,6 +484,30 @@
     background: #fff;
 }
 
+/* Two reports side by side: the same width gives both the same scale, and
+ * the gap shows that they are two reports. Both frames are as high as the
+ * longer report, so the shorter one shows the space of what it lacks. */
+.reveal .reports {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    align-items: stretch;
+    margin: 0.2em 0;
+}
+
+.reveal .reports .report {
+    padding: 8px;
+    background: #fff;
+}
+
+.reveal .reports img {
+    display: block;
+    width: 350px;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+}
+
 .reveal .caption {
     font-size: 0.5em;
     color: var(--muted);
@@ -524,4 +548,136 @@ html.print-pdf .reveal pre.tree code.fragment {
 
 html.print-pdf .reveal pre.tree tr {
     opacity: 1 !important;
+}
+
+/* The feature model: KConfig and the variant configs on the left, and the
+ * files that KConfig generates from them on the right. Each generated file is
+ * a cascade of three windows, one per variant, with Disco in front. Only the
+ * front window shows text; the others show only that they have the same form.
+ * One arrow between the columns, as on the slide "The top of the chain". */
+.reveal .feature-flow {
+    position: relative;
+    width: 900px;
+    height: 390px;
+    margin: 0 auto;
+}
+
+/* A file: a title bar with its name, and its content as code. */
+.reveal .feature-flow .file {
+    width: 360px;
+    background: #2b2b2b;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.reveal .feature-flow .file .name {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 8px;
+    font-size: 0.46em;
+    color: var(--r-main-color);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.reveal .feature-flow .file pre {
+    width: auto;
+    margin: 0;
+    font-size: 0.46em;
+    box-shadow: none;
+}
+
+.reveal .feature-flow .kconfig {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.reveal .feature-flow .selection {
+    position: absolute;
+    left: 0;
+    top: 170px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.reveal .feature-flow .generates {
+    position: absolute;
+    left: 360px;
+    top: 203px;
+    width: 130px;
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+.reveal .feature-flow .generates svg {
+    display: block;
+    margin: 0 auto;
+}
+
+.reveal .feature-flow .generates .shaft {
+    stroke: var(--r-main-color);
+    stroke-width: 5;
+}
+
+.reveal .feature-flow .generates .head {
+    fill: var(--r-main-color);
+}
+
+.reveal .feature-flow .generates span {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.42em;
+    color: var(--muted);
+}
+
+.reveal .feature-flow .stack {
+    position: absolute;
+    left: 490px;
+    width: 410px;
+    height: 80px;
+}
+
+.reveal .feature-flow .stack.header {
+    top: 88px;
+}
+
+.reveal .feature-flow .stack.json {
+    top: 207px;
+}
+
+.reveal .feature-flow .card {
+    position: absolute;
+    width: 380px;
+    height: 69px;
+}
+
+/* The windows behind are darker, so they recede. */
+.reveal .feature-flow .card:nth-child(1) {
+    filter: brightness(0.6);
+}
+
+.reveal .feature-flow .card:nth-child(2) {
+    filter: brightness(0.8);
+}
+
+.reveal .feature-flow .card:nth-child(1) {
+    left: 20px;
+    top: 0;
+}
+
+.reveal .feature-flow .card:nth-child(2) {
+    left: 10px;
+    top: 10px;
+}
+
+.reveal .feature-flow .card:nth-child(3) {
+    left: 0;
+    top: 20px;
+}
+
+/* The variant of the front card, at the right of its title bar. The link
+ * colour shows that it is a label, not a line of the file. */
+.reveal .feature-flow .variant {
+    font-weight: bold;
+    color: var(--r-link-color);
 }
