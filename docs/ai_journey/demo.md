@@ -61,7 +61,7 @@ remote branch except `develop`, and force-pushes `develop` to `demo-start`.
 3. If the board of the Kasten has a DEMO-002 card, say to the agent: "drop DEMO-002 from
    the board".
 4. Paste this block into PowerShell, with the proxy set. It builds every variant on
-   Windows, Sleep included.
+   Windows, Sleep included. It takes about 5 minutes.
 
    ```powershell
    & {
