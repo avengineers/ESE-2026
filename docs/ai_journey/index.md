@@ -1,4 +1,4 @@
-<pre class="copyable"><code class="language-plaintext">Packe DEMO-002 in die Loop!</code></pre>
+<pre class="copyable"><code class="language-plaintext">Packe DEMO-002 in die Loop! Energie!</code></pre>
 
 <p class="deck-url">Backlog-Item: <a href="https://github.com/xxthunder/asf-closed-loop-demo/blob/develop/docs/backlog/demo-002.md">DEMO-002: Auto Off</a></p>
 

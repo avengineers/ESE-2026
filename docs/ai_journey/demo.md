@@ -148,10 +148,9 @@ what you show.
 
 ## Open
 
-- The prompt on the slide, "Packe DEMO-002 in die Loop!", has no "Energie!". The loop then
-  asks first whether to do a Q&A round on the plan, and waits for an answer. Either add
-  "Energie!" to the prompt on the slide, or answer "Nein, Energie!" on stage. The
-  rehearsal must use the prompt from the slide.
+- Whether the prompt on the slide, "Packe DEMO-002 in die Loop! Energie!", starts the loop.
+  The closed-loop skill lists "Nimm … in die Loop" and "Bring … in den Loop" as its
+  phrases, not "Packe". The rehearsal must use the prompt from the slide.
 - Where the rehearsal result is kept for the fallback. It must not be within reach of the
   agent: a run already found a checkout of the old solution on the same laptop.
 - Whether VS Code shows the worktree live, connected to the dev container on the main
