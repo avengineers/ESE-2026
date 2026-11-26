@@ -5,9 +5,7 @@ prompt on the slide. The agent takes the story DEMO-002 "Auto Off" through the c
 while the speakers give the talk. On the slide "Die Abnahme", the speakers check the result.
 
 This file says what to do before the talk, on stage and after the talk, and what to show
-from where. The record of the demo, with the measured runs and the reset commands, is
-[XAS-092](https://github.com/xxthunder/xxthunder-agentic-skills/blob/develop/docs/backlog/xas-092.md).
-The demo repository is
+from where. The demo repository is
 [xxthunder/asf-closed-loop-demo](https://github.com/xxthunder/asf-closed-loop-demo).
 
 ## The setup
@@ -23,58 +21,99 @@ The demo runs on one laptop: Windows with WSL.
 | The Windows checkout for the UAT | `C:\dev\xxthunder\asf-closed-loop-demo` |
 | The slides | this deck in a browser |
 
+## Reset the demo
+
+Run these steps before the talk and after every run. They put the demo repository back to
+the tag `demo-start`, and build every variant and its report for the comparison. Open this
+file on GitHub: each block has a copy button.
+
+**Caution:** step 1 closes every open pull request of the demo repository, deletes every
+remote branch except `develop`, and force-pushes `develop` to `demo-start`.
+
+1. Paste this block into a WSL terminal. It takes about 3 minutes.
+
+   ```bash
+   (
+     set -e
+     cd ~/dev/xxthunder/asf-closed-loop-demo
+     echo "== Close the open pull requests"
+     gh pr list --state open --json number --jq '.[].number' | xargs -r -n1 gh pr close
+     echo "== Delete every remote branch except develop"
+     git fetch --prune --tags --force origin
+     git for-each-ref --format='%(refname:lstrip=3)' refs/remotes/origin \
+       | grep -v -x -e develop -e HEAD | xargs -r -n1 git push origin --delete
+     echo "== Remove the worktrees and the local branches in the dev container"
+     ssh asf-closed-loop-demo.devpod 'cd /workspaces/asf-closed-loop-demo \
+       && for w in .worktrees/*/; do [ -d "$w" ] && git worktree remove --force "$w"; done; \
+       git worktree prune && git checkout -q develop \
+       && git branch --format="%(refname:short)" | grep -v -x develop | xargs -r git branch -D'
+     echo "== Put develop back to demo-start"
+     git checkout -q develop
+     git reset -q --hard demo-start
+     git push --force-with-lease origin develop
+     echo "== Build every variant and its report in the dev container"
+     ssh asf-closed-loop-demo.devpod 'cd /workspaces/asf-closed-loop-demo && scripts/gate'
+     echo "== Done: develop is at $(git rev-parse --short HEAD), demo-start is at $(git rev-parse --short demo-start)"
+   )
+   ```
+
+2. Check the last line. It must name the same commit twice.
+3. If the board of the Kasten has a DEMO-002 card, say to the agent: "drop DEMO-002 from
+   the board".
+4. Paste this block into PowerShell, with the proxy set. It builds every variant on
+   Windows, Sleep included.
+
+   ```powershell
+   & {
+     Set-Location C:\dev\xxthunder\asf-closed-loop-demo
+     Write-Host "== Put develop on demo-start and delete every other local branch"
+     git fetch --prune --tags --force origin
+     git switch -q -C develop demo-start
+     git worktree prune
+     git branch --format='%(if)%(worktreepath)%(then)%(else)%(refname:short)%(end)' | Where-Object { $_ -and $_ -ne 'develop' } | ForEach-Object { git branch -D $_ }
+     Write-Host "== Build every variant and its report"
+     .\build.ps1 -install
+     .\build.ps1 -selftests -marker gate_develop_pr
+     Write-Host "== Worktrees left:"
+     git worktree list
+     Write-Host "== Done: develop is at $(git rev-parse --short HEAD), demo-start is at $(git rev-parse --short demo-start)"
+   }
+   ```
+
+5. Check the last line. It must name the same commit twice.
+6. Check the list of worktrees. If it shows a worktree of an earlier DEMO-002 run, remove
+   it by hand: it holds an old Auto Off.
+
+The Sleep report of the start state is then at:
+
+```text
+\\wsl.localhost\deb-dev\home\wsluser\dev\xxthunder\asf-closed-loop-demo\build\Sleep\test\Debug\reports\html\index.html
+```
+
 ## The day before
 
 1. Update the Kasten, the Claude Code marketplaces and the plugins.
-2. Do a full rehearsal run from `demo-start`, with the steps of this file and the prompt
-   from the slide.
-3. Record the rehearsal in XAS-092.
+2. [Reset the demo](#reset-the-demo).
+3. Do a full rehearsal run, with the steps of this file and the prompt from the slide.
 4. Do not update anything after the rehearsal.
 
 ## One hour before the talk
 
-**Caution:** the agent must not find an old solution on this laptop. Do step 1 and step 2
-before you start Claude Code.
+**Caution:** the agent must not find an old solution on this laptop. Reset the demo before
+you start Claude Code.
 
-1. Reset the demo with the steps in XAS-092, Technical Notes, *Reset after a run*. Reset
-   the checkout in WSL and the dev container too, also when the remote is already reset.
-2. Put the Windows checkout on the start state:
-
-   ```text
-   git -C C:\dev\xxthunder\asf-closed-loop-demo fetch origin
-   git -C C:\dev\xxthunder\asf-closed-loop-demo checkout develop
-   git -C C:\dev\xxthunder\asf-closed-loop-demo reset --hard origin/develop
-   ```
-
-   Then delete every local branch of an earlier run (`git branch -D <branch>`). An old
-   branch holds an old Auto Off.
-3. Check the start state. All of these must hold:
-   - `git -C ~/dev/xxthunder/asf-closed-loop-demo status -sb` shows `develop`, equal to
-     `origin/develop`, and `develop` is at the tag `demo-start`.
-   - `ssh asf-closed-loop-demo.devpod 'git -C /workspaces/asf-closed-loop-demo worktree list'`
-     shows one line, the main checkout.
+1. [Reset the demo](#reset-the-demo).
+2. Check the start state. All of these must hold:
    - `gh pr list -R xxthunder/asf-closed-loop-demo` shows no open pull request.
    - DEMO-002 is *Open*, and the board has no DEMO-002 card.
-4. Warm up the dev container. The gate must exit 0:
-
-   ```text
-   ssh asf-closed-loop-demo.devpod 'cd /workspaces/asf-closed-loop-demo && scripts/gate'
-   ```
-
-5. Warm up the Windows build. In PowerShell, in the Windows checkout:
-
-   ```text
-   .\build.ps1 -install
-   .\build.ps1 -build -variants Sleep
-   ```
-
-6. Make sure that the proxy is up, the laptop is on power, and Windows shows no
+3. Make sure that the proxy is up, the laptop is on power, and Windows shows no
    notifications.
-7. Open the windows of the demo:
+4. Open the windows of the demo:
    - the deck, on the title slide;
    - a WSL terminal with Claude Code started in the Kasten, in auto mode, empty;
    - a browser tab with
      [the pull requests of the demo repository](https://github.com/xxthunder/asf-closed-loop-demo/pulls);
+   - a browser tab with the Sleep report of the start state, for the comparison;
    - PowerShell in the Windows checkout.
 
 ## On stage
@@ -98,7 +137,7 @@ Expected times after the prompt, from the runs 3 and 4: the first Sleep report a
 | Anforderungen ↔ SWDD | The design document of the new component: its specs refine REQ_39, REQ_40 and REQ_59. | The pull request, *Files changed*: `components/<new component>/doc/index.md` |
 | SWDD ↔ Code | The `.. impl::` block in the doc comment of the function, with `:implements:`. | The pull request, *Files changed*: `components/<new component>/src/` |
 | SWDD ↔ Tests | The `.. test::` blocks of the unit tests, with `:tests:`. | The pull request, *Files changed*: `components/<new component>/test/` |
-| Tests ↔ Testergebnisse | The Sleep report: unit test results, coverage, traceability matrix. | The report on disk, see below |
+| Tests ↔ Testergebnisse | The Sleep report: unit test results, coverage, traceability matrix. Compare it with the report of the start state. | The report on disk, see below |
 
 Also show the pull request itself: its commits, the evidence package in its description,
 and the green checks. They show how the agent got to the result.
@@ -141,10 +180,7 @@ what you show.
 
 ## After the talk
 
-1. Close the pull request of the run. Do not merge it.
-2. Reset the demo with the steps in XAS-092.
-3. Put the Windows checkout back on `develop`, as in *One hour before the talk*, step 2.
-4. Record the run in XAS-092.
+1. [Reset the demo](#reset-the-demo). It closes the pull request of the run without a merge.
 
 ## Open
 
