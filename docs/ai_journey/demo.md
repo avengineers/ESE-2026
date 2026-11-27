@@ -178,8 +178,21 @@ before the audience counts.
 The file exists only after the agent built the Sleep report in the worktree.
 
 **When the agent is not finished.** Show what is ready: the task list in the session, the
-commits in the worktree, a report if there is one. Or show the result of the rehearsal. Say
-what you show.
+commits in the worktree, a report if there is one. Or show the fallback: the result of an
+earlier run, already built. Say what you show.
+
+The fallback is a copy of the Windows checkout at `C:\demo-fallback\asf-closed-loop-demo`.
+Its `develop` holds the finished Auto Off; the branch `backup/demo-002-done` keeps the same
+commit. The reset does not touch it.
+
+- The UAT: start `C:\demo-fallback\asf-closed-loop-demo\build\Sleep\prod\Debug\spled.exe`.
+- The report: open
+  `C:\demo-fallback\asf-closed-loop-demo\build\Sleep\test\Debug\reports\html\index.html`.
+- The traceability: in PowerShell, in the fallback copy:
+
+  ```text
+  git diff demo-start develop -- components/auto_off
+  ```
 
 ## After the talk
 
@@ -187,7 +200,7 @@ what you show.
 
 ## Open
 
-- Where the rehearsal result is kept for the fallback. It must not be within reach of the
-  agent: a run already found a checkout of the old solution on the same laptop.
+- How to keep the fallback out of the agent's reach. The agent reaches
+  `C:\demo-fallback` through `/mnt/c`, and two runs searched the whole laptop with `find /`.
 - Whether VS Code shows the worktree live, connected to the dev container on the main
   checkout. Try it in a rehearsal first.
