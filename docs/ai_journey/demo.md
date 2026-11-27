@@ -60,7 +60,9 @@ remote branch except `develop`, and force-pushes `develop` to `demo-start`.
 2. Check the last line. It must name the same commit twice.
 3. If the board of the Kasten has a DEMO-002 card, say to the agent: "drop DEMO-002 from
    the board".
-4. Paste this block into PowerShell, with the proxy set. It builds every variant on
+4. Close `spled.exe` if the UAT left it running. A running `spled.exe` makes the Sleep
+   build fail with "Permission denied".
+5. Paste this block into PowerShell, with the proxy set. It builds every variant on
    Windows, Sleep included. It takes about 5 minutes.
 
    ```powershell
@@ -80,8 +82,8 @@ remote branch except `develop`, and force-pushes `develop` to `demo-start`.
    }
    ```
 
-5. Check the last line. It must name the same commit twice.
-6. Check the list of worktrees. If it shows a worktree of an earlier DEMO-002 run, remove
+6. Check the last line. It must name the same commit twice.
+7. Check the list of worktrees. If it shows a worktree of an earlier DEMO-002 run, remove
    it by hand: it holds an old Auto Off.
 
 The Sleep report of the start state is then at:
