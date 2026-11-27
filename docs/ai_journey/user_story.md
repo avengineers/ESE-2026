@@ -1,22 +1,4 @@
 ### User Story: Auto Off
 
-<div class="slide-text">
-
-**Von:** Karsten, Product Owner · **Produkt:** SPLed · **Fällig:** jetzt
-
-**Als** Nutzerin des Sleep Light **möchte ich**, dass das Licht nach einer Weile ohne Bedienung
-von selbst ausgeht, **damit** es nicht die ganze Nacht brennt, wenn ich einschlafe.
-
-Auto Off ist ein wählbares Feature der Produktlinie SPLed, kein fest eingebautes Verhalten
-eines Produkts. Disco Light und Spa Light schalten sich nicht selbst aus und enthalten den Code
-dafür nicht. Die Anforderungen stehen im Repository: REQ_39, REQ_40 und REQ_59.
-
-**Akzeptanzkriterien**
-
-1. Eine neue Komponente setzt die drei Anforderungen um.
-2. Das Feature ist über das Feature-Modell wählbar: ein Schalter und eine Zeitdauer.
-3. Sleep Light und IDEA/Sloemada wählen es mit 10 Sekunden, Disco Light und Spa Light nicht.
-4. Es gibt ein Detailed Design und Unit-Tests, die darauf verweisen.
-5. Alle Varianten bauen, alle Tests sind grün, und der Bericht zeigt Coverage und Traceability.
-
-</div>
+- Backlog-Item: [DEMO-002: Auto Off](https://github.com/xxthunder/asf-closed-loop-demo/blob/develop/docs/backlog/demo-002.md)
+- Repository: [asf-closed-loop-demo, Branch develop](https://github.com/xxthunder/asf-closed-loop-demo/tree/develop)
