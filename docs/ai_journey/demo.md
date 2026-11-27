@@ -126,8 +126,9 @@ you start Claude Code.
 | Slide "Die Abnahme" | Judith | Switch to the result. Show each check. | see below |
 | After the verdict | Karsten | Next slide: "Fazit". | deck |
 
-Expected times after the prompt, from the runs 3 and 4: the first Sleep report after 19 to
+Expected times after the prompt, from the runs 3 to 5: the first Sleep report after 19 to
 31 minutes, the pull request after 29 to 37 minutes, its CI green about 3 minutes later.
+The prompt on the slide starts the loop at once, without a question.
 
 ### What Judith shows on "Die Abnahme"
 
@@ -184,9 +185,6 @@ what you show.
 
 ## Open
 
-- Whether the prompt on the slide, "Packe DEMO-002 in die Loop! Energie!", starts the loop.
-  The closed-loop skill lists "Nimm … in die Loop" and "Bring … in den Loop" as its
-  phrases, not "Packe". The rehearsal must use the prompt from the slide.
 - Where the rehearsal result is kept for the fallback. It must not be within reach of the
   agent: a run already found a checkout of the old solution on the same laptop.
 - Whether VS Code shows the worktree live, connected to the dev container on the main
